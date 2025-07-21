@@ -1,16 +1,173 @@
 ---
-title: "Scraping Web"
-format: html
+title: "Quarto et Markdown"
+page-layout: full
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    code-copy: true
+params:
+  country: "Somalia"
+  sector: "Éducation"
+  unit: "Région"
 ---
 
-## Contexte
+```{r setup, include=FALSE}
+library(glue)
+library(ggplot2)
+library(readxl)
+library(dplyr)
 
-Le scraping est une méthode d’extraction automatique de données...
+```
 
-## Exemple de code
+
+
+## Vue générale
+
+- Quarto repose sur **Pandoc** : convertisseur universel Markdown vers plusieurs formats (HTML, PDF, Word, etc.).
+- Écrit en Rust, moderne et rapide.
+- Supporte plusieurs langages dans les chunks : R, Python, Observable JS, etc.
+
+## Workflow
+
+- Quarto exécute les chunks de code, produit un AST (Abstract Syntax Tree).
+- Pandoc convertit cet AST en documents finaux (HTML, PDF, etc.).
+
+## Comparaison avec R Markdown
+
+| Fonctionnalité        | R Markdown                  | Quarto                        |
+|----------------------|-----------------------------|------------------------------|
+| Langage              | R + Markdown                | Rust + Markdown              |
+| Support chunks       | R uniquement                | R, Python, JS, autres         |
+| Paramétrage YAML     | Basique                    | Avancé                       |
+| Sorties              | HTML, PDF, Word             | HTML, PDF, Word, et plus      |
+
+## Création PDF
+
+- Plusieurs méthodes :
+  - LaTeX classique (fiable, mais lourd parfois)
+  - Typst (nouveau langage, plus rapide)
+  - PageJS (génération PDF via Chrome)
+  - Impression design via HTML/Figma
+
+## Exemple de chunk R
 
 ```{r}
-library(rvest)
-url <- "https://example.com"
-read_html(url)
+#library(readxl)
+#tables <- read_excel("tables_exported.xlsx")
+#head(tables)
+
 ```
+
+
+# Quatre manières de générer un PDF
+
+## 1. LaTeX
+
+- Moteur historique, très utilisé en économie, physique, et sciences formelles.
+- Complexe à utiliser, peu flexible graphiquement.
+- Intégration dans Quarto via `engine: pdf` avec `pdf-engine: lualatex`.
+- Permet une très grande personnalisation, mais au prix d'une courbe d’apprentissage raide.
+
+## 2. Typst
+
+- Écrit en **Rust**, pensé comme une alternative rapide et moderne à LaTeX.
+- Syntaxe simple, compilation ultra-rapide (quelques ms).
+- Intégré directement dans Quarto via `engine: typst`.
+- Encore jeune (2 ans), mais très prometteur.
+- Parfait pour des cas d’usage type rapport régulier, document structuré, avec un design simple.
+
+Typst est particulièrement adapté aux workflows automatisés en R ou Python, pour produire rapidement des documents PDF paramétrés.
+
+## 3. CSS Paged Media (paged.js, weasyprint, pdf-raptor)
+
+- Génère d’abord un **HTML avec CSS**.
+- Utilise des standards CSS Media Queries + des **polyfills** pour structurer les pages comme des documents imprimables.
+- Compatible avec Chrome/Edge, et utilisable via impression PDF.
+- Exemples :
+  - [`paged.js`](https://pagedjs.org)
+  - [`weasyprint`](https://weasyprint.org) (en Python)
+  - `pdf-raptor` (service web de conversion)
+
+## 4. Génération manuelle via Figma ou HTML pur
+
+- Utilisé pour un **design sur-mesure** pixel-perfect.
+- Génère le HTML ou maquette à la main, ou via outils comme **Figma**.
+- Bypasse entièrement Pandoc ou Quarto.
+- Nécessite plus de maintenance, mais offre un **contrôle absolu**.
+
+---
+
+# Structuration d’un rapport paramétré
+
+## Paramètres définis dans l’en-tête YAML
+
+```yaml
+params:
+  country: "Somalia"
+  sector: "Éducation"
+  unit: "Région"
+```
+
+## Réutilisation dans le texte
+
+Les paramètres définis dans l’en-tête YAML peuvent être appelés dynamiquement avec params$... .
+
+```{r}
+# glue("Ce rapport analyse le secteur **{params$sector}** pour le pays **{params$country}**, à l’échelle **{params$unit}**.")
+```
+
+
+
+## Bonnes pratiques pour un rapport Quarto paramétré
+
+### Recommandé
+
+- Utiliser des blocs logiques bien identifiés (`#`, `##`, `###`)
+- Garder une structure constante (même ordre, mêmes titres)
+- Utiliser des paramètres dynamiques pour l’automatisation
+- Ajouter des graphiques avec `ggplot2` ou `plotly`
+- Soigner l'affichage des nombres (arrondis, formatés)
+- Gérer les valeurs manquantes ou aberrantes
+
+### À éviter
+
+- Trop de colonnes dans les mises en page (complexe avec Pandoc)
+- Des titres qui changent selon les paramètres (illisible à la lecture)
+- Ne pas tester les cas extrêmes (ex. : 0 valeur, NA, territoire inexistant)
+- Trop de verbosité automatique ("Le pays {x} a... le pays {y} a...")
+
+---
+
+## Styliser avec CSS (pour HTML)
+
+### Fichier : `styles.css`
+
+```css
+:root {
+  --main-color: #0077b6;
+  --accent-color: #48cae4;
+  --font-body: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #222;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: var(--main-color);
+  margin-top: 1.5em;
+}
+
+strong {
+  color: var(--accent-color);
+}
+```
+
+
+
+
+
+
