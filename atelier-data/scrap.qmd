@@ -1,0 +1,176 @@
+---
+title: "Scrap"
+format: html
+---
+
+
+# Scraping Web avec R
+
+## Introduction
+
+Le **scraping web** consiste à extraire automatiquement des données publiées sur des sites internet. Cette méthode est particulièrement utile lorsque les données ne sont pas disponibles via une API officielle ou sous un format exploitable directement (CSV, JSON, XML, etc.). Elle permet de collecter un large éventail d’informations : fiches produits, listes, tableaux, statistiques, organigrammes, documents, etc.
+
+Cependant, le scraping nécessite une bonne maîtrise des technologies web (HTML, CSS, JavaScript) ainsi qu’une attention aux aspects légaux et éthiques (respect du fichier robots.txt, limitations du site, charge serveur).
+
+---
+
+## Pourquoi faire du scraping ?
+
+- **Collecter des données non accessibles autrement**, notamment sur des sites qui ne proposent pas d’API ou de fichiers exportables.  
+- **Automatiser la veille documentaire** en récupérant régulièrement les nouvelles publications d’un site.  
+- **Récupérer des informations structurées dans des pages HTML complexes**, par exemple des tableaux ou des fiches détaillées.  
+- **Enrichir des jeux de données locaux** avec des données publiques sectorielles, comme des organigrammes ou listes d’acteurs.
+
+---
+
+## Outils et bibliothèques en R
+
+- **`rvest`** : bibliothèque principale pour lire, parser et extraire du contenu HTML. Utilise les sélecteurs CSS ou XPath pour cibler précisément les éléments à extraire.  
+- **`xml2`** : permet de lire et manipuler des documents XML (utile pour lire des sitemaps par exemple).  
+- **`httr` ou `curl`** : pour gérer les requêtes HTTP, parfois nécessaires pour simuler des sessions, gérer des cookies, ou contourner des protections.  
+- **`purrr`** : fonctionnel pour itérer sur des listes d’URLs et appliquer des fonctions de scraping.  
+- **Extensions Chrome (Selector Gadget, DevTools)** : outils indispensables pour identifier rapidement les sélecteurs CSS et tester les expressions XPath.
+
+---
+
+## Bonnes pratiques avant de commencer
+
+- **Vérifier le fichier `robots.txt`** du site (ex. https://www.site.com/robots.txt) qui liste les parties autorisées ou interdites au scraping. Respecter ces consignes est crucial pour éviter tout litige légal.  
+- **Analyser la structure du site** : repérer les pages d’index, les pages détaillées, les liens à suivre, et identifier les sélecteurs CSS/XPath précis.  
+- **Consulter le sitemap XML** si disponible, car il facilite la récupération automatique des URLs à scraper.  
+- **Limiter la fréquence des requêtes** pour ne pas surcharger le serveur (exemple : pause entre requêtes avec `Sys.sleep()`).  
+- **Tester et valider chaque étape manuellement** avant d’automatiser à grande échelle.  
+- **Documenter le script** pour faciliter la maintenance et la mise à jour si la structure du site change.
+
+---
+
+## Exemple complet : récupération et scraping de fiches sur cheese.com
+
+### Étape 1 : récupération des URLs via sitemap
+
+```{r}
+library(xml2)
+library(magrittr)
+
+url_sitemap <- "https://www.cheese.com/sitemap.xml"
+sitemap <- read_xml(url_sitemap)
+
+# Extraction des URLs du sitemap
+urls <- xml_find_all(sitemap, "//url/loc") %>% xml_text()
+head(urls, 5)
+
+
+library(rvest)
+library(dplyr)
+
+url_annuaire <- "https://www.cheese.com/all-cheeses/"
+page <- read_html(url_annuaire)
+
+# Extraction des liens vers chaque fiche
+liens_fromages <- page %>%
+  html_nodes(".cheeseList a") %>%
+  html_attr("href")
+
+# Nettoyage des liens pour avoir URL absolue
+liens_fromages <- paste0("https://www.cheese.com", liens_fromages)
+head(liens_fromages, 5)
+
+library(rvest)
+library(dplyr)
+
+url_annuaire <- "https://www.cheese.com/all-cheeses/"
+page <- read_html(url_annuaire)
+
+# Extraction des liens vers chaque fiche
+liens_fromages <- page %>%
+  html_nodes(".cheeseList a") %>%
+  html_attr("href")
+
+# Nettoyage des liens pour avoir URL absolue
+liens_fromages <- paste0("https://www.cheese.com", liens_fromages)
+head(liens_fromages, 5)
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Lecture de PDF en R
+
+## Outils
+
+- **tesseract** : outil OCR pour extraire du texte à partir d’images contenues dans des PDF.
+- **tabulizer** (package R) : extraction de tableaux depuis des PDF, particulièrement efficace pour les tableaux “screenshot” (captures d’écran intégrées dans PDF).
+- **pdftools** : manipulation basique et extraction de texte dans les PDF.
+
+## Usages
+
+- Extraction de tableaux complexes, notamment lorsque les données sont intégrées en image (screenshot).
+- Le package `tabulizer` est utile pour extraire ces tableaux, contrairement à l’OCR qui fonctionne moins bien sur ce type de données.
+- Vérifier la cohérence des tailles de listes extraites (ex. colonnes de tableaux) pour éviter les erreurs de décalage ou pertes de données.
+- Gérer les valeurs manquantes, car en HTML/texte brut, il n’y a pas de NA natif.
+- Utile pour enrichir des données sectorielles ou locales à partir de rapports PDF.
+
+## Cas pratique
+
+- Tester sur des sites institutionnels comme l’INSEE en live.
+- Nettoyer et structurer les données extraites pour créer des jeux de données propres.
+- Être vigilant aux problèmes liés à la mise en forme des PDF (listes, colonnes, espacements).
+
+
+```{r}
+# library(pdftools)
+
+# Exemple d'extraction texte d'un PDF local
+# texte_pdf <- pdf_text("exemple_rapport.pdf")
+
+# Affichage des 500 premiers caractères de la première page
+# cat(substr(texte_pdf[1], 1, 500))
+```
+
+
+```{r}
+# library(tabulizer)
+
+# Extraction des tableaux d'un PDF
+# tables <- extract_tables("exemple_rapport.pdf")
+
+# Affichage du premier tableau extrait
+# print(tables[[1]])
+
+```
+
+```{r}
+# library(tesseract)
+
+# Extraction de texte depuis une image (capture ou PDF image)
+# texte_ocr <- ocr("exemple_image_page.png")
+
+# cat(texte_ocr)
+```
+
+---
+
+
+
+
+
+
+
+
+
+
+

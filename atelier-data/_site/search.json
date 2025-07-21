@@ -1,0 +1,436 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Accueil",
+    "section": "",
+    "text": "Compte Rendu de Stage\nBienvenue sur le site du compte rendu. Utilisez la barre de navigation pour accéder aux différentes parties."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "quarto.html",
+    "href": "quarto.html",
+    "title": "Scraping Web",
+    "section": "",
+    "text": "Le scraping est une méthode d’extraction automatique de données…"
+  },
+  {
+    "objectID": "quarto.html#contexte",
+    "href": "quarto.html#contexte",
+    "title": "Scraping Web",
+    "section": "",
+    "text": "Le scraping est une méthode d’extraction automatique de données…"
+  },
+  {
+    "objectID": "quarto.html#exemple-de-code",
+    "href": "quarto.html#exemple-de-code",
+    "title": "Scraping Web",
+    "section": "Exemple de code",
+    "text": "Exemple de code\n\nlibrary(rvest)\nurl &lt;- \"https://example.com\"\nread_html(url)\n\n{html_document}\n&lt;html&gt;\n[1] &lt;head&gt;\\n&lt;title&gt;Example Domain&lt;/title&gt;\\n&lt;meta charset=\"utf-8\"&gt;\\n&lt;meta http ...\n[2] &lt;body&gt;\\n&lt;div&gt;\\n    &lt;h1&gt;Example Domain&lt;/h1&gt;\\n    &lt;p&gt;This domain is for use ..."
+  },
+  {
+    "objectID": "Kantiles_formation.html",
+    "href": "Kantiles_formation.html",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "",
+    "text": "Ce rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.\nLes sujets abordés sont :\n\nRecensements et gestion de grandes bases de données\nUtilisation avancée de Quarto et Markdown\nTechniques de scraping en R\nLecture et traitement de PDF en R\nOrganisation documentaire avec Zotero"
+  },
+  {
+    "objectID": "Kantiles_formation.html#rapport-annuel",
+    "href": "Kantiles_formation.html#rapport-annuel",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "2.1 Rapport annuel",
+    "text": "2.1 Rapport annuel\n\n2.1.1 Introduction\nCeci est l’introduction du rapport.\n\n\n2.1.2 Données\n\nsummary(mtcars)\n\n      mpg             cyl             disp             hp       \n Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  \n 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  \n Median :19.20   Median :6.000   Median :196.3   Median :123.0  \n Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  \n 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  \n Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  \n      drat             wt             qsec             vs        \n Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  \n 1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  \n Median :3.695   Median :3.325   Median :17.71   Median :0.0000  \n Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  \n 3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  \n Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  \n       am              gear            carb      \n Min.   :0.0000   Min.   :3.000   Min.   :1.000  \n 1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  \n Median :0.0000   Median :4.000   Median :2.000  \n Mean   :0.4062   Mean   :3.688   Mean   :2.812  \n 3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  \n Max.   :1.0000   Max.   :5.000   Max.   :8.000"
+  },
+  {
+    "objectID": "Kantiles_formation.html#description-des-fichiers",
+    "href": "Kantiles_formation.html#description-des-fichiers",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "3.1 Description des fichiers",
+    "text": "3.1 Description des fichiers\n\nDeux fichiers principaux : ointerrogationsprincipales et un fichier complémentaire.\nNon diffusés directement au public, servent à produire plusieurs fichiers diffusés.\nDonnées au niveau des cantons, villes, avec parfois localisation précise (unité Iris).\nUtilisation pour mobilités professionnelles et scolaires."
+  },
+  {
+    "objectID": "Kantiles_formation.html#formats-de-diffusion",
+    "href": "Kantiles_formation.html#formats-de-diffusion",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "3.2 Formats de diffusion",
+    "text": "3.2 Formats de diffusion\n\nFichiers diffusés en CSV et Parquet (format optimisé, indexé, rapide).\nParquet de plus en plus utilisé en statistique.\nDonnées lourdes : environ 26 millions de lignes par fichier.\nUne ligne coûte en ressources ~3 francs (évaluation de coût traitement)."
+  },
+  {
+    "objectID": "Kantiles_formation.html#outils-pour-manipuler",
+    "href": "Kantiles_formation.html#outils-pour-manipuler",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "3.3 Outils pour manipuler",
+    "text": "3.3 Outils pour manipuler\n\nDugdibby : base de données sur serveur permettant lecture et tri.\nInstallation locale + serveur distant.\nBase orientée colonnes, optimisée pour analyse."
+  },
+  {
+    "objectID": "Kantiles_formation.html#import-et-manipulation-en-r",
+    "href": "Kantiles_formation.html#import-et-manipulation-en-r",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "3.4 Import et manipulation en R",
+    "text": "3.4 Import et manipulation en R\n\nUtilisation de fonctions glue() pour assembler chaînes de caractères, notamment pour importer.\nUtilisation de here::here() pour gérer chemins absolus et relatifs, éviter erreurs liées aux chemins.\nExemple d’import rapide :\n\nlibrary(here)\ndata_path &lt;- here(\"data\", \"recensement.parquet\")"
+  },
+  {
+    "objectID": "Kantiles_formation.html#vue-générale",
+    "href": "Kantiles_formation.html#vue-générale",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "4.1 Vue générale",
+    "text": "4.1 Vue générale\n\nQuarto repose sur Pandoc : convertisseur universel Markdown vers plusieurs formats (HTML, PDF, Word, etc.).\nÉcrit en Rust, moderne et rapide.\nSupporte plusieurs langages dans les chunks : R, Python, Observable JS, etc."
+  },
+  {
+    "objectID": "Kantiles_formation.html#workflow",
+    "href": "Kantiles_formation.html#workflow",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "4.2 Workflow",
+    "text": "4.2 Workflow\n\nQuarto exécute les chunks de code, produit un AST (Abstract Syntax Tree).\nPandoc convertit cet AST en documents finaux (HTML, PDF, etc.)."
+  },
+  {
+    "objectID": "Kantiles_formation.html#comparaison-avec-r-markdown",
+    "href": "Kantiles_formation.html#comparaison-avec-r-markdown",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "4.3 Comparaison avec R Markdown",
+    "text": "4.3 Comparaison avec R Markdown\n\n\n\n\n\n\n\n\nFonctionnalité\nR Markdown\nQuarto\n\n\n\n\nLangage\nR + Markdown\nRust + Markdown\n\n\nSupport chunks\nR uniquement\nR, Python, JS, autres\n\n\nParamétrage YAML\nBasique\nAvancé\n\n\nSorties\nHTML, PDF, Word\nHTML, PDF, Word, et plus"
+  },
+  {
+    "objectID": "Kantiles_formation.html#création-pdf",
+    "href": "Kantiles_formation.html#création-pdf",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "4.4 Création PDF",
+    "text": "4.4 Création PDF\n\nPlusieurs méthodes :\n\nLaTeX classique (fiable, mais lourd parfois)\nTypst (nouveau langage, plus rapide)\nPageJS (génération PDF via Chrome)\nImpression design via HTML/Figma"
+  },
+  {
+    "objectID": "Kantiles_formation.html#exemple-de-chunk-r",
+    "href": "Kantiles_formation.html#exemple-de-chunk-r",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "4.5 Exemple de chunk R",
+    "text": "4.5 Exemple de chunk R\n\n#library(readxl)\n#tables &lt;- read_excel(\"tables_exported.xlsx\")\n#head(tables)"
+  },
+  {
+    "objectID": "Kantiles_formation.html#introduction-2",
+    "href": "Kantiles_formation.html#introduction-2",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "5.1 Introduction",
+    "text": "5.1 Introduction\nLe scraping web consiste à extraire automatiquement des données publiées sur des sites internet. Cette méthode est particulièrement utile lorsque les données ne sont pas disponibles via une API officielle ou sous un format exploitable directement (CSV, JSON, XML, etc.). Elle permet de collecter un large éventail d’informations : fiches produits, listes, tableaux, statistiques, organigrammes, documents, etc.\nCependant, le scraping nécessite une bonne maîtrise des technologies web (HTML, CSS, JavaScript) ainsi qu’une attention aux aspects légaux et éthiques (respect du fichier robots.txt, limitations du site, charge serveur)."
+  },
+  {
+    "objectID": "Kantiles_formation.html#pourquoi-faire-du-scraping",
+    "href": "Kantiles_formation.html#pourquoi-faire-du-scraping",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "5.2 Pourquoi faire du scraping ?",
+    "text": "5.2 Pourquoi faire du scraping ?\n\nCollecter des données non accessibles autrement, notamment sur des sites qui ne proposent pas d’API ou de fichiers exportables.\n\nAutomatiser la veille documentaire en récupérant régulièrement les nouvelles publications d’un site.\n\nRécupérer des informations structurées dans des pages HTML complexes, par exemple des tableaux ou des fiches détaillées.\n\nEnrichir des jeux de données locaux avec des données publiques sectorielles, comme des organigrammes ou listes d’acteurs."
+  },
+  {
+    "objectID": "Kantiles_formation.html#outils-et-bibliothèques-en-r",
+    "href": "Kantiles_formation.html#outils-et-bibliothèques-en-r",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "5.3 Outils et bibliothèques en R",
+    "text": "5.3 Outils et bibliothèques en R\n\nrvest : bibliothèque principale pour lire, parser et extraire du contenu HTML. Utilise les sélecteurs CSS ou XPath pour cibler précisément les éléments à extraire.\n\nxml2 : permet de lire et manipuler des documents XML (utile pour lire des sitemaps par exemple).\n\nhttr ou curl : pour gérer les requêtes HTTP, parfois nécessaires pour simuler des sessions, gérer des cookies, ou contourner des protections.\n\npurrr : fonctionnel pour itérer sur des listes d’URLs et appliquer des fonctions de scraping.\n\nExtensions Chrome (Selector Gadget, DevTools) : outils indispensables pour identifier rapidement les sélecteurs CSS et tester les expressions XPath."
+  },
+  {
+    "objectID": "Kantiles_formation.html#bonnes-pratiques-avant-de-commencer",
+    "href": "Kantiles_formation.html#bonnes-pratiques-avant-de-commencer",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "5.4 Bonnes pratiques avant de commencer",
+    "text": "5.4 Bonnes pratiques avant de commencer\n\nVérifier le fichier robots.txt du site (ex. https://www.site.com/robots.txt) qui liste les parties autorisées ou interdites au scraping. Respecter ces consignes est crucial pour éviter tout litige légal.\n\nAnalyser la structure du site : repérer les pages d’index, les pages détaillées, les liens à suivre, et identifier les sélecteurs CSS/XPath précis.\n\nConsulter le sitemap XML si disponible, car il facilite la récupération automatique des URLs à scraper.\n\nLimiter la fréquence des requêtes pour ne pas surcharger le serveur (exemple : pause entre requêtes avec Sys.sleep()).\n\nTester et valider chaque étape manuellement avant d’automatiser à grande échelle.\n\nDocumenter le script pour faciliter la maintenance et la mise à jour si la structure du site change."
+  },
+  {
+    "objectID": "Kantiles_formation.html#exemple-complet-récupération-et-scraping-de-fiches-sur-cheese.com",
+    "href": "Kantiles_formation.html#exemple-complet-récupération-et-scraping-de-fiches-sur-cheese.com",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "5.5 Exemple complet : récupération et scraping de fiches sur cheese.com",
+    "text": "5.5 Exemple complet : récupération et scraping de fiches sur cheese.com\n\n5.5.1 Étape 1 : récupération des URLs via sitemap\n\nlibrary(xml2)\nlibrary(magrittr)\n\nurl_sitemap &lt;- \"https://www.cheese.com/sitemap.xml\"\nsitemap &lt;- read_xml(url_sitemap)\n\n# Extraction des URLs du sitemap\nurls &lt;- xml_find_all(sitemap, \"//url/loc\") %&gt;% xml_text()\nhead(urls, 5)\n\ncharacter(0)\n\nlibrary(rvest)\nlibrary(dplyr)\n\n\nAttachement du package : 'dplyr'\n\n\nLes objets suivants sont masqués depuis 'package:stats':\n\n    filter, lag\n\n\nLes objets suivants sont masqués depuis 'package:base':\n\n    intersect, setdiff, setequal, union\n\nurl_annuaire &lt;- \"https://www.cheese.com/all-cheeses/\"\npage &lt;- read_html(url_annuaire)\n\n# Extraction des liens vers chaque fiche\nliens_fromages &lt;- page %&gt;%\n  html_nodes(\".cheeseList a\") %&gt;%\n  html_attr(\"href\")\n\n# Nettoyage des liens pour avoir URL absolue\nliens_fromages &lt;- paste0(\"https://www.cheese.com\", liens_fromages)\nhead(liens_fromages, 5)\n\n[1] \"https://www.cheese.com\"\n\nlibrary(rvest)\nlibrary(dplyr)\n\nurl_annuaire &lt;- \"https://www.cheese.com/all-cheeses/\"\npage &lt;- read_html(url_annuaire)\n\n# Extraction des liens vers chaque fiche\nliens_fromages &lt;- page %&gt;%\n  html_nodes(\".cheeseList a\") %&gt;%\n  html_attr(\"href\")\n\n# Nettoyage des liens pour avoir URL absolue\nliens_fromages &lt;- paste0(\"https://www.cheese.com\", liens_fromages)\nhead(liens_fromages, 5)\n\n[1] \"https://www.cheese.com\""
+  },
+  {
+    "objectID": "Kantiles_formation.html#outils",
+    "href": "Kantiles_formation.html#outils",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "6.1 Outils",
+    "text": "6.1 Outils\n\ntesseract : outil OCR pour extraire du texte à partir d’images contenues dans des PDF.\ntabulizer (package R) : extraction de tableaux depuis des PDF, particulièrement efficace pour les tableaux “screenshot” (captures d’écran intégrées dans PDF).\npdftools : manipulation basique et extraction de texte dans les PDF."
+  },
+  {
+    "objectID": "Kantiles_formation.html#usages",
+    "href": "Kantiles_formation.html#usages",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "6.2 Usages",
+    "text": "6.2 Usages\n\nExtraction de tableaux complexes, notamment lorsque les données sont intégrées en image (screenshot).\nLe package tabulizer est utile pour extraire ces tableaux, contrairement à l’OCR qui fonctionne moins bien sur ce type de données.\nVérifier la cohérence des tailles de listes extraites (ex. colonnes de tableaux) pour éviter les erreurs de décalage ou pertes de données.\nGérer les valeurs manquantes, car en HTML/texte brut, il n’y a pas de NA natif.\nUtile pour enrichir des données sectorielles ou locales à partir de rapports PDF."
+  },
+  {
+    "objectID": "Kantiles_formation.html#cas-pratique",
+    "href": "Kantiles_formation.html#cas-pratique",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "6.3 Cas pratique",
+    "text": "6.3 Cas pratique\n\nTester sur des sites institutionnels comme l’INSEE en live.\nNettoyer et structurer les données extraites pour créer des jeux de données propres.\nÊtre vigilant aux problèmes liés à la mise en forme des PDF (listes, colonnes, espacements).\n\n\n# library(pdftools)\n\n# Exemple d'extraction texte d'un PDF local\n# texte_pdf &lt;- pdf_text(\"exemple_rapport.pdf\")\n\n# Affichage des 500 premiers caractères de la première page\n# cat(substr(texte_pdf[1], 1, 500))\n\n\n# library(tabulizer)\n\n# Extraction des tableaux d'un PDF\n# tables &lt;- extract_tables(\"exemple_rapport.pdf\")\n\n# Affichage du premier tableau extrait\n# print(tables[[1]])\n\n\n# library(tesseract)\n\n# Extraction de texte depuis une image (capture ou PDF image)\n# texte_ocr &lt;- ocr(\"exemple_image_page.png\")\n\n# cat(texte_ocr)"
+  },
+  {
+    "objectID": "Kantiles_formation.html#module-zotero-veille-documentaire",
+    "href": "Kantiles_formation.html#module-zotero-veille-documentaire",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "7.1 Module : Zotero & Veille documentaire",
+    "text": "7.1 Module : Zotero & Veille documentaire\n\nJuin 2025\nEmmanuel Herbepin et Victoire Chatain"
+  },
+  {
+    "objectID": "Kantiles_formation.html#présentation-générale-de-zotero",
+    "href": "Kantiles_formation.html#présentation-générale-de-zotero",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "7.2 Présentation générale de Zotero",
+    "text": "7.2 Présentation générale de Zotero\n\nZotero est un outil de gestion bibliographique gratuit, open source, et très adapté pour :\n\nLa veille documentaire structurée.\n\nLa gestion collaborative de références (études, articles, rapports, etc.).\n\nLa constitution d’une base de connaissance dynamique."
+  },
+  {
+    "objectID": "Kantiles_formation.html#fonctionnement-de-base",
+    "href": "Kantiles_formation.html#fonctionnement-de-base",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "7.3 Fonctionnement de base",
+    "text": "7.3 Fonctionnement de base\n\nOrganisation par dossiers et sous-dossiers.\n\nAjout de documents :\n\nDepuis un plugin navigateur (fonctionne très bien avec Cairn, par exemple).\n\nManuellement (ajout de PDF, capture de page, etc.).\n\n\nChaque document peut contenir :\n\nDes métadonnées (titre, auteur, date…).\n\nDes pièces jointes (PDF, notes, etc.).\n\nDes commentaires et surlignages collaboratifs."
+  },
+  {
+    "objectID": "Kantiles_formation.html#travail-collaboratif",
+    "href": "Kantiles_formation.html#travail-collaboratif",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "7.4 Travail collaboratif",
+    "text": "7.4 Travail collaboratif\n\nBibliothèque de groupe (via Zotero Web) :\n\nParamétrage des droits par membre.\n\nSynchronisation automatique.\n\nPartage des annotations visibles par tous (identification de l’auteur, surlignages, commentaires).\n\n\nUtilisable comme un Drive académique orienté contenu structuré."
+  },
+  {
+    "objectID": "Kantiles_formation.html#fonctionnalités-utiles",
+    "href": "Kantiles_formation.html#fonctionnalités-utiles",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "7.5 Fonctionnalités utiles",
+    "text": "7.5 Fonctionnalités utiles\n\nTags / marqueurs pour organiser les contenus.\n\nGénération automatique de bibliographies (choix du format).\n\nFormat de citation personnalisable (utile pour livrables, publications, rapports).\n\nFormat BibTeX disponible → interopérable avec R, Python, LaTeX."
+  },
+  {
+    "objectID": "Kantiles_formation.html#cas-dusage-professionnel-veille-sur-lemploi-la-formation",
+    "href": "Kantiles_formation.html#cas-dusage-professionnel-veille-sur-lemploi-la-formation",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "7.6 Cas d’usage professionnel : veille sur l’emploi & la formation",
+    "text": "7.6 Cas d’usage professionnel : veille sur l’emploi & la formation\n\nObjectif :\nConstruire une base documentaire cohérente, exhaustive, structurée, réutilisable et dynamique sur les thématiques métier.\n\nExemples :\n\nÉtudes sur les compétences dans les métiers de la santé.\n\nPublications régionales et nationales : DREES, DARES, INSEE, France Travail, etc.\n\nMémoires, études locales, travaux des observatoires OPCO, InterCarifOref, France Compétences…\n\n\nOrganisation :\n\nHiérarchisation des sources.\n\nSélection raisonnée des institutions clés.\n\nVeille structurée sur 15 000 à 20 000 études (sur 20 ans) de 4 à 8 pages chacune."
+  },
+  {
+    "objectID": "Kantiles_formation.html#méthodologie-recommandée",
+    "href": "Kantiles_formation.html#méthodologie-recommandée",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "7.7 Méthodologie recommandée",
+    "text": "7.7 Méthodologie recommandée\n\nÉtape 1 : Constitution du corpus\n\nListe prioritaire : DREES, DARES, INSEE, France Travail, Trésor, OPCO.\n\nActeurs régionaux : InterCarifOref, collectivités territoriales.\n\nIndexation manuelle + flux RSS + scraping raisonné.\n\n\nÉtape 2 : Intégration dans Zotero\n\nPar scraping ou via export BibTeX → import dans Zotero.\n\nUtilisation des API Zotero et/ou packages dédiés pour automatiser.\n\n\nÉtape 3 : Structuration documentaire\n\nTags thématiques.\n\nCatégorisation par année, région, institution.\n\nExport possible vers livrable interne ou outil de visualisation (type Quarto ou R Markdown)."
+  },
+  {
+    "objectID": "Kantiles_formation.html#vers-une-base-documentaire-dynamique",
+    "href": "Kantiles_formation.html#vers-une-base-documentaire-dynamique",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "7.8 Vers une base documentaire dynamique",
+    "text": "7.8 Vers une base documentaire dynamique\n\nObjectif : passer du statique au dynamique.\n\nIntégrer les études dans une base réinterrogeable (dashboard, moteur de recherche, analyse de tendance…).\n\nBase centrale pour fonction observatoire interne.\n\nExemples d’usages :\n\nListe des études par année.\n\nFocus régional ou sectoriel.\n\nSuivi des politiques publiques ou signaux faibles."
+  },
+  {
+    "objectID": "Kantiles_formation.html#à-creuser-aller-plus-loin",
+    "href": "Kantiles_formation.html#à-creuser-aller-plus-loin",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "7.9 À creuser / Aller plus loin",
+    "text": "7.9 À creuser / Aller plus loin\n\nAPI Zotero pour automatiser des chargements et extractions.\n\nConnecteurs avec Zotero depuis R (rbbt, zoteroR) ou Python.\n\nScraping bibliographique ciblé sur les bons sites.\n\nIntégration avec un outil de visualisation dynamique (Quarto, Observable, Shiny…)."
+  },
+  {
+    "objectID": "Kantiles_formation.html#lecture-et-extraction-de-sitemap-xml",
+    "href": "Kantiles_formation.html#lecture-et-extraction-de-sitemap-xml",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "8.1 Lecture et extraction de sitemap XML",
+    "text": "8.1 Lecture et extraction de sitemap XML\n\nlibrary(rvest)\nlibrary(xml2)\n\nurl_sitemap &lt;- \"https://www.cheese.com/sitemap.xml\"\nsitemap &lt;- read_xml(url_sitemap)\nurls &lt;- xml_find_all(sitemap, \"//url/loc\") %&gt;% xml_text()\nhead(urls)\n\ncharacter(0)"
+  },
+  {
+    "objectID": "Kantiles_formation.html#quarto",
+    "href": "Kantiles_formation.html#quarto",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "8.2 Quarto",
+    "text": "8.2 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "Kantiles_formation.html#running-code",
+    "href": "Kantiles_formation.html#running-code",
+    "title": "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero",
+    "section": "8.3 Running Code",
+    "text": "8.3 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:"
+  },
+  {
+    "objectID": "zotero.html",
+    "href": "zotero.html",
+    "title": "zotero",
+    "section": "",
+    "text": "Juin 2025\nEmmanuel Herbepin et Victoire Chatain\n\n\n\n\n\n\nZotero est un outil de gestion bibliographique gratuit, open source, et très adapté pour :\n\nLa veille documentaire structurée.\n\nLa gestion collaborative de références (études, articles, rapports, etc.).\n\nLa constitution d’une base de connaissance dynamique.\n\n\n\n\n\n\n\nOrganisation par dossiers et sous-dossiers.\n\nAjout de documents :\n\nDepuis un plugin navigateur (fonctionne très bien avec Cairn, par exemple).\n\nManuellement (ajout de PDF, capture de page, etc.).\n\n\nChaque document peut contenir :\n\nDes métadonnées (titre, auteur, date…).\n\nDes pièces jointes (PDF, notes, etc.).\n\nDes commentaires et surlignages collaboratifs.\n\n\n\n\n\n\n\nBibliothèque de groupe (via Zotero Web) :\n\nParamétrage des droits par membre.\n\nSynchronisation automatique.\n\nPartage des annotations visibles par tous (identification de l’auteur, surlignages, commentaires).\n\n\nUtilisable comme un Drive académique orienté contenu structuré.\n\n\n\n\n\n\nTags / marqueurs pour organiser les contenus.\n\nGénération automatique de bibliographies (choix du format).\n\nFormat de citation personnalisable (utile pour livrables, publications, rapports).\n\nFormat BibTeX disponible → interopérable avec R, Python, LaTeX.\n\n\n\n\n\n\nObjectif :\nConstruire une base documentaire cohérente, exhaustive, structurée, réutilisable et dynamique sur les thématiques métier.\n\nExemples :\n\nÉtudes sur les compétences dans les métiers de la santé.\n\nPublications régionales et nationales : DREES, DARES, INSEE, France Travail, etc.\n\nMémoires, études locales, travaux des observatoires OPCO, InterCarifOref, France Compétences…\n\n\nOrganisation :\n\nHiérarchisation des sources.\n\nSélection raisonnée des institutions clés.\n\nVeille structurée sur 15 000 à 20 000 études (sur 20 ans) de 4 à 8 pages chacune.\n\n\n\n\n\n\n\nÉtape 1 : Constitution du corpus\n\nListe prioritaire : DREES, DARES, INSEE, France Travail, Trésor, OPCO.\n\nActeurs régionaux : InterCarifOref, collectivités territoriales.\n\nIndexation manuelle + flux RSS + scraping raisonné.\n\n\nÉtape 2 : Intégration dans Zotero\n\nPar scraping ou via export BibTeX → import dans Zotero.\n\nUtilisation des API Zotero et/ou packages dédiés pour automatiser.\n\n\nÉtape 3 : Structuration documentaire\n\nTags thématiques.\n\nCatégorisation par année, région, institution.\n\nExport possible vers livrable interne ou outil de visualisation (type Quarto ou R Markdown).\n\n\n\n\n\n\n\nObjectif : passer du statique au dynamique.\n\nIntégrer les études dans une base réinterrogeable (dashboard, moteur de recherche, analyse de tendance…).\n\nBase centrale pour fonction observatoire interne.\n\nExemples d’usages :\n\nListe des études par année.\n\nFocus régional ou sectoriel.\n\nSuivi des politiques publiques ou signaux faibles.\n\n\n\n\n\n\n\nAPI Zotero pour automatiser des chargements et extractions.\n\nConnecteurs avec Zotero depuis R (rbbt, zoteroR) ou Python.\n\nScraping bibliographique ciblé sur les bons sites.\n\nIntégration avec un outil de visualisation dynamique (Quarto, Observable, Shiny…)."
+  },
+  {
+    "objectID": "zotero.html#quarto",
+    "href": "zotero.html#quarto",
+    "title": "zotero",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "zotero.html#running-code",
+    "href": "zotero.html#running-code",
+    "title": "zotero",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+  },
+  {
+    "objectID": "zotero.html#module-zotero-veille-documentaire",
+    "href": "zotero.html#module-zotero-veille-documentaire",
+    "title": "zotero",
+    "section": "",
+    "text": "Juin 2025\nEmmanuel Herbepin et Victoire Chatain"
+  },
+  {
+    "objectID": "zotero.html#présentation-générale-de-zotero",
+    "href": "zotero.html#présentation-générale-de-zotero",
+    "title": "zotero",
+    "section": "",
+    "text": "Zotero est un outil de gestion bibliographique gratuit, open source, et très adapté pour :\n\nLa veille documentaire structurée.\n\nLa gestion collaborative de références (études, articles, rapports, etc.).\n\nLa constitution d’une base de connaissance dynamique."
+  },
+  {
+    "objectID": "zotero.html#fonctionnement-de-base",
+    "href": "zotero.html#fonctionnement-de-base",
+    "title": "zotero",
+    "section": "",
+    "text": "Organisation par dossiers et sous-dossiers.\n\nAjout de documents :\n\nDepuis un plugin navigateur (fonctionne très bien avec Cairn, par exemple).\n\nManuellement (ajout de PDF, capture de page, etc.).\n\n\nChaque document peut contenir :\n\nDes métadonnées (titre, auteur, date…).\n\nDes pièces jointes (PDF, notes, etc.).\n\nDes commentaires et surlignages collaboratifs."
+  },
+  {
+    "objectID": "zotero.html#travail-collaboratif",
+    "href": "zotero.html#travail-collaboratif",
+    "title": "zotero",
+    "section": "",
+    "text": "Bibliothèque de groupe (via Zotero Web) :\n\nParamétrage des droits par membre.\n\nSynchronisation automatique.\n\nPartage des annotations visibles par tous (identification de l’auteur, surlignages, commentaires).\n\n\nUtilisable comme un Drive académique orienté contenu structuré."
+  },
+  {
+    "objectID": "zotero.html#fonctionnalités-utiles",
+    "href": "zotero.html#fonctionnalités-utiles",
+    "title": "zotero",
+    "section": "",
+    "text": "Tags / marqueurs pour organiser les contenus.\n\nGénération automatique de bibliographies (choix du format).\n\nFormat de citation personnalisable (utile pour livrables, publications, rapports).\n\nFormat BibTeX disponible → interopérable avec R, Python, LaTeX."
+  },
+  {
+    "objectID": "zotero.html#cas-dusage-professionnel-veille-sur-lemploi-la-formation",
+    "href": "zotero.html#cas-dusage-professionnel-veille-sur-lemploi-la-formation",
+    "title": "zotero",
+    "section": "",
+    "text": "Objectif :\nConstruire une base documentaire cohérente, exhaustive, structurée, réutilisable et dynamique sur les thématiques métier.\n\nExemples :\n\nÉtudes sur les compétences dans les métiers de la santé.\n\nPublications régionales et nationales : DREES, DARES, INSEE, France Travail, etc.\n\nMémoires, études locales, travaux des observatoires OPCO, InterCarifOref, France Compétences…\n\n\nOrganisation :\n\nHiérarchisation des sources.\n\nSélection raisonnée des institutions clés.\n\nVeille structurée sur 15 000 à 20 000 études (sur 20 ans) de 4 à 8 pages chacune."
+  },
+  {
+    "objectID": "zotero.html#méthodologie-recommandée",
+    "href": "zotero.html#méthodologie-recommandée",
+    "title": "zotero",
+    "section": "",
+    "text": "Étape 1 : Constitution du corpus\n\nListe prioritaire : DREES, DARES, INSEE, France Travail, Trésor, OPCO.\n\nActeurs régionaux : InterCarifOref, collectivités territoriales.\n\nIndexation manuelle + flux RSS + scraping raisonné.\n\n\nÉtape 2 : Intégration dans Zotero\n\nPar scraping ou via export BibTeX → import dans Zotero.\n\nUtilisation des API Zotero et/ou packages dédiés pour automatiser.\n\n\nÉtape 3 : Structuration documentaire\n\nTags thématiques.\n\nCatégorisation par année, région, institution.\n\nExport possible vers livrable interne ou outil de visualisation (type Quarto ou R Markdown)."
+  },
+  {
+    "objectID": "zotero.html#vers-une-base-documentaire-dynamique",
+    "href": "zotero.html#vers-une-base-documentaire-dynamique",
+    "title": "zotero",
+    "section": "",
+    "text": "Objectif : passer du statique au dynamique.\n\nIntégrer les études dans une base réinterrogeable (dashboard, moteur de recherche, analyse de tendance…).\n\nBase centrale pour fonction observatoire interne.\n\nExemples d’usages :\n\nListe des études par année.\n\nFocus régional ou sectoriel.\n\nSuivi des politiques publiques ou signaux faibles."
+  },
+  {
+    "objectID": "zotero.html#à-creuser-aller-plus-loin",
+    "href": "zotero.html#à-creuser-aller-plus-loin",
+    "title": "zotero",
+    "section": "",
+    "text": "API Zotero pour automatiser des chargements et extractions.\n\nConnecteurs avec Zotero depuis R (rbbt, zoteroR) ou Python.\n\nScraping bibliographique ciblé sur les bons sites.\n\nIntégration avec un outil de visualisation dynamique (Quarto, Observable, Shiny…)."
+  },
+  {
+    "objectID": "scrap.html",
+    "href": "scrap.html",
+    "title": "Scrap",
+    "section": "",
+    "text": "Le scraping web consiste à extraire automatiquement des données publiées sur des sites internet. Cette méthode est particulièrement utile lorsque les données ne sont pas disponibles via une API officielle ou sous un format exploitable directement (CSV, JSON, XML, etc.). Elle permet de collecter un large éventail d’informations : fiches produits, listes, tableaux, statistiques, organigrammes, documents, etc.\nCependant, le scraping nécessite une bonne maîtrise des technologies web (HTML, CSS, JavaScript) ainsi qu’une attention aux aspects légaux et éthiques (respect du fichier robots.txt, limitations du site, charge serveur).\n\n\n\n\n\nCollecter des données non accessibles autrement, notamment sur des sites qui ne proposent pas d’API ou de fichiers exportables.\n\nAutomatiser la veille documentaire en récupérant régulièrement les nouvelles publications d’un site.\n\nRécupérer des informations structurées dans des pages HTML complexes, par exemple des tableaux ou des fiches détaillées.\n\nEnrichir des jeux de données locaux avec des données publiques sectorielles, comme des organigrammes ou listes d’acteurs.\n\n\n\n\n\n\nrvest : bibliothèque principale pour lire, parser et extraire du contenu HTML. Utilise les sélecteurs CSS ou XPath pour cibler précisément les éléments à extraire.\n\nxml2 : permet de lire et manipuler des documents XML (utile pour lire des sitemaps par exemple).\n\nhttr ou curl : pour gérer les requêtes HTTP, parfois nécessaires pour simuler des sessions, gérer des cookies, ou contourner des protections.\n\npurrr : fonctionnel pour itérer sur des listes d’URLs et appliquer des fonctions de scraping.\n\nExtensions Chrome (Selector Gadget, DevTools) : outils indispensables pour identifier rapidement les sélecteurs CSS et tester les expressions XPath.\n\n\n\n\n\n\nVérifier le fichier robots.txt du site (ex. https://www.site.com/robots.txt) qui liste les parties autorisées ou interdites au scraping. Respecter ces consignes est crucial pour éviter tout litige légal.\n\nAnalyser la structure du site : repérer les pages d’index, les pages détaillées, les liens à suivre, et identifier les sélecteurs CSS/XPath précis.\n\nConsulter le sitemap XML si disponible, car il facilite la récupération automatique des URLs à scraper.\n\nLimiter la fréquence des requêtes pour ne pas surcharger le serveur (exemple : pause entre requêtes avec Sys.sleep()).\n\nTester et valider chaque étape manuellement avant d’automatiser à grande échelle.\n\nDocumenter le script pour faciliter la maintenance et la mise à jour si la structure du site change.\n\n\n\n\n\n\n\n\nlibrary(xml2)\nlibrary(magrittr)\n\nurl_sitemap &lt;- \"https://www.cheese.com/sitemap.xml\"\nsitemap &lt;- read_xml(url_sitemap)\n\n# Extraction des URLs du sitemap\nurls &lt;- xml_find_all(sitemap, \"//url/loc\") %&gt;% xml_text()\nhead(urls, 5)\n\ncharacter(0)\n\nlibrary(rvest)\nlibrary(dplyr)\n\n\nAttachement du package : 'dplyr'\n\n\nLes objets suivants sont masqués depuis 'package:stats':\n\n    filter, lag\n\n\nLes objets suivants sont masqués depuis 'package:base':\n\n    intersect, setdiff, setequal, union\n\nurl_annuaire &lt;- \"https://www.cheese.com/all-cheeses/\"\npage &lt;- read_html(url_annuaire)\n\n# Extraction des liens vers chaque fiche\nliens_fromages &lt;- page %&gt;%\n  html_nodes(\".cheeseList a\") %&gt;%\n  html_attr(\"href\")\n\n# Nettoyage des liens pour avoir URL absolue\nliens_fromages &lt;- paste0(\"https://www.cheese.com\", liens_fromages)\nhead(liens_fromages, 5)\n\n[1] \"https://www.cheese.com\"\n\nlibrary(rvest)\nlibrary(dplyr)\n\nurl_annuaire &lt;- \"https://www.cheese.com/all-cheeses/\"\npage &lt;- read_html(url_annuaire)\n\n# Extraction des liens vers chaque fiche\nliens_fromages &lt;- page %&gt;%\n  html_nodes(\".cheeseList a\") %&gt;%\n  html_attr(\"href\")\n\n# Nettoyage des liens pour avoir URL absolue\nliens_fromages &lt;- paste0(\"https://www.cheese.com\", liens_fromages)\nhead(liens_fromages, 5)\n\n[1] \"https://www.cheese.com\""
+  },
+  {
+    "objectID": "scrap.html#introduction",
+    "href": "scrap.html#introduction",
+    "title": "Scrap",
+    "section": "",
+    "text": "Le scraping web consiste à extraire automatiquement des données publiées sur des sites internet. Cette méthode est particulièrement utile lorsque les données ne sont pas disponibles via une API officielle ou sous un format exploitable directement (CSV, JSON, XML, etc.). Elle permet de collecter un large éventail d’informations : fiches produits, listes, tableaux, statistiques, organigrammes, documents, etc.\nCependant, le scraping nécessite une bonne maîtrise des technologies web (HTML, CSS, JavaScript) ainsi qu’une attention aux aspects légaux et éthiques (respect du fichier robots.txt, limitations du site, charge serveur)."
+  },
+  {
+    "objectID": "scrap.html#pourquoi-faire-du-scraping",
+    "href": "scrap.html#pourquoi-faire-du-scraping",
+    "title": "Scrap",
+    "section": "",
+    "text": "Collecter des données non accessibles autrement, notamment sur des sites qui ne proposent pas d’API ou de fichiers exportables.\n\nAutomatiser la veille documentaire en récupérant régulièrement les nouvelles publications d’un site.\n\nRécupérer des informations structurées dans des pages HTML complexes, par exemple des tableaux ou des fiches détaillées.\n\nEnrichir des jeux de données locaux avec des données publiques sectorielles, comme des organigrammes ou listes d’acteurs."
+  },
+  {
+    "objectID": "scrap.html#outils-et-bibliothèques-en-r",
+    "href": "scrap.html#outils-et-bibliothèques-en-r",
+    "title": "Scrap",
+    "section": "",
+    "text": "rvest : bibliothèque principale pour lire, parser et extraire du contenu HTML. Utilise les sélecteurs CSS ou XPath pour cibler précisément les éléments à extraire.\n\nxml2 : permet de lire et manipuler des documents XML (utile pour lire des sitemaps par exemple).\n\nhttr ou curl : pour gérer les requêtes HTTP, parfois nécessaires pour simuler des sessions, gérer des cookies, ou contourner des protections.\n\npurrr : fonctionnel pour itérer sur des listes d’URLs et appliquer des fonctions de scraping.\n\nExtensions Chrome (Selector Gadget, DevTools) : outils indispensables pour identifier rapidement les sélecteurs CSS et tester les expressions XPath."
+  },
+  {
+    "objectID": "scrap.html#bonnes-pratiques-avant-de-commencer",
+    "href": "scrap.html#bonnes-pratiques-avant-de-commencer",
+    "title": "Scrap",
+    "section": "",
+    "text": "Vérifier le fichier robots.txt du site (ex. https://www.site.com/robots.txt) qui liste les parties autorisées ou interdites au scraping. Respecter ces consignes est crucial pour éviter tout litige légal.\n\nAnalyser la structure du site : repérer les pages d’index, les pages détaillées, les liens à suivre, et identifier les sélecteurs CSS/XPath précis.\n\nConsulter le sitemap XML si disponible, car il facilite la récupération automatique des URLs à scraper.\n\nLimiter la fréquence des requêtes pour ne pas surcharger le serveur (exemple : pause entre requêtes avec Sys.sleep()).\n\nTester et valider chaque étape manuellement avant d’automatiser à grande échelle.\n\nDocumenter le script pour faciliter la maintenance et la mise à jour si la structure du site change."
+  },
+  {
+    "objectID": "scrap.html#exemple-complet-récupération-et-scraping-de-fiches-sur-cheese.com",
+    "href": "scrap.html#exemple-complet-récupération-et-scraping-de-fiches-sur-cheese.com",
+    "title": "Scrap",
+    "section": "",
+    "text": "library(xml2)\nlibrary(magrittr)\n\nurl_sitemap &lt;- \"https://www.cheese.com/sitemap.xml\"\nsitemap &lt;- read_xml(url_sitemap)\n\n# Extraction des URLs du sitemap\nurls &lt;- xml_find_all(sitemap, \"//url/loc\") %&gt;% xml_text()\nhead(urls, 5)\n\ncharacter(0)\n\nlibrary(rvest)\nlibrary(dplyr)\n\n\nAttachement du package : 'dplyr'\n\n\nLes objets suivants sont masqués depuis 'package:stats':\n\n    filter, lag\n\n\nLes objets suivants sont masqués depuis 'package:base':\n\n    intersect, setdiff, setequal, union\n\nurl_annuaire &lt;- \"https://www.cheese.com/all-cheeses/\"\npage &lt;- read_html(url_annuaire)\n\n# Extraction des liens vers chaque fiche\nliens_fromages &lt;- page %&gt;%\n  html_nodes(\".cheeseList a\") %&gt;%\n  html_attr(\"href\")\n\n# Nettoyage des liens pour avoir URL absolue\nliens_fromages &lt;- paste0(\"https://www.cheese.com\", liens_fromages)\nhead(liens_fromages, 5)\n\n[1] \"https://www.cheese.com\"\n\nlibrary(rvest)\nlibrary(dplyr)\n\nurl_annuaire &lt;- \"https://www.cheese.com/all-cheeses/\"\npage &lt;- read_html(url_annuaire)\n\n# Extraction des liens vers chaque fiche\nliens_fromages &lt;- page %&gt;%\n  html_nodes(\".cheeseList a\") %&gt;%\n  html_attr(\"href\")\n\n# Nettoyage des liens pour avoir URL absolue\nliens_fromages &lt;- paste0(\"https://www.cheese.com\", liens_fromages)\nhead(liens_fromages, 5)\n\n[1] \"https://www.cheese.com\""
+  },
+  {
+    "objectID": "scrap.html#outils",
+    "href": "scrap.html#outils",
+    "title": "Scrap",
+    "section": "Outils",
+    "text": "Outils\n\ntesseract : outil OCR pour extraire du texte à partir d’images contenues dans des PDF.\ntabulizer (package R) : extraction de tableaux depuis des PDF, particulièrement efficace pour les tableaux “screenshot” (captures d’écran intégrées dans PDF).\npdftools : manipulation basique et extraction de texte dans les PDF."
+  },
+  {
+    "objectID": "scrap.html#usages",
+    "href": "scrap.html#usages",
+    "title": "Scrap",
+    "section": "Usages",
+    "text": "Usages\n\nExtraction de tableaux complexes, notamment lorsque les données sont intégrées en image (screenshot).\nLe package tabulizer est utile pour extraire ces tableaux, contrairement à l’OCR qui fonctionne moins bien sur ce type de données.\nVérifier la cohérence des tailles de listes extraites (ex. colonnes de tableaux) pour éviter les erreurs de décalage ou pertes de données.\nGérer les valeurs manquantes, car en HTML/texte brut, il n’y a pas de NA natif.\nUtile pour enrichir des données sectorielles ou locales à partir de rapports PDF."
+  },
+  {
+    "objectID": "scrap.html#cas-pratique",
+    "href": "scrap.html#cas-pratique",
+    "title": "Scrap",
+    "section": "Cas pratique",
+    "text": "Cas pratique\n\nTester sur des sites institutionnels comme l’INSEE en live.\nNettoyer et structurer les données extraites pour créer des jeux de données propres.\nÊtre vigilant aux problèmes liés à la mise en forme des PDF (listes, colonnes, espacements).\n\n\n# library(pdftools)\n\n# Exemple d'extraction texte d'un PDF local\n# texte_pdf &lt;- pdf_text(\"exemple_rapport.pdf\")\n\n# Affichage des 500 premiers caractères de la première page\n# cat(substr(texte_pdf[1], 1, 500))\n\n\n# library(tabulizer)\n\n# Extraction des tableaux d'un PDF\n# tables &lt;- extract_tables(\"exemple_rapport.pdf\")\n\n# Affichage du premier tableau extrait\n# print(tables[[1]])\n\n\n# library(tesseract)\n\n# Extraction de texte depuis une image (capture ou PDF image)\n# texte_ocr &lt;- ocr(\"exemple_image_page.png\")\n\n# cat(texte_ocr)"
+  },
+  {
+    "objectID": "parquet.html",
+    "href": "parquet.html",
+    "title": "parquet",
+    "section": "",
+    "text": "Deux fichiers principaux : ointerrogationsprincipales et un fichier complémentaire.\nNon diffusés directement au public, servent à produire plusieurs fichiers diffusés.\nDonnées au niveau des cantons, villes, avec parfois localisation précise (unité Iris).\nUtilisation pour mobilités professionnelles et scolaires."
+  },
+  {
+    "objectID": "parquet.html#description-des-fichiers",
+    "href": "parquet.html#description-des-fichiers",
+    "title": "parquet",
+    "section": "",
+    "text": "Deux fichiers principaux : ointerrogationsprincipales et un fichier complémentaire.\nNon diffusés directement au public, servent à produire plusieurs fichiers diffusés.\nDonnées au niveau des cantons, villes, avec parfois localisation précise (unité Iris).\nUtilisation pour mobilités professionnelles et scolaires."
+  },
+  {
+    "objectID": "parquet.html#formats-de-diffusion",
+    "href": "parquet.html#formats-de-diffusion",
+    "title": "parquet",
+    "section": "Formats de diffusion",
+    "text": "Formats de diffusion\n\nFichiers diffusés en CSV et Parquet (format optimisé, indexé, rapide).\nParquet de plus en plus utilisé en statistique.\nDonnées lourdes : environ 26 millions de lignes par fichier.\nUne ligne coûte en ressources ~3 francs (évaluation de coût traitement)."
+  },
+  {
+    "objectID": "parquet.html#outils-pour-manipuler",
+    "href": "parquet.html#outils-pour-manipuler",
+    "title": "parquet",
+    "section": "Outils pour manipuler",
+    "text": "Outils pour manipuler\n\nDugdibby : base de données sur serveur permettant lecture et tri.\nInstallation locale + serveur distant.\nBase orientée colonnes, optimisée pour analyse."
+  },
+  {
+    "objectID": "parquet.html#import-et-manipulation-en-r",
+    "href": "parquet.html#import-et-manipulation-en-r",
+    "title": "parquet",
+    "section": "Import et manipulation en R",
+    "text": "Import et manipulation en R\n\nUtilisation de fonctions glue() pour assembler chaînes de caractères, notamment pour importer.\nUtilisation de here::here() pour gérer chemins absolus et relatifs, éviter erreurs liées aux chemins.\nExemple d’import rapide :\n\nlibrary(here)\ndata_path &lt;- here(\"data\", \"recensement.parquet\")"
+  }
+]

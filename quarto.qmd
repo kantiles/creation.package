@@ -1,0 +1,48 @@
+---
+title: "Scraping Web"
+format: html
+---
+
+
+
+# Quarto et Markdown
+
+## Vue générale
+
+- Quarto repose sur **Pandoc** : convertisseur universel Markdown vers plusieurs formats (HTML, PDF, Word, etc.).
+- Écrit en Rust, moderne et rapide.
+- Supporte plusieurs langages dans les chunks : R, Python, Observable JS, etc.
+
+## Workflow
+
+- Quarto exécute les chunks de code, produit un AST (Abstract Syntax Tree).
+- Pandoc convertit cet AST en documents finaux (HTML, PDF, etc.).
+
+## Comparaison avec R Markdown
+
+| Fonctionnalité        | R Markdown                  | Quarto                        |
+|----------------------|-----------------------------|------------------------------|
+| Langage              | R + Markdown                | Rust + Markdown              |
+| Support chunks       | R uniquement                | R, Python, JS, autres         |
+| Paramétrage YAML     | Basique                    | Avancé                       |
+| Sorties              | HTML, PDF, Word             | HTML, PDF, Word, et plus      |
+
+## Création PDF
+
+- Plusieurs méthodes :
+  - LaTeX classique (fiable, mais lourd parfois)
+  - Typst (nouveau langage, plus rapide)
+  - PageJS (génération PDF via Chrome)
+  - Impression design via HTML/Figma
+
+## Exemple de chunk R
+
+```{r}
+#library(readxl)
+#tables <- read_excel("tables_exported.xlsx")
+#head(tables)
+
+```
+
+
+

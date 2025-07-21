@@ -1,0 +1,16 @@
+---
+title: "Scraping Web"
+format: html
+---
+
+## Contexte
+
+Le scraping est une méthode d’extraction automatique de données...
+
+## Exemple de code
+
+```{r}
+library(rvest)
+url <- "https://example.com"
+read_html(url)
+```

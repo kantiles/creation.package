@@ -1,0 +1,35 @@
+---
+title: "parquet"
+format: html
+---
+
+## Description des fichiers
+
+- Deux fichiers principaux : `ointerrogationsprincipales` et un fichier complémentaire.
+- Non diffusés directement au public, servent à produire plusieurs fichiers diffusés.
+- Données au niveau des cantons, villes, avec parfois localisation précise (unité Iris).
+- Utilisation pour mobilités professionnelles et scolaires.
+
+## Formats de diffusion
+
+- Fichiers diffusés en CSV et Parquet (format optimisé, indexé, rapide).
+- Parquet de plus en plus utilisé en statistique.
+- Données lourdes : environ 26 millions de lignes par fichier.
+- Une ligne coûte en ressources ~3 francs (évaluation de coût traitement).
+
+## Outils pour manipuler
+
+- Dugdibby : base de données sur serveur permettant lecture et tri.
+- Installation locale + serveur distant.
+- Base orientée colonnes, optimisée pour analyse.
+
+## Import et manipulation en R
+
+- Utilisation de fonctions `glue()` pour assembler chaînes de caractères, notamment pour importer.
+- Utilisation de `here::here()` pour gérer chemins absolus et relatifs, éviter erreurs liées aux chemins.
+- Exemple d'import rapide :
+
+```r
+library(here)
+data_path <- here("data", "recensement.parquet")
+```
