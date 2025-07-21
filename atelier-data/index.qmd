@@ -15,3 +15,46 @@ Les sujets abordés sont :
 - Techniques de scraping en R
 - Lecture et traitement de PDF en R
 - Organisation documentaire avec Zotero
+
+
+```{r}
+library(leaflet)
+library(tidyverse)
+
+lieux <- data.frame(
+  nom = c(
+    "Marly-le-Roi", 
+    "Gouvieux", 
+    "Paris", 
+    "Mons (Belgique)", 
+    "Carcassonne", 
+    "Salon-de-Provence", 
+    "Montrouge"
+  ),
+  lat = c(
+    48.8703,  # Marly-le-Roi
+    49.1949,  # Gouvieux
+    48.8566,  # Paris
+    50.4542,  # Mons
+    43.2130,  # Carcassonne
+    43.6400,   # Salon-de-Provence
+    48.8167   # Montrouge
+  ),
+  lng = c(
+    2.0966,   # Marly-le-Roi
+    2.4089,   # Gouvieux
+    2.3522,   # Paris
+    3.9523,   # Mons
+    2.3537,   # Carcassonne
+    5.0971,    # Salon-de-Provence
+    2.3139    # Montrouge
+  )
+)
+
+leaflet(data = lieux) |>
+  addTiles() |>
+  addMarkers(~lng, ~lat, label = ~nom, popup = ~nom) |>
+  addProviderTiles("CartoDB.Positron") |>
+  setView(lng = 2.5, lat = 47.5, zoom = 5.5)
+```
+
