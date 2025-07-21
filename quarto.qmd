@@ -1,6 +1,8 @@
 ---
 title: "Scraping Web"
 format: html
+page-layout: full
+
 ---
 
 

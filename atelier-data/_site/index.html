@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -181,7 +147,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -190,11 +156,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#compte-rendu-de-stage" id="toc-compte-rendu-de-stage" class="nav-link active" data-scroll-target="#compte-rendu-de-stage">Compte Rendu de Stage</a></li>
+  <li><a href="#le-stage-chez-kantiles-cest-aussi" id="toc-le-stage-chez-kantiles-cest-aussi" class="nav-link" data-scroll-target="#le-stage-chez-kantiles-cest-aussi">Le stage chez Kantiles, c’est aussi…</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -203,7 +170,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -228,60 +195,77 @@ Les sujets abordés sont :</p>
 <li>Organisation documentaire avec Zotero</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>lieux <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">nom =</span> <span class="fu">c</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Marly-le-Roi"</span>, </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gouvieux"</span>, </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Paris"</span>, </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mons (Belgique)"</span>, </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Carcassonne"</span>, </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Salon-de-Provence"</span>, </span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Montrouge"</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">lat =</span> <span class="fu">c</span>(</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fl">48.8703</span>,  <span class="co"># Marly-le-Roi</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fl">49.1949</span>,  <span class="co"># Gouvieux</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="fl">48.8566</span>,  <span class="co"># Paris</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="fl">50.4542</span>,  <span class="co"># Mons</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="fl">43.2130</span>,  <span class="co"># Carcassonne</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fl">43.6400</span>,   <span class="co"># Salon-de-Provence</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="fl">48.8167</span>   <span class="co"># Montrouge</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">lng =</span> <span class="fu">c</span>(</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.0966</span>,   <span class="co"># Marly-le-Roi</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.4089</span>,   <span class="co"># Gouvieux</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.3522</span>,   <span class="co"># Paris</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="fl">3.9523</span>,   <span class="co"># Mons</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.3537</span>,   <span class="co"># Carcassonne</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="fl">5.0971</span>,    <span class="co"># Salon-de-Provence</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="fl">2.3139</span>    <span class="co"># Montrouge</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="fu">leaflet</span>(<span class="at">data =</span> lieux) <span class="sc">|&gt;</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addMarkers</span>(<span class="sc">~</span>lng, <span class="sc">~</span>lat, <span class="at">label =</span> <span class="sc">~</span>nom, <span class="at">popup =</span> <span class="sc">~</span>nom) <span class="sc">|&gt;</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addProviderTiles</span>(<span class="st">"CartoDB.Positron"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">setView</span>(<span class="at">lng =</span> <span class="fl">2.5</span>, <span class="at">lat =</span> <span class="fl">47.5</span>, <span class="at">zoom =</span> <span class="fl">5.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-5d26d9eb34ed5e26580c" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5d26d9eb34ed5e26580c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[48.8703,49.1949,48.8566,50.4542,43.213,43.64,48.8167],[2.0966,2.4089,2.3522,3.9523,2.3537,5.0971,2.3139],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Marly-le-Roi","Gouvieux","Paris","Mons (Belgique)","Carcassonne","Salon-de-Provence","Montrouge"],null,null,null,["Marly-le-Roi","Gouvieux","Paris","Mons (Belgique)","Carcassonne","Salon-de-Provence","Montrouge"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}],"limits":{"lat":[43.213,50.4542],"lng":[2.0966,5.0971]},"setView":[[47.5,2.5],5.5,[]]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-b236b038e69a639e740b" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-b236b038e69a639e740b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[48.8703,49.1949,48.8566,50.4542,43.213,43.64,48.8167],[2.0966,2.4089,2.3522,3.9523,2.3537,5.0971,2.3139],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Marly-le-Roi","Gouvieux","Paris","Mons (Belgique)","Carcassonne","Salon-de-Provence","Montrouge"],null,null,null,["Marly-le-Roi","Gouvieux","Paris","Mons (Belgique)","Carcassonne","Salon-de-Provence","Montrouge"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}],"limits":{"lat":[43.213,50.4542],"lng":[2.0966,5.0971]},"setView":[[47.5,2.5],5.5,[]]},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
+</section>
+<section id="le-stage-chez-kantiles-cest-aussi" class="level1">
+<h1>Le stage chez Kantiles, c’est aussi…</h1>
+<div class="columns">
+<div class="column" style="width:50%;">
+<section id="café-consommé" class="level2">
+<h2 class="anchored" data-anchor-id="café-consommé">Café consommé</h2>
+<ul>
+<li>En moyenne 4 tasses / jour / personne<br>
+</li>
+<li>Environ 3 personnes caféinées par jour<br>
+</li>
+<li>Sur 5 mois (~22 jours/mois), ça fait environ <strong>4 x 3 x 22 x 5 = 1 320 tasses</strong></li>
+</ul>
+</section>
+<section id="projets-réalisés" class="level2">
+<h2 class="anchored" data-anchor-id="projets-réalisés">Projets réalisés</h2>
+<ul>
+<li>APEC<br>
+</li>
+<li>DREES<br>
+</li>
+<li>Kids<br>
+</li>
+<li>OPCO<br>
+</li>
+<li>Endomind<br>
+</li>
+<li>…</li>
+</ul>
+</section>
+</div><div class="column" style="width:50%;">
+<section id="outils-méthodes" class="level2">
+<h2 class="anchored" data-anchor-id="outils-méthodes">Outils / Méthodes</h2>
+<ul>
+<li>R, Quarto, Leaflet<br>
+</li>
+<li>Git + GitHub, DuckDB<br>
+</li>
+<li>Scraping, analyses territoriales</li>
+<li>…</li>
+</ul>
+</section>
+<section id="conférences-événements" class="level2">
+<h2 class="anchored" data-anchor-id="conférences-événements">🎙️ Conférences / Événements</h2>
+<ul>
+<li>Déj POS – Impact &amp; mesure<br>
+</li>
+<li>Rencontres R - Université de Mons<br>
+</li>
+<li>Printemps de l’économie<br>
+</li>
+<li>INSEE Pays de la Loire<br>
+</li>
+<li>Colloque PIC - DARES<br>
+</li>
+<li>Journée data &amp; histoire - Sorbonne<br>
+</li>
+<li>Une journée à 21<br>
+</li>
+<li>…</li>
+</ul>
+</section>
+</div>
+</div>
+<hr>
 
 
 </section>
