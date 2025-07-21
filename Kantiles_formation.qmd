@@ -107,46 +107,114 @@ data_path <- here("data", "recensement.parquet")
 ```
 
 
+
+
+---
+
+
+
 # Scraping Web avec R
 
-## Contexte
+## Introduction
 
-- Le scraping est une méthode d’extraction automatique de données depuis des sites web.
-- À utiliser en dernier recours, surtout quand il n’y a pas d’API ou fichier ouvert.
-- Utile pour des cas d’usage non statiques.
+Le **scraping web** consiste à extraire automatiquement des données publiées sur des sites internet. Cette méthode est particulièrement utile lorsque les données ne sont pas disponibles via une API officielle ou sous un format exploitable directement (CSV, JSON, XML, etc.). Elle permet de collecter un large éventail d’informations : fiches produits, listes, tableaux, statistiques, organigrammes, documents, etc.
 
-## Outils principaux
+Cependant, le scraping nécessite une bonne maîtrise des technologies web (HTML, CSS, JavaScript) ainsi qu’une attention aux aspects légaux et éthiques (respect du fichier robots.txt, limitations du site, charge serveur).
 
-- Package `rvest` pour lire et parser du HTML.
-- `rsitemap` ou `xsitemap` pour récupérer les sitemaps XML.
-- Extensions Chrome comme Selector Gadget pour identifier les sélecteurs CSS.
+---
 
-## Bonnes pratiques
+## Pourquoi faire du scraping ?
 
-- Toujours vérifier le fichier `robots.txt` du site pour s’assurer que le scraping est autorisé.
-- Exploiter les sitemaps pour obtenir la liste des URLs à scraper.
-- Éviter de surcharger les serveurs avec trop de requêtes.
-- Utiliser des VPN en cas de blocage par IP.
+- **Collecter des données non accessibles autrement**, notamment sur des sites qui ne proposent pas d’API ou de fichiers exportables.  
+- **Automatiser la veille documentaire** en récupérant régulièrement les nouvelles publications d’un site.  
+- **Récupérer des informations structurées dans des pages HTML complexes**, par exemple des tableaux ou des fiches détaillées.  
+- **Enrichir des jeux de données locaux** avec des données publiques sectorielles, comme des organigrammes ou listes d’acteurs.
 
-## Exemple : site cheese.com
+---
 
-- Structure du site : une fiche par objet.
-- Page principale liste toutes les fiches avec une barre de recherche.
-- Chaque fiche est une page individuelle avec les infos détaillées.
-- Scraper la liste globale puis chaque fiche.
-- Attention, les pages ne sont pas toujours identiques, prévoir robustesse.
+## Outils et bibliothèques en R
 
-## Exemple de récupération sitemap
+- **`rvest`** : bibliothèque principale pour lire, parser et extraire du contenu HTML. Utilise les sélecteurs CSS ou XPath pour cibler précisément les éléments à extraire.  
+- **`xml2`** : permet de lire et manipuler des documents XML (utile pour lire des sitemaps par exemple).  
+- **`httr` ou `curl`** : pour gérer les requêtes HTTP, parfois nécessaires pour simuler des sessions, gérer des cookies, ou contourner des protections.  
+- **`purrr`** : fonctionnel pour itérer sur des listes d’URLs et appliquer des fonctions de scraping.  
+- **Extensions Chrome (Selector Gadget, DevTools)** : outils indispensables pour identifier rapidement les sélecteurs CSS et tester les expressions XPath.
+
+---
+
+## Bonnes pratiques avant de commencer
+
+- **Vérifier le fichier `robots.txt`** du site (ex. https://www.site.com/robots.txt) qui liste les parties autorisées ou interdites au scraping. Respecter ces consignes est crucial pour éviter tout litige légal.  
+- **Analyser la structure du site** : repérer les pages d’index, les pages détaillées, les liens à suivre, et identifier les sélecteurs CSS/XPath précis.  
+- **Consulter le sitemap XML** si disponible, car il facilite la récupération automatique des URLs à scraper.  
+- **Limiter la fréquence des requêtes** pour ne pas surcharger le serveur (exemple : pause entre requêtes avec `Sys.sleep()`).  
+- **Tester et valider chaque étape manuellement** avant d’automatiser à grande échelle.  
+- **Documenter le script** pour faciliter la maintenance et la mise à jour si la structure du site change.
+
+---
+
+## Exemple complet : récupération et scraping de fiches sur cheese.com
+
+### Étape 1 : récupération des URLs via sitemap
 
 ```{r}
-library(rvest)
 library(xml2)
+library(magrittr)
 
 url_sitemap <- "https://www.cheese.com/sitemap.xml"
 sitemap <- read_xml(url_sitemap)
+
+# Extraction des URLs du sitemap
 urls <- xml_find_all(sitemap, "//url/loc") %>% xml_text()
-head(urls)
+head(urls, 5)
+
+
+library(rvest)
+library(dplyr)
+
+url_annuaire <- "https://www.cheese.com/all-cheeses/"
+page <- read_html(url_annuaire)
+
+# Extraction des liens vers chaque fiche
+liens_fromages <- page %>%
+  html_nodes(".cheeseList a") %>%
+  html_attr("href")
+
+# Nettoyage des liens pour avoir URL absolue
+liens_fromages <- paste0("https://www.cheese.com", liens_fromages)
+head(liens_fromages, 5)
+
+library(rvest)
+library(dplyr)
+
+url_annuaire <- "https://www.cheese.com/all-cheeses/"
+page <- read_html(url_annuaire)
+
+# Extraction des liens vers chaque fiche
+liens_fromages <- page %>%
+  html_nodes(".cheeseList a") %>%
+  html_attr("href")
+
+# Nettoyage des liens pour avoir URL absolue
+liens_fromages <- paste0("https://www.cheese.com", liens_fromages)
+head(liens_fromages, 5)
+
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Lecture de PDF en R
@@ -171,44 +239,140 @@ head(urls)
 - Nettoyer et structurer les données extraites pour créer des jeux de données propres.
 - Être vigilant aux problèmes liés à la mise en forme des PDF (listes, colonnes, espacements).
 
+
+```{r}
+library(pdftools)
+
+# Exemple d'extraction texte d'un PDF local
+texte_pdf <- pdf_text("exemple_rapport.pdf")
+
+# Affichage des 500 premiers caractères de la première page
+cat(substr(texte_pdf[1], 1, 500))
+
+library(tabulizer)
+
+# Extraction des tableaux d'un PDF
+tables <- extract_tables("exemple_rapport.pdf")
+
+# Affichage du premier tableau extrait
+print(tables[[1]])
+
+```
+library(tesseract)
+
+# Extraction de texte depuis une image (capture ou PDF image)
+texte_ocr <- ocr("exemple_image_page.png")
+
+cat(texte_ocr)
+```
+
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Zotero : gestion documentaire
 
-## Organisation des documents
+## Module : Zotero & Veille documentaire
+- Juin 2025
+- Emmanuel Herbepin et Victoire Chatain
 
-- Gestion par dossiers et sous-dossiers, contenant documents PDF ou copies HTML.
-- Récupération automatique des métadonnées (titre, auteur, date, etc.), mais attention aux erreurs d’attribution d’auteur.
-- Possibilité d’attacher manuellement des fichiers (PDF, annexes).
+---
 
-## Fonctionnalités collaboratives
+## Présentation générale de Zotero
+- Zotero est un outil de gestion bibliographique gratuit, open source, et très adapté pour :  
+  - La veille documentaire structurée.  
+  - La gestion collaborative de références (études, articles, rapports, etc.).  
+  - La constitution d’une base de connaissance dynamique.
 
-- Bibliothèques de groupe synchronisées en temps réel.
-- Annotation collaborative : chaque utilisateur peut surligner, commenter, marquer précisément la page concernée.
-- Visualisation en direct des annotations et commentaires des autres membres.
-- Fonctionne comme un système de type “drive” collaboratif.
+---
 
-## Gestion des citations
+## Fonctionnement de base
+- Organisation par dossiers et sous-dossiers.  
+- Ajout de documents :  
+  - Depuis un plugin navigateur (fonctionne très bien avec Cairn, par exemple).  
+  - Manuellement (ajout de PDF, capture de page, etc.).  
+- Chaque document peut contenir :  
+  - Des métadonnées (titre, auteur, date…).  
+  - Des pièces jointes (PDF, notes, etc.).  
+  - Des commentaires et surlignages collaboratifs.
 
-- Formats de citation entièrement paramétrables.
-- Création facile de bibliographies complètes à partir d’une sélection de documents.
-- Multiples petits outils intégrés : marqueurs, labels, tags.
-- Très pratique pour organiser les sources dans un projet de recherche.
+---
 
-## Cas d’usage et veille documentaire
+## Travail collaboratif
+- Bibliothèque de groupe (via Zotero Web) :  
+  - Paramétrage des droits par membre.  
+  - Synchronisation automatique.  
+  - Partage des annotations visibles par tous (identification de l’auteur, surlignages, commentaires).  
+- Utilisable comme un Drive académique orienté contenu structuré.
 
-- Surveillance documentaire dans des domaines tels que l’emploi, la formation, les compétences métiers (ex. santé).
-- Intégration automatique d’études françaises, régionales, nationales, articles de presse.
-- Extraction semi-automatique via flux RSS ou scraping raisonné.
-- Mise en place d’une hiérarchie des sources (ex. INSEE, DREES, DARES, OPCO, services régionaux).
-- Gestion d’une base documentaire de 15 000 à 20 000 études couvrant environ 20 ans, avec documents de 4 à 8 pages en moyenne.
+---
 
-## Intégration technique
+## Fonctionnalités utiles
+- Tags / marqueurs pour organiser les contenus.  
+- Génération automatique de bibliographies (choix du format).  
+- Format de citation personnalisable (utile pour livrables, publications, rapports).  
+- Format BibTeX disponible → interopérable avec R, Python, LaTeX.
 
-- Scraper les données via une bibliothèque technique (bibtech).
-- Importer automatiquement dans Zotero via API ou packages dédiés.
-- Construire une base documentaire dynamique et évolutive.
-- Pousser l’automatisation pour intégrer les nouveautés et gérer l’archivage.
+---
+
+## Cas d’usage professionnel : veille sur l'emploi & la formation
+- Objectif :  
+  Construire une base documentaire cohérente, exhaustive, structurée, réutilisable et dynamique sur les thématiques métier.  
+- Exemples :  
+  - Études sur les compétences dans les métiers de la santé.  
+  - Publications régionales et nationales : DREES, DARES, INSEE, France Travail, etc.  
+  - Mémoires, études locales, travaux des observatoires OPCO, InterCarifOref, France Compétences…  
+- Organisation :  
+  - Hiérarchisation des sources.  
+  - Sélection raisonnée des institutions clés.  
+  - Veille structurée sur 15 000 à 20 000 études (sur 20 ans) de 4 à 8 pages chacune.
+
+---
+
+## Méthodologie recommandée
+- Étape 1 : Constitution du corpus  
+  - Liste prioritaire : DREES, DARES, INSEE, France Travail, Trésor, OPCO.  
+  - Acteurs régionaux : InterCarifOref, collectivités territoriales.  
+  - Indexation manuelle + flux RSS + scraping raisonné.  
+- Étape 2 : Intégration dans Zotero  
+  - Par scraping ou via export BibTeX → import dans Zotero.  
+  - Utilisation des API Zotero et/ou packages dédiés pour automatiser.  
+- Étape 3 : Structuration documentaire  
+  - Tags thématiques.  
+  - Catégorisation par année, région, institution.  
+  - Export possible vers livrable interne ou outil de visualisation (type Quarto ou R Markdown).
+
+---
+
+## Vers une base documentaire dynamique
+- Objectif : passer du statique au dynamique.  
+- Intégrer les études dans une base réinterrogeable (dashboard, moteur de recherche, analyse de tendance…).  
+- Base centrale pour fonction observatoire interne.  
+- Exemples d’usages :  
+  - Liste des études par année.  
+  - Focus régional ou sectoriel.  
+  - Suivi des politiques publiques ou signaux faibles.
+
+---
+
+## À creuser / Aller plus loin
+- API Zotero pour automatiser des chargements et extractions.  
+- Connecteurs avec Zotero depuis R (`rbbt`, `zoteroR`) ou Python.  
+- Scraping bibliographique ciblé sur les bons sites.  
+- Intégration avec un outil de visualisation dynamique (Quarto, Observable, Shiny…).
+
+
 
 ---
 
@@ -225,7 +389,6 @@ sitemap <- read_xml(url_sitemap)
 urls <- xml_find_all(sitemap, "//url/loc") %>% xml_text()
 head(urls)
 ```
-
 
 
 
