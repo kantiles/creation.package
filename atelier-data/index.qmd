@@ -1,6 +1,12 @@
 ---
 title: "Accueil"
 format: html
+execute:
+  echo: false
+  warning: false
+  message: false
+page-layout: full
+
 ---
 
 # Compte Rendu de Stage
@@ -58,3 +64,50 @@ leaflet(data = lieux) |>
   setView(lng = 2.5, lat = 47.5, zoom = 5.5)
 ```
 
+
+# Le stage chez Kantiles, c’est aussi…
+
+::: {.columns}
+::: {.column width="50%"}
+
+## Café consommé
+
+- En moyenne 4 tasses / jour / personne  
+- Environ 3 personnes caféinées par jour  
+- Sur 5 mois (~22 jours/mois), ça fait environ **4 x 3 x 22 x 5 = 1 320 tasses** 
+
+## Projets réalisés
+
+- APEC  
+- DREES  
+- Kids  
+- OPCO  
+- Endomind  
+- ... 
+
+:::
+::: {.column width="50%"}
+
+## Outils / Méthodes
+
+- R, Quarto, Leaflet  
+- Git + GitHub, DuckDB  
+- Scraping, analyses territoriales
+- ...
+
+## Conférences / Événements
+
+- Déj POS – Impact & mesure  
+- Rencontres R - Université de Mons  
+- Printemps de l'économie  
+- INSEE Pays de la Loire  
+- Colloque PIC - DARES  
+- Journée data & histoire - Sorbonne  
+- Une journée à 21  
+- ...
+
+:::
+:::
+
+
+---

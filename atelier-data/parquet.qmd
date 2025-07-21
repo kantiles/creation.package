@@ -1,6 +1,8 @@
 ---
 title: "parquet"
 format: html
+page-layout: full
+
 ---
 
 ## Description des fichiers

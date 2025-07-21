@@ -1,6 +1,7 @@
 ---
 title: "Scrap"
 format: html
+page-layout: full
 ---
 
 

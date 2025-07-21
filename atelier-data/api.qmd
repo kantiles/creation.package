@@ -1,6 +1,8 @@
 ---
 title: "api"
 format: html
+page-layout: full
+
 ---
 
 ## blablabla
