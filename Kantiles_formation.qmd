@@ -1,0 +1,238 @@
+
+
+
+---
+title: "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero"
+author: "Utilisateur"
+date: "`r Sys.Date()`"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-summary: "Afficher le code R"
+    theme: cosmo
+  pdf:
+    toc: true
+    number-sections: true
+    latex-engine: xelatex
+    keep-tex: true
+---
+
+# Introduction
+
+Ce rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.  
+Les sujets abordés sont :
+
+- Recensements et gestion de grandes bases de données
+- Utilisation avancée de Quarto et Markdown
+- Techniques de scraping en R
+- Lecture et traitement de PDF en R
+- Organisation documentaire avec Zotero
+
+---
+
+# Recensements
+
+## Description des fichiers
+
+- Deux fichiers principaux : `ointerrogationsprincipales` et un fichier complémentaire.
+- Non diffusés directement au public, servent à produire plusieurs fichiers diffusés.
+- Données au niveau des cantons, villes, avec parfois localisation précise (unité Iris).
+- Utilisation pour mobilités professionnelles et scolaires.
+
+## Formats de diffusion
+
+- Fichiers diffusés en CSV et Parquet (format optimisé, indexé, rapide).
+- Parquet de plus en plus utilisé en statistique.
+- Données lourdes : environ 26 millions de lignes par fichier.
+- Une ligne coûte en ressources ~3 francs (évaluation de coût traitement).
+
+## Outils pour manipuler
+
+- Dugdibby : base de données sur serveur permettant lecture et tri.
+- Installation locale + serveur distant.
+- Base orientée colonnes, optimisée pour analyse.
+
+## Import et manipulation en R
+
+- Utilisation de fonctions `glue()` pour assembler chaînes de caractères, notamment pour importer.
+- Utilisation de `here::here()` pour gérer chemins absolus et relatifs, éviter erreurs liées aux chemins.
+- Exemple d'import rapide :
+
+```r
+library(here)
+data_path <- here("data", "recensement.parquet")
+```
+
+
+
+# Quarto et Markdown
+
+## Vue générale
+
+- Quarto repose sur **Pandoc** : convertisseur universel Markdown vers plusieurs formats (HTML, PDF, Word, etc.).
+- Écrit en Rust, moderne et rapide.
+- Supporte plusieurs langages dans les chunks : R, Python, Observable JS, etc.
+
+## Workflow
+
+- Quarto exécute les chunks de code, produit un AST (Abstract Syntax Tree).
+- Pandoc convertit cet AST en documents finaux (HTML, PDF, etc.).
+
+## Comparaison avec R Markdown
+
+| Fonctionnalité        | R Markdown                  | Quarto                        |
+|----------------------|-----------------------------|------------------------------|
+| Langage              | R + Markdown                | Rust + Markdown              |
+| Support chunks       | R uniquement                | R, Python, JS, autres         |
+| Paramétrage YAML     | Basique                    | Avancé                       |
+| Sorties              | HTML, PDF, Word             | HTML, PDF, Word, et plus      |
+
+## Création PDF
+
+- Plusieurs méthodes :
+  - LaTeX classique (fiable, mais lourd parfois)
+  - Typst (nouveau langage, plus rapide)
+  - PageJS (génération PDF via Chrome)
+  - Impression design via HTML/Figma
+
+## Exemple de chunk R
+
+```{r}
+#library(readxl)
+#tables <- read_excel("tables_exported.xlsx")
+#head(tables)
+
+```
+
+
+# Scraping Web avec R
+
+## Contexte
+
+- Le scraping est une méthode d’extraction automatique de données depuis des sites web.
+- À utiliser en dernier recours, surtout quand il n’y a pas d’API ou fichier ouvert.
+- Utile pour des cas d’usage non statiques.
+
+## Outils principaux
+
+- Package `rvest` pour lire et parser du HTML.
+- `rsitemap` ou `xsitemap` pour récupérer les sitemaps XML.
+- Extensions Chrome comme Selector Gadget pour identifier les sélecteurs CSS.
+
+## Bonnes pratiques
+
+- Toujours vérifier le fichier `robots.txt` du site pour s’assurer que le scraping est autorisé.
+- Exploiter les sitemaps pour obtenir la liste des URLs à scraper.
+- Éviter de surcharger les serveurs avec trop de requêtes.
+- Utiliser des VPN en cas de blocage par IP.
+
+## Exemple : site cheese.com
+
+- Structure du site : une fiche par objet.
+- Page principale liste toutes les fiches avec une barre de recherche.
+- Chaque fiche est une page individuelle avec les infos détaillées.
+- Scraper la liste globale puis chaque fiche.
+- Attention, les pages ne sont pas toujours identiques, prévoir robustesse.
+
+## Exemple de récupération sitemap
+
+```{r}
+library(rvest)
+library(xml2)
+
+url_sitemap <- "https://www.cheese.com/sitemap.xml"
+sitemap <- read_xml(url_sitemap)
+urls <- xml_find_all(sitemap, "//url/loc") %>% xml_text()
+head(urls)
+```
+
+
+# Lecture de PDF en R
+
+## Outils
+
+- **tesseract** : outil OCR pour extraire du texte à partir d’images contenues dans des PDF.
+- **tabulizer** (package R) : extraction de tableaux depuis des PDF, particulièrement efficace pour les tableaux “screenshot” (captures d’écran intégrées dans PDF).
+- **pdftools** : manipulation basique et extraction de texte dans les PDF.
+
+## Usages
+
+- Extraction de tableaux complexes, notamment lorsque les données sont intégrées en image (screenshot).
+- Le package `tabulizer` est utile pour extraire ces tableaux, contrairement à l’OCR qui fonctionne moins bien sur ce type de données.
+- Vérifier la cohérence des tailles de listes extraites (ex. colonnes de tableaux) pour éviter les erreurs de décalage ou pertes de données.
+- Gérer les valeurs manquantes, car en HTML/texte brut, il n’y a pas de NA natif.
+- Utile pour enrichir des données sectorielles ou locales à partir de rapports PDF.
+
+## Cas pratique
+
+- Tester sur des sites institutionnels comme l’INSEE en live.
+- Nettoyer et structurer les données extraites pour créer des jeux de données propres.
+- Être vigilant aux problèmes liés à la mise en forme des PDF (listes, colonnes, espacements).
+
+---
+
+# Zotero : gestion documentaire
+
+## Organisation des documents
+
+- Gestion par dossiers et sous-dossiers, contenant documents PDF ou copies HTML.
+- Récupération automatique des métadonnées (titre, auteur, date, etc.), mais attention aux erreurs d’attribution d’auteur.
+- Possibilité d’attacher manuellement des fichiers (PDF, annexes).
+
+## Fonctionnalités collaboratives
+
+- Bibliothèques de groupe synchronisées en temps réel.
+- Annotation collaborative : chaque utilisateur peut surligner, commenter, marquer précisément la page concernée.
+- Visualisation en direct des annotations et commentaires des autres membres.
+- Fonctionne comme un système de type “drive” collaboratif.
+
+## Gestion des citations
+
+- Formats de citation entièrement paramétrables.
+- Création facile de bibliographies complètes à partir d’une sélection de documents.
+- Multiples petits outils intégrés : marqueurs, labels, tags.
+- Très pratique pour organiser les sources dans un projet de recherche.
+
+## Cas d’usage et veille documentaire
+
+- Surveillance documentaire dans des domaines tels que l’emploi, la formation, les compétences métiers (ex. santé).
+- Intégration automatique d’études françaises, régionales, nationales, articles de presse.
+- Extraction semi-automatique via flux RSS ou scraping raisonné.
+- Mise en place d’une hiérarchie des sources (ex. INSEE, DREES, DARES, OPCO, services régionaux).
+- Gestion d’une base documentaire de 15 000 à 20 000 études couvrant environ 20 ans, avec documents de 4 à 8 pages en moyenne.
+
+## Intégration technique
+
+- Scraper les données via une bibliothèque technique (bibtech).
+- Importer automatiquement dans Zotero via API ou packages dédiés.
+- Construire une base documentaire dynamique et évolutive.
+- Pousser l’automatisation pour intégrer les nouveautés et gérer l’archivage.
+
+---
+
+# Annexes : exemples de code R
+
+## Lecture et extraction de sitemap XML
+
+```{r}
+library(rvest)
+library(xml2)
+
+url_sitemap <- "https://www.cheese.com/sitemap.xml"
+sitemap <- read_xml(url_sitemap)
+urls <- xml_find_all(sitemap, "//url/loc") %>% xml_text()
+head(urls)
+```
+
+
+
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
