@@ -1,7 +1,17 @@
 ---
-title: "atelier-data"
+title: "Accueil"
+format: html
 ---
 
-This is a Quarto website.
+# Compte Rendu de Stage
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Bienvenue sur le site du compte rendu. Utilisez la barre de navigation pour accéder aux différentes parties.
+
+Ce rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.  
+Les sujets abordés sont :
+
+- Recensements et gestion de grandes bases de données
+- Utilisation avancée de Quarto et Markdown
+- Techniques de scraping en R
+- Lecture et traitement de PDF en R
+- Organisation documentaire avec Zotero

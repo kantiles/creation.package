@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Accueil – Mon site</title>
+<title>api – Mon site</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -88,19 +122,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Accueil</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./article.html"> 
-<span class="menu-text">Articles</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./scrap.html"> 
 <span class="menu-text">Scraping</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./api.html"> 
+    <a class="nav-link active" href="./api.html" aria-current="page"> 
 <span class="menu-text">API</span></a>
   </li>  
   <li class="nav-item">
@@ -131,7 +161,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#compte-rendu-de-stage" id="toc-compte-rendu-de-stage" class="nav-link active" data-scroll-target="#compte-rendu-de-stage">Compte Rendu de Stage</a></li>
+  <li><a href="#blablabla" id="toc-blablabla" class="nav-link active" data-scroll-target="#blablabla">blablabla</a></li>
+  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running Code</a></li>
   </ul>
 </nav>
     </div>
@@ -140,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Accueil</h1>
+<h1 class="title">api</h1>
 </div>
 
 
@@ -157,18 +188,26 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="compte-rendu-de-stage" class="level1">
-<h1>Compte Rendu de Stage</h1>
-<p>Bienvenue sur le site du compte rendu. Utilisez la barre de navigation pour accéder aux différentes parties.</p>
-<p>Ce rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.<br>
-Les sujets abordés sont :</p>
-<ul>
-<li>Recensements et gestion de grandes bases de données</li>
-<li>Utilisation avancée de Quarto et Markdown</li>
-<li>Techniques de scraping en R</li>
-<li>Lecture et traitement de PDF en R</li>
-<li>Organisation documentaire avec Zotero</li>
-</ul>
+<section id="blablabla" class="level2">
+<h2 class="anchored" data-anchor-id="blablabla">blablabla</h2>
+<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+</section>
+<section id="running-code" class="level2">
+<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>You can add options to executable code like this</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
 
 
 </section>

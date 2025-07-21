@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Accueil",
     "section": "",
-    "text": "Compte Rendu de Stage\nBienvenue sur le site du compte rendu. Utilisez la barre de navigation pour accéder aux différentes parties."
+    "text": "Compte Rendu de Stage\nBienvenue sur le site du compte rendu. Utilisez la barre de navigation pour accéder aux différentes parties.\nCe rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.\nLes sujets abordés sont :\n\nRecensements et gestion de grandes bases de données\nUtilisation avancée de Quarto et Markdown\nTechniques de scraping en R\nLecture et traitement de PDF en R\nOrganisation documentaire avec Zotero"
   },
   {
     "objectID": "about.html",
@@ -432,5 +432,33 @@
     "title": "parquet",
     "section": "Import et manipulation en R",
     "text": "Import et manipulation en R\n\nUtilisation de fonctions glue() pour assembler chaînes de caractères, notamment pour importer.\nUtilisation de here::here() pour gérer chemins absolus et relatifs, éviter erreurs liées aux chemins.\nExemple d’import rapide :\n\nlibrary(here)\ndata_path &lt;- here(\"data\", \"recensement.parquet\")"
+  },
+  {
+    "objectID": "api.html",
+    "href": "api.html",
+    "title": "api",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "api.html#blablabla",
+    "href": "api.html#blablabla",
+    "title": "api",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "api.html#running-code",
+    "href": "api.html#running-code",
+    "title": "api",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+  },
+  {
+    "objectID": "article.html",
+    "href": "article.html",
+    "title": "Kantiles fête ses 10 ans",
+    "section": "",
+    "text": "Par notre correspondant à Gouvieux, édition du 5 juin 2034\n\n\n“Ce qui compte, ce n’est pas de produire plus de données, mais de les faire parler autrement — avec précision, transparence, et dans l’intérêt public. C’est là que se joue notre valeur ajoutée : dans la rigueur des analyses, la diversité des sources, et la lisibilité des résultats.”\n— Thomas Vroylandt, cofondateur de Kantiles\n\n\n\nUne décennie au service des politiques sociales et de l’emploi\nEn 2024, dans leur salon de Gouvieux (Oise), Justine et Thomas Vroylandt fondent Kantiles. Leur intuition est simple : les politiques publiques regorgent de données, mais manquent d’outils pour les transformer en savoirs utiles à l’action.\nLui, statisticien et développeur, pilote les analyses, les modèles, les méthodes. Elle, issue du secteur social, connaît les rouages des institutions, les usages de terrain, les besoins du service public. Ensemble, ils créent une structure atypique : experte, engagée, et ancrée dans la réalité des politiques sociales.\n\nDeux profils complémentaires, une ambition commune : réconcilier expertise statistique, éthique publique et action sociale.\n\n\n\n\nDe Gouvieux à l’international : une trajectoire ascendante\nEn 2025, les premiers stagiaires rejoignent Kantiles. En 2026, des locaux sont ouverts à Paris et Toulouse, pour se rapprocher des territoires et institutions partenaires.\nDès 2027, l’équipe accompagne les premiers dispositifs emploi-insertion et mène des missions pour la DREES, la DARES, plusieurs OPCO, des ministères, mais aussi des collectivités locales, en France et à l’international.\nLes projets se multiplient : analyses d’accès aux droits, mesure d’impact social, évaluation de politiques publiques, développement de tableaux de bord. En 2029, la création du KLab (laboratoire d’innovation sociale par les données) marque un tournant vers une approche plus ouverte, reproductible et collaborative.\n\n“Une donnée n’a de sens que si elle parle à ceux qu’elle concerne. Notre travail, c’est de la reconnecter aux réalités humaines et aux décisions concrètes.”\n— Justine Vroylandt, cofondatrice de Kantiles\n\n\n\n\nLes grandes étapes de Kantiles en un coup d’œil"
   }
 ]

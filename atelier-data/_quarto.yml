@@ -2,17 +2,27 @@ project:
   type: website
 
 website:
-  title: "atelier-data"
+  title: "Mon site"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Accueil"
+        file: index.qmd
+      - text: "Articles"
+        file: article.qmd
+      - text: "Scraping"
+        file: scrap.qmd
+      - text: "API"
+        file: api.qmd
+      - text: "Quarto"
+        file: quarto.qmd
+      - text: "Parquet"
+        file: parquet.qmd
+      - text: "Zotero"
+        file: zotero.qmd
 
 format:
   html:
     theme: cosmo
-    css: styles.css
     toc: true
 
 
