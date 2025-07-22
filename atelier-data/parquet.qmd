@@ -1,35 +1,172 @@
 ---
-title: "parquet"
+title: "Format parquet et Duckdb"
 format: html
 ---
 
-## Description des fichiers
+Parquet est un format de stockage de données, au même titre que les fichiers CSV, RDS, FST, etc. Nous le comparerons au format CSV, car il est très utilisé dans le domaine de la statistique et de l'analyse de données.
 
-- Deux fichiers principaux : `ointerrogationsprincipales` et un fichier complémentaire.
-- Non diffusés directement au public, servent à produire plusieurs fichiers diffusés.
-- Données au niveau des cantons, villes, avec parfois localisation précise (unité Iris).
-- Utilisation pour mobilités professionnelles et scolaires.
+## Le format CSV 
 
-## Formats de diffusion
+Le format CSV (*Comma-Separated Values*) est un format de fichier texte utilisé pour stocker des données tabulaires. Chaque ligne du fichier représente une ligne de données, et les valeurs sont séparées par des virgules (ou d'autres délimiteurs comme des points-virgules). Il n'est pas compressé par défaut.
 
-- Fichiers diffusés en CSV et Parquet (format optimisé, indexé, rapide).
-- Parquet de plus en plus utilisé en statistique.
-- Données lourdes : environ 26 millions de lignes par fichier.
-- Une ligne coûte en ressources ~3 francs (évaluation de coût traitement).
+### Avantages
 
-## Outils pour manipuler
+- **Simplicité universelle** : facile à lire, modifier, exporter
+- **Format texte brut** : lisible et facile à comprendre
+- **Large compatibilité** : supporté par de nombreux outils et langages de programmation (Excel, R, Python, etc.)
+- **Lisible** en ligne de commande, navigateur, éditeur
 
-- Dugdibby : base de données sur serveur permettant lecture et tri.
-- Installation locale + serveur distant.
-- Base orientée colonnes, optimisée pour analyse.
+### Inconvénients
 
-## Import et manipulation en R
+- Pas de compression intégrée, ce qui peut rendre les fichiers volumineux.
+- Pas de métadonnées, ce qui rend difficile la compréhension des données sans documentation externe.
+- Peut être sujet à des erreurs de formatage, notamment avec les valeurs contenant des virgules ou des guillemets.
+- Peut être difficile à manipuler pour les grandes quantités de données, car il n'est pas optimisé pour les performances.
+- Necessite de lire toutes les colonnes.
+- Pas de typage des données, tout est du texte.
 
-- Utilisation de fonctions `glue()` pour assembler chaînes de caractères, notamment pour importer.
-- Utilisation de `here::here()` pour gérer chemins absolus et relatifs, éviter erreurs liées aux chemins.
-- Exemple d'import rapide :
+## Le format Parquet
 
-```r
-library(here)
-data_path <- here("data", "recensement.parquet")
+Le format Parquet est un format de fichier optimisé pour le stockage de données en colonnes, développé par Apache. Il est particulièrement adapté aux grandes quantités de données.
+
+### Avantages
+
+- **Efficacité de stockage** : Parquet stock les données en binaire, ce qui est plus efficace que le texte brut du CSV.
+- **Compression intégrée** : Parquet compresse les données de manière efficace, ce qui réduit la taille des fichiers et améliore les performances de lecture.
+- **Stockage en colonnes** : Contrairement au format CSV qui stocke les données en lignes, Parquet stocke les données en colonnes, ce qui permet de ne lire que les colonnes nécessaires lors de l'analyse, réduisant ainsi le temps de traitement et la mémoire utilisée.
+- **Interopérabilité** : Il est conçu pour être indépendant d’un logiciel, il peut être lus par de nombreux langages de programmation et outils d'analyse de données (R, Python, C++, JavaScript, Java, etc.).
+- **Indexation** : Parquet permet une indexation efficace des données, ce qui améliore les performances de requêtes et de filtrage.
+- **Typage des variables** : Parquet inclut des métadonnées sur les schémas de données qui incluent les types des variables, ce qui facilite la compréhension et la gestion des données et évite les erreurs de conversion de types.
+- **Optimisé pour les systèmes distribués** : Parquet est conçu pour être utilisé dans des environnements distribués, ce qui le rend adapté aux systèmes de traitement de données massives comme DuckDB.
+- **Support des partitions** : Parquet permet de partitionner les données selon les usages prévus, ce qui améliore les performances de lecture et de traitement en permettant de lire uniquement les partitions nécessaires. Il permet également de partitionner par lignes.
+
+### Inconvénients
+
+- Moins lisible pour les humains que le format CSV, car il est binaire.
+- Nécessite des bibliothèques spécifiques pour être lu, contrairement au CSV qui peut être ouvert avec n'importe quel éditeur de texte.
+- Peut nécessiter plus de ressources pour la compression et la décompression des données, bien que cela soit généralement compensé par les gains de performance lors de la lecture des données.
+- Peut nécessiter une gestion plus complexe des métadonnées, notamment pour les schémas de données et les types de données complexes.
+- Peut être moins adapté pour les données en temps réel ou les flux de données, où des formats écris en lignes comme le JSON ou le CSV peuvent être préférables.
+
+
+## Produire et lire un fichier Parquet
+
+La production d'un fichier parquet est très simple, il suffit d'utiliser les fonctions du package `arrow` :
+```{r}
+# Pour écrire un fichier :
+arrow::write_parquet(
+  x = mon_data_frame,
+  sink = "chemin/vers/fichier.parquet",
+  compression_level = 22,
+  # Niveau de compression, 22 est le maximum
+  chunk_size = 1000000, 
+  # Taille des morceaux, en nombre de lignes
+)
+
+# Pour le lire : 
+mon_data_frame <- arrow::read_parquet(
+  file = "chemin/vers/fichier.parquet",
+  col_select = c("colonne1", "colonne2"),
+  # Sélection des colonnes à lire
+  as_data_frame = TRUE
+  # Pour lire en tant que tibble
+  )
+```
+
+## Manipuler des fichiers lourd avec DuckDB
+
+La manipulation de fichier se fait généralement en chargeant les données sur la mémoire RAM avant de les traiter. C'est ce que font la plupart des fonctions read_xxx. Mais lorsque les données sont trop importantes, on peut utiliser une autre méthode : manipuler les données directement sur le disque dur.
+
+DuckDB est un système de gestion de base de données (SGBD) en mémoire optimisé pour les requêtes analytiques. Il est conçu pour être rapide, facile à utiliser et intégré de manière transparente dans divers environnements de programmation, y compris R. 
+
+DuckDB fonctionne en quatre étapes : 
+
+- Créer une **connexion** entre R et la base de données
+- Ecrire une **requête** de manipulation plus ou moins complexe
+- Traduire la requête dans le language **SQL**
+- Appliquer la requête
+
+### Connexion à DuckDB
+
+Dans la pratique on ne manipule pas directement le fichier (parquet !) de la base de données. On créé un environnement optimisé par duckDB dans lequel on copie la base de donnée.
+
+``` r
+install.packages("duckdb")
+library(duckdb)
+
+con <- dbConnect(duckdb(), "chemin/vers/mabase.duckdb", read_only = FALSE)
+```
+
+Cette fonction créé un fichier mabase.duckdb (= notre environement) s'il n'existe pas et/ou s'y connecte. C'est à dire qu'elle créé un objet `con`. La base peut être sur notre ordinateur mais aussi sur un server distant. 
+
+### Créer et importer des tables
+
+On peut regarder ce qu'il y a dans cet environement.
+
+``` r
+dbListeTables(con)
+```
+
+Pour l'instant, nous n'avons rien dans notre environement. Il faut importer notre/nos base.s. 
+
+``` r
+# Chargement d'un fichier CSV dans DuckDB
+duckdb_read_csv(
+  conn = con, 
+  name = nom_de_ma_table,
+  files = "chemin/vers/mabase.csv"
+)
+# Chargement d'un fichier parquet
+# Si la taille du fichier le permet (pas trop importante) :
+arrow::to_duckdb(
+  .data = arrow::read_parquet("chemin/vers/mabase.parquet"),
+  conn = con,
+  name = "ma_table",
+  auto_disconnect = FALSE
+)
+# Sinon, on passe par une commande SQL :
+dbExecute(con, "
+  CREATE TABLE ma_table AS 
+  SELECT * FROM read_parquet('chemin/vers/mabase.parquet');")
+
+# Chargement d'objet déjà en mémoire
+duckdb_write_table(
+  conn = con, 
+  name = "ma_table", 
+  value = mon_data_frame
+)
+```
+
+En effet, DuckDB est récent, sa version R n'est pas encore complète et un certaines opérations devront être écrites en SQL directment. Cependant, plusieurs projets très acifs travaillent à l'amélioration de cette interface.
+Nous avons importé notre base de données dans DuckDB. Nous pouvons maintenant la manipuler.
+
+### Manipuler DuckDB
+
+Il existe deux packages utiles pour manipuler les bases duckDB : `dbplyr` et `duckplyr`. Elles utilisent toutes les deux la syntaxe de dplyr !
+
+```{r}
+library(dbplyr)
+
+# Etape 2 : Ecrire la requête
+out <-
+  tbl(con, ma_table) |> 
+  filter(!is.na(X1), !is.na(X17)) |>
+  mutate(X98 = X3 - X1) |>
+  summarize(
+    .by = c(X9, X17),
+    X101 = mean(X8)
+  ) |> 
+  # Etape 3 : Traduire en SQL
+  # duckdb le fait out seul, pour voir la requête :
+  # sql_render()
+  
+  # Etape 4 : Appliquer la requête
+  collect()
+# Le collect demande le chargement en mémoire du résultat de la requête
+```
+
+Une fois toutes les manipulations faites, on se déconnecte de la base. 
+
+``` r
+dbDisconnect(con)
 ```
