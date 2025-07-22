@@ -52,7 +52,7 @@ Le format Parquet est un format de fichier optimisé pour le stockage de donnée
 ## Produire et lire un fichier Parquet
 
 La production d'un fichier parquet est très simple, il suffit d'utiliser les fonctions du package `arrow` :
-```{r}
+```r
 # Pour écrire un fichier :
 arrow::write_parquet(
   x = mon_data_frame,
@@ -144,7 +144,7 @@ Nous avons importé notre base de données dans DuckDB. Nous pouvons maintenant 
 
 Il existe deux packages utiles pour manipuler les bases duckDB : `dbplyr` et `duckplyr`. Elles utilisent toutes les deux la syntaxe de dplyr !
 
-```{r}
+```r
 library(dbplyr)
 
 # Etape 2 : Ecrire la requête
