@@ -1,6 +1,17 @@
 ---
 title: "Format parquet et Duckdb"
-format: html
+format:
+  html:
+    toc: true
+    toc-location: right
+    theme: cosmo
+    css: styles.css
+    code-copy: true
+page-layout: full
+execute:
+  echo: true
+  warning: false
+  message: false
 ---
 
 Parquet est un format de stockage de données, au même titre que les fichiers CSV, RDS, FST, etc. Nous le comparerons au format CSV, car il est très utilisé dans le domaine de la statistique et de l'analyse de données.
