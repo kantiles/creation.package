@@ -1,8 +1,6 @@
 ---
 title: "API"
 format: html
-page-layout: full
-
 ---
 
 ## Introduction

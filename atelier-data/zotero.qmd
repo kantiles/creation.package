@@ -1,8 +1,7 @@
 ---
 title: "zotero"
 format: html
-page-layout: full
-
+editor: visual
 ---
 
 # Zotero : gestion documentaire

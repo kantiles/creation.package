@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>API – Mon site</title>
+<title>api – Mon site</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -157,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -165,27 +165,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#quest-ce-quune-api" id="toc-quest-ce-quune-api" class="nav-link" data-scroll-target="#quest-ce-quune-api">Qu’est-ce qu’une API ?</a></li>
-  </ul></li>
-  <li><a href="#se-connecter-à-lapi-france-travail" id="toc-se-connecter-à-lapi-france-travail" class="nav-link" data-scroll-target="#se-connecter-à-lapi-france-travail">Se connecter à l’API France Travail</a></li>
-  <li><a href="#construction-de-la-requête-avec-httr2" id="toc-construction-de-la-requête-avec-httr2" class="nav-link" data-scroll-target="#construction-de-la-requête-avec-httr2">Construction de la requête avec <code>httr2</code></a></li>
-  <li><a href="#automatisation-de-la-requête" id="toc-automatisation-de-la-requête" class="nav-link" data-scroll-target="#automatisation-de-la-requête">Automatisation de la requête</a></li>
+  <li><a href="#blablabla" id="toc-blablabla" class="nav-link active" data-scroll-target="#blablabla">blablabla</a></li>
+  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running Code</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">API</h1>
+<h1 class="title">api</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
   
@@ -197,163 +192,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Lorsqu’on veut récuopérer des données sur internet, la première question à se poser est :<br>
-<strong>Existe-t-il un service pour ?</strong></p>
-<p>Dans le cas le plus simple une base est disponible en accès libre (data.gouv, insee.fr, etc.). Si les informations ne sont pas disponibles, peut être existe-t-il un service de requête des données : une API (Application Programming Interface).</p>
-<section id="quest-ce-quune-api" class="level3">
-<h3 class="anchored" data-anchor-id="quest-ce-quune-api">Qu’est-ce qu’une API ?</h3>
-<p>Une <strong>API</strong> est une interface « clairement délimitée par laquelle un logiciel offre des services à d’autres logiciels ».</p>
-<ul>
-<li>Chaque API est accompagnée d’une <strong>documentation</strong>. Il est souvent nécessaire de s’y référer pour former des requêtes valables.</li>
-<li>Une API attend des <strong>paramètres précis</strong> qui peuvent varier selon les données que l’on demande.</li>
-<li>Notre exemple : France Travail propose un certain nombre d’API pour des services différents et des clients différents (particuliers, employeurs, etc.). Nous nous intéresserons à l’<a href="https://francetravail.io/produits-partages/catalogue/informations-territoire/documentation#/">API qui donne accès à des informations territoriales recensées par France Travail</a></li>
-</ul>
-<p>Si R n’est pas le meilleur langage pour requêter des API, il existe quelques packages qui facilitent le travail. Nous utiliserons httr2.</p>
+<section id="blablabla" class="level2">
+<h2 class="anchored" data-anchor-id="blablabla">blablabla</h2>
+<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
 </section>
-</section>
-<section id="se-connecter-à-lapi-france-travail" class="level2">
-<h2 class="anchored" data-anchor-id="se-connecter-à-lapi-france-travail">Se connecter à l’API France Travail</h2>
-<p>La procédure y est décrite, il faut donc se connecter et cliquer sur <code>utiliser l’api</code>. On peut alors créer une clé d’identification (= un token).</p>
-<p>Pour éviter d’écrire notre clé d’identification dans notre script qui sera potentiellement partagé ou déposé sur Github, nous pouvons (devons !) la mettre dans le fichier local d’environnement. On appelle ce fichier avec <code>usethis::edit_r_environ()</code>et on entre notre clé ainsi que l’identifiant :</p>
-<blockquote class="blockquote">
-<p>client_ftio_key=“PAR_applitest_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx” mdp_ftio_key=“fafxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx”</p>
-</blockquote>
-<p>On enregistre le fichier et on relance le projet pour que la modification soit prise en compte. On pourra alors accéder à ces clés avec la commande <code>Sys.getenv("client_ftio_key")</code></p>
-</section>
-<section id="construction-de-la-requête-avec-httr2" class="level2">
-<h2 class="anchored" data-anchor-id="construction-de-la-requête-avec-httr2">Construction de la requête avec <code>httr2</code></h2>
-<p>Il nous faut maintenant construire notre requête. La première page de documentation nous donne deux informations importantes pour identifier l’API que l’on va requêter : <strong>Scopes</strong> : api_stats-informations-territoirev1,infosterritoire <strong>Royaume</strong> : /partenaire Gardons les dans un coin pour l’instant. Sur la gauche, plusieurs types d’informations sont disponibles, choisissons Population/ Stats sur la population totale (POP_1). La page nous donne alors la marche à suivre avec toutes les informations nécessaires pour former notre requête et les spécifications facultatives. Il nous faut commencer par indiquer l’url à laquelle on va faire notre demande.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(httr2)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>lien <span class="ot">&lt;-</span> <span class="st">"https://api.francetravail.io/partenaire/stats-informations-territoire/v1/indicateur/stat-population"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">request</span>(lien)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Une requête a deux parties : un header et un body. Le header contient les informations de connexion et les métadonnées (type de contenu par exemple).</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">request</span>(lien) <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_headers</span>(</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Accept =</span> <span class="st">"application/json"</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Authorization =</span> <span class="st">"Bearer -xXXxxXXxxXXxxXXx"</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ici on prend la clé temporaire qui nous est fournie (elle n’est valide que quelques minutes). Ensuite on ajoute les spécifications nécessaires dans la partie « body ».</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">request</span>(lien) <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_headers</span>(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">Accept =</span> <span class="st">"application/json"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Authorization =</span> <span class="st">"Bearer -xXXxxXXxxXXxxXXx"</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_body_json</span>(</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="st">"codeTypeTerritoire"</span> <span class="ot">=</span> <span class="st">"REG"</span>,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      <span class="st">"codeTerritoire"</span> <span class="ot">=</span> <span class="st">"75"</span>,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"codeTypeActivite"</span> <span class="ot">=</span> <span class="st">"CUMUL"</span>,</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"codeActivite"</span> <span class="ot">=</span> <span class="st">"CUMUL"</span>,</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"codeTypePeriode"</span> <span class="ot">=</span> <span class="st">"ANNEE"</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>       )</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>A ce niveau, notre requête est terminée ! Mais elle n’a pas encore été envoyée, nous n’avons fait que la construire. Il nous suffit de rentrer la requête dans la fonction <code>req_perform()</code> qui donne ce que renvoie l’API, donc on met tout ça dans un objet pour le conserver.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_pop_na <span class="ot">&lt;-</span> <span class="fu">request</span>(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  lien</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_headers</span>(</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Accept =</span> <span class="st">"application/json"</span>,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Authorization =</span> <span class="st">"Bearer -xXXxxXXxxXXxxXXx"</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_body_json</span>(</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"codeTypeTerritoire"</span> <span class="ot">=</span> <span class="st">"REG"</span>,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"codeTerritoire"</span> <span class="ot">=</span> <span class="st">"75"</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">"codeTypeActivite"</span> <span class="ot">=</span> <span class="st">"CUMUL"</span>,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"codeActivite"</span> <span class="ot">=</span> <span class="st">"CUMUL"</span>,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>      <span class="st">"codeTypePeriode"</span> <span class="ot">=</span> <span class="st">"ANNEE"</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Nous voilà avec un json que l’on peut transformer en data.frame. Cette étape dépend du format renvoyé par chaque api.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Table_pop_na <span class="ot">&lt;-</span> <span class="fu">map</span>(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">resp_body_json</span>(page),</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  as_tibble</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="automatisation-de-la-requête" class="level2">
-<h2 class="anchored" data-anchor-id="automatisation-de-la-requête">Automatisation de la requête</h2>
-<p>L’intérêt d’une API est de pouvoir requêter des données automatiquement. Utiliser la clé temporaire n’est donc pas le mieux. Nous allons devoir demander régulièrement une clé pour pouvoir requêter.</p>
-<p>Pour cela, il faut nous intéresser à la <strong>cinématique</strong> de France travail. Il s’agit d’une discussion entre plusieurs parties dont l’utilisateur et le service requêté, afin d’avoir l’autorisation de requêter. (<a href="https://francetravail.io/produits-partages/documentation/utilisation-api-france-travail/authorization-code-flow">Un schéma ici</a>)</p>
-<p>Il va donc falloir faire une première requête qui a pour unique objectif de recevoir une clé pour faire notre requête de données. Cette première requête va nous permettre de nous identifier auprès de l’API. La page que nous avons ouvert nous donne précisément ce qu’il faut indiquer.</p>
-<p>L’url de requête doit contenir le royaume (realm) que l’on a récupéré au début.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lien_key <span class="ot">&lt;-</span> <span class="st">"https://francetravail.io/connexion/oauth2/access_token?realm=%2Fpartenaire"</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>requete <span class="ot">&lt;-</span> <span class="fu">request</span>(lien_key)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Ensuite on intègre toutes les informations demandées :</p>
-<ul>
-<li>Nos identifiants que l’on a mis dans l’environnement local</li>
-<li>Le grant_type</li>
-<li>Le scope que l’on a également récupéré au début</li>
-</ul>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>requete <span class="ot">&lt;-</span> <span class="fu">request</span>(</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  lien_key</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_body_form</span>(</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">client_id =</span> <span class="fu">Sys.getenv</span>(<span class="st">"client_ftio_key"</span>),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">client_secret =</span> <span class="fu">Sys.getenv</span>(<span class="st">"mdp_ftio_key"</span>),</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">grant_type =</span> <span class="st">"client_credentials"</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">scope =</span> <span class="st">"api_stats-informations-territoirev1 infosterritoire"</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>On obtient un objet qui contient un token (la fameuse clé). Pour la voir il suffit d’entrer <code>resp_body_json(requete)$access_token</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="fu">request</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  lien</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_auth_bearer_token</span>(<span class="at">token =</span> <span class="fu">resp_body_json</span>(requete)<span class="sc">$</span>access_token) <span class="sc">|&gt;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># equivalent à “Authorization = "Bearer xXXxxXXxxXXxxXXx"” que l’on avait mis dans le header, mais on y a mis la clé que l’on vient de demander.</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_headers</span>(</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Accept =</span> <span class="st">"application/json"</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_body_json</span>(</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"codeTypeTerritoire"</span> <span class="ot">=</span> <span class="st">"REG"</span>,</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"codeTerritoire"</span> <span class="ot">=</span> <span class="st">"75"</span>,</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"codeTypeActivite"</span> <span class="ot">=</span> <span class="st">"CUMUL"</span>,</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"codeActivite"</span> <span class="ot">=</span> <span class="st">"CUMUL"</span>,</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"codeTypePeriode"</span> <span class="ot">=</span> <span class="st">"ANNEE"</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  )  <span class="sc">|&gt;</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>(<span class="at">verbosity =</span> <span class="dv">2</span>)</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># verbosity = 2 permet d’avoir plus d’information sur ce qu’il se passe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>On a donc une demande de clé automatisée (plus besoin de rafraîchir notre navigateur et de copier/coller le bearer xxxx). Maintenant, la clé reste temporaire, il faut relancer la première requête de demande de clé dès qu’elle n’est plus valide. Httr2 permet de le faire aussi automatiquement.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>page <span class="ot">&lt;-</span> <span class="fu">request</span>(lien) <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ce module permet de gérer automatiquement la demande de clé :</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remarquez que la fonction ne fonctionne que pour le grant_type « credential », il existe d’autres fonction pour d’autres types.</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_oauth_client_credentials</span>(</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">client =</span> <span class="fu">oauth_client</span>(</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">id =</span> <span class="fu">Sys.getenv</span>(<span class="st">"client_ftio_key"</span>),</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">secret =</span> <span class="fu">Sys.getenv</span>(<span class="st">"mdp_ftio_key"</span>),</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">token_url =</span> lien_key</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">scope =</span> <span class="st">"api_stats-informations-territoirev1 infosterritoire"</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># On y intègre toutes les informations nécessaires et il se débrouille</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Pour ne faire que 10 requêtes par seconde (maximum autorisé par France Travail), on peut utiliser le throttling :</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_throttle</span>(</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">capacity =</span> <span class="dv">10</span>,</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill_time_s =</span> <span class="dv">1</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_headers</span>(</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">Accept =</span> <span class="st">"application/json"</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_body_json</span>(</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"codeTypeTerritoire"</span> <span class="ot">=</span> <span class="st">"REG"</span>,</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">"codeTerritoire"</span> <span class="ot">=</span> <span class="st">"11"</span>,</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">"codeTypeActivite"</span> <span class="ot">=</span> <span class="st">"MOYENNE"</span>,</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">"codeActivite"</span> <span class="ot">=</span> <span class="st">"MOYENNE"</span>,</span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">"codeTypePeriode"</span> <span class="ot">=</span> <span class="st">"TRIMESTRE"</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">req_perform</span>(<span class="at">verbosity =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="running-code" class="level2">
+<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>You can add options to executable code like this</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
 
 
 </section>
