@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Accueil – Mon site</title>
+<title>Accueil — Support de Formations Kantiles – Kantiles - Supports de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,32 +66,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-
-<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
-
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-
-<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
-
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-
-<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
-
-<script src="site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script>
-
-<script src="site_libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script>
 
 
-
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -102,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Mon site</span>
+    <span class="navbar-title">Kantiles - Supports de Formation</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -111,14 +88,30 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Accueil</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-accueil" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Accueil</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-accueil">    
+        <li>
+    <a class="dropdown-item" href="./index.html">
+ <span class="dropdown-text">Accueil — Support de Formations Kantiles</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./article.html"> 
-<span class="menu-text">Articles</span></a>
+        <li>
+    <a class="dropdown-item" href="./cr_stage.html">
+ <span class="dropdown-text">Stage mars-juillet 2025</span></a>
   </li>  
+        <li class="dropdown-header">Stage mars-juillet 2025</li>
+        <li>
+    <a class="dropdown-item" href="./article.html">
+ <span class="dropdown-text">Article : Kantiles fête ses 10 ans</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./blason.html">
+ <span class="dropdown-text">Blason Kantiles</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./scrap.html"> 
 <span class="menu-text">Scraping</span></a>
@@ -139,6 +132,14 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./zotero.html"> 
 <span class="menu-text">Zotero</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./cartographie.html"> 
+<span class="menu-text">cartographie</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./fichier_moches.html"> 
+<span class="menu-text">fichier moche</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -155,8 +156,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#compte-rendu-de-stage" id="toc-compte-rendu-de-stage" class="nav-link active" data-scroll-target="#compte-rendu-de-stage">Compte Rendu de Stage</a></li>
-  <li><a href="#le-stage-chez-kantiles-cest-aussi" id="toc-le-stage-chez-kantiles-cest-aussi" class="nav-link" data-scroll-target="#le-stage-chez-kantiles-cest-aussi">Le stage chez Kantiles, c’est aussi…</a></li>
+  <li><a href="#bienvenue-sur-le-portail-interne-kantiles" id="toc-bienvenue-sur-le-portail-interne-kantiles" class="nav-link active" data-scroll-target="#bienvenue-sur-le-portail-interne-kantiles">Bienvenue sur le portail interne Kantiles</a>
+  <ul class="collapse">
+  <li><a href="#actualités-récentes" id="toc-actualités-récentes" class="nav-link" data-scroll-target="#actualités-récentes">Actualités récentes</a></li>
+  <li><a href="#formations-ateliers-internes" id="toc-formations-ateliers-internes" class="nav-link" data-scroll-target="#formations-ateliers-internes">Formations &amp; Ateliers internes</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -165,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Accueil</h1>
+<h1 class="title">Accueil — Support de Formations Kantiles</h1>
 </div>
 
 
@@ -182,92 +186,47 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="compte-rendu-de-stage" class="level1">
-<h1>Compte Rendu de Stage</h1>
-<p>Bienvenue sur le site du compte rendu. Utilisez la barre de navigation pour accéder aux différentes parties.</p>
-<p>Ce rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.<br>
-Les sujets abordés sont :</p>
-<ul>
-<li>Recensements et gestion de grandes bases de données</li>
-<li>Utilisation avancée de Quarto et Markdown</li>
-<li>Techniques de scraping en R</li>
-<li>Lecture et traitement de PDF en R</li>
-<li>Organisation documentaire avec Zotero</li>
-</ul>
-<div class="cell">
-<div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-b236b038e69a639e740b" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-b236b038e69a639e740b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[48.8703,49.1949,48.8566,50.4542,43.213,43.64,48.8167],[2.0966,2.4089,2.3522,3.9523,2.3537,5.0971,2.3139],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Marly-le-Roi","Gouvieux","Paris","Mons (Belgique)","Carcassonne","Salon-de-Provence","Montrouge"],null,null,null,["Marly-le-Roi","Gouvieux","Paris","Mons (Belgique)","Carcassonne","Salon-de-Provence","Montrouge"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}],"limits":{"lat":[43.213,50.4542],"lng":[2.0966,5.0971]},"setView":[[47.5,2.5],5.5,[]]},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="le-stage-chez-kantiles-cest-aussi" class="level1">
-<h1>Le stage chez Kantiles, c’est aussi…</h1>
-<div class="columns">
-<div class="column" style="width:50%;">
-<section id="café-consommé" class="level2">
-<h2 class="anchored" data-anchor-id="café-consommé">Café consommé</h2>
-<ul>
-<li>En moyenne 4 tasses / jour / personne<br>
-</li>
-<li>Environ 3 personnes caféinées par jour<br>
-</li>
-<li>Sur 5 mois (~22 jours/mois), ça fait environ <strong>4 x 3 x 22 x 5 = 1 320 tasses</strong></li>
-</ul>
-</section>
-<section id="projets-réalisés" class="level2">
-<h2 class="anchored" data-anchor-id="projets-réalisés">Projets réalisés</h2>
-<ul>
-<li>APEC<br>
-</li>
-<li>DREES<br>
-</li>
-<li>Kids<br>
-</li>
-<li>OPCO<br>
-</li>
-<li>Endomind<br>
-</li>
-<li>…</li>
-</ul>
-</section>
-</div><div class="column" style="width:50%;">
-<section id="outils-méthodes" class="level2">
-<h2 class="anchored" data-anchor-id="outils-méthodes">Outils / Méthodes</h2>
-<ul>
-<li>R, Quarto, Leaflet<br>
-</li>
-<li>Git + GitHub, DuckDB<br>
-</li>
-<li>Scraping, analyses territoriales</li>
-<li>…</li>
-</ul>
-</section>
-<section id="conférences-événements" class="level2">
-<h2 class="anchored" data-anchor-id="conférences-événements">🎙️ Conférences / Événements</h2>
-<ul>
-<li>Déj POS – Impact &amp; mesure<br>
-</li>
-<li>Rencontres R - Université de Mons<br>
-</li>
-<li>Printemps de l’économie<br>
-</li>
-<li>INSEE Pays de la Loire<br>
-</li>
-<li>Colloque PIC - DARES<br>
-</li>
-<li>Journée data &amp; histoire - Sorbonne<br>
-</li>
-<li>Une journée à 21<br>
-</li>
-<li>…</li>
-</ul>
-</section>
-</div>
-</div>
+<section id="bienvenue-sur-le-portail-interne-kantiles" class="level1">
+<h1>Bienvenue sur le portail interne Kantiles</h1>
+<p>Ce site est votre espace centralisé dédié à l’ensemble des ressources et actualités internes du projet Kantiles.<br>
+Il facilite l’accès aux informations essentielles concernant nos activités, nos équipes, ainsi que les supports pédagogiques conçus pour accompagner votre montée en compétences.</p>
+<p>Nous souhaitons faire de ce portail un outil vivant et collaboratif qui favorise la diffusion rapide de l’information, la montée en compétences et la cohésion entre tous les membres du projet.<br>
+N’hésitez pas à revenir régulièrement pour découvrir les nouveautés et participer aux ateliers proposés.</p>
 <hr>
+<section id="actualités-récentes" class="level2">
+<h2 class="anchored" data-anchor-id="actualités-récentes">Actualités récentes</h2>
+<p>Retrouvez ici les dernières nouveautés concernant les stagiaires, les articles publiés, et les événements marquants :</p>
+<ul>
+<li><strong>Derniers stagiaires intégrés :</strong> Emmanuel Herbepin et Victoire Chatain, qui apportent déjà de nouvelles perspectives.<br>
+</li>
+<li><strong>Article phare :</strong> <em>Kantiles fête ses 10 ans</em> — un regard rétrospectif sur notre parcours, nos succès et ambitions futures.<br>
+</li>
+<li><strong>Stage mars-juillet 2025 :</strong> Suivi des projets et réalisations des stagiaires actuels.</li>
+</ul>
+<p>Pour plus de détails, consultez les pages dédiées dans la section <strong>Accueil</strong> du menu.</p>
+<hr>
+</section>
+<section id="formations-ateliers-internes" class="level2">
+<h2 class="anchored" data-anchor-id="formations-ateliers-internes">Formations &amp; Ateliers internes</h2>
+<ul>
+<li><p><strong>Scraping</strong><br>
+Apprenez à automatiser la collecte de données web grâce à R et rvest. Cas d’usage : récupération de données publiques sur des sites d’annuaires, d’administration, ou de presse.</p></li>
+<li><p><strong>API</strong><br>
+Interrogez des bases de données distantes (Open Data, INSEE, etc.) à travers des APIs. Mise en pratique avec <code>httr2</code>, gestion de tokens, pagination, et JSON.</p></li>
+<li><p><strong>Quarto</strong><br>
+Produisez des documents interactifs, reproductibles et élégants avec Quarto : rapports HTML, PDF ou Word, intégration de données, visualisations, citations automatiques, etc.</p></li>
+<li><p><strong>Parquet &amp; DuckDB</strong><br>
+Apprenez à gérer des bases de données volumineuses sans serveur avec des formats colonnes (<code>.parquet</code>) et une base légère (<code>DuckDB</code>). Performances et flexibilité au programme.</p></li>
+<li><p><strong>Zotero</strong><br>
+Gérer efficacement vos bibliographies, articles scientifiques et documents de travail.</p></li>
+</ul>
+<hr>
+<div style="text-align:center; margin-top: 3em;">
+<p><img src="kantiles_blason.png" alt="Blason Kantiles" style="max-width:200px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"></p>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

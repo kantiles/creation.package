@@ -2,13 +2,18 @@ project:
   type: website
 
 website:
-  title: "Mon site"
+  title: "Kantiles - Supports de Formation"
   navbar:
     left:
       - text: "Accueil"
-        file: index.qmd
-      - text: "Articles"
-        file: article.qmd
+        menu:
+          - file: index.qmd
+          - file: cr_stage.qmd
+          - text: "Stage mars-juillet 2025"
+          - text: "Article : Kantiles fête ses 10 ans"
+            file: article.qmd
+          - text: "Blason Kantiles"
+            file: blason.qmd
       - text: "Scraping"
         file: scrap.qmd
       - text: "API"
@@ -19,11 +24,13 @@ website:
         file: parquet.qmd
       - text: "Zotero"
         file: zotero.qmd
+      - text: "cartographie"
+        file: cartographie.qmd
+      - text: "fichier moche"
+        file: fichier_moches.qmd
 
 format:
   html:
     theme: cosmo
     toc: true
-
-
-
+    css: styles.css

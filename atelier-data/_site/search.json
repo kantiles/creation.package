@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Accueil",
     "section": "",
-    "text": "Compte Rendu de Stage\nBienvenue sur le site du compte rendu. Utilisez la barre de navigation pour accéder aux différentes parties.\nCe rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.\nLes sujets abordés sont :\n\nRecensements et gestion de grandes bases de données\nUtilisation avancée de Quarto et Markdown\nTechniques de scraping en R\nLecture et traitement de PDF en R\nOrganisation documentaire avec Zotero"
+    "text": "Bienvenue sur le site du compte rendu. Utilisez la barre de navigation pour accéder aux différentes parties.\nCe rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.\nLes sujets abordés sont :\n\nRecensements et gestion de grandes bases de données\nUtilisation avancée de Quarto et Markdown\nTechniques de scraping en R\nLecture et traitement de PDF en R\nOrganisation documentaire avec Zotero"
   },
   {
     "objectID": "about.html",
@@ -16,9 +16,9 @@
   {
     "objectID": "quarto.html",
     "href": "quarto.html",
-    "title": "Scraping Web",
+    "title": "Quarto et Markdown",
     "section": "",
-    "text": "Le scraping est une méthode d’extraction automatique de données…"
+    "text": "Quarto repose sur Pandoc : convertisseur universel Markdown vers plusieurs formats (HTML, PDF, Word, etc.).\nÉcrit en Rust, moderne et rapide.\nSupporte plusieurs langages dans les chunks : R, Python, Observable JS, etc."
   },
   {
     "objectID": "quarto.html#contexte",
@@ -436,9 +436,9 @@
   {
     "objectID": "api.html",
     "href": "api.html",
-    "title": "api",
+    "title": "API",
     "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+    "text": "Lorsqu’on veut récuopérer des données sur internet, la première question à se poser est :\nExiste-t-il un service pour ?\nDans le cas le plus simple une base est disponible en accès libre (data.gouv, insee.fr, etc.). Si les informations ne sont pas disponibles, peut être existe-t-il un service de requête des données : une API (Application Programming Interface).\n\n\nUne API est une interface « clairement délimitée par laquelle un logiciel offre des services à d’autres logiciels ».\n\nChaque API est accompagnée d’une documentation. Il est souvent nécessaire de s’y référer pour former des requêtes valables.\nUne API attend des paramètres précis qui peuvent varier selon les données que l’on demande.\nNotre exemple : France Travail propose un certain nombre d’API pour des services différents et des clients différents (particuliers, employeurs, etc.). Nous nous intéresserons à l’API qui donne accès à des informations territoriales recensées par France Travail\n\nSi R n’est pas le meilleur langage pour requêter des API, il existe quelques packages qui facilitent le travail. Nous utiliserons httr2."
   },
   {
     "objectID": "api.html#blablabla",
@@ -460,5 +460,169 @@
     "title": "Kantiles fête ses 10 ans",
     "section": "",
     "text": "Par notre correspondant à Gouvieux, édition du 5 juin 2034\n\n\n“Ce qui compte, ce n’est pas de produire plus de données, mais de les faire parler autrement — avec précision, transparence, et dans l’intérêt public. C’est là que se joue notre valeur ajoutée : dans la rigueur des analyses, la diversité des sources, et la lisibilité des résultats.”\n— Thomas Vroylandt, cofondateur de Kantiles\n\n\n\nUne décennie au service des politiques sociales et de l’emploi\nEn 2024, dans leur salon de Gouvieux (Oise), Justine et Thomas Vroylandt fondent Kantiles. Leur intuition est simple : les politiques publiques regorgent de données, mais manquent d’outils pour les transformer en savoirs utiles à l’action.\nLui, statisticien et développeur, pilote les analyses, les modèles, les méthodes. Elle, issue du secteur social, connaît les rouages des institutions, les usages de terrain, les besoins du service public. Ensemble, ils créent une structure atypique : experte, engagée, et ancrée dans la réalité des politiques sociales.\n\nDeux profils complémentaires, une ambition commune : réconcilier expertise statistique, éthique publique et action sociale.\n\n\n\n\nDe Gouvieux à l’international : une trajectoire ascendante\nEn 2025, les premiers stagiaires rejoignent Kantiles. En 2026, des locaux sont ouverts à Paris et Toulouse, pour se rapprocher des territoires et institutions partenaires.\nDès 2027, l’équipe accompagne les premiers dispositifs emploi-insertion et mène des missions pour la DREES, la DARES, plusieurs OPCO, des ministères, mais aussi des collectivités locales, en France et à l’international.\nLes projets se multiplient : analyses d’accès aux droits, mesure d’impact social, évaluation de politiques publiques, développement de tableaux de bord. En 2029, la création du KLab (laboratoire d’innovation sociale par les données) marque un tournant vers une approche plus ouverte, reproductible et collaborative.\n\n“Une donnée n’a de sens que si elle parle à ceux qu’elle concerne. Notre travail, c’est de la reconnecter aux réalités humaines et aux décisions concrètes.”\n— Justine Vroylandt, cofondatrice de Kantiles\n\n\n\n\nLes grandes étapes de Kantiles en un coup d’œil"
+<<<<<<< HEAD
+  },
+  {
+    "objectID": "index.html#café-consommé",
+    "href": "index.html#café-consommé",
+    "title": "Accueil",
+    "section": "Café consommé",
+    "text": "Café consommé\n\nEn moyenne 4 tasses / jour / personne\n\nEnviron 3 personnes caféinées par jour\n\nSur 5 mois (~22 jours/mois), ça fait environ 4 x 3 x 22 x 5 = 1 320 tasses"
+  },
+  {
+    "objectID": "index.html#nombre-dentre-clients",
+    "href": "index.html#nombre-dentre-clients",
+    "title": "Accueil",
+    "section": "Nombre d’entre-clients",
+    "text": "Nombre d’entre-clients\n\nEstimé à 47 interactions différentes\nDu mail flou à la demande d’extraction sur mesure"
+  },
+  {
+    "objectID": "index.html#vitesse-de-réaction",
+    "href": "index.html#vitesse-de-réaction",
+    "title": "Accueil",
+    "section": "Vitesse de réaction",
+    "text": "Vitesse de réaction\n\nIdée → pitch → prototypage : parfois dans la demi-journée\nLe record : une dataviz en 2h chrono 🏎️"
+  },
+  {
+    "objectID": "index.html#projets-réalisés",
+    "href": "index.html#projets-réalisés",
+    "title": "Accueil",
+    "section": "Projets réalisés",
+    "text": "Projets réalisés\n\nAPEC\n\nDREES\n\nKids\n\nOPCO\n\nEndomind\n\n…"
+  },
+  {
+    "objectID": "index.html#outils-méthodes",
+    "href": "index.html#outils-méthodes",
+    "title": "Accueil",
+    "section": "Outils / Méthodes",
+    "text": "Outils / Méthodes\n\nR, Quarto, Leaflet\n\nGit + GitHub, DuckDB\n\nScraping, analyses territoriales\n…"
+  },
+  {
+    "objectID": "index.html#conférences-événements",
+    "href": "index.html#conférences-événements",
+    "title": "Accueil",
+    "section": "Conférences / Événements",
+    "text": "Conférences / Événements\n\nDéj POS – Impact & mesure\n\nRencontres R - Université de Mons\n\nPrintemps de l’économie\n\nINSEE Pays de la Loire\n\nColloque PIC - DARES\n\nJournée data & histoire - Sorbonne\n\nUne journée à 21\n\n…"
+  },
+  {
+    "objectID": "api.html#introduction",
+    "href": "api.html#introduction",
+    "title": "API",
+    "section": "",
+    "text": "Lorsqu’on veut récuopérer des données sur internet, la première question à se poser est :\nExiste-t-il un service pour ?\nDans le cas le plus simple une base est disponible en accès libre (data.gouv, insee.fr, etc.). Si les informations ne sont pas disponibles, peut être existe-t-il un service de requête des données : une API (Application Programming Interface).\n\n\nUne API est une interface « clairement délimitée par laquelle un logiciel offre des services à d’autres logiciels ».\n\nChaque API est accompagnée d’une documentation. Il est souvent nécessaire de s’y référer pour former des requêtes valables.\nUne API attend des paramètres précis qui peuvent varier selon les données que l’on demande.\nNotre exemple : France Travail propose un certain nombre d’API pour des services différents et des clients différents (particuliers, employeurs, etc.). Nous nous intéresserons à l’API qui donne accès à des informations territoriales recensées par France Travail\n\nSi R n’est pas le meilleur langage pour requêter des API, il existe quelques packages qui facilitent le travail. Nous utiliserons httr2."
+  },
+  {
+    "objectID": "api.html#se-connecter-à-lapi-france-travail",
+    "href": "api.html#se-connecter-à-lapi-france-travail",
+    "title": "API",
+    "section": "Se connecter à l’API France Travail",
+    "text": "Se connecter à l’API France Travail\nLa procédure y est décrite, il faut donc se connecter et cliquer sur utiliser l’api. On peut alors créer une clé d’identification (= un token).\nPour éviter d’écrire notre clé d’identification dans notre script qui sera potentiellement partagé ou déposé sur Github, nous pouvons (devons !) la mettre dans le fichier local d’environnement. On appelle ce fichier avec usethis::edit_r_environ()et on entre notre clé ainsi que l’identifiant :\n\nclient_ftio_key=“PAR_applitest_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx” mdp_ftio_key=“fafxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx”\n\nOn enregistre le fichier et on relance le projet pour que la modification soit prise en compte. On pourra alors accéder à ces clés avec la commande Sys.getenv(\"client_ftio_key\")"
+  },
+  {
+    "objectID": "api.html#construction-de-la-requête-avec-httr2",
+    "href": "api.html#construction-de-la-requête-avec-httr2",
+    "title": "API",
+    "section": "Construction de la requête avec httr2",
+    "text": "Construction de la requête avec httr2\nIl nous faut maintenant construire notre requête. La première page de documentation nous donne deux informations importantes pour identifier l’API que l’on va requêter : Scopes : api_stats-informations-territoirev1,infosterritoire Royaume : /partenaire Gardons les dans un coin pour l’instant. Sur la gauche, plusieurs types d’informations sont disponibles, choisissons Population/ Stats sur la population totale (POP_1). La page nous donne alors la marche à suivre avec toutes les informations nécessaires pour former notre requête et les spécifications facultatives. Il nous faut commencer par indiquer l’url à laquelle on va faire notre demande.\nlibrary(httr2)\n\nlien &lt;- \"https://api.francetravail.io/partenaire/stats-informations-territoire/v1/indicateur/stat-population\"\nrequest(lien)\nUne requête a deux parties : un header et un body. Le header contient les informations de connexion et les métadonnées (type de contenu par exemple).\nrequest(lien) |&gt;\n  req_headers(\n    Accept = \"application/json\",\n    Authorization = \"Bearer -xXXxxXXxxXXxxXXx\"\n  )\nIci on prend la clé temporaire qui nous est fournie (elle n’est valide que quelques minutes). Ensuite on ajoute les spécifications nécessaires dans la partie « body ».\nrequest(lien) |&gt;\n  req_headers(\n    Accept = \"application/json\",\n    Authorization = \"Bearer -xXXxxXXxxXXxxXXx\"\n  ) |&gt;\n  req_body_json(\n    list(\n      \"codeTypeTerritoire\" = \"REG\",\n      \"codeTerritoire\" = \"75\",\n      \"codeTypeActivite\" = \"CUMUL\",\n        \"codeActivite\" = \"CUMUL\",\n        \"codeTypePeriode\" = \"ANNEE\"\n       )\n  )\nA ce niveau, notre requête est terminée ! Mais elle n’a pas encore été envoyée, nous n’avons fait que la construire. Il nous suffit de rentrer la requête dans la fonction req_perform() qui donne ce que renvoie l’API, donc on met tout ça dans un objet pour le conserver.\ndf_pop_na &lt;- request(\n  lien\n) |&gt;\n  req_headers(\n    Accept = \"application/json\",\n    Authorization = \"Bearer -xXXxxXXxxXXxxXXx\"\n  ) |&gt;\n  req_body_json(\n    list(\n      \"codeTypeTerritoire\" = \"REG\",\n      \"codeTerritoire\" = \"75\",\n      \"codeTypeActivite\" = \"CUMUL\",\n      \"codeActivite\" = \"CUMUL\",\n      \"codeTypePeriode\" = \"ANNEE\"\n    )\n  ) |&gt;\n  req_perform()\nNous voilà avec un json que l’on peut transformer en data.frame. Cette étape dépend du format renvoyé par chaque api.\nTable_pop_na &lt;- map(\n  resp_body_json(page),\n  as_tibble\n) |&gt;\n  bind_rows()"
+  },
+  {
+    "objectID": "api.html#automatisation-de-la-requête",
+    "href": "api.html#automatisation-de-la-requête",
+    "title": "API",
+    "section": "Automatisation de la requête",
+    "text": "Automatisation de la requête\nL’intérêt d’une API est de pouvoir requêter des données automatiquement. Utiliser la clé temporaire n’est donc pas le mieux. Nous allons devoir demander régulièrement une clé pour pouvoir requêter.\nPour cela, il faut nous intéresser à la cinématique de France travail. Il s’agit d’une discussion entre plusieurs parties dont l’utilisateur et le service requêté, afin d’avoir l’autorisation de requêter. (Un schéma ici)\nIl va donc falloir faire une première requête qui a pour unique objectif de recevoir une clé pour faire notre requête de données. Cette première requête va nous permettre de nous identifier auprès de l’API. La page que nous avons ouvert nous donne précisément ce qu’il faut indiquer.\nL’url de requête doit contenir le royaume (realm) que l’on a récupéré au début.\nlien_key &lt;- \"https://francetravail.io/connexion/oauth2/access_token?realm=%2Fpartenaire\"\nrequete &lt;- request(lien_key)\nEnsuite on intègre toutes les informations demandées :\n\nNos identifiants que l’on a mis dans l’environnement local\nLe grant_type\nLe scope que l’on a également récupéré au début\n\nrequete &lt;- request(\n  lien_key\n) |&gt;\n  req_body_form(\n    client_id = Sys.getenv(\"client_ftio_key\"),\n    client_secret = Sys.getenv(\"mdp_ftio_key\"),\n    grant_type = \"client_credentials\",\n    scope = \"api_stats-informations-territoirev1 infosterritoire\"\n  ) |&gt;\n  req_perform()\nOn obtient un objet qui contient un token (la fameuse clé). Pour la voir il suffit d’entrer resp_body_json(requete)$access_token.\npage &lt;- request(\n  lien\n) |&gt;\n  req_auth_bearer_token(token = resp_body_json(requete)$access_token) |&gt;\n# equivalent à “Authorization = \"Bearer xXXxxXXxxXXxxXXx\"” que l’on avait mis dans le header, mais on y a mis la clé que l’on vient de demander.\n  req_headers(\n    Accept = \"application/json\"\n  ) |&gt;\n  req_body_json(\n    list(\n    \"codeTypeTerritoire\" = \"REG\",\n    \"codeTerritoire\" = \"75\",\n    \"codeTypeActivite\" = \"CUMUL\",\n    \"codeActivite\" = \"CUMUL\",\n    \"codeTypePeriode\" = \"ANNEE\"\n    )\n  )  |&gt;\n  req_perform(verbosity = 2)\n# verbosity = 2 permet d’avoir plus d’information sur ce qu’il se passe\nOn a donc une demande de clé automatisée (plus besoin de rafraîchir notre navigateur et de copier/coller le bearer xxxx). Maintenant, la clé reste temporaire, il faut relancer la première requête de demande de clé dès qu’elle n’est plus valide. Httr2 permet de le faire aussi automatiquement.\npage &lt;- request(lien) |&gt;\n \n# Ce module permet de gérer automatiquement la demande de clé :\n# Remarquez que la fonction ne fonctionne que pour le grant_type « credential », il existe d’autres fonction pour d’autres types.\n\n  req_oauth_client_credentials(\n    client = oauth_client(\n    id = Sys.getenv(\"client_ftio_key\"),\n    secret = Sys.getenv(\"mdp_ftio_key\"),\n    token_url = lien_key\n    ),\n    scope = \"api_stats-informations-territoirev1 infosterritoire\"\n  ) |&gt;\n# On y intègre toutes les informations nécessaires et il se débrouille\n \n# Pour ne faire que 10 requêtes par seconde (maximum autorisé par France Travail), on peut utiliser le throttling :\n  req_throttle(\n    capacity = 10,\n    fill_time_s = 1\n  ) |&gt;\n \n  req_headers(\n    Accept = \"application/json\"\n  ) |&gt;\n  req_body_json(\n    list(\n    \"codeTypeTerritoire\" = \"REG\",\n    \"codeTerritoire\" = \"11\",\n    \"codeTypeActivite\" = \"MOYENNE\",\n    \"codeActivite\" = \"MOYENNE\",\n    \"codeTypePeriode\" = \"TRIMESTRE\"\n    )\n  ) |&gt;\n  req_perform(verbosity = 2)"
+  },
+  {
+    "objectID": "quarto.html#vue-générale",
+    "href": "quarto.html#vue-générale",
+    "title": "Quarto et Markdown",
+    "section": "",
+    "text": "Quarto repose sur Pandoc : convertisseur universel Markdown vers plusieurs formats (HTML, PDF, Word, etc.).\nÉcrit en Rust, moderne et rapide.\nSupporte plusieurs langages dans les chunks : R, Python, Observable JS, etc."
+  },
+  {
+    "objectID": "quarto.html#workflow",
+    "href": "quarto.html#workflow",
+    "title": "Quarto et Markdown",
+    "section": "Workflow",
+    "text": "Workflow\n\nQuarto exécute les chunks de code, produit un AST (Abstract Syntax Tree).\nPandoc convertit cet AST en documents finaux (HTML, PDF, etc.)."
+  },
+  {
+    "objectID": "quarto.html#comparaison-avec-r-markdown",
+    "href": "quarto.html#comparaison-avec-r-markdown",
+    "title": "Quarto et Markdown",
+    "section": "Comparaison avec R Markdown",
+    "text": "Comparaison avec R Markdown\n\n\n\n\n\n\n\n\nFonctionnalité\nR Markdown\nQuarto\n\n\n\n\nLangage\nR + Markdown\nRust + Markdown\n\n\nSupport chunks\nR uniquement\nR, Python, JS, autres\n\n\nParamétrage YAML\nBasique\nAvancé\n\n\nSorties\nHTML, PDF, Word\nHTML, PDF, Word, et plus"
+  },
+  {
+    "objectID": "quarto.html#création-pdf",
+    "href": "quarto.html#création-pdf",
+    "title": "Quarto et Markdown",
+    "section": "Création PDF",
+    "text": "Création PDF\n\nPlusieurs méthodes :\n\nLaTeX classique (fiable, mais lourd parfois)\nTypst (nouveau langage, plus rapide)\nPageJS (génération PDF via Chrome)\nImpression design via HTML/Figma"
+  },
+  {
+    "objectID": "quarto.html#exemple-de-chunk-r",
+    "href": "quarto.html#exemple-de-chunk-r",
+    "title": "Quarto et Markdown",
+    "section": "Exemple de chunk R",
+    "text": "Exemple de chunk R\n\n#library(readxl)\n#tables &lt;- read_excel(\"tables_exported.xlsx\")\n#head(tables)"
+  },
+  {
+    "objectID": "quarto.html#latex",
+    "href": "quarto.html#latex",
+    "title": "Quarto et Markdown",
+    "section": "1. LaTeX",
+    "text": "1. LaTeX\n\nMoteur historique, très utilisé en économie, physique, et sciences formelles.\nComplexe à utiliser, peu flexible graphiquement.\nIntégration dans Quarto via engine: pdf avec pdf-engine: lualatex.\nPermet une très grande personnalisation, mais au prix d’une courbe d’apprentissage raide."
+  },
+  {
+    "objectID": "quarto.html#typst",
+    "href": "quarto.html#typst",
+    "title": "Quarto et Markdown",
+    "section": "2. Typst",
+    "text": "2. Typst\n\nÉcrit en Rust, pensé comme une alternative rapide et moderne à LaTeX.\nSyntaxe simple, compilation ultra-rapide (quelques ms).\nIntégré directement dans Quarto via engine: typst.\nEncore jeune (2 ans), mais très prometteur.\nParfait pour des cas d’usage type rapport régulier, document structuré, avec un design simple.\n\nTypst est particulièrement adapté aux workflows automatisés en R ou Python, pour produire rapidement des documents PDF paramétrés."
+  },
+  {
+    "objectID": "quarto.html#css-paged-media-paged.js-weasyprint-pdf-raptor",
+    "href": "quarto.html#css-paged-media-paged.js-weasyprint-pdf-raptor",
+    "title": "Quarto et Markdown",
+    "section": "3. CSS Paged Media (paged.js, weasyprint, pdf-raptor)",
+    "text": "3. CSS Paged Media (paged.js, weasyprint, pdf-raptor)\n\nGénère d’abord un HTML avec CSS.\nUtilise des standards CSS Media Queries + des polyfills pour structurer les pages comme des documents imprimables.\nCompatible avec Chrome/Edge, et utilisable via impression PDF.\nExemples :\n\npaged.js\nweasyprint (en Python)\npdf-raptor (service web de conversion)"
+  },
+  {
+    "objectID": "quarto.html#génération-manuelle-via-figma-ou-html-pur",
+    "href": "quarto.html#génération-manuelle-via-figma-ou-html-pur",
+    "title": "Quarto et Markdown",
+    "section": "4. Génération manuelle via Figma ou HTML pur",
+    "text": "4. Génération manuelle via Figma ou HTML pur\n\nUtilisé pour un design sur-mesure pixel-perfect.\nGénère le HTML ou maquette à la main, ou via outils comme Figma.\nBypasse entièrement Pandoc ou Quarto.\nNécessite plus de maintenance, mais offre un contrôle absolu."
+  },
+  {
+    "objectID": "quarto.html#paramètres-définis-dans-len-tête-yaml",
+    "href": "quarto.html#paramètres-définis-dans-len-tête-yaml",
+    "title": "Quarto et Markdown",
+    "section": "Paramètres définis dans l’en-tête YAML",
+    "text": "Paramètres définis dans l’en-tête YAML\nparams:\n  country: \"Somalia\"\n  sector: \"Éducation\"\n  unit: \"Région\""
+  },
+  {
+    "objectID": "quarto.html#réutilisation-dans-le-texte",
+    "href": "quarto.html#réutilisation-dans-le-texte",
+    "title": "Quarto et Markdown",
+    "section": "Réutilisation dans le texte",
+    "text": "Réutilisation dans le texte\nLes paramètres définis dans l’en-tête YAML peuvent être appelés dynamiquement avec params$… .\n\n# glue(\"Ce rapport analyse le secteur **{params$sector}** pour le pays **{params$country}**, à l’échelle **{params$unit}**.\")"
+  },
+  {
+    "objectID": "quarto.html#bonnes-pratiques-pour-un-rapport-quarto-paramétré",
+    "href": "quarto.html#bonnes-pratiques-pour-un-rapport-quarto-paramétré",
+    "title": "Quarto et Markdown",
+    "section": "Bonnes pratiques pour un rapport Quarto paramétré",
+    "text": "Bonnes pratiques pour un rapport Quarto paramétré\n\nRecommandé\n\nUtiliser des blocs logiques bien identifiés (#, ##, ###)\nGarder une structure constante (même ordre, mêmes titres)\nUtiliser des paramètres dynamiques pour l’automatisation\nAjouter des graphiques avec ggplot2 ou plotly\nSoigner l’affichage des nombres (arrondis, formatés)\nGérer les valeurs manquantes ou aberrantes\n\n\n\nÀ éviter\n\nTrop de colonnes dans les mises en page (complexe avec Pandoc)\nDes titres qui changent selon les paramètres (illisible à la lecture)\nNe pas tester les cas extrêmes (ex. : 0 valeur, NA, territoire inexistant)\nTrop de verbosité automatique (“Le pays {x} a… le pays {y} a…”)"
+  },
+  {
+    "objectID": "quarto.html#styliser-avec-css-pour-html",
+    "href": "quarto.html#styliser-avec-css-pour-html",
+    "title": "Quarto et Markdown",
+    "section": "Styliser avec CSS (pour HTML)",
+    "text": "Styliser avec CSS (pour HTML)\n\nFichier : styles.css\n:root {\n  --main-color: #0077b6;\n  --accent-color: #48cae4;\n  --font-body: 'Inter', sans-serif;\n}\n\nbody {\n  font-family: var(--font-body);\n  color: #222;\n  line-height: 1.6;\n}\n\nh1, h2, h3 {\n  color: var(--main-color);\n  margin-top: 1.5em;\n}\n\nstrong {\n  color: var(--accent-color);\n}"
+=======
+>>>>>>> 84ee6286cd8717f759c3ddf308828a8c48925c08
   }
 ]
