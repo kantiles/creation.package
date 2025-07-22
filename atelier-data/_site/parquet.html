@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Parquet – Kantiles - Supports de Formation</title>
+<title>Format parquet et Duckdb – Kantiles - Supports de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-accueil">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Accueil — Projets Kantiles</span></a>
+ <span class="dropdown-text">Accueil — Support de Formations Kantiles</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./cr_stage.html">
@@ -166,6 +166,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./zotero.html"> 
 <span class="menu-text">Zotero</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./cartographie.html"> 
+<span class="menu-text">cartographie</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./fichier_moches.html"> 
+<span class="menu-text">fichier moche</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -182,10 +190,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#description-des-fichiers" id="toc-description-des-fichiers" class="nav-link active" data-scroll-target="#description-des-fichiers">Description des fichiers</a></li>
-  <li><a href="#formats-de-diffusion" id="toc-formats-de-diffusion" class="nav-link" data-scroll-target="#formats-de-diffusion">Formats de diffusion</a></li>
-  <li><a href="#outils-pour-manipuler" id="toc-outils-pour-manipuler" class="nav-link" data-scroll-target="#outils-pour-manipuler">Outils pour manipuler</a></li>
-  <li><a href="#import-et-manipulation-en-r" id="toc-import-et-manipulation-en-r" class="nav-link" data-scroll-target="#import-et-manipulation-en-r">Import et manipulation en R</a></li>
+  <li><a href="#le-format-csv" id="toc-le-format-csv" class="nav-link active" data-scroll-target="#le-format-csv">Le format CSV</a>
+  <ul class="collapse">
+  <li><a href="#avantages" id="toc-avantages" class="nav-link" data-scroll-target="#avantages">Avantages</a></li>
+  <li><a href="#inconvénients" id="toc-inconvénients" class="nav-link" data-scroll-target="#inconvénients">Inconvénients</a></li>
+  </ul></li>
+  <li><a href="#le-format-parquet" id="toc-le-format-parquet" class="nav-link" data-scroll-target="#le-format-parquet">Le format Parquet</a>
+  <ul class="collapse">
+  <li><a href="#avantages-1" id="toc-avantages-1" class="nav-link" data-scroll-target="#avantages-1">Avantages</a></li>
+  <li><a href="#inconvénients-1" id="toc-inconvénients-1" class="nav-link" data-scroll-target="#inconvénients-1">Inconvénients</a></li>
+  </ul></li>
+  <li><a href="#produire-et-lire-un-fichier-parquet" id="toc-produire-et-lire-un-fichier-parquet" class="nav-link" data-scroll-target="#produire-et-lire-un-fichier-parquet">Produire et lire un fichier Parquet</a></li>
+  <li><a href="#manipuler-des-fichiers-lourd-avec-duckdb" id="toc-manipuler-des-fichiers-lourd-avec-duckdb" class="nav-link" data-scroll-target="#manipuler-des-fichiers-lourd-avec-duckdb">Manipuler des fichiers lourd avec DuckDB</a>
+  <ul class="collapse">
+  <li><a href="#connexion-à-duckdb" id="toc-connexion-à-duckdb" class="nav-link" data-scroll-target="#connexion-à-duckdb">Connexion à DuckDB</a></li>
+  <li><a href="#créer-et-importer-des-tables" id="toc-créer-et-importer-des-tables" class="nav-link" data-scroll-target="#créer-et-importer-des-tables">Créer et importer des tables</a></li>
+  <li><a href="#manipuler-duckdb" id="toc-manipuler-duckdb" class="nav-link" data-scroll-target="#manipuler-duckdb">Manipuler DuckDB</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -194,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Parquet</h1>
+<h1 class="title">Format parquet et Duckdb</h1>
 </div>
 
 
@@ -211,43 +232,158 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="description-des-fichiers" class="level2">
-<h2 class="anchored" data-anchor-id="description-des-fichiers">Description des fichiers</h2>
+<p>Parquet est un format de stockage de données, au même titre que les fichiers CSV, RDS, FST, etc. Nous le comparerons au format CSV, car il est très utilisé dans le domaine de la statistique et de l’analyse de données.</p>
+<section id="le-format-csv" class="level2">
+<h2 class="anchored" data-anchor-id="le-format-csv">Le format CSV</h2>
+<p>Le format CSV (<em>Comma-Separated Values</em>) est un format de fichier texte utilisé pour stocker des données tabulaires. Chaque ligne du fichier représente une ligne de données, et les valeurs sont séparées par des virgules (ou d’autres délimiteurs comme des points-virgules). Il n’est pas compressé par défaut.</p>
+<section id="avantages" class="level3">
+<h3 class="anchored" data-anchor-id="avantages">Avantages</h3>
 <ul>
-<li>Deux fichiers principaux : <code>ointerrogationsprincipales</code> et un fichier complémentaire.</li>
-<li>Non diffusés directement au public, servent à produire plusieurs fichiers diffusés.</li>
-<li>Données au niveau des cantons, villes, avec parfois localisation précise (unité Iris).</li>
-<li>Utilisation pour mobilités professionnelles et scolaires.</li>
+<li><strong>Simplicité universelle</strong> : facile à lire, modifier, exporter</li>
+<li><strong>Format texte brut</strong> : lisible et facile à comprendre</li>
+<li><strong>Large compatibilité</strong> : supporté par de nombreux outils et langages de programmation (Excel, R, Python, etc.)</li>
+<li><strong>Lisible</strong> en ligne de commande, navigateur, éditeur</li>
 </ul>
 </section>
-<section id="formats-de-diffusion" class="level2">
-<h2 class="anchored" data-anchor-id="formats-de-diffusion">Formats de diffusion</h2>
+<section id="inconvénients" class="level3">
+<h3 class="anchored" data-anchor-id="inconvénients">Inconvénients</h3>
 <ul>
-<li>Fichiers diffusés en CSV et Parquet (format optimisé, indexé, rapide).</li>
-<li>Parquet de plus en plus utilisé en statistique.</li>
-<li>Données lourdes : environ 26 millions de lignes par fichier.</li>
-<li>Une ligne coûte en ressources ~3 francs (évaluation de coût traitement).</li>
+<li>Pas de compression intégrée, ce qui peut rendre les fichiers volumineux.</li>
+<li>Pas de métadonnées, ce qui rend difficile la compréhension des données sans documentation externe.</li>
+<li>Peut être sujet à des erreurs de formatage, notamment avec les valeurs contenant des virgules ou des guillemets.</li>
+<li>Peut être difficile à manipuler pour les grandes quantités de données, car il n’est pas optimisé pour les performances.</li>
+<li>Necessite de lire toutes les colonnes.</li>
+<li>Pas de typage des données, tout est du texte.</li>
 </ul>
 </section>
-<section id="outils-pour-manipuler" class="level2">
-<h2 class="anchored" data-anchor-id="outils-pour-manipuler">Outils pour manipuler</h2>
+</section>
+<section id="le-format-parquet" class="level2">
+<h2 class="anchored" data-anchor-id="le-format-parquet">Le format Parquet</h2>
+<p>Le format Parquet est un format de fichier optimisé pour le stockage de données en colonnes, développé par Apache. Il est particulièrement adapté aux grandes quantités de données.</p>
+<section id="avantages-1" class="level3">
+<h3 class="anchored" data-anchor-id="avantages-1">Avantages</h3>
 <ul>
-<li>Dugdibby : base de données sur serveur permettant lecture et tri.</li>
-<li>Installation locale + serveur distant.</li>
-<li>Base orientée colonnes, optimisée pour analyse.</li>
+<li><strong>Efficacité de stockage</strong> : Parquet stock les données en binaire, ce qui est plus efficace que le texte brut du CSV.</li>
+<li><strong>Compression intégrée</strong> : Parquet compresse les données de manière efficace, ce qui réduit la taille des fichiers et améliore les performances de lecture.</li>
+<li><strong>Stockage en colonnes</strong> : Contrairement au format CSV qui stocke les données en lignes, Parquet stocke les données en colonnes, ce qui permet de ne lire que les colonnes nécessaires lors de l’analyse, réduisant ainsi le temps de traitement et la mémoire utilisée.</li>
+<li><strong>Interopérabilité</strong> : Il est conçu pour être indépendant d’un logiciel, il peut être lus par de nombreux langages de programmation et outils d’analyse de données (R, Python, C++, JavaScript, Java, etc.).</li>
+<li><strong>Indexation</strong> : Parquet permet une indexation efficace des données, ce qui améliore les performances de requêtes et de filtrage.</li>
+<li><strong>Typage des variables</strong> : Parquet inclut des métadonnées sur les schémas de données qui incluent les types des variables, ce qui facilite la compréhension et la gestion des données et évite les erreurs de conversion de types.</li>
+<li><strong>Optimisé pour les systèmes distribués</strong> : Parquet est conçu pour être utilisé dans des environnements distribués, ce qui le rend adapté aux systèmes de traitement de données massives comme DuckDB.</li>
+<li><strong>Support des partitions</strong> : Parquet permet de partitionner les données selon les usages prévus, ce qui améliore les performances de lecture et de traitement en permettant de lire uniquement les partitions nécessaires. Il permet également de partitionner par lignes.</li>
 </ul>
 </section>
-<section id="import-et-manipulation-en-r" class="level2">
-<h2 class="anchored" data-anchor-id="import-et-manipulation-en-r">Import et manipulation en R</h2>
+<section id="inconvénients-1" class="level3">
+<h3 class="anchored" data-anchor-id="inconvénients-1">Inconvénients</h3>
 <ul>
-<li>Utilisation de fonctions <code>glue()</code> pour assembler chaînes de caractères, notamment pour importer.</li>
-<li>Utilisation de <code>here::here()</code> pour gérer chemins absolus et relatifs, éviter erreurs liées aux chemins.</li>
-<li>Exemple d’import rapide :</li>
+<li>Moins lisible pour les humains que le format CSV, car il est binaire.</li>
+<li>Nécessite des bibliothèques spécifiques pour être lu, contrairement au CSV qui peut être ouvert avec n’importe quel éditeur de texte.</li>
+<li>Peut nécessiter plus de ressources pour la compression et la décompression des données, bien que cela soit généralement compensé par les gains de performance lors de la lecture des données.</li>
+<li>Peut nécessiter une gestion plus complexe des métadonnées, notamment pour les schémas de données et les types de données complexes.</li>
+<li>Peut être moins adapté pour les données en temps réel ou les flux de données, où des formats écris en lignes comme le JSON ou le CSV peuvent être préférables.</li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="fu">here</span>(<span class="st">"data"</span>, <span class="st">"recensement.parquet"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="produire-et-lire-un-fichier-parquet" class="level2">
+<h2 class="anchored" data-anchor-id="produire-et-lire-un-fichier-parquet">Produire et lire un fichier Parquet</h2>
+<p>La production d’un fichier parquet est très simple, il suffit d’utiliser les fonctions du package <code>arrow</code> :</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pour écrire un fichier :</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>arrow<span class="sc">::</span><span class="fu">write_parquet</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> mon_data_frame,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sink =</span> <span class="st">"chemin/vers/fichier.parquet"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">compression_level =</span> <span class="dv">22</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Niveau de compression, 22 est le maximum</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">chunk_size =</span> <span class="dv">1000000</span>, </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Taille des morceaux, en nombre de lignes</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Pour le lire : </span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>mon_data_frame <span class="ot">&lt;-</span> arrow<span class="sc">::</span><span class="fu">read_parquet</span>(</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">"chemin/vers/fichier.parquet"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_select =</span> <span class="fu">c</span>(<span class="st">"colonne1"</span>, <span class="st">"colonne2"</span>),</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sélection des colonnes à lire</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">as_data_frame =</span> <span class="cn">TRUE</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Pour lire en tant que tibble</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="manipuler-des-fichiers-lourd-avec-duckdb" class="level2">
+<h2 class="anchored" data-anchor-id="manipuler-des-fichiers-lourd-avec-duckdb">Manipuler des fichiers lourd avec DuckDB</h2>
+<p>La manipulation de fichier se fait généralement en chargeant les données sur la mémoire RAM avant de les traiter. C’est ce que font la plupart des fonctions read_xxx. Mais lorsque les données sont trop importantes, on peut utiliser une autre méthode : manipuler les données directement sur le disque dur.</p>
+<p>DuckDB est un système de gestion de base de données (SGBD) en mémoire optimisé pour les requêtes analytiques. Il est conçu pour être rapide, facile à utiliser et intégré de manière transparente dans divers environnements de programmation, y compris R.</p>
+<p>DuckDB fonctionne en quatre étapes :</p>
+<ul>
+<li>Créer une <strong>connexion</strong> entre R et la base de données</li>
+<li>Ecrire une <strong>requête</strong> de manipulation plus ou moins complexe</li>
+<li>Traduire la requête dans le language <strong>SQL</strong></li>
+<li>Appliquer la requête</li>
+</ul>
+<section id="connexion-à-duckdb" class="level3">
+<h3 class="anchored" data-anchor-id="connexion-à-duckdb">Connexion à DuckDB</h3>
+<p>Dans la pratique on ne manipule pas directement le fichier (parquet !) de la base de données. On créé un environnement optimisé par duckDB dans lequel on copie la base de donnée.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"duckdb"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(duckdb)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">duckdb</span>(), <span class="st">"chemin/vers/mabase.duckdb"</span>, <span class="at">read_only =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Cette fonction créé un fichier mabase.duckdb (= notre environement) s’il n’existe pas et/ou s’y connecte. C’est à dire qu’elle créé un objet <code>con</code>. La base peut être sur notre ordinateur mais aussi sur un server distant.</p>
+</section>
+<section id="créer-et-importer-des-tables" class="level3">
+<h3 class="anchored" data-anchor-id="créer-et-importer-des-tables">Créer et importer des tables</h3>
+<p>On peut regarder ce qu’il y a dans cet environement.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListeTables</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Pour l’instant, nous n’avons rien dans notre environement. Il faut importer notre/nos base.s.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Chargement d'un fichier CSV dans DuckDB</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">duckdb_read_csv</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">conn =</span> con, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> nom_de_ma_table,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">files =</span> <span class="st">"chemin/vers/mabase.csv"</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Chargement d'un fichier parquet</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Si la taille du fichier le permet (pas trop importante) :</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>arrow<span class="sc">::</span><span class="fu">to_duckdb</span>(</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">.data =</span> arrow<span class="sc">::</span><span class="fu">read_parquet</span>(<span class="st">"chemin/vers/mabase.parquet"</span>),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">conn =</span> con,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"ma_table"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">auto_disconnect =</span> <span class="cn">FALSE</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Sinon, on passe par une commande SQL :</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con, <span class="st">"</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="st">  CREATE TABLE ma_table AS </span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT * FROM read_parquet('chemin/vers/mabase.parquet');"</span>)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Chargement d'objet déjà en mémoire</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">duckdb_write_table</span>(</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">conn =</span> con, </span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">"ma_table"</span>, </span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> mon_data_frame</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En effet, DuckDB est récent, sa version R n’est pas encore complète et un certaines opérations devront être écrites en SQL directment. Cependant, plusieurs projets très acifs travaillent à l’amélioration de cette interface. Nous avons importé notre base de données dans DuckDB. Nous pouvons maintenant la manipuler.</p>
+</section>
+<section id="manipuler-duckdb" class="level3">
+<h3 class="anchored" data-anchor-id="manipuler-duckdb">Manipuler DuckDB</h3>
+<p>Il existe deux packages utiles pour manipuler les bases duckDB : <code>dbplyr</code> et <code>duckplyr</code>. Elles utilisent toutes les deux la syntaxe de dplyr !</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Etape 2 : Ecrire la requête</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl</span>(con, ma_table) <span class="sc">|&gt;</span> </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(X1), <span class="sc">!</span><span class="fu">is.na</span>(X17)) <span class="sc">|&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">X98 =</span> X3 <span class="sc">-</span> X1) <span class="sc">|&gt;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(X9, X17),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">X101 =</span> <span class="fu">mean</span>(X8)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Etape 3 : Traduire en SQL</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># duckdb le fait out seul, pour voir la requête :</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># sql_render()</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Etape 4 : Appliquer la requête</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">collect</span>()</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Le collect demande le chargement en mémoire du résultat de la requête</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Une fois toutes les manipulations faites, on se déconnecte de la base.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

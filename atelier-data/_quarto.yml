@@ -8,12 +8,13 @@ website:
       - text: "Accueil"
         menu:
           - file: index.qmd
-          - file: cr_stage.qmd
           - text: "Stage mars-juillet 2025"
+            file: cr_stage.qmd
           - text: "Article : Kantiles fête ses 10 ans"
             file: article.qmd
           - text: "Blason Kantiles"
             file: blason.qmd
+
       - text: "Scraping"
         file: scrap.qmd
       - text: "API"
@@ -24,9 +25,9 @@ website:
         file: parquet.qmd
       - text: "Zotero"
         file: zotero.qmd
-      - text: "cartographie"
+      - text: "Cartographie"
         file: cartographie.qmd
-      - text: "fichier moche"
+      - text: "Format"
         file: fichier_moches.qmd
 
 format:
