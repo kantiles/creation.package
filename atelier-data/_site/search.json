@@ -460,6 +460,7 @@
     "title": "Kantiles fête ses 10 ans",
     "section": "",
     "text": "Par notre correspondant à Gouvieux, édition du 5 juin 2034\n\n\n“Ce qui compte, ce n’est pas de produire plus de données, mais de les faire parler autrement — avec précision, transparence, et dans l’intérêt public. C’est là que se joue notre valeur ajoutée : dans la rigueur des analyses, la diversité des sources, et la lisibilité des résultats.”\n— Thomas Vroylandt, cofondateur de Kantiles\n\n\n\nUne décennie au service des politiques sociales et de l’emploi\nEn 2024, dans leur salon de Gouvieux (Oise), Justine et Thomas Vroylandt fondent Kantiles. Leur intuition est simple : les politiques publiques regorgent de données, mais manquent d’outils pour les transformer en savoirs utiles à l’action.\nLui, statisticien et développeur, pilote les analyses, les modèles, les méthodes. Elle, issue du secteur social, connaît les rouages des institutions, les usages de terrain, les besoins du service public. Ensemble, ils créent une structure atypique : experte, engagée, et ancrée dans la réalité des politiques sociales.\n\nDeux profils complémentaires, une ambition commune : réconcilier expertise statistique, éthique publique et action sociale.\n\n\n\n\nDe Gouvieux à l’international : une trajectoire ascendante\nEn 2025, les premiers stagiaires rejoignent Kantiles. En 2026, des locaux sont ouverts à Paris et Toulouse, pour se rapprocher des territoires et institutions partenaires.\nDès 2027, l’équipe accompagne les premiers dispositifs emploi-insertion et mène des missions pour la DREES, la DARES, plusieurs OPCO, des ministères, mais aussi des collectivités locales, en France et à l’international.\nLes projets se multiplient : analyses d’accès aux droits, mesure d’impact social, évaluation de politiques publiques, développement de tableaux de bord. En 2029, la création du KLab (laboratoire d’innovation sociale par les données) marque un tournant vers une approche plus ouverte, reproductible et collaborative.\n\n“Une donnée n’a de sens que si elle parle à ceux qu’elle concerne. Notre travail, c’est de la reconnecter aux réalités humaines et aux décisions concrètes.”\n— Justine Vroylandt, cofondatrice de Kantiles\n\n\n\n\nLes grandes étapes de Kantiles en un coup d’œil"
+<<<<<<< HEAD
   },
   {
     "objectID": "index.html#café-consommé",
@@ -621,5 +622,7 @@
     "title": "Quarto et Markdown",
     "section": "Styliser avec CSS (pour HTML)",
     "text": "Styliser avec CSS (pour HTML)\n\nFichier : styles.css\n:root {\n  --main-color: #0077b6;\n  --accent-color: #48cae4;\n  --font-body: 'Inter', sans-serif;\n}\n\nbody {\n  font-family: var(--font-body);\n  color: #222;\n  line-height: 1.6;\n}\n\nh1, h2, h3 {\n  color: var(--main-color);\n  margin-top: 1.5em;\n}\n\nstrong {\n  color: var(--accent-color);\n}"
+=======
+>>>>>>> 84ee6286cd8717f759c3ddf308828a8c48925c08
   }
 ]

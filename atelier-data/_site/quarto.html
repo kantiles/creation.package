@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Scraping Web – Mon site</title>
+<title>Quarto et Markdown – Kantiles - Supports de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -102,6 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -112,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Mon site</span>
+    <span class="navbar-title">Kantiles - Supports de Formation</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -121,14 +122,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Accueil</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-accueil" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Accueil</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-accueil">    
+        <li>
+    <a class="dropdown-item" href="./index.html">
+ <span class="dropdown-text">Accueil — Projets Kantiles</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./article.html"> 
-<span class="menu-text">Articles</span></a>
+        <li>
+    <a class="dropdown-item" href="./cr_stage.html">
+ <span class="dropdown-text">Stage mars-juillet 2025</span></a>
   </li>  
+        <li class="dropdown-header">Stage mars-juillet 2025</li>
+        <li>
+    <a class="dropdown-item" href="./article.html">
+ <span class="dropdown-text">Article : Kantiles fête ses 10 ans</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./blason.html">
+ <span class="dropdown-text">Blason Kantiles</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./scrap.html"> 
 <span class="menu-text">Scraping</span></a>
@@ -157,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -165,22 +182,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#contexte" id="toc-contexte" class="nav-link active" data-scroll-target="#contexte">Contexte</a></li>
-  <li><a href="#exemple-de-code" id="toc-exemple-de-code" class="nav-link" data-scroll-target="#exemple-de-code">Exemple de code</a></li>
+  <li><a href="#vue-générale" id="toc-vue-générale" class="nav-link active" data-scroll-target="#vue-générale">Vue générale</a></li>
+  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
+  <li><a href="#comparaison-avec-r-markdown" id="toc-comparaison-avec-r-markdown" class="nav-link" data-scroll-target="#comparaison-avec-r-markdown">Comparaison avec R Markdown</a></li>
+  <li><a href="#création-pdf" id="toc-création-pdf" class="nav-link" data-scroll-target="#création-pdf">Création PDF</a></li>
+  <li><a href="#exemple-de-chunk-r" id="toc-exemple-de-chunk-r" class="nav-link" data-scroll-target="#exemple-de-chunk-r">Exemple de chunk R</a></li>
+  <li><a href="#quatre-manières-de-générer-un-pdf" id="toc-quatre-manières-de-générer-un-pdf" class="nav-link" data-scroll-target="#quatre-manières-de-générer-un-pdf">Quatre manières de générer un PDF</a>
+  <ul class="collapse">
+  <li><a href="#latex" id="toc-latex" class="nav-link" data-scroll-target="#latex">1. LaTeX</a></li>
+  <li><a href="#typst" id="toc-typst" class="nav-link" data-scroll-target="#typst">2. Typst</a></li>
+  <li><a href="#css-paged-media-paged.js-weasyprint-pdf-raptor" id="toc-css-paged-media-paged.js-weasyprint-pdf-raptor" class="nav-link" data-scroll-target="#css-paged-media-paged.js-weasyprint-pdf-raptor">3. CSS Paged Media (paged.js, weasyprint, pdf-raptor)</a></li>
+  <li><a href="#génération-manuelle-via-figma-ou-html-pur" id="toc-génération-manuelle-via-figma-ou-html-pur" class="nav-link" data-scroll-target="#génération-manuelle-via-figma-ou-html-pur">4. Génération manuelle via Figma ou HTML pur</a></li>
+  </ul></li>
+  <li><a href="#structuration-dun-rapport-paramétré" id="toc-structuration-dun-rapport-paramétré" class="nav-link" data-scroll-target="#structuration-dun-rapport-paramétré">Structuration d’un rapport paramétré</a>
+  <ul class="collapse">
+  <li><a href="#paramètres-définis-dans-len-tête-yaml" id="toc-paramètres-définis-dans-len-tête-yaml" class="nav-link" data-scroll-target="#paramètres-définis-dans-len-tête-yaml">Paramètres définis dans l’en-tête YAML</a></li>
+  <li><a href="#réutilisation-dans-le-texte" id="toc-réutilisation-dans-le-texte" class="nav-link" data-scroll-target="#réutilisation-dans-le-texte">Réutilisation dans le texte</a></li>
+  <li><a href="#bonnes-pratiques-pour-un-rapport-quarto-paramétré" id="toc-bonnes-pratiques-pour-un-rapport-quarto-paramétré" class="nav-link" data-scroll-target="#bonnes-pratiques-pour-un-rapport-quarto-paramétré">Bonnes pratiques pour un rapport Quarto paramétré</a>
+  <ul class="collapse">
+  <li><a href="#recommandé" id="toc-recommandé" class="nav-link" data-scroll-target="#recommandé">Recommandé</a></li>
+  <li><a href="#à-éviter" id="toc-à-éviter" class="nav-link" data-scroll-target="#à-éviter">À éviter</a></li>
+  </ul></li>
+  <li><a href="#styliser-avec-css-pour-html" id="toc-styliser-avec-css-pour-html" class="nav-link" data-scroll-target="#styliser-avec-css-pour-html">Styliser avec CSS (pour HTML)</a>
+  <ul class="collapse">
+  <li><a href="#fichier-styles.css" id="toc-fichier-styles.css" class="nav-link" data-scroll-target="#fichier-styles.css">Fichier : <code>styles.css</code></a></li>
+  </ul></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Scraping Web</h1>
+<h1 class="title">Quarto et Markdown</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -192,25 +233,195 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="contexte" class="level2">
-<h2 class="anchored" data-anchor-id="contexte">Contexte</h2>
-<p>Le scraping est une méthode d’extraction automatique de données…</p>
+<section id="vue-générale" class="level2">
+<h2 class="anchored" data-anchor-id="vue-générale">Vue générale</h2>
+<ul>
+<li>Quarto repose sur <strong>Pandoc</strong> : convertisseur universel Markdown vers plusieurs formats (HTML, PDF, Word, etc.).</li>
+<li>Écrit en Rust, moderne et rapide.</li>
+<li>Supporte plusieurs langages dans les chunks : R, Python, Observable JS, etc.</li>
+</ul>
 </section>
-<section id="exemple-de-code" class="level2">
-<h2 class="anchored" data-anchor-id="exemple-de-code">Exemple de code</h2>
+<section id="workflow" class="level2">
+<h2 class="anchored" data-anchor-id="workflow">Workflow</h2>
+<ul>
+<li>Quarto exécute les chunks de code, produit un AST (Abstract Syntax Tree).</li>
+<li>Pandoc convertit cet AST en documents finaux (HTML, PDF, etc.).</li>
+</ul>
+</section>
+<section id="comparaison-avec-r-markdown" class="level2">
+<h2 class="anchored" data-anchor-id="comparaison-avec-r-markdown">Comparaison avec R Markdown</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 35%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Fonctionnalité</th>
+<th>R Markdown</th>
+<th>Quarto</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Langage</td>
+<td>R + Markdown</td>
+<td>Rust + Markdown</td>
+</tr>
+<tr class="even">
+<td>Support chunks</td>
+<td>R uniquement</td>
+<td>R, Python, JS, autres</td>
+</tr>
+<tr class="odd">
+<td>Paramétrage YAML</td>
+<td>Basique</td>
+<td>Avancé</td>
+</tr>
+<tr class="even">
+<td>Sorties</td>
+<td>HTML, PDF, Word</td>
+<td>HTML, PDF, Word, et plus</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="création-pdf" class="level2">
+<h2 class="anchored" data-anchor-id="création-pdf">Création PDF</h2>
+<ul>
+<li>Plusieurs méthodes :
+<ul>
+<li>LaTeX classique (fiable, mais lourd parfois)</li>
+<li>Typst (nouveau langage, plus rapide)</li>
+<li>PageJS (génération PDF via Chrome)</li>
+<li>Impression design via HTML/Figma</li>
+</ul></li>
+</ul>
+</section>
+<section id="exemple-de-chunk-r" class="level2">
+<h2 class="anchored" data-anchor-id="exemple-de-chunk-r">Exemple de chunk R</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rvest)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://example.com"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">read_html</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>{html_document}
-&lt;html&gt;
-[1] &lt;head&gt;\n&lt;title&gt;Example Domain&lt;/title&gt;\n&lt;meta charset="utf-8"&gt;\n&lt;meta http ...
-[2] &lt;body&gt;\n&lt;div&gt;\n    &lt;h1&gt;Example Domain&lt;/h1&gt;\n    &lt;p&gt;This domain is for use ...</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(readxl)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#tables &lt;- read_excel("tables_exported.xlsx")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#head(tables)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="quatre-manières-de-générer-un-pdf" class="level1">
+<h1>Quatre manières de générer un PDF</h1>
+<section id="latex" class="level2">
+<h2 class="anchored" data-anchor-id="latex">1. LaTeX</h2>
+<ul>
+<li>Moteur historique, très utilisé en économie, physique, et sciences formelles.</li>
+<li>Complexe à utiliser, peu flexible graphiquement.</li>
+<li>Intégration dans Quarto via <code>engine: pdf</code> avec <code>pdf-engine: lualatex</code>.</li>
+<li>Permet une très grande personnalisation, mais au prix d’une courbe d’apprentissage raide.</li>
+</ul>
+</section>
+<section id="typst" class="level2">
+<h2 class="anchored" data-anchor-id="typst">2. Typst</h2>
+<ul>
+<li>Écrit en <strong>Rust</strong>, pensé comme une alternative rapide et moderne à LaTeX.</li>
+<li>Syntaxe simple, compilation ultra-rapide (quelques ms).</li>
+<li>Intégré directement dans Quarto via <code>engine: typst</code>.</li>
+<li>Encore jeune (2 ans), mais très prometteur.</li>
+<li>Parfait pour des cas d’usage type rapport régulier, document structuré, avec un design simple.</li>
+</ul>
+<p>Typst est particulièrement adapté aux workflows automatisés en R ou Python, pour produire rapidement des documents PDF paramétrés.</p>
+</section>
+<section id="css-paged-media-paged.js-weasyprint-pdf-raptor" class="level2">
+<h2 class="anchored" data-anchor-id="css-paged-media-paged.js-weasyprint-pdf-raptor">3. CSS Paged Media (paged.js, weasyprint, pdf-raptor)</h2>
+<ul>
+<li>Génère d’abord un <strong>HTML avec CSS</strong>.</li>
+<li>Utilise des standards CSS Media Queries + des <strong>polyfills</strong> pour structurer les pages comme des documents imprimables.</li>
+<li>Compatible avec Chrome/Edge, et utilisable via impression PDF.</li>
+<li>Exemples :
+<ul>
+<li><a href="https://pagedjs.org"><code>paged.js</code></a></li>
+<li><a href="https://weasyprint.org"><code>weasyprint</code></a> (en Python)</li>
+<li><code>pdf-raptor</code> (service web de conversion)</li>
+</ul></li>
+</ul>
+</section>
+<section id="génération-manuelle-via-figma-ou-html-pur" class="level2">
+<h2 class="anchored" data-anchor-id="génération-manuelle-via-figma-ou-html-pur">4. Génération manuelle via Figma ou HTML pur</h2>
+<ul>
+<li>Utilisé pour un <strong>design sur-mesure</strong> pixel-perfect.</li>
+<li>Génère le HTML ou maquette à la main, ou via outils comme <strong>Figma</strong>.</li>
+<li>Bypasse entièrement Pandoc ou Quarto.</li>
+<li>Nécessite plus de maintenance, mais offre un <strong>contrôle absolu</strong>.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="structuration-dun-rapport-paramétré" class="level1">
+<h1>Structuration d’un rapport paramétré</h1>
+<section id="paramètres-définis-dans-len-tête-yaml" class="level2">
+<h2 class="anchored" data-anchor-id="paramètres-définis-dans-len-tête-yaml">Paramètres définis dans l’en-tête YAML</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">country</span><span class="kw">:</span><span class="at"> </span><span class="st">"Somalia"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sector</span><span class="kw">:</span><span class="at"> </span><span class="st">"Éducation"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">unit</span><span class="kw">:</span><span class="at"> </span><span class="st">"Région"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="réutilisation-dans-le-texte" class="level2">
+<h2 class="anchored" data-anchor-id="réutilisation-dans-le-texte">Réutilisation dans le texte</h2>
+<p>Les paramètres définis dans l’en-tête YAML peuvent être appelés dynamiquement avec params$… .</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># glue("Ce rapport analyse le secteur **{params$sector}** pour le pays **{params$country}**, à l’échelle **{params$unit}**.")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="bonnes-pratiques-pour-un-rapport-quarto-paramétré" class="level2">
+<h2 class="anchored" data-anchor-id="bonnes-pratiques-pour-un-rapport-quarto-paramétré">Bonnes pratiques pour un rapport Quarto paramétré</h2>
+<section id="recommandé" class="level3">
+<h3 class="anchored" data-anchor-id="recommandé">Recommandé</h3>
+<ul>
+<li>Utiliser des blocs logiques bien identifiés (<code>#</code>, <code>##</code>, <code>###</code>)</li>
+<li>Garder une structure constante (même ordre, mêmes titres)</li>
+<li>Utiliser des paramètres dynamiques pour l’automatisation</li>
+<li>Ajouter des graphiques avec <code>ggplot2</code> ou <code>plotly</code></li>
+<li>Soigner l’affichage des nombres (arrondis, formatés)</li>
+<li>Gérer les valeurs manquantes ou aberrantes</li>
+</ul>
+</section>
+<section id="à-éviter" class="level3">
+<h3 class="anchored" data-anchor-id="à-éviter">À éviter</h3>
+<ul>
+<li>Trop de colonnes dans les mises en page (complexe avec Pandoc)</li>
+<li>Des titres qui changent selon les paramètres (illisible à la lecture)</li>
+<li>Ne pas tester les cas extrêmes (ex. : 0 valeur, NA, territoire inexistant)</li>
+<li>Trop de verbosité automatique (“Le pays {x} a… le pays {y} a…”)</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="styliser-avec-css-pour-html" class="level2">
+<h2 class="anchored" data-anchor-id="styliser-avec-css-pour-html">Styliser avec CSS (pour HTML)</h2>
+<section id="fichier-styles.css" class="level3">
+<h3 class="anchored" data-anchor-id="fichier-styles.css">Fichier : <code>styles.css</code></h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">:root</span> {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">--main-color</span><span class="ch">:</span> <span class="cn">#0077b6</span><span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">--accent-color</span><span class="ch">:</span> <span class="cn">#48cae4</span><span class="op">;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">--font-body</span><span class="ch">:</span> <span class="st">'Inter'</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>body {</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--font-body</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#222</span><span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span><span class="ch">:</span> <span class="dv">1.6</span><span class="op">;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>h1<span class="op">,</span> h2<span class="op">,</span> h3 {</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--main-color</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-top</span><span class="ch">:</span> <span class="dv">1.5</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>strong {</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--accent-color</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

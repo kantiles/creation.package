@@ -1,0 +1,19 @@
+.menu-blason {
+  max-width: 200px;
+  display: block;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Place l'image sous le sommaire ("On this page") */
+.sidebar-navigation .toc-after-image {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.sidebar-navigation .toc-after-image img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}

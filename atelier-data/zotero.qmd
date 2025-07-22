@@ -1,5 +1,5 @@
 ---
-title: "zotero"
+title: "Zotero"
 format: html
 editor: visual
 ---
