@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Accueil — Support de Formations Kantiles – Kantiles - Supports de Formation</title>
+<title>Lire des fichiers Excel mal formatés – Kantiles - Supports de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -97,6 +131,7 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./index.html">
  <span class="dropdown-text">Accueil — Support de Formations Kantiles</span></a>
   </li>  
+        <li class="dropdown-header">Stage mars-juillet 2025</li>
         <li>
     <a class="dropdown-item" href="./cr_stage.html">
  <span class="dropdown-text">Stage mars-juillet 2025</span></a>
@@ -136,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Cartographie</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./fichier_moches.html"> 
+    <a class="nav-link active" href="./fichier_moches.html" aria-current="page"> 
 <span class="menu-text">Format</span></a>
   </li>  
 </ul>
@@ -155,8 +190,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#actualités-récentes" id="toc-actualités-récentes" class="nav-link active" data-scroll-target="#actualités-récentes">Actualités récentes</a></li>
-  <li><a href="#formations-ateliers-internes" id="toc-formations-ateliers-internes" class="nav-link" data-scroll-target="#formations-ateliers-internes">Formations &amp; Ateliers internes</a></li>
+  <li><a href="#objectif-obtenir-des-données-tidy" id="toc-objectif-obtenir-des-données-tidy" class="nav-link active" data-scroll-target="#objectif-obtenir-des-données-tidy">Objectif : obtenir des données tidy</a></li>
+  <li><a href="#lire-des-fichiers-excel-complexes" id="toc-lire-des-fichiers-excel-complexes" class="nav-link" data-scroll-target="#lire-des-fichiers-excel-complexes">1. Lire des fichiers Excel complexes</a>
+  <ul class="collapse">
+  <li><a href="#readxlread_excel" id="toc-readxlread_excel" class="nav-link" data-scroll-target="#readxlread_excel"><code>readxl::read_excel()</code></a></li>
+  </ul></li>
+  <li><a href="#une-autre-approche-tidyxl-unpivotr" id="toc-une-autre-approche-tidyxl-unpivotr" class="nav-link" data-scroll-target="#une-autre-approche-tidyxl-unpivotr">2. Une autre approche : <code>tidyxl</code> + <code>unpivotr</code></a>
+  <ul class="collapse">
+  <li><a href="#étape-1-lecture-des-cellules" id="toc-étape-1-lecture-des-cellules" class="nav-link" data-scroll-target="#étape-1-lecture-des-cellules">Étape 1 : lecture des cellules</a></li>
+  <li><a href="#étape-2-filtrer-les-zones-utiles" id="toc-étape-2-filtrer-les-zones-utiles" class="nav-link" data-scroll-target="#étape-2-filtrer-les-zones-utiles">Étape 2 : filtrer les zones utiles</a></li>
+  <li><a href="#étape-3-repositionner-les-entêtes" id="toc-étape-3-repositionner-les-entêtes" class="nav-link" data-scroll-target="#étape-3-repositionner-les-entêtes">Étape 3 : repositionner les entêtes</a></li>
+  <li><a href="#étape-4-traitement-complémentaire" id="toc-étape-4-traitement-complémentaire" class="nav-link" data-scroll-target="#étape-4-traitement-complémentaire">Étape 4 : traitement complémentaire</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -165,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Accueil — Support de Formations Kantiles</h1>
+<h1 class="title">Lire des fichiers Excel mal formatés</h1>
 </div>
 
 
@@ -182,47 +227,130 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Ce site est votre espace centralisé dédié à l’ensemble des ressources et actualités internes du projet Kantiles.<br>
-Il facilite l’accès aux informations essentielles concernant nos activités, nos équipes, ainsi que les supports pédagogiques conçus pour accompagner votre montée en compétences.</p>
-<p>Nous souhaitons faire de ce portail un outil vivant et collaboratif qui favorise la diffusion rapide de l’information, la montée en compétences et la cohésion entre tous les membres du projet.<br>
-N’hésitez pas à revenir régulièrement pour découvrir les nouveautés et participer aux ateliers proposés.</p>
-<hr>
-<section id="actualités-récentes" class="level2">
-<h2 class="anchored" data-anchor-id="actualités-récentes">Actualités récentes</h2>
-<p>Retrouvez ici les dernières nouveautés concernant les stagiaires, les articles publiés, et les événements marquants :</p>
+<p>Certaines données, notamment institutionnelles ou issues de productions internes, sont publiées dans des formats complexes, peu adaptés à une analyse directe. Cette session vise à comprendre comment :</p>
 <ul>
-<li><strong>Derniers stagiaires intégrés :</strong> Emmanuel Herbepin et Victoire Chatain, qui apportent déjà de nouvelles perspectives.<br>
-</li>
-<li><strong>Article phare :</strong> <em>Kantiles fête ses 10 ans</em> — un regard rétrospectif sur notre parcours, nos succès et ambitions futures.<br>
-</li>
-<li><strong>Stage mars-juillet 2025 :</strong> Suivi des projets et réalisations des stagiaires actuels.</li>
+<li>identifier les problèmes structurels dans un fichier Excel ;</li>
+<li>appliquer une démarche de mise à plat (tidy) ;</li>
+<li>automatiser le nettoyage sans altérer les données sources.</li>
 </ul>
-<p>Pour plus de détails, consultez les pages dédiées dans la section <strong>Accueil</strong> du menu.</p>
+<p>On peut également aller voir la référence :un petit coup de polish.</p>
+<hr>
+<section id="objectif-obtenir-des-données-tidy" class="level2">
+<h2 class="anchored" data-anchor-id="objectif-obtenir-des-données-tidy">Objectif : obtenir des données tidy</h2>
+<p>Les jeux de données doivent être remis sous une <strong>forme rectangulaire et normalisée</strong>, avec :</p>
+<ul>
+<li>une variable par colonne ;</li>
+<li>une observation par ligne ;</li>
+<li>un type de valeur par cellule.</li>
+</ul>
+<p>Cela facilite l’analyse, les visualisations, et les opérations de jointure ou de regroupement.</p>
 <hr>
 </section>
-<section id="formations-ateliers-internes" class="level2">
-<h2 class="anchored" data-anchor-id="formations-ateliers-internes">Formations &amp; Ateliers internes</h2>
+<section id="lire-des-fichiers-excel-complexes" class="level2">
+<h2 class="anchored" data-anchor-id="lire-des-fichiers-excel-complexes">1. Lire des fichiers Excel complexes</h2>
+<p>Plusieurs approches existent :</p>
+<section id="readxlread_excel" class="level3">
+<h3 class="anchored" data-anchor-id="readxlread_excel"><code>readxl::read_excel()</code></h3>
 <ul>
-<li><p><strong>Scraping</strong><br>
-Apprenez à automatiser la collecte de données web grâce à R et rvest. Cas d’usage : récupération de données publiques sur des sites d’annuaires, d’administration, ou de presse.</p></li>
-<li><p><strong>API</strong><br>
-Interrogez des bases de données distantes (Open Data, INSEE, etc.) à travers des APIs. Mise en pratique avec <code>httr2</code>, gestion de tokens, pagination, et JSON.</p></li>
-<li><p><strong>Quarto</strong><br>
-Produisez des documents interactifs, reproductibles et élégants avec Quarto : rapports HTML, PDF ou Word, intégration de données, visualisations, citations automatiques, etc.</p></li>
-<li><p><strong>Parquet &amp; DuckDB</strong><br>
-Apprenez à gérer des bases de données volumineuses sans serveur avec des formats colonnes (<code>.parquet</code>) et une base légère (<code>DuckDB</code>). Performances et flexibilité au programme.</p></li>
-<li><p><strong>Zotero</strong><br>
-Gérer efficacement vos bibliographies, articles scientifiques et documents de travail.</p></li>
+<li>Permet de spécifier une <strong>feuille</strong> avec l’argument <code>sheet = "nom_onglet"</code>.</li>
+<li>L’argument <code>range = "A5:H12"</code> est souvent <strong>préférable</strong> à <code>skip = 4</code> pour cibler une plage exacte.</li>
+<li>Idéal pour <strong>de petits fichiers</strong> avec une structure régulière.</li>
 </ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/fichier_drees.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Panorama"</span>, <span class="at">range =</span> <span class="st">"A5:H12"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="une-autre-approche-tidyxl-unpivotr" class="level2">
+<h2 class="anchored" data-anchor-id="une-autre-approche-tidyxl-unpivotr">2. Une autre approche : <code>tidyxl</code> + <code>unpivotr</code></h2>
+<p>Lorsque les fichiers Excel sont particulièrement désorganisés — titres multiples, colonnes fusionnées, zones de commentaires, formats visuels utilisés comme informations — il devient difficile d’utiliser <code>readxl()</code> de manière fiable.<br>
+<strong>C’est ici que <code>tidyxl</code> et <code>unpivotr</code> prennent tout leur sens.</strong></p>
+<p>Ces packages permettent d’accéder à chaque <strong>cellule individuellement</strong>, avec sa position (<code>row</code>, <code>col</code>), son contenu, son style (<code>gras</code>, <code>italique</code>, <code>remplissage</code>, etc.), et de reconstruire manuellement un tableau structuré.</p>
 <hr>
-<div style="text-align:center; margin-top: 3em;">
-<p><img src="kantiles_blason.png" alt="Blason Kantiles" style="max-width:200px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"></p>
+<section id="étape-1-lecture-des-cellules" class="level3">
+<h3 class="anchored" data-anchor-id="étape-1-lecture-des-cellules">Étape 1 : lecture des cellules</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cells &lt;- xlsx_cells("data/fichier_drees.xlsx", sheets = "Panorama")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div style="text-align:center; margin-top: 3em;">
-<p><img src="logo_kantiles.png" alt="Blason Kantiles" style="max-width:200px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"></p>
+<p>Chaque ligne du tibble cells représente une cellule. Cela inclut :</p>
+<ul>
+<li>le texte (character)</li>
+<li>la valeur (numeric, date, etc.)</li>
+<li>la position (ligne/colonne)</li>
+<li>des infos de style : font_bold, fill_color, etc.</li>
+</ul>
+</section>
+<section id="étape-2-filtrer-les-zones-utiles" class="level3">
+<h3 class="anchored" data-anchor-id="étape-2-filtrer-les-zones-utiles">Étape 2 : filtrer les zones utiles</h3>
+<p>On peut ensuite cibler les lignes et colonnes contenant des données ou entêtes :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># zone &lt;- cells |&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(!is_blank) |&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(row &gt;= 5 &amp; row &lt;= 12)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="étape-3-repositionner-les-entêtes" class="level3">
+<h3 class="anchored" data-anchor-id="étape-3-repositionner-les-entêtes">Étape 3 : repositionner les entêtes</h3>
+<p>On utilise unpivotr::behead() pour “décapiter” les titres situés au-dessus ou à gauche des valeurs, et les insérer comme nouvelles colonnes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(unpivotr)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tidy_data &lt;- zone |&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   behead("up", "année") |&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   behead("left", "région")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Directions possibles :</p>
+<ul>
+<li>“up” : décapite les cellules situées au-dessus</li>
+<li>“left” : décapite celles situées à gauche</li>
+<li>“right” et “down” : également disponibles</li>
+<li>behead_if() : applique conditionnellement (ex. seulement si bold == TRUE)</li>
+</ul>
+</section>
+<section id="étape-4-traitement-complémentaire" class="level3">
+<h3 class="anchored" data-anchor-id="étape-4-traitement-complémentaire">Étape 4 : traitement complémentaire</h3>
+<ul>
+<li>fill() de tidyr permet de remplir les NA dans les colonnes entêtes</li>
+<li>group_by(sheet) utile pour lire tous les onglets</li>
+</ul>
+<p>On peut aussi détecter des titres dynamiquement avec str_detect()</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Situation</th>
+<th>Solution avec tidyxl + unpivotr</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cellul</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>es fusionnées</td>
+<td>accès direct à chaque cellule</td>
+</tr>
+<tr class="odd">
+<td>Tableaux avec entêtes multiples</td>
+<td><code>behead()</code></td>
+</tr>
+<tr class="even">
+<td>Info encodée dans le style (gras…)</td>
+<td><code>behead_if()</code></td>
+</tr>
+<tr class="odd">
+<td>Tableaux complexes par onglet</td>
+<td><code>group_by(sheet)</code></td>
+</tr>
+<tr class="even">
+<td>NA dans les entêtes</td>
+<td><code>fill()</code></td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

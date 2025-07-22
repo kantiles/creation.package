@@ -15,7 +15,7 @@ execute:
 ---
 
 
-# Bienvenue sur le portail interne Kantiles
+
 
 Ce site est votre espace centralisé dédié à l’ensemble des ressources et actualités internes du projet Kantiles.  
 Il facilite l’accès aux informations essentielles concernant nos activités, nos équipes, ainsi que les supports pédagogiques conçus pour accompagner votre montée en compétences.
@@ -24,6 +24,11 @@ Nous souhaitons faire de ce portail un outil vivant et collaboratif qui favorise
 N’hésitez pas à revenir régulièrement pour découvrir les nouveautés et participer aux ateliers proposés.
 
 ---
+
+
+<div style="text-align:center; margin-top: 3em;">
+  <img src="logo_kantiles.png" alt="Blason Kantiles" style="max-width:200px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
+</div>
 
 ## Actualités récentes
 
@@ -60,3 +65,6 @@ Pour plus de détails, consultez les pages dédiées dans la section **Accueil**
 <div style="text-align:center; margin-top: 3em;">
   <img src="kantiles_blason.png" alt="Blason Kantiles" style="max-width:200px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
 </div>
+
+
+
