@@ -20,6 +20,7 @@ execute:
 #| eval: false
 #| message: false
 #| warning: false
+
 # Charger les bibliothèques
 library(dplyr)
 library(data.table)
@@ -59,6 +60,7 @@ result <- microbenchmark(
 # Afficher les résultats du benchmark
 print(result)
 ```
+
 Bon, soyons clair, `data.table` est (beaucoup) plus **rapide** que `dplyr` Mais dplyr est plus lisible et permet plus de choses. Donc on le préferera pour une grande majorité de nos codes. Voir  [dtplyr](https://www.tidyverse.org/blog/2019/11/dtplyr-1-0-0/), écris par l'équipe de Rstudio, il permet de traduire les requêtes `dplyr` en requêtes `data.table`. Ce n'est pas parfait mais ça peut sauver du temps sur les gros jeux de données.
 
 
@@ -76,12 +78,14 @@ as_tibble(weather)
 
 ## Structurer votre code
 
+### Aérer son code
 On a bien compris qu'il est important de mettre des espaces après les *#* pour que cela soit plus lisible.
 On peut ajpouter à cela que c'est également valable pour les *#* qui indiquent les titres et sous-titre (etc...) dans l'Outline.
 
 ```{r}
 #| eval: false
-library(stringr)
+
+# library(stringr)
 walk(
   # Récupère tous les scripts du projet
   fs::dir_ls("R/", glob = "*.R", recurse = TRUE),
@@ -99,7 +103,8 @@ walk(
 )
 ```
 
-A cela on ajoute toujou_rs en début de code :
+### Organisation
+
 - Le titre du script
 - Une description de ce que fait le script (optionnel)
 - Les packages nécessaires
@@ -160,7 +165,7 @@ statut_pro <- sample(
 # (...)
 ```
 
-Et on n'oublie pas **Un fichier par idée** 
+Et on n'oublie pas **UN FICHIER PAR IDEE** 
 *(sinon ça va vite ressembler à l'esprit de Thomas quand il a une nouvelle idée de business)(no offense Thomas, je ne suis plus stagiaire au moment où tu lis le site)(très bon stage bytheway)*
 
 

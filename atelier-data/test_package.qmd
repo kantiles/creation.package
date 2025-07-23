@@ -74,8 +74,8 @@ test_that("plus1 fonctionne correctement", {
 })
 ```
 
-Tous les tests utilisent une famille de fonctions expect_*()
-(ex. expect_equal(), expect_error(), expect_true(), etc.)
+Tous les tests utilisent une famille de fonctions `expect_*()`
+(ex. `expect_equal()`, `expect_error()`, `expect_true()`, etc.)
 
 ## Tester des fonctions complexes
 Quand une fonction prend un data.frame ou produit un objet complexe :
@@ -108,7 +108,7 @@ usethis::use_github_action("check-release")
 - On peut planifier les tests automatiquement (ex. tous les lundis à midi).
 
 # Aller plus loin
-- Couverture de test (test coverage)
+- Couverture de test (*test coverage*)
 Pourcentage du code couvert par des tests unitaires. Objectif idéal : > 90 %.
 
 -  Snapshot testing
@@ -124,14 +124,14 @@ Le package ensure ajoute des assertions directement dans les fonctions.
 
 # En résumé
 - Étape	Outil
-- Initialiser les tests	usethis::use_testthat()
-- Créer un fichier de test	usethis::use_test("mafonction")
-- Écrire un test	test_that() + expect_*()
-- Exécuter les tests	devtools::test()
-- Tests automatiques	usethis::use_github_action("check-release")
+- Initialiser les tests	`usethis::use_testthat()`
+- Créer un fichier de test	`usethis::use_test("mafonction")`
+- Écrire un test	`test_that()` + `expect_*()`
+- Exécuter les tests	`devtools::test()`
+- Tests automatiques	`usethis::use_github_action("check-release")`
 
 
-Tester ses fonctions, c’est documenter ses intentions et fiabiliser son code – sans effort inutile au fil du temps.
+**Tester ses fonctions, c’est documenter ses intentions et fiabiliser son code – sans effort inutile au fil du temps**.
 
 
 

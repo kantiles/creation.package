@@ -40,6 +40,7 @@ data %>%
 ```
 Evitez de remplacer des colonnes de manière implicite pour conserver la lisibilité du code.
 
+## `select()`
 ```{r}
 #| eval: false
 select()
@@ -55,6 +56,7 @@ data %>%
 - Utile pour choisir les variables à exporter
 - Peut renommer les colonnes directement
 
+## `filter()`
 ```{r}
 #| eval: false
 filter()
@@ -67,7 +69,7 @@ data %>%
   filter(sexe == "Homme" & age > 30)
 ```
 
-Inversion de condition
+Si on veut inverser la condition :
 
 ```{r}
 #| eval: false
@@ -75,6 +77,8 @@ data %>%
   filter(!(age > 30))
 ```
 Préférez des conditions explicites et utilisez des parenthèses pour clarifier la logique.
+
+## `arrange()`
 
 ```{r}
 #| eval: false
@@ -91,15 +95,15 @@ data %>%
   arrange(desc(prix))
 ```
 
-- summarise() et group_by()
-- summarise() permet de résumer un jeu de données :
+## `summarise()` et `group_by()`
+### `summarise()` permet de résumer un jeu de données :
 
 ```{r}
 #| eval: false
 data %>%
   summarise(mean_disp = mean(disp), n = n())
 ```
-Avec group_by() :
+### Avec `group_by()` :
 
 ```{r}
 #| eval: false
@@ -109,12 +113,13 @@ data %>%
   ungroup()
 ```
 
-- N'oubliez pas ungroup() si les groupes ne sont plus nécessaires.
-- Fonctions complémentaires
-rename() : renommer des colonnes
-- distinct() : éliminer les doublons
-- if_else() : binaire, ne gère pas les NA
-- case_when() : version généralisée de if_else()
+- N'oubliez pas `ungroup()` si les groupes ne sont plus nécessaires.
+
+## Fonctions complémentaires :
+- `rename()` : renommer des colonnes
+- `distinct()` : éliminer les doublons
+- `if_else()` : binaire, ne gère pas les NA
+- `case_when()` : version généralisée de `if_else()`
 
 ```{r}
 #| eval: false
@@ -125,10 +130,10 @@ mutate(cyl_group = case_when(
 ```
 
 ## Jointures
-- dplyr fournit plusieurs types de jointures :
-- inner_join() : intersection
-- left_join() : toutes les lignes de gauche
-- full_join() : toutes les lignes des deux
+- `dplyr` fournit plusieurs types de jointures :
+- `inner_join()` : intersection
+- `left_join()` : toutes les lignes de gauche
+- `full_join()` : toutes les lignes des deux
 
 ```{r}
 #| eval: false
@@ -136,17 +141,21 @@ left_join(df1, df2, by = "id", suffix = c("_x", "_y"))
 ```
 
 - Toujours vérifier le nombre de lignes avant/après une jointure.
-- Utiliser count() pour détecter des NA inattendus.
+- Utiliser `count()` pour détecter des NA inattendus.
 
 ## Combinaisons de données
-- bind_rows() : empile les lignes
-- bind_cols() : ajoute des colonnes (attention au positionnement !)
-- Autres fonctions utiles
-- count() : équivalent à group_by() + summarise(n = n())
-- between(x, a, b) : test x >= a & x <= b
-- tidyr : Restructuration des données
-- lag() et fenêtres temporelles
-- lag() récupère la valeur précédente d’une variable.
+- `bind_rows()` : empile les lignes
+- `bind_cols()` : ajoute des colonnes (attention au positionnement !)
+
+Autres fonctions utiles :
+
+- `count()` : équivalent à `group_by()` + `summarise(n = n())`
+- `between(x, a, b)` : test x >= a & x <= b
+
+# `tidyr` : Restructuration des données
+
+## `lag()`
+- `lag()` et fenêtres temporelles et récupère la valeur précédente d’une variable.
 
 ```{r}
 #| eval: false
@@ -154,6 +163,7 @@ data %>%
   arrange(annee) %>%
   mutate(var_lag = lag(var))
 ```
+
 Avec condition :
 
 ```{r}
@@ -176,14 +186,15 @@ data %>%
                values_to = "valeur")
 ```
 
-- cols : colonnes à pivoter
-- names_to : future colonne pour les noms
-- values_to : future colonne pour les valeurs
+- `cols` : colonnes à pivoter
+- `names_to` : future colonne pour les noms
+- `values_to` : future colonne pour les valeurs
 
 ```{r}
 #| eval: false
 pivot_wider()
 ```
+
 Fait l’opération inverse :
 
 ```{r}
@@ -195,7 +206,7 @@ data %>%
 Assurez-vous qu’il y a une clé (ex. id, année) pour l’opération.
 
 ##  Complétion de données
-Utiliser complete(), crossing() ou expand() pour générer toutes les combinaisons manquantes :
+Utiliser `complete()`, `crossing()` ou `expand()` pour générer toutes les combinaisons manquantes :
 
 ```{r}
 #| eval: false
@@ -203,17 +214,19 @@ data %>%
   complete(annee, region)
 ```
 # Autres packages utiles du tidyverse
-- lubridate : manipulation efficace des dates
-- forcats : gestion des variables catégorielles (facteurs)
-- stringr : manipulation des chaînes de caractères
-- purrr : programmation fonctionnelle (map(), walk(), etc.)
-- readr : import rapide de CSV/TSV
+- `lubridate` : manipulation efficace des dates
+- `forcats` : gestion des variables catégorielles (facteurs)
+- `stringr` : manipulation des chaînes de caractères
+- `purrr` : programmation fonctionnelle (`map()`, `walk()`, etc.)
+- `readr` : import rapide de CSV/TSV
 
 
 
 # Rappel des petits plus de Thomas :) 
-- Nommer toujours en minuscule (ou fonction {janitor})
+- Nommer toujours en minuscule (ou fonction `janitor`)
 - Mettre un espace entre # et le commentaire
 - Utiliser des noms explicites pour les fonctions et variables
 - Utiliser des commentaires pour expliquer les étapes importantes
 - Structure le code avec # et ## pour les sections (avec ------ à la fin du titre pour l'afficher dans l'Outline)
+
+Pour plus de conseils, allez voir la page [tips](Tips.qmd).

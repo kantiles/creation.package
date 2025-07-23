@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tester ses fonctions dans un package R – Kantiles - Supports de Formation</title>
+<title>Tester ses fonctions dans un package R – Kantiles - Support de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Kantiles - Supports de Formation</span>
+    <span class="navbar-title">Kantiles - Support de Formation</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -222,8 +222,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./cartographie.html">
  <span class="dropdown-text">Cartographie</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./Tips.html">
+ <span class="dropdown-text">Tips</span></a>
+  </li>  
     </ul>
   </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/company/kantiles"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -339,7 +350,7 @@ On vérifie que <code>plus1(2)</code> donne <code>3</code>.</p>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">plus1</span>(<span class="st">"abc"</span>))</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Tous les tests utilisent une famille de fonctions expect_*() (ex. expect_equal(), expect_error(), expect_true(), etc.)</p>
+<p>Tous les tests utilisent une famille de fonctions <code>expect_*()</code> (ex. <code>expect_equal()</code>, <code>expect_error()</code>, <code>expect_true()</code>, etc.)</p>
 </section>
 <section id="tester-des-fonctions-complexes" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="tester-des-fonctions-complexes"><span class="header-section-number">4.3</span> Tester des fonctions complexes</h2>
@@ -374,7 +385,7 @@ On vérifie que <code>plus1(2)</code> donne <code>3</code>.</p>
 <section id="aller-plus-loin" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Aller plus loin</h1>
 <ul>
-<li><p>Couverture de test (test coverage) Pourcentage du code couvert par des tests unitaires. Objectif idéal : &gt; 90 %.</p></li>
+<li><p>Couverture de test (<em>test coverage</em>) Pourcentage du code couvert par des tests unitaires. Objectif idéal : &gt; 90 %.</p></li>
 <li><p>Snapshot testing Permet de sauvegarder une sortie attendue, puis de comparer automatiquement lors de futures exécutions.</p></li>
 <li><p>Ensure Le package ensure ajoute des assertions directement dans les fonctions.</p></li>
 </ul>
@@ -391,13 +402,13 @@ On vérifie que <code>plus1(2)</code> donne <code>3</code>.</p>
 <h1 data-number="7"><span class="header-section-number">7</span> En résumé</h1>
 <ul>
 <li>Étape Outil</li>
-<li>Initialiser les tests usethis::use_testthat()</li>
-<li>Créer un fichier de test usethis::use_test(“mafonction”)</li>
-<li>Écrire un test test_that() + expect_*()</li>
-<li>Exécuter les tests devtools::test()</li>
-<li>Tests automatiques usethis::use_github_action(“check-release”)</li>
+<li>Initialiser les tests <code>usethis::use_testthat()</code></li>
+<li>Créer un fichier de test <code>usethis::use_test("mafonction")</code></li>
+<li>Écrire un test <code>test_that()</code> + <code>expect_*()</code></li>
+<li>Exécuter les tests <code>devtools::test()</code></li>
+<li>Tests automatiques <code>usethis::use_github_action("check-release")</code></li>
 </ul>
-<p>Tester ses fonctions, c’est documenter ses intentions et fiabiliser son code – sans effort inutile au fil du temps.</p>
+<p><strong>Tester ses fonctions, c’est documenter ses intentions et fiabiliser son code – sans effort inutile au fil du temps</strong>.</p>
 
 
 </section>

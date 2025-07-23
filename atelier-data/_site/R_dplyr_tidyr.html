@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Intorduction à dplyr et tidyr – Kantiles - Supports de Formation</title>
+<title>Intorduction à dplyr et tidyr – Kantiles - Support de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -113,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Kantiles - Supports de Formation</span>
+    <span class="navbar-title">Kantiles - Support de Formation</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -222,6 +222,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./cartographie.html">
  <span class="dropdown-text">Cartographie</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./Tips.html">
+ <span class="dropdown-text">Tips</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -251,13 +255,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#dplyr-manipulation-de-données" id="toc-dplyr-manipulation-de-données" class="nav-link" data-scroll-target="#dplyr-manipulation-de-données"><span class="header-section-number">2</span> <code>dplyr</code> : Manipulation de données</a>
   <ul class="collapse">
   <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate"><span class="header-section-number">2.1</span> <code>mutate()</code></a></li>
-  <li><a href="#jointures" id="toc-jointures" class="nav-link" data-scroll-target="#jointures"><span class="header-section-number">2.2</span> Jointures</a></li>
-  <li><a href="#combinaisons-de-données" id="toc-combinaisons-de-données" class="nav-link" data-scroll-target="#combinaisons-de-données"><span class="header-section-number">2.3</span> Combinaisons de données</a></li>
-  <li><a href="#pivots" id="toc-pivots" class="nav-link" data-scroll-target="#pivots"><span class="header-section-number">2.4</span> Pivots</a></li>
-  <li><a href="#complétion-de-données" id="toc-complétion-de-données" class="nav-link" data-scroll-target="#complétion-de-données"><span class="header-section-number">2.5</span> Complétion de données</a></li>
+  <li><a href="#select" id="toc-select" class="nav-link" data-scroll-target="#select"><span class="header-section-number">2.2</span> <code>select()</code></a></li>
+  <li><a href="#filter" id="toc-filter" class="nav-link" data-scroll-target="#filter"><span class="header-section-number">2.3</span> <code>filter()</code></a></li>
+  <li><a href="#arrange" id="toc-arrange" class="nav-link" data-scroll-target="#arrange"><span class="header-section-number">2.4</span> <code>arrange()</code></a></li>
+  <li><a href="#summarise-et-group_by" id="toc-summarise-et-group_by" class="nav-link" data-scroll-target="#summarise-et-group_by"><span class="header-section-number">2.5</span> <code>summarise()</code> et <code>group_by()</code></a>
+  <ul class="collapse">
+  <li><a href="#summarise-permet-de-résumer-un-jeu-de-données" id="toc-summarise-permet-de-résumer-un-jeu-de-données" class="nav-link" data-scroll-target="#summarise-permet-de-résumer-un-jeu-de-données"><span class="header-section-number">2.5.1</span> <code>summarise()</code> permet de résumer un jeu de données :</a></li>
+  <li><a href="#avec-group_by" id="toc-avec-group_by" class="nav-link" data-scroll-target="#avec-group_by"><span class="header-section-number">2.5.2</span> Avec <code>group_by()</code> :</a></li>
   </ul></li>
-  <li><a href="#autres-packages-utiles-du-tidyverse" id="toc-autres-packages-utiles-du-tidyverse" class="nav-link" data-scroll-target="#autres-packages-utiles-du-tidyverse"><span class="header-section-number">3</span> Autres packages utiles du tidyverse</a></li>
-  <li><a href="#rappel-des-petits-plus-de-thomas" id="toc-rappel-des-petits-plus-de-thomas" class="nav-link" data-scroll-target="#rappel-des-petits-plus-de-thomas"><span class="header-section-number">4</span> Rappel des petits plus de Thomas :)</a></li>
+  <li><a href="#fonctions-complémentaires" id="toc-fonctions-complémentaires" class="nav-link" data-scroll-target="#fonctions-complémentaires"><span class="header-section-number">2.6</span> Fonctions complémentaires :</a></li>
+  <li><a href="#jointures" id="toc-jointures" class="nav-link" data-scroll-target="#jointures"><span class="header-section-number">2.7</span> Jointures</a></li>
+  <li><a href="#combinaisons-de-données" id="toc-combinaisons-de-données" class="nav-link" data-scroll-target="#combinaisons-de-données"><span class="header-section-number">2.8</span> Combinaisons de données</a></li>
+  </ul></li>
+  <li><a href="#tidyr-restructuration-des-données" id="toc-tidyr-restructuration-des-données" class="nav-link" data-scroll-target="#tidyr-restructuration-des-données"><span class="header-section-number">3</span> <code>tidyr</code> : Restructuration des données</a>
+  <ul class="collapse">
+  <li><a href="#lag" id="toc-lag" class="nav-link" data-scroll-target="#lag"><span class="header-section-number">3.1</span> <code>lag()</code></a></li>
+  <li><a href="#pivots" id="toc-pivots" class="nav-link" data-scroll-target="#pivots"><span class="header-section-number">3.2</span> Pivots</a></li>
+  <li><a href="#complétion-de-données" id="toc-complétion-de-données" class="nav-link" data-scroll-target="#complétion-de-données"><span class="header-section-number">3.3</span> Complétion de données</a></li>
+  </ul></li>
+  <li><a href="#autres-packages-utiles-du-tidyverse" id="toc-autres-packages-utiles-du-tidyverse" class="nav-link" data-scroll-target="#autres-packages-utiles-du-tidyverse"><span class="header-section-number">4</span> Autres packages utiles du tidyverse</a></li>
+  <li><a href="#rappel-des-petits-plus-de-thomas" id="toc-rappel-des-petits-plus-de-thomas" class="nav-link" data-scroll-target="#rappel-des-petits-plus-de-thomas"><span class="header-section-number">5</span> Rappel des petits plus de Thomas :)</a></li>
   </ul>
 </nav>
     </div>
@@ -308,6 +325,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span> .x <span class="sc">*</span> <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Evitez de remplacer des colonnes de manière implicite pour conserver la lisibilité du code.</p>
+</section>
+<section id="select" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="select"><span class="header-section-number">2.2</span> <code>select()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -320,6 +340,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Utile pour choisir les variables à exporter</li>
 <li>Peut renommer les colonnes directement</li>
 </ul>
+</section>
+<section id="filter" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="filter"><span class="header-section-number">2.3</span> <code>filter()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -328,12 +351,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sexe <span class="sc">==</span> <span class="st">"Homme"</span> <span class="sc">&amp;</span> age <span class="sc">&gt;</span> <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Inversion de condition</p>
+<p>Si on veut inverser la condition :</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(age <span class="sc">&gt;</span> <span class="dv">30</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Préférez des conditions explicites et utilisez des parenthèses pour clarifier la logique.</p>
+</section>
+<section id="arrange" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="arrange"><span class="header-section-number">2.4</span> <code>arrange()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -345,15 +371,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(prix))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li>summarise() et group_by()</li>
-<li>summarise() permet de résumer un jeu de données :</li>
-</ul>
+</section>
+<section id="summarise-et-group_by" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="summarise-et-group_by"><span class="header-section-number">2.5</span> <code>summarise()</code> et <code>group_by()</code></h2>
+<section id="summarise-permet-de-résumer-un-jeu-de-données" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="summarise-permet-de-résumer-un-jeu-de-données"><span class="header-section-number">2.5.1</span> <code>summarise()</code> permet de résumer un jeu de données :</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_disp =</span> <span class="fu">mean</span>(disp), <span class="at">n =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Avec group_by() :</p>
+</section>
+<section id="avec-group_by" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="avec-group_by"><span class="header-section-number">2.5.2</span> Avec <code>group_by()</code> :</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(cyl) <span class="sc">%&gt;%</span></span>
@@ -361,11 +390,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>N’oubliez pas ungroup() si les groupes ne sont plus nécessaires.</li>
-<li>Fonctions complémentaires rename() : renommer des colonnes</li>
-<li>distinct() : éliminer les doublons</li>
-<li>if_else() : binaire, ne gère pas les NA</li>
-<li>case_when() : version généralisée de if_else()</li>
+<li>N’oubliez pas <code>ungroup()</code> si les groupes ne sont plus nécessaires.</li>
+</ul>
+</section>
+</section>
+<section id="fonctions-complémentaires" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="fonctions-complémentaires"><span class="header-section-number">2.6</span> Fonctions complémentaires :</h2>
+<ul>
+<li><code>rename()</code> : renommer des colonnes</li>
+<li><code>distinct()</code> : éliminer les doublons</li>
+<li><code>if_else()</code> : binaire, ne gère pas les NA</li>
+<li><code>case_when()</code> : version généralisée de <code>if_else()</code></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">cyl_group =</span> <span class="fu">case_when</span>(</span>
@@ -374,33 +409,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="jointures" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="jointures"><span class="header-section-number">2.2</span> Jointures</h2>
+<section id="jointures" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="jointures"><span class="header-section-number">2.7</span> Jointures</h2>
 <ul>
-<li>dplyr fournit plusieurs types de jointures :</li>
-<li>inner_join() : intersection</li>
-<li>left_join() : toutes les lignes de gauche</li>
-<li>full_join() : toutes les lignes des deux</li>
+<li><code>dplyr</code> fournit plusieurs types de jointures :</li>
+<li><code>inner_join()</code> : intersection</li>
+<li><code>left_join()</code> : toutes les lignes de gauche</li>
+<li><code>full_join()</code> : toutes les lignes des deux</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">left_join</span>(df1, df2, <span class="at">by =</span> <span class="st">"id"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_x"</span>, <span class="st">"_y"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Toujours vérifier le nombre de lignes avant/après une jointure.</li>
-<li>Utiliser count() pour détecter des NA inattendus.</li>
+<li>Utiliser <code>count()</code> pour détecter des NA inattendus.</li>
 </ul>
 </section>
-<section id="combinaisons-de-données" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="combinaisons-de-données"><span class="header-section-number">2.3</span> Combinaisons de données</h2>
+<section id="combinaisons-de-données" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="combinaisons-de-données"><span class="header-section-number">2.8</span> Combinaisons de données</h2>
 <ul>
-<li>bind_rows() : empile les lignes</li>
-<li>bind_cols() : ajoute des colonnes (attention au positionnement !)</li>
-<li>Autres fonctions utiles</li>
-<li>count() : équivalent à group_by() + summarise(n = n())</li>
-<li>between(x, a, b) : test x &gt;= a &amp; x &lt;= b</li>
-<li>tidyr : Restructuration des données</li>
-<li>lag() et fenêtres temporelles</li>
-<li>lag() récupère la valeur précédente d’une variable.</li>
+<li><code>bind_rows()</code> : empile les lignes</li>
+<li><code>bind_cols()</code> : ajoute des colonnes (attention au positionnement !)</li>
+</ul>
+<p>Autres fonctions utiles :</p>
+<ul>
+<li><code>count()</code> : équivalent à <code>group_by()</code> + <code>summarise(n = n())</code></li>
+<li><code>between(x, a, b)</code> : test x &gt;= a &amp; x &lt;= b</li>
+</ul>
+</section>
+</section>
+<section id="tidyr-restructuration-des-données" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> <code>tidyr</code> : Restructuration des données</h1>
+<section id="lag" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="lag"><span class="header-section-number">3.1</span> <code>lag()</code></h2>
+<ul>
+<li><code>lag()</code> et fenêtres temporelles et récupère la valeur précédente d’une variable.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
@@ -412,8 +455,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">var_lag =</span> <span class="fu">if_else</span>(<span class="fu">lag</span>(annee) <span class="sc">==</span> annee <span class="sc">-</span> <span class="dv">1</span>, <span class="fu">lag</span>(var), <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="pivots" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="pivots"><span class="header-section-number">2.4</span> Pivots</h2>
+<section id="pivots" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="pivots"><span class="header-section-number">3.2</span> Pivots</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -425,9 +468,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"valeur"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>cols : colonnes à pivoter</li>
-<li>names_to : future colonne pour les noms</li>
-<li>values_to : future colonne pour les valeurs</li>
+<li><code>cols</code> : colonnes à pivoter</li>
+<li><code>names_to</code> : future colonne pour les noms</li>
+<li><code>values_to</code> : future colonne pour les valeurs</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_wider</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -440,34 +483,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Assurez-vous qu’il y a une clé (ex. id, année) pour l’opération.</p>
 </section>
-<section id="complétion-de-données" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="complétion-de-données"><span class="header-section-number">2.5</span> Complétion de données</h2>
-<p>Utiliser complete(), crossing() ou expand() pour générer toutes les combinaisons manquantes :</p>
+<section id="complétion-de-données" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="complétion-de-données"><span class="header-section-number">3.3</span> Complétion de données</h2>
+<p>Utiliser <code>complete()</code>, <code>crossing()</code> ou <code>expand()</code> pour générer toutes les combinaisons manquantes :</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">complete</span>(annee, region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
-<section id="autres-packages-utiles-du-tidyverse" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Autres packages utiles du tidyverse</h1>
+<section id="autres-packages-utiles-du-tidyverse" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Autres packages utiles du tidyverse</h1>
 <ul>
-<li>lubridate : manipulation efficace des dates</li>
-<li>forcats : gestion des variables catégorielles (facteurs)</li>
-<li>stringr : manipulation des chaînes de caractères</li>
-<li>purrr : programmation fonctionnelle (map(), walk(), etc.)</li>
-<li>readr : import rapide de CSV/TSV</li>
+<li><code>lubridate</code> : manipulation efficace des dates</li>
+<li><code>forcats</code> : gestion des variables catégorielles (facteurs)</li>
+<li><code>stringr</code> : manipulation des chaînes de caractères</li>
+<li><code>purrr</code> : programmation fonctionnelle (<code>map()</code>, <code>walk()</code>, etc.)</li>
+<li><code>readr</code> : import rapide de CSV/TSV</li>
 </ul>
 </section>
-<section id="rappel-des-petits-plus-de-thomas" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Rappel des petits plus de Thomas :)</h1>
+<section id="rappel-des-petits-plus-de-thomas" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Rappel des petits plus de Thomas :)</h1>
 <ul>
-<li>Nommer toujours en minuscule (ou fonction {janitor})</li>
+<li>Nommer toujours en minuscule (ou fonction <code>janitor</code>)</li>
 <li>Mettre un espace entre # et le commentaire</li>
 <li>Utiliser des noms explicites pour les fonctions et variables</li>
 <li>Utiliser des commentaires pour expliquer les étapes importantes</li>
 <li>Structure le code avec # et ## pour les sections (avec —— à la fin du titre pour l’afficher dans l’Outline)</li>
 </ul>
+<p>Pour plus de conseils, allez voir la page <a href="./Tips.html">tips</a>.</p>
 
 
 </section>

@@ -1,5 +1,5 @@
 ---
-title: "Cartographie & Données spatiales — Formation du 11 mars"
+title: "Cartographie & Données spatiales"
 format:
   html:
     toc: true
@@ -14,11 +14,6 @@ execute:
   message: false
 ---
 
-
-
-
-# Cartographie & données spatiales avec R
-
 Cette session vise à découvrir les étapes nécessaires pour :
 
 - charger des données géographiques ;
@@ -28,7 +23,7 @@ Cette session vise à découvrir les étapes nécessaires pour :
 ---
 
 
-```{r setup-data, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+```{r}
 # Chargement des packages
 packages <- c("dplyr", "ggplot2", "sf", "readr", "purrr", "lubridate", "stringr")
 lapply(packages, require, character.only = TRUE)

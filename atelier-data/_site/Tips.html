@@ -253,7 +253,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#préférez-dplyr-à-data.table" id="toc-préférez-dplyr-à-data.table" class="nav-link active" data-scroll-target="#préférez-dplyr-à-data.table">Préférez <code>Dplyr</code> à <code>data.table</code></a></li>
   <li><a href="#tibble-est-mieux-que-data.table-qui-est-mieux-que-data.frame" id="toc-tibble-est-mieux-que-data.table-qui-est-mieux-que-data.frame" class="nav-link" data-scroll-target="#tibble-est-mieux-que-data.table-qui-est-mieux-que-data.frame"><code>tibble</code> est mieux que <code>data.table</code> qui est mieux que <code>data.frame</code></a></li>
-  <li><a href="#structurer-votre-code" id="toc-structurer-votre-code" class="nav-link" data-scroll-target="#structurer-votre-code">Structurer votre code</a></li>
+  <li><a href="#structurer-votre-code" id="toc-structurer-votre-code" class="nav-link" data-scroll-target="#structurer-votre-code">Structurer votre code</a>
+  <ul class="collapse">
+  <li><a href="#aérer-son-code" id="toc-aérer-son-code" class="nav-link" data-scroll-target="#aérer-son-code">Aérer son code</a></li>
+  <li><a href="#organisation" id="toc-organisation" class="nav-link" data-scroll-target="#organisation">Organisation</a></li>
+  </ul></li>
   <li><a href="#commenter-commenter-commenter" id="toc-commenter-commenter-commenter" class="nav-link" data-scroll-target="#commenter-commenter-commenter">Commenter, commenter, commenter</a></li>
   <li><a href="#quelques-fonctions-utiles" id="toc-quelques-fonctions-utiles" class="nav-link" data-scroll-target="#quelques-fonctions-utiles">Quelques fonctions utiles</a></li>
   </ul>
@@ -336,9 +340,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="structurer-votre-code" class="level2">
 <h2 class="anchored" data-anchor-id="structurer-votre-code">Structurer votre code</h2>
+<section id="aérer-son-code" class="level3">
+<h3 class="anchored" data-anchor-id="aérer-son-code">Aérer son code</h3>
 <p>On a bien compris qu’il est important de mettre des espaces après les <em>#</em> pour que cela soit plus lisible. On peut ajpouter à cela que c’est également valable pour les <em>#</em> qui indiquent les titres et sous-titre (etc…) dans l’Outline.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># library(stringr)</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">walk</span>(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Récupère tous les scripts du projet</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  fs<span class="sc">::</span><span class="fu">dir_ls</span>(<span class="st">"R/"</span>, <span class="at">glob =</span> <span class="st">"*.R"</span>, <span class="at">recurse =</span> <span class="cn">TRUE</span>),</span>
@@ -355,7 +361,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>A cela on ajoute toujou_rs en début de code : - Le titre du script - Une description de ce que fait le script (optionnel) - Les packages nécessaires - Les données nécessaires - Nettoyage des données - Analyse (optionnel)</p>
+</section>
+<section id="organisation" class="level3">
+<h3 class="anchored" data-anchor-id="organisation">Organisation</h3>
+<ul>
+<li>Le titre du script</li>
+<li>Une description de ce que fait le script (optionnel)</li>
+<li>Les packages nécessaires</li>
+<li>Les données nécessaires</li>
+<li>Nettoyage des données</li>
+<li>Analyse (optionnel)</li>
+</ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Estimation des coûts différenciés selon les femmes </span><span class="al">###</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -406,7 +422,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="co"># (...)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Et on n’oublie pas <strong>Un fichier par idée</strong> <em>(sinon ça va vite ressembler à l’esprit de Thomas)(no offense Thomas, je ne suis plus stagiaire au moment où tu lis le site)(très bon stage bytheway)</em></p>
+<p>Et on n’oublie pas <strong>UN FICHIER PAR IDEE</strong> <em>(sinon ça va vite ressembler à l’esprit de Thomas quand il a une nouvelle idée de business)(no offense Thomas, je ne suis plus stagiaire au moment où tu lis le site)(très bon stage bytheway)</em></p>
+</section>
 </section>
 <section id="commenter-commenter-commenter" class="level2">
 <h2 class="anchored" data-anchor-id="commenter-commenter-commenter">Commenter, commenter, commenter</h2>
