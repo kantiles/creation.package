@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "Kantiles - Supports de Formation"
+  title: "Kantiles - Support de Formation"
   navbar:
     left:
       - text: "Accueil"
