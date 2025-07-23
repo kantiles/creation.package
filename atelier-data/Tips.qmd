@@ -14,9 +14,10 @@ execute:
   message: false
 ---
 
-# Dplyr > data.table
+## Préférez `Dplyr` à `data.table`
 
 ```{r}
+#| eval: false
 #| message: false
 #| warning: false
 # Charger les bibliothèques
@@ -58,24 +59,28 @@ result <- microbenchmark(
 # Afficher les résultats du benchmark
 print(result)
 ```
-Bon, soyons clair, data.table est (beaucoup) plus rapide que dplyr. Mais dplyr est plus lisible et permet plus de choses. Donc on le préferera pour une grande majorité de nos codes. Voir [dtplyr](https://www.tidyverse.org/blog/2019/11/dtplyr-1-0-0/), écris par l'équipe de Rstudio, il permet de traduire les requêtes dplyr en requêtes data.table. Ce n'est pas parfait mais ça peut sauver du temps sur les gros jeux de données.
+Bon, soyons clair, `data.table` est (beaucoup) plus **rapide** que `dplyr` Mais dplyr est plus lisible et permet plus de choses. Donc on le préferera pour une grande majorité de nos codes. Voir  [dtplyr](https://www.tidyverse.org/blog/2019/11/dtplyr-1-0-0/), écris par l'équipe de Rstudio, il permet de traduire les requêtes `dplyr` en requêtes `data.table`. Ce n'est pas parfait mais ça peut sauver du temps sur les gros jeux de données.
 
-# tibble > data.table > data.frame
+
+## `tibble` est mieux  que `data.table` qui est mieux que `data.frame`
 
 Les tibbles sont des formes de data_frame plus stricts mais aussi plus verbeux. Par exemple, si on essaye de faire un `mutate` sur une colonne qui n'existe pas, on aura un message d'erreur plutôt que de créer une colonne avec des valeurs NA. Il n'a pas de rownames. Tout découpage rend un tibble (même s'il n'y a qu'une colonne ou une valeur).
 De plus, les tibbles sont plus lisibles dans la console, car ils n'affichent que les colonnes qui tiennent sur l'écran, affichent les types de colonnes et uniquement les 10 premières lignes. Ils sont donc plus adaptés pour l'exploration de données.
 
 ```{r}
+#| eval: false
 as.data.frame(weather) |> 
   head(50)
 as_tibble(weather)
 ```
 
-# Mettre des espaces après les *#*
+## Structurer votre code
 
-... mettre des espaces après les *#*
+On a bien compris qu'il est important de mettre des espaces après les *#* pour que cela soit plus lisible.
+On peut ajpouter à cela que c'est également valable pour les *#* qui indiquent les titres et sous-titre (etc...) dans l'Outline.
 
-```r
+```{r}
+#| eval: false
 library(stringr)
 walk(
   # Récupère tous les scripts du projet
@@ -94,10 +99,75 @@ walk(
 )
 ```
 
-# Commenter, commenter, commenter
+A cela on ajoute toujou_rs en début de code :
+- Le titre du script
+- Une description de ce que fait le script (optionnel)
+- Les packages nécessaires
+- Les données nécessaires
+- Nettoyage des données
+- Analyse (optionnel)
+
+```{r}
+#| eval: false
+
+###Estimation des coûts différenciés selon les femmes ###
+
+# Packages ---------
+library(tidyverse)
+library(ggplot2)
+
+
+# Data -----------
+
+## Statut professionnel  -----------
+statut_pro <- data.frame(
+  Statut_Professionnel = c("En emploi", "Au chômage", "En formation/études", "Arrêt longue maladie", "Inactive"),
+  Pourcentage = c(78, 8, 4, 5, 3)
+)
+
+## Catégories socio-professionnelles  -----------
+csp <- data.frame(
+  Categorie_SocioPro = c("Cadres", "Intermédiaires", "Employées", "Indépendantes"),
+  Pourcentage = c(23, 10, 57, 8)
+)
+
+## Type de contrat  -----------
+contrat <- data.frame(
+  Type_Contrat = c("CDI ou assimilé", "CDD, intérim...", "Non précisé"),
+  Pourcentage = c(72, 21, 7)
+)
+
+## Gravité de l’endométriose  -----------
+gravite <- data.frame(
+  Gravite_Endometriose = c("Légère", "Modérée", "Grave"),
+  Pourcentage = c(9, 61, 30)
+)
+
+# Simulation -------
+set.seed(123) 
+
+## Taille de l'échantillon ---------
+n <- 1986
+
+## Statut socio-professionnel ----------
+statut_pro <- sample(
+  c("Cadre", "Intermédiaire", "Employée"),
+  size = n,
+  replace = TRUE,
+  prob = c(0.23, 0.10, 0.57)
+)
+
+# (...)
+```
+
+Et on n'oublie pas **Un fichier par idée** 
+*(sinon ça va vite ressembler à l'esprit de Thomas quand il a une nouvelle idée de business)(no offense Thomas, je ne suis plus stagiaire au moment où tu lis le site)(très bon stage bytheway)*
+
+
+## Commenter, commenter, commenter
 
 Pour vous dans deux semaines ou pour quelqu'un d'autre, commentez votre code. Utilisez des commentaires pour expliquer les étapes importantes, les choix de conception, et les raisons derrière certaines décisions. Cela rendra votre code plus facile à comprendre et à maintenir.
 
-# Quelques fonctions utiles
+## Quelques fonctions utiles
 
-lag() et lead() sont des fonctions très utiles pour faire des décalages dans les données. Par exemple, si on veut calculer la variation d'une colonne par rapport à la ligne précédente, on peut utiliser lag(). lead() est l'inverse, il permet de décaler les données vers le haut.
+`lag()` et `lead()` sont des fonctions très utiles pour faire des décalages dans les données. Par exemple, si on veut calculer la variation d'une colonne par rapport à la ligne précédente, on peut utiliser `lag()`. `lead()` est l'inverse, il permet de décaler les données vers le haut.
