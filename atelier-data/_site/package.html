@@ -145,14 +145,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./scrap.html"> 
-<span class="menu-text">Scraping</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-code" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Code</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-code">    
+        <li>
+    <a class="dropdown-item" href="./R_git.html">
+ <span class="dropdown-text">Git</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./api.html"> 
-<span class="menu-text">API</span></a>
+        <li>
+    <a class="dropdown-item" href="./R_dplyr_tidyr.html">
+ <span class="dropdown-text">R</span></a>
   </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Données</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
+        <li>
+    <a class="dropdown-item" href="./scrap.html">
+ <span class="dropdown-text">Scraping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./api.html">
+ <span class="dropdown-text">API</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-format" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Format</span>
@@ -172,14 +194,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./zotero.html"> 
-<span class="menu-text">Zotero</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./cartographie.html"> 
-<span class="menu-text">Cartographie</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Packages R</span>
@@ -195,6 +209,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-autres" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Autres</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-autres">    
+        <li>
+    <a class="dropdown-item" href="./zotero.html">
+ <span class="dropdown-text">Zotero</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./cartographie.html">
+ <span class="dropdown-text">Cartographie</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/company/kantiles"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -215,10 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#exemples-dusages" id="toc-exemples-dusages" class="nav-link" data-scroll-target="#exemples-dusages"><span class="header-section-number">1.1</span> Exemples d’usages</a></li>
   </ul></li>
-  <li><a href="#structure-dun-package" id="toc-structure-dun-package" class="nav-link" data-scroll-target="#structure-dun-package"><span class="header-section-number">2</span> Structure d’un package</a>
-  <ul class="collapse">
-  <li><a href="#prérequis-packages-utiles" id="toc-prérequis-packages-utiles" class="nav-link" data-scroll-target="#prérequis-packages-utiles"><span class="header-section-number">2.1</span> Prérequis : packages utiles</a></li>
-  </ul></li>
+  <li><a href="#structure-dun-package" id="toc-structure-dun-package" class="nav-link" data-scroll-target="#structure-dun-package"><span class="header-section-number">2</span> Structure d’un package</a></li>
   <li><a href="#étapes-de-création" id="toc-étapes-de-création" class="nav-link" data-scroll-target="#étapes-de-création"><span class="header-section-number">3</span> Étapes de création</a>
   <ul class="collapse">
   <li><a href="#initialiser-un-package" id="toc-initialiser-un-package" class="nav-link" data-scroll-target="#initialiser-un-package"><span class="header-section-number">3.1</span> Initialiser un package</a></li>
@@ -298,12 +331,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>.Rbuildignore</code> : liste des fichiers/dossiers à exclure lors du build.</li>
 </ul>
 <hr>
-<section id="prérequis-packages-utiles" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="prérequis-packages-utiles"><span class="header-section-number">2.1</span> Prérequis : packages utiles</h2>
+<p><em>Prérequis : packages utiles</em></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"devtools"</span>, <span class="st">"roxygen2"</span>, <span class="st">"usethis"</span>, <span class="st">"testthat"</span>, <span class="st">"pkgdown"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
 </section>
 <section id="étapes-de-création" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Étapes de création</h1>
@@ -394,6 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="générer-des-tests" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Générer des tests</h1>
+<p>Voir la page <a href="./test_package.html">tests</a></p>
 </section>
 <section id="créer-un-site-avec-pkgdown" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Créer un site avec {pkgdown}</h1>

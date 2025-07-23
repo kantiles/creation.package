@@ -42,22 +42,40 @@ Pour plus de détails, consultez les pages dédiées dans la section **Accueil**
 
 ---
 
-## Formations & Ateliers internes
+## Formations et Ateliers internes
 
-- **Scraping**  
-  Apprenez à automatiser la collecte de données web grâce à R et rvest. Cas d’usage : récupération de données publiques sur des sites d’annuaires, d’administration, ou de presse.
+Nous proposons une série de formations et d'ateliers pour vous aider à développer vos compétences techniques et méthodologiques.
 
-- **API**  
-  Interrogez des bases de données distantes (Open Data, INSEE, etc.) à travers des APIs. Mise en pratique avec `httr2`, gestion de tokens, pagination, et JSON.
+::: {.callout title="[Accueil](index.qmd)"}
+Présentation générale, suivi des stages, publications internes, identité visuelle.
+:::
 
-- **Quarto**  
-  Produisez des documents interactifs, reproductibles et élégants avec Quarto : rapports HTML, PDF ou Word, intégration de données, visualisations, citations automatiques, etc.
+::: {.callout title="Code"}
+Initiation à [Git](`R_git.qmd`), [manipulation de données](R_dplyr_tidyr.qmd) avec `dplyr`, `tidyr` et autres outils R.
+:::
 
-- **Parquet & DuckDB**  
-  Apprenez à gérer des bases de données volumineuses sans serveur avec des formats colonnes (`.parquet`) et une base légère (`DuckDB`). Performances et flexibilité au programme.
+::: {.callout title="Données"}
+- [Scraping](scrap.qmd) : automatisation de la collecte de données web avec `rvest`.  
+- [API](api.qmd) : interrogation de bases distantes via `httr2`, gestion de tokens, pagination, traitement de JSON.
+:::
 
-- **Zotero**  
-  Gérer efficacement vos bibliographies, articles scientifiques et documents de travail.
+::: {.callout title="Format"}
+- [Quarto](quarto.qmd) : création de rapports interactifs.  
+- [Parquet & DuckDB](parquet.qmd) : traitement de gros volumes de données.  
+- [Excels moches](fichier_moches.qmd) : nettoyage de fichiers Excel non structurés.
+:::
+
+::: {.callout title="Packages R"}
+- [Créer un package](package.qmd)  
+- [Tester des fonctions](test_package.qmd) avec `testthat`.
+:::
+
+::: {.callout title="Autres"}
+- [Zotero](zotero.qmd) : gestion bibliographique.  
+- [Cartographie](cartographie.qmd) : introduction à `sf`, `ggplot2` et visualisation spatiale.
+:::
+
+
 
 
 

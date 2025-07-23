@@ -111,14 +111,36 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./scrap.html"> 
-<span class="menu-text">Scraping</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-code" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Code</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-code">    
+        <li>
+    <a class="dropdown-item" href="./R_git.html">
+ <span class="dropdown-text">Git</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./api.html"> 
-<span class="menu-text">API</span></a>
+        <li>
+    <a class="dropdown-item" href="./R_dplyr_tidyr.html">
+ <span class="dropdown-text">R</span></a>
   </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Données</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
+        <li>
+    <a class="dropdown-item" href="./scrap.html">
+ <span class="dropdown-text">Scraping</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./api.html">
+ <span class="dropdown-text">API</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-format" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Format</span>
@@ -138,14 +160,6 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./zotero.html"> 
-<span class="menu-text">Zotero</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./cartographie.html"> 
-<span class="menu-text">Cartographie</span></a>
-  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Packages R</span>
@@ -161,6 +175,28 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-autres" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Autres</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-autres">    
+        <li>
+    <a class="dropdown-item" href="./zotero.html">
+ <span class="dropdown-text">Zotero</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./cartographie.html">
+ <span class="dropdown-text">Cartographie</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/company/kantiles"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -227,18 +263,103 @@ N’hésitez pas à revenir régulièrement pour découvrir les nouveautés et p
 </section>
 <section id="formations-ateliers-internes" class="level2">
 <h2 class="anchored" data-anchor-id="formations-ateliers-internes">Formations &amp; Ateliers internes</h2>
+<p>Nous proposons une série de formations et d’ateliers pour vous aider à développer vos compétences techniques et méthodologiques.</p>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="[Accueil](index.qmd)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<a href="./index.html">Accueil</a>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Présentation générale, suivi des stages, publications internes, identité visuelle.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Code">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Initiation à <a href="`R_git.qmd`">Git</a>, <a href="./R_dplyr_tidyr.html">manipulation de données</a> avec <code>dplyr</code>, <code>tidyr</code> et autres outils R.</p>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Données">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Données
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
-<li><p><strong>Scraping</strong><br>
-Apprenez à automatiser la collecte de données web grâce à R et rvest. Cas d’usage : récupération de données publiques sur des sites d’annuaires, d’administration, ou de presse.</p></li>
-<li><p><strong>API</strong><br>
-Interrogez des bases de données distantes (Open Data, INSEE, etc.) à travers des APIs. Mise en pratique avec <code>httr2</code>, gestion de tokens, pagination, et JSON.</p></li>
-<li><p><strong>Quarto</strong><br>
-Produisez des documents interactifs, reproductibles et élégants avec Quarto : rapports HTML, PDF ou Word, intégration de données, visualisations, citations automatiques, etc.</p></li>
-<li><p><strong>Parquet &amp; DuckDB</strong><br>
-Apprenez à gérer des bases de données volumineuses sans serveur avec des formats colonnes (<code>.parquet</code>) et une base légère (<code>DuckDB</code>). Performances et flexibilité au programme.</p></li>
-<li><p><strong>Zotero</strong><br>
-Gérer efficacement vos bibliographies, articles scientifiques et documents de travail.</p></li>
+<li><a href="./scrap.html">Scraping</a> : automatisation de la collecte de données web avec <code>rvest</code>.<br>
+</li>
+<li><a href="./api.html">API</a> : interrogation de bases distantes via <code>httr2</code>, gestion de tokens, pagination, traitement de JSON.</li>
 </ul>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Format">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Format
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="./quarto.html">Quarto</a> : création de rapports interactifs.<br>
+</li>
+<li><a href="./parquet.html">Parquet &amp; DuckDB</a> : traitement de gros volumes de données.<br>
+</li>
+<li><a href="./fichier_moches.html">Excels moches</a> : nettoyage de fichiers Excel non structurés.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Packages R">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Packages R
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="./package.html">Créer un package</a><br>
+</li>
+<li><a href="./test_package.html">Tester des fonctions</a> avec <code>testthat</code>.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-simple callout-none no-icon callout-titled" title="Autres">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Autres
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><a href="./zotero.html">Zotero</a> : gestion bibliographique.<br>
+</li>
+<li><a href="./cartographie.html">Cartographie</a> : introduction à <code>sf</code>, <code>ggplot2</code> et visualisation spatiale.</li>
+</ul>
+</div>
+</div>
 <div style="
   display: flex;
   flex-direction: column;

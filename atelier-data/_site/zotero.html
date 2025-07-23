@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Zotero – Kantiles - Supports de Formation</title>
+<title>Zotero : gestion documentaire – Kantiles - Supports de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-accueil">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Accueil — Support de Formations Kantiles</span></a>
+ <span class="dropdown-text">Accueil</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./cr_stage.html">
@@ -111,34 +111,85 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./scrap.html"> 
-<span class="menu-text">Scraping</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-code" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Code</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-code">    
+        <li>
+    <a class="dropdown-item" href="./R_git.html">
+ <span class="dropdown-text">Git</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./api.html"> 
-<span class="menu-text">API</span></a>
+        <li>
+    <a class="dropdown-item" href="./R_dplyr_tidyr.html">
+ <span class="dropdown-text">R</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./quarto.html"> 
-<span class="menu-text">Quarto</span></a>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Données</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
+        <li>
+    <a class="dropdown-item" href="./scrap.html">
+ <span class="dropdown-text">Scraping</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./parquet.html"> 
-<span class="menu-text">Parquet</span></a>
+        <li>
+    <a class="dropdown-item" href="./api.html">
+ <span class="dropdown-text">API</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./zotero.html" aria-current="page"> 
-<span class="menu-text">Zotero</span></a>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-format" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Format</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-format">    
+        <li>
+    <a class="dropdown-item" href="./quarto.html">
+ <span class="dropdown-text">Quarto</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./cartographie.html"> 
-<span class="menu-text">Cartographie</span></a>
+        <li>
+    <a class="dropdown-item" href="./parquet.html">
+ <span class="dropdown-text">Parquet</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./fichier_moches.html"> 
-<span class="menu-text">Format</span></a>
+        <li>
+    <a class="dropdown-item" href="./fichier_moches.html">
+ <span class="dropdown-text">Lire des Excels moches</span></a>
   </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Packages R</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-packages-r">    
+        <li>
+    <a class="dropdown-item" href="./package.html">
+ <span class="dropdown-text">Créer un package R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./test_package.html">
+ <span class="dropdown-text">Tester ses fonctions dans un package R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-autres" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Autres</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-autres">    
+        <li>
+    <a class="dropdown-item" href="./zotero.html">
+ <span class="dropdown-text">Zotero</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./cartographie.html">
+ <span class="dropdown-text">Cartographie</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -147,7 +198,7 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -155,9 +206,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#zotero-gestion-documentaire" id="toc-zotero-gestion-documentaire" class="nav-link active" data-scroll-target="#zotero-gestion-documentaire">Zotero : gestion documentaire</a>
-  <ul class="collapse">
-  <li><a href="#module-zotero-veille-documentaire" id="toc-module-zotero-veille-documentaire" class="nav-link" data-scroll-target="#module-zotero-veille-documentaire">Module : Zotero &amp; Veille documentaire</a></li>
+  <li><a href="#module-zotero-veille-documentaire" id="toc-module-zotero-veille-documentaire" class="nav-link active" data-scroll-target="#module-zotero-veille-documentaire">Module : Zotero &amp; Veille documentaire</a></li>
   <li><a href="#présentation-générale-de-zotero" id="toc-présentation-générale-de-zotero" class="nav-link" data-scroll-target="#présentation-générale-de-zotero">Présentation générale de Zotero</a></li>
   <li><a href="#fonctionnement-de-base" id="toc-fonctionnement-de-base" class="nav-link" data-scroll-target="#fonctionnement-de-base">Fonctionnement de base</a></li>
   <li><a href="#travail-collaboratif" id="toc-travail-collaboratif" class="nav-link" data-scroll-target="#travail-collaboratif">Travail collaboratif</a></li>
@@ -166,21 +215,20 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#méthodologie-recommandée" id="toc-méthodologie-recommandée" class="nav-link" data-scroll-target="#méthodologie-recommandée">Méthodologie recommandée</a></li>
   <li><a href="#vers-une-base-documentaire-dynamique" id="toc-vers-une-base-documentaire-dynamique" class="nav-link" data-scroll-target="#vers-une-base-documentaire-dynamique">Vers une base documentaire dynamique</a></li>
   <li><a href="#à-creuser-aller-plus-loin" id="toc-à-creuser-aller-plus-loin" class="nav-link" data-scroll-target="#à-creuser-aller-plus-loin">À creuser / Aller plus loin</a></li>
-  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Zotero</h1>
+<h1 class="title">Zotero : gestion documentaire</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -192,8 +240,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="zotero-gestion-documentaire" class="level1">
-<h1>Zotero : gestion documentaire</h1>
 <section id="module-zotero-veille-documentaire" class="level2">
 <h2 class="anchored" data-anchor-id="module-zotero-veille-documentaire">Module : Zotero &amp; Veille documentaire</h2>
 <ul>
@@ -357,7 +403,6 @@ Construire une base documentaire cohérente, exhaustive, structurée, réutilisa
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

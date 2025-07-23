@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-accueil">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Accueil — Support de Formations Kantiles</span></a>
+ <span class="dropdown-text">Accueil</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./cr_stage.html">
@@ -145,34 +145,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link active" href="./scrap.html" aria-current="page"> 
-<span class="menu-text">Scraping</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-code" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Code</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-code">    
+        <li>
+    <a class="dropdown-item" href="./R_git.html">
+ <span class="dropdown-text">Git</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./api.html"> 
-<span class="menu-text">API</span></a>
+        <li>
+    <a class="dropdown-item" href="./R_dplyr_tidyr.html">
+ <span class="dropdown-text">R</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./quarto.html"> 
-<span class="menu-text">Quarto</span></a>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Données</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
+        <li>
+    <a class="dropdown-item" href="./scrap.html">
+ <span class="dropdown-text">Scraping</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./parquet.html"> 
-<span class="menu-text">Parquet</span></a>
+        <li>
+    <a class="dropdown-item" href="./api.html">
+ <span class="dropdown-text">API</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./zotero.html"> 
-<span class="menu-text">Zotero</span></a>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-format" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Format</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-format">    
+        <li>
+    <a class="dropdown-item" href="./quarto.html">
+ <span class="dropdown-text">Quarto</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./cartographie.html"> 
-<span class="menu-text">Cartographie</span></a>
+        <li>
+    <a class="dropdown-item" href="./parquet.html">
+ <span class="dropdown-text">Parquet</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./fichier_moches.html"> 
-<span class="menu-text">Format</span></a>
+        <li>
+    <a class="dropdown-item" href="./fichier_moches.html">
+ <span class="dropdown-text">Lire des Excels moches</span></a>
   </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Packages R</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-packages-r">    
+        <li>
+    <a class="dropdown-item" href="./package.html">
+ <span class="dropdown-text">Créer un package R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./test_package.html">
+ <span class="dropdown-text">Tester ses fonctions dans un package R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-autres" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Autres</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-autres">    
+        <li>
+    <a class="dropdown-item" href="./zotero.html">
+ <span class="dropdown-text">Zotero</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./cartographie.html">
+ <span class="dropdown-text">Cartographie</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -198,6 +249,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exemple-complet-récupération-et-scraping-de-fiches-sur-cheese.com" id="toc-exemple-complet-récupération-et-scraping-de-fiches-sur-cheese.com" class="nav-link" data-scroll-target="#exemple-complet-récupération-et-scraping-de-fiches-sur-cheese.com">Exemple complet : récupération et scraping de fiches sur cheese.com</a>
   <ul class="collapse">
   <li><a href="#étape-1-récupération-des-urls-de-chaque-fromage" id="toc-étape-1-récupération-des-urls-de-chaque-fromage" class="nav-link" data-scroll-target="#étape-1-récupération-des-urls-de-chaque-fromage">Étape 1 : récupération des URLs de chaque fromage</a></li>
+  <li><a href="#étape-2-récupérer-les-informations-qui-nous-intéressent" id="toc-étape-2-récupérer-les-informations-qui-nous-intéressent" class="nav-link" data-scroll-target="#étape-2-récupérer-les-informations-qui-nous-intéressent">Étape 2 : Récupérer les informations qui nous intéressent</a></li>
+  </ul></li>
+  <li><a href="#lecture-de-pdf-en-r" id="toc-lecture-de-pdf-en-r" class="nav-link" data-scroll-target="#lecture-de-pdf-en-r">Lecture de PDF en R</a>
+  <ul class="collapse">
+  <li><a href="#outils" id="toc-outils" class="nav-link" data-scroll-target="#outils">Outils</a></li>
+  <li><a href="#usages" id="toc-usages" class="nav-link" data-scroll-target="#usages">Usages</a></li>
+  <li><a href="#cas-pratique" id="toc-cas-pratique" class="nav-link" data-scroll-target="#cas-pratique">Cas pratique</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -293,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="exemple-complet-récupération-et-scraping-de-fiches-sur-cheese.com" class="level2">
 <h2 class="anchored" data-anchor-id="exemple-complet-récupération-et-scraping-de-fiches-sur-cheese.com">Exemple complet : récupération et scraping de fiches sur cheese.com</h2>
 <section id="étape-1-récupération-des-urls-de-chaque-fromage" class="level3">
-<h3 class="anchored">Étape 1 : récupération des URLs de chaque fromage</h3>
+<h3 class="anchored" data-anchor-id="étape-1-récupération-des-urls-de-chaque-fromage">Étape 1 : récupération des URLs de chaque fromage</h3>
 <p>Chaque fromage a une page dédiée sur laquelle il y a des informations plus ou moins structurées. Nous voulons d’abord avoir une liste des urls de chaque fromage.</p>
 <section id="méthode-1-passer-par-le-sitemap" class="level4">
 <h4 class="anchored" data-anchor-id="méthode-1-passer-par-le-sitemap">Méthode 1 : Passer par le sitemap</h4>
@@ -316,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(urls)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="méthode-2-utiliser-la-liste-du-site" class="level4">
-<h4 class="anchored">Méthode 2 : utiliser la liste du site</h4>
+<h4 class="anchored" data-anchor-id="méthode-2-utiliser-la-liste-du-site">Méthode 2 : utiliser la liste du site</h4>
 <p>Le site propose <a href="https://www.cheese.com/alphabetical/">une liste alphabétique des fromages</a>. Il nous suffit de récupérer cette page avec <code>read_html("url de l’html à récupérer")</code>. Cette fonction renvoie le code HTML de la page dans lequel il y a une balise d’hyperlien pour chaque élément de la liste. On peut alors récupérer tous les hyperliens qui nous intéressent.</p>
 <p>Le package rvest permet de sélectionner les éléments dans les pages html. Nous pourrions récupérer tous les liens de la page ainsi :</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
@@ -330,9 +388,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># On en fait un tibble</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_tibble</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-Mais on récupère également des liens qui ne nous intéressent pas (lien vers la page d’accueil, vers le compte Facebook du site, etc.). On observe alors sur le site que chaque lien que l’on souhaite est dans une balise
-<div>
-<p>de class ‘product_item’. Pour voir le code html d’un site, il suffit de faire un clic droit et ‘inspecter la page’ ou ‘afficher le code source de la page’. On peut donc d’abord filtrer sur ces balises d’abord, puis récupérer les liens qu’elles contiennent.</p>
+<p>Mais on récupère également des liens qui ne nous intéressent pas (lien vers la page d’accueil, vers le compte Facebook du site, etc.). On observe alors sur le site que chaque lien que l’on souhaite est dans une balise &lt;div&gt; de class ‘product_item’. Pour voir le code html d’un site, il suffit de faire un clic droit et ‘inspecter la page’ ou ‘afficher le code source de la page’. On peut donc d’abord filtrer sur ces balises d’abord, puis récupérer les liens qu’elles contiennent.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>page <span class="sc">|&gt;</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># html_elements avec un s pour tous les récupérer, sans s pour ne prendre que le premier</span></span>
@@ -381,8 +437,10 @@ Mais on récupère également des liens qui ne nous intéressent pas (lien vers 
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">url =</span> <span class="fu">paste0</span>(<span class="st">"https://www.cheese.com"</span>, value)</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="etape-2-récupérer-les-informations-qui-nous-intéressent" class="level3">
-<h3 class="anchored" data-anchor-id="etape-2-récupérer-les-informations-qui-nous-intéressent">Etape 2 : Récupérer les informations qui nous intéressent</h3>
+</section>
+</section>
+<section id="étape-2-récupérer-les-informations-qui-nous-intéressent" class="level3">
+<h3 class="anchored" data-anchor-id="étape-2-récupérer-les-informations-qui-nous-intéressent">Étape 2 : Récupérer les informations qui nous intéressent</h3>
 <p>Il nous faut maintenant récupérer les informations de chaque fromage en parcourant chaque url. On le fait de la même manière que la récupération des liens : on charge la page, on identifie les cases où se trouvent les informations, on les récupère avec rvest et on les met dans un tableau.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cette fonction récupère les informations qui nous intéressent sur une page de fromage</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>get_fromage <span class="ot">&lt;-</span> <span class="cf">function</span>(page) {</span>
@@ -443,6 +501,7 @@ Mais on récupère également des liens qui ne nous intéressent pas (lien vers 
 <span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <hr>
 </section>
+</section>
 <section id="lecture-de-pdf-en-r" class="level2">
 <h2 class="anchored" data-anchor-id="lecture-de-pdf-en-r">Lecture de PDF en R</h2>
 <section id="outils" class="level3">
@@ -490,13 +549,8 @@ Mais on récupère également des liens qui ne nous intéressent pas (lien vers 
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>texte_ocr <span class="ot">&lt;-</span> <span class="fu">ocr</span>(<span class="st">"exemple_image_page.png"</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(texte_ocr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
 
 
-</section>
-</section>
-</div>
-</section>
 </section>
 </section>
 

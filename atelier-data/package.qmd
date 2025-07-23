@@ -44,7 +44,7 @@ Un package suit une organisation stricte :
 
 ---
 
-## Prérequis : packages utiles
+*Prérequis : packages utiles*
 
 ```{r}
 #| eval: false
@@ -148,10 +148,7 @@ usethis::use_readme_rmd()
 
 # Générer des tests 
 
-
-
-
-
+Voir la page [tests](test_package.qmd)
 
 
 # Créer un site avec {pkgdown}

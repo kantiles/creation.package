@@ -11,12 +11,12 @@ Ce document présente les bonnes pratiques pour travailler efficacement avec Git
 
 # Gestion de projet avec Git et GitHub
 
-## 1. Clé SSH
+## Clé SSH
 
 - Configurer une **clé SSH** permet de lier son poste à GitHub sans mot de passe.
 - Générer la clé avec `ssh-keygen`, puis copier la clé publique dans GitHub.
 
-## 2. Structure des branches
+## Structure des branches
 
 - **Branche principale** : `main`
 - Pour chaque nouvelle fonctionnalité : créer une branche dédiée.
@@ -62,6 +62,8 @@ data/
 .Rhistory
 
 # Organisation du code R
+
+Sachant que la [page R](R_dplyr_tidyr.qmd) est plus complète à ce sujet.
 
 ## Projet RStudio
 - Créer un projet RStudio (.Rproj)
