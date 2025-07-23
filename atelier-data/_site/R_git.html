@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quarto et Markdown – Kantiles - Supports de Formation</title>
+<title>Introduction à Git avec R – Kantiles - Supports de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-accueil">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Accueil — Support de Formations Kantiles</span></a>
+ <span class="dropdown-text">Accueil</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./cr_stage.html">
@@ -166,7 +166,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./parquet.html">
  <span class="dropdown-text">Parquet</span></a>
   </li>  
-        <li class="dropdown-header">Lire des Excels moches</li>
         <li>
     <a class="dropdown-item" href="./fichier_moches.html">
  <span class="dropdown-text">Lire des Excels moches</span></a>
@@ -182,19 +181,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Cartographie</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packets" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Packets</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Packages R</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-packets">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-packages-r">    
         <li>
-    <a class="dropdown-item" href="./packages.qmd">
- <span class="dropdown-text"></span></a>
+    <a class="dropdown-item" href="./package.html">
+ <span class="dropdown-text">Créer un package R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./test_package.html">
- <span class="dropdown-text">Créer un package R</span></a>
+ <span class="dropdown-text">Tester ses fonctions dans un package R</span></a>
   </li>  
-        <li class="dropdown-header">Tester ses fonctions dans un package R</li>
     </ul>
   </li>
 </ul>
@@ -205,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -213,46 +211,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vue-générale" id="toc-vue-générale" class="nav-link active" data-scroll-target="#vue-générale">Vue générale</a></li>
-  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
-  <li><a href="#comparaison-avec-r-markdown" id="toc-comparaison-avec-r-markdown" class="nav-link" data-scroll-target="#comparaison-avec-r-markdown">Comparaison avec R Markdown</a></li>
-  <li><a href="#création-pdf" id="toc-création-pdf" class="nav-link" data-scroll-target="#création-pdf">Création PDF</a></li>
-  <li><a href="#exemple-de-chunk-r" id="toc-exemple-de-chunk-r" class="nav-link" data-scroll-target="#exemple-de-chunk-r">Exemple de chunk R</a></li>
-  <li><a href="#quatre-manières-de-générer-un-pdf" id="toc-quatre-manières-de-générer-un-pdf" class="nav-link" data-scroll-target="#quatre-manières-de-générer-un-pdf">Quatre manières de générer un PDF</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#gestion-de-projet-avec-git-et-github" id="toc-gestion-de-projet-avec-git-et-github" class="nav-link" data-scroll-target="#gestion-de-projet-avec-git-et-github"><span class="header-section-number">2</span> Gestion de projet avec Git et GitHub</a>
   <ul class="collapse">
-  <li><a href="#latex" id="toc-latex" class="nav-link" data-scroll-target="#latex">1. LaTeX</a></li>
-  <li><a href="#typst" id="toc-typst" class="nav-link" data-scroll-target="#typst">2. Typst</a></li>
-  <li><a href="#css-paged-media-paged.js-weasyprint-pdf-raptor" id="toc-css-paged-media-paged.js-weasyprint-pdf-raptor" class="nav-link" data-scroll-target="#css-paged-media-paged.js-weasyprint-pdf-raptor">3. CSS Paged Media (paged.js, weasyprint, pdf-raptor)</a></li>
-  <li><a href="#génération-manuelle-via-figma-ou-html-pur" id="toc-génération-manuelle-via-figma-ou-html-pur" class="nav-link" data-scroll-target="#génération-manuelle-via-figma-ou-html-pur">4. Génération manuelle via Figma ou HTML pur</a></li>
+  <li><a href="#clé-ssh" id="toc-clé-ssh" class="nav-link" data-scroll-target="#clé-ssh"><span class="header-section-number">2.1</span> 1. Clé SSH</a></li>
+  <li><a href="#structure-des-branches" id="toc-structure-des-branches" class="nav-link" data-scroll-target="#structure-des-branches"><span class="header-section-number">2.2</span> 2. Structure des branches</a></li>
+  <li><a href="#bonnes-pratiques-de-commit" id="toc-bonnes-pratiques-de-commit" class="nav-link" data-scroll-target="#bonnes-pratiques-de-commit"><span class="header-section-number">2.3</span> 3. Bonnes pratiques de commit</a></li>
+  <li><a href="#pull-request-pr" id="toc-pull-request-pr" class="nav-link" data-scroll-target="#pull-request-pr"><span class="header-section-number">2.4</span> 4. Pull Request (PR)</a></li>
+  <li><a href="#fichiers-ignorés" id="toc-fichiers-ignorés" class="nav-link" data-scroll-target="#fichiers-ignorés"><span class="header-section-number">2.5</span> 5. Fichiers ignorés</a></li>
   </ul></li>
-  <li><a href="#structuration-dun-rapport-paramétré" id="toc-structuration-dun-rapport-paramétré" class="nav-link" data-scroll-target="#structuration-dun-rapport-paramétré">Structuration d’un rapport paramétré</a>
+  <li><a href="#organisation-du-code-r" id="toc-organisation-du-code-r" class="nav-link" data-scroll-target="#organisation-du-code-r"><span class="header-section-number">3</span> Organisation du code R</a>
   <ul class="collapse">
-  <li><a href="#paramètres-définis-dans-len-tête-yaml" id="toc-paramètres-définis-dans-len-tête-yaml" class="nav-link" data-scroll-target="#paramètres-définis-dans-len-tête-yaml">Paramètres définis dans l’en-tête YAML</a></li>
-  <li><a href="#réutilisation-dans-le-texte" id="toc-réutilisation-dans-le-texte" class="nav-link" data-scroll-target="#réutilisation-dans-le-texte">Réutilisation dans le texte</a></li>
-  <li><a href="#bonnes-pratiques-pour-un-rapport-quarto-paramétré" id="toc-bonnes-pratiques-pour-un-rapport-quarto-paramétré" class="nav-link" data-scroll-target="#bonnes-pratiques-pour-un-rapport-quarto-paramétré">Bonnes pratiques pour un rapport Quarto paramétré</a>
+  <li><a href="#projet-rstudio" id="toc-projet-rstudio" class="nav-link" data-scroll-target="#projet-rstudio"><span class="header-section-number">3.1</span> 1. Projet RStudio</a></li>
+  <li><a href="#nommage" id="toc-nommage" class="nav-link" data-scroll-target="#nommage"><span class="header-section-number">3.2</span> 2. Nommage</a></li>
+  <li><a href="#bonnes-pratiques-de-code" id="toc-bonnes-pratiques-de-code" class="nav-link" data-scroll-target="#bonnes-pratiques-de-code"><span class="header-section-number">3.3</span> 3. Bonnes pratiques de code</a></li>
+  <li><a href="#fonctions-utiles" id="toc-fonctions-utiles" class="nav-link" data-scroll-target="#fonctions-utiles"><span class="header-section-number">3.4</span> 4. Fonctions utiles</a></li>
+  <li><a href="#pivot-join-tri" id="toc-pivot-join-tri" class="nav-link" data-scroll-target="#pivot-join-tri"><span class="header-section-number">3.5</span> 5. Pivot, join, tri</a></li>
+  <li><a href="#reformatage" id="toc-reformatage" class="nav-link" data-scroll-target="#reformatage"><span class="header-section-number">3.6</span> 6. Reformatage</a></li>
+  </ul></li>
+  <li><a href="#bonnes-pratiques-de-gestion-de-projet" id="toc-bonnes-pratiques-de-gestion-de-projet" class="nav-link" data-scroll-target="#bonnes-pratiques-de-gestion-de-projet"><span class="header-section-number">4</span> Bonnes pratiques de gestion de projet</a>
   <ul class="collapse">
-  <li><a href="#recommandé" id="toc-recommandé" class="nav-link" data-scroll-target="#recommandé">Recommandé</a></li>
-  <li><a href="#à-éviter" id="toc-à-éviter" class="nav-link" data-scroll-target="#à-éviter">À éviter</a></li>
+  <li><a href="#données" id="toc-données" class="nav-link" data-scroll-target="#données"><span class="header-section-number">4.1</span> Données</a></li>
+  <li><a href="#écriture-et-exploration" id="toc-écriture-et-exploration" class="nav-link" data-scroll-target="#écriture-et-exploration"><span class="header-section-number">4.2</span> Écriture et exploration</a></li>
+  <li><a href="#export-sauvegarde" id="toc-export-sauvegarde" class="nav-link" data-scroll-target="#export-sauvegarde"><span class="header-section-number">4.3</span> Export &amp; sauvegarde</a></li>
+  <li><a href="#github-et-automatisation" id="toc-github-et-automatisation" class="nav-link" data-scroll-target="#github-et-automatisation"><span class="header-section-number">4.4</span> GitHub et automatisation</a></li>
   </ul></li>
-  <li><a href="#styliser-avec-css-pour-html" id="toc-styliser-avec-css-pour-html" class="nav-link" data-scroll-target="#styliser-avec-css-pour-html">Styliser avec CSS (pour HTML)</a>
-  <ul class="collapse">
-  <li><a href="#fichier-styles.css" id="toc-fichier-styles.css" class="nav-link" data-scroll-target="#fichier-styles.css">Fichier : <code>styles.css</code></a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#derniers-conseils" id="toc-derniers-conseils" class="nav-link" data-scroll-target="#derniers-conseils"><span class="header-section-number">5</span> Derniers conseils</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quarto et Markdown</h1>
+<h1 class="title">Introduction à Git avec R</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
   
@@ -264,195 +262,149 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="vue-générale" class="level2">
-<h2 class="anchored" data-anchor-id="vue-générale">Vue générale</h2>
+<section id="introduction" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
+<p>Ce document présente les bonnes pratiques pour travailler efficacement avec Git, GitHub, en équipe, et selon une logique reproductible et rigoureuse. L’accent est mis sur le versionnage, la structuration du code, la nomenclature et la gestion de projet.</p>
+</section>
+<section id="gestion-de-projet-avec-git-et-github" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Gestion de projet avec Git et GitHub</h1>
+<section id="clé-ssh" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="clé-ssh"><span class="header-section-number">2.1</span> 1. Clé SSH</h2>
 <ul>
-<li>Quarto repose sur <strong>Pandoc</strong> : convertisseur universel Markdown vers plusieurs formats (HTML, PDF, Word, etc.).</li>
-<li>Écrit en Rust, moderne et rapide.</li>
-<li>Supporte plusieurs langages dans les chunks : R, Python, Observable JS, etc.</li>
+<li>Configurer une <strong>clé SSH</strong> permet de lier son poste à GitHub sans mot de passe.</li>
+<li>Générer la clé avec <code>ssh-keygen</code>, puis copier la clé publique dans GitHub.</li>
 </ul>
 </section>
-<section id="workflow" class="level2">
-<h2 class="anchored" data-anchor-id="workflow">Workflow</h2>
+<section id="structure-des-branches" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="structure-des-branches"><span class="header-section-number">2.2</span> 2. Structure des branches</h2>
 <ul>
-<li>Quarto exécute les chunks de code, produit un AST (Abstract Syntax Tree).</li>
-<li>Pandoc convertit cet AST en documents finaux (HTML, PDF, etc.).</li>
+<li><strong>Branche principale</strong> : <code>main</code></li>
+<li>Pour chaque nouvelle fonctionnalité : créer une branche dédiée.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> nom_de_fonction</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Nommer</span> les branches en minuscule, sans accents ni espaces.</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Une</span> fois la branche créée, pousser vers le dépôt distant :</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin nom_de_fonction</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="bonnes-pratiques-de-commit" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="bonnes-pratiques-de-commit"><span class="header-section-number">2.3</span> 3. Bonnes pratiques de commit</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Ajout fonction calcul taux PMI #32"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>Utiliser des messages clairs et explicites.</li>
+<li>Lier les commits à des issues avec #numéro.</li>
+<li>Éviter les commits sur main directement.</li>
 </ul>
 </section>
-<section id="comparaison-avec-r-markdown" class="level2">
-<h2 class="anchored" data-anchor-id="comparaison-avec-r-markdown">Comparaison avec R Markdown</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 27%">
-<col style="width: 35%">
-<col style="width: 37%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Fonctionnalité</th>
-<th>R Markdown</th>
-<th>Quarto</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Langage</td>
-<td>R + Markdown</td>
-<td>Rust + Markdown</td>
-</tr>
-<tr class="even">
-<td>Support chunks</td>
-<td>R uniquement</td>
-<td>R, Python, JS, autres</td>
-</tr>
-<tr class="odd">
-<td>Paramétrage YAML</td>
-<td>Basique</td>
-<td>Avancé</td>
-</tr>
-<tr class="even">
-<td>Sorties</td>
-<td>HTML, PDF, Word</td>
-<td>HTML, PDF, Word, et plus</td>
-</tr>
-</tbody>
-</table>
+<section id="pull-request-pr" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="pull-request-pr"><span class="header-section-number">2.4</span> 4. Pull Request (PR)</h2>
+<p>Toujours créer une PR depuis GitHub : - Comparer les branches - Faire une revue - Ne jamais valider sa propre PR - Après validation, penser à faire un git pull.</p>
 </section>
-<section id="création-pdf" class="level2">
-<h2 class="anchored" data-anchor-id="création-pdf">Création PDF</h2>
+<section id="fichiers-ignorés" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="fichiers-ignorés"><span class="header-section-number">2.5</span> 5. Fichiers ignorés</h2>
 <ul>
-<li>Plusieurs méthodes :
+<li>Ne jamais versionner les données brutes.</li>
+<li>Créer un fichier .gitignore et y ajouter :</li>
+</ul>
+<p>kotlin Copier Modifier data/ .Rproj.user .Rhistory</p>
+</section>
+</section>
+<section id="organisation-du-code-r" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Organisation du code R</h1>
+<section id="projet-rstudio" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="projet-rstudio"><span class="header-section-number">3.1</span> 1. Projet RStudio</h2>
 <ul>
-<li>LaTeX classique (fiable, mais lourd parfois)</li>
-<li>Typst (nouveau langage, plus rapide)</li>
-<li>PageJS (génération PDF via Chrome)</li>
-<li>Impression design via HTML/Figma</li>
-</ul></li>
+<li>Créer un projet RStudio (.Rproj)</li>
+<li>Éviter File &gt; New File, préférer New Project</li>
 </ul>
 </section>
-<section id="exemple-de-chunk-r" class="level2">
-<h2 class="anchored" data-anchor-id="exemple-de-chunk-r">Exemple de chunk R</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(readxl)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#tables &lt;- read_excel("tables_exported.xlsx")</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#head(tables)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="quatre-manières-de-générer-un-pdf" class="level1">
-<h1>Quatre manières de générer un PDF</h1>
-<section id="latex" class="level2">
-<h2 class="anchored" data-anchor-id="latex">1. LaTeX</h2>
+<section id="nommage" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="nommage"><span class="header-section-number">3.2</span> 2. Nommage</h2>
 <ul>
-<li>Moteur historique, très utilisé en économie, physique, et sciences formelles.</li>
-<li>Complexe à utiliser, peu flexible graphiquement.</li>
-<li>Intégration dans Quarto via <code>engine: pdf</code> avec <code>pdf-engine: lualatex</code>.</li>
-<li>Permet une très grande personnalisation, mais au prix d’une courbe d’apprentissage raide.</li>
+<li>Objets : df_communes, taux_pmi</li>
+<li>Tout en <em>MINUJSCULE</em></li>
+<li>Préfixes : df_, tbl_, res_, etc.</li>
 </ul>
 </section>
-<section id="typst" class="level2">
-<h2 class="anchored" data-anchor-id="typst">2. Typst</h2>
+<section id="bonnes-pratiques-de-code" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="bonnes-pratiques-de-code"><span class="header-section-number">3.3</span> 3. Bonnes pratiques de code</h2>
 <ul>
-<li>Écrit en <strong>Rust</strong>, pensé comme une alternative rapide et moderne à LaTeX.</li>
-<li>Syntaxe simple, compilation ultra-rapide (quelques ms).</li>
-<li>Intégré directement dans Quarto via <code>engine: typst</code>.</li>
-<li>Encore jeune (2 ans), mais très prometteur.</li>
-<li>Parfait pour des cas d’usage type rapport régulier, document structuré, avec un design simple.</li>
-</ul>
-<p>Typst est particulièrement adapté aux workflows automatisés en R ou Python, pour produire rapidement des documents PDF paramétrés.</p>
-</section>
-<section id="css-paged-media-paged.js-weasyprint-pdf-raptor" class="level2">
-<h2 class="anchored" data-anchor-id="css-paged-media-paged.js-weasyprint-pdf-raptor">3. CSS Paged Media (paged.js, weasyprint, pdf-raptor)</h2>
-<ul>
-<li>Génère d’abord un <strong>HTML avec CSS</strong>.</li>
-<li>Utilise des standards CSS Media Queries + des <strong>polyfills</strong> pour structurer les pages comme des documents imprimables.</li>
-<li>Compatible avec Chrome/Edge, et utilisable via impression PDF.</li>
-<li>Exemples :
-<ul>
-<li><a href="https://pagedjs.org"><code>paged.js</code></a></li>
-<li><a href="https://weasyprint.org"><code>weasyprint</code></a> (en Python)</li>
-<li><code>pdf-raptor</code> (service web de conversion)</li>
-</ul></li>
+<li>Utiliser &lt;- pour l’affectation (ALT + -)</li>
+<li>Nettoyer les colonnes dès le début avec janitor::clean_names()</li>
+<li>Préférer les noms comme annee à year</li>
 </ul>
 </section>
-<section id="génération-manuelle-via-figma-ou-html-pur" class="level2">
-<h2 class="anchored" data-anchor-id="génération-manuelle-via-figma-ou-html-pur">4. Génération manuelle via Figma ou HTML pur</h2>
+<section id="fonctions-utiles" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="fonctions-utiles"><span class="header-section-number">3.4</span> 4. Fonctions utiles</h2>
 <ul>
-<li>Utilisé pour un <strong>design sur-mesure</strong> pixel-perfect.</li>
-<li>Génère le HTML ou maquette à la main, ou via outils comme <strong>Figma</strong>.</li>
-<li>Bypasse entièrement Pandoc ou Quarto.</li>
-<li>Nécessite plus de maintenance, mais offre un <strong>contrôle absolu</strong>.</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="structuration-dun-rapport-paramétré" class="level1">
-<h1>Structuration d’un rapport paramétré</h1>
-<section id="paramètres-définis-dans-len-tête-yaml" class="level2">
-<h2 class="anchored" data-anchor-id="paramètres-définis-dans-len-tête-yaml">Paramètres définis dans l’en-tête YAML</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">country</span><span class="kw">:</span><span class="at"> </span><span class="st">"Somalia"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sector</span><span class="kw">:</span><span class="at"> </span><span class="st">"Éducation"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">unit</span><span class="kw">:</span><span class="at"> </span><span class="st">"Région"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="réutilisation-dans-le-texte" class="level2">
-<h2 class="anchored" data-anchor-id="réutilisation-dans-le-texte">Réutilisation dans le texte</h2>
-<p>Les paramètres définis dans l’en-tête YAML peuvent être appelés dynamiquement avec params$… .</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># glue("Ce rapport analyse le secteur **{params$sector}** pour le pays **{params$country}**, à l’échelle **{params$unit}**.")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="bonnes-pratiques-pour-un-rapport-quarto-paramétré" class="level2">
-<h2 class="anchored" data-anchor-id="bonnes-pratiques-pour-un-rapport-quarto-paramétré">Bonnes pratiques pour un rapport Quarto paramétré</h2>
-<section id="recommandé" class="level3">
-<h3 class="anchored" data-anchor-id="recommandé">Recommandé</h3>
-<ul>
-<li>Utiliser des blocs logiques bien identifiés (<code>#</code>, <code>##</code>, <code>###</code>)</li>
-<li>Garder une structure constante (même ordre, mêmes titres)</li>
-<li>Utiliser des paramètres dynamiques pour l’automatisation</li>
-<li>Ajouter des graphiques avec <code>ggplot2</code> ou <code>plotly</code></li>
-<li>Soigner l’affichage des nombres (arrondis, formatés)</li>
-<li>Gérer les valeurs manquantes ou aberrantes</li>
+<li>if_else() au lieu de ifelse()</li>
+<li>coalesce() pour remplacer les NA</li>
+<li>complete(), expand(), crossing() (de tidyr) pour générer les combinaisons</li>
 </ul>
 </section>
-<section id="à-éviter" class="level3">
-<h3 class="anchored" data-anchor-id="à-éviter">À éviter</h3>
+<section id="pivot-join-tri" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="pivot-join-tri"><span class="header-section-number">3.5</span> 5. Pivot, join, tri</h2>
 <ul>
-<li>Trop de colonnes dans les mises en page (complexe avec Pandoc)</li>
-<li>Des titres qui changent selon les paramètres (illisible à la lecture)</li>
-<li>Ne pas tester les cas extrêmes (ex. : 0 valeur, NA, territoire inexistant)</li>
-<li>Trop de verbosité automatique (“Le pays {x} a… le pays {y} a…”)</li>
+<li>Bien définir les clés dans les join_by()</li>
+<li>Privilégier + join_by(…) dans les pipelines</li>
+<li>Utiliser group_by() + mutate() avec précaution</li>
+<li>lag() pour retrouver les valeurs précédentes (attention aux années)</li>
 </ul>
-<hr>
+</section>
+<section id="reformatage" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="reformatage"><span class="header-section-number">3.6</span> 6. Reformatage</h2>
+<p>Ctrl + A, puis Ctrl + Shift + A dans RStudio pour indenter</p>
 </section>
 </section>
-<section id="styliser-avec-css-pour-html" class="level2">
-<h2 class="anchored" data-anchor-id="styliser-avec-css-pour-html">Styliser avec CSS (pour HTML)</h2>
-<section id="fichier-styles.css" class="level3">
-<h3 class="anchored" data-anchor-id="fichier-styles.css">Fichier : <code>styles.css</code></h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">:root</span> {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">--main-color</span><span class="ch">:</span> <span class="cn">#0077b6</span><span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">--accent-color</span><span class="ch">:</span> <span class="cn">#48cae4</span><span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">--font-body</span><span class="ch">:</span> <span class="st">'Inter'</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>body {</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--font-body</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#222</span><span class="op">;</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span><span class="ch">:</span> <span class="dv">1.6</span><span class="op">;</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>h1<span class="op">,</span> h2<span class="op">,</span> h3 {</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--main-color</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-top</span><span class="ch">:</span> <span class="dv">1.5</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>strong {</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--accent-color</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="bonnes-pratiques-de-gestion-de-projet" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Bonnes pratiques de gestion de projet</h1>
+<section id="données" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="données"><span class="header-section-number">4.1</span> Données</h2>
+<ul>
+<li>Toujours conserver un format rectangulaire (data.frame, tibble)</li>
+<li>Les listes sont utiles pour des résultats groupés, ou des outputs complexes</li>
+<li>Ne pas stocker les données sur Git</li>
+</ul>
+</section>
+<section id="écriture-et-exploration" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="écriture-et-exploration"><span class="header-section-number">4.2</span> Écriture et exploration</h2>
+<ul>
+<li>Supprimer les blocs d’exploration avant la version finale</li>
+<li>Ajouter des commentaires pour les tests, explorations, ou anomalies</li>
+<li>Éviter de conserver les objets ou résultats intermédiaires inutiles</li>
+</ul>
+</section>
+<section id="export-sauvegarde" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="export-sauvegarde"><span class="header-section-number">4.3</span> Export &amp; sauvegarde</h2>
+<ul>
+<li>Utiliser write_rds() pour sauvegarder un objet en R</li>
+<li>Nommer les fichiers clairement : res_taux_pmi_2025.rds</li>
+</ul>
+</section>
+<section id="github-et-automatisation" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="github-et-automatisation"><span class="header-section-number">4.4</span> GitHub et automatisation</h2>
+<ul>
+<li>Toujours faire git pull avant de modifier</li>
+<li>Vérifier la branche active : git status</li>
+<li>GitHub Desktop ou ligne de commande : à choisir selon ton aisance</li>
+<li>Utiliser les actions GitHub pour automatiser les tests</li>
+</ul>
+</section>
+</section>
+<section id="derniers-conseils" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Derniers conseils</h1>
+<ul>
+<li>Travailler en branche fonctionnelle</li>
+<li>Utiliser des commits réguliers</li>
+<li>Faire relire les PR par un pair</li>
+<li>Garder un wiki ou documentation du projet</li>
+<li>Nettoyer le code avant chaque passage en “production”</li>
+<li>Garder des fonctions simples, testables et bien nommées</li>
+</ul>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

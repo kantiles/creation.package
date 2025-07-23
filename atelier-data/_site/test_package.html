@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quarto et Markdown – Kantiles - Supports de Formation</title>
+<title>Tester ses fonctions dans un package R – Kantiles - Supports de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-accueil">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Accueil — Support de Formations Kantiles</span></a>
+ <span class="dropdown-text">Accueil</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./cr_stage.html">
@@ -166,7 +166,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./parquet.html">
  <span class="dropdown-text">Parquet</span></a>
   </li>  
-        <li class="dropdown-header">Lire des Excels moches</li>
         <li>
     <a class="dropdown-item" href="./fichier_moches.html">
  <span class="dropdown-text">Lire des Excels moches</span></a>
@@ -182,19 +181,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Cartographie</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packets" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Packets</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Packages R</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-packets">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-packages-r">    
         <li>
     <a class="dropdown-item" href="./packages.qmd">
- <span class="dropdown-text"></span></a>
+ <span class="dropdown-text">Créer un package R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./test_package.html">
- <span class="dropdown-text">Créer un package R</span></a>
+ <span class="dropdown-text">Tester ses fonctions dans un package R</span></a>
   </li>  
-        <li class="dropdown-header">Tester ses fonctions dans un package R</li>
     </ul>
   </li>
 </ul>
@@ -205,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -213,46 +211,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vue-générale" id="toc-vue-générale" class="nav-link active" data-scroll-target="#vue-générale">Vue générale</a></li>
-  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
-  <li><a href="#comparaison-avec-r-markdown" id="toc-comparaison-avec-r-markdown" class="nav-link" data-scroll-target="#comparaison-avec-r-markdown">Comparaison avec R Markdown</a></li>
-  <li><a href="#création-pdf" id="toc-création-pdf" class="nav-link" data-scroll-target="#création-pdf">Création PDF</a></li>
-  <li><a href="#exemple-de-chunk-r" id="toc-exemple-de-chunk-r" class="nav-link" data-scroll-target="#exemple-de-chunk-r">Exemple de chunk R</a></li>
-  <li><a href="#quatre-manières-de-générer-un-pdf" id="toc-quatre-manières-de-générer-un-pdf" class="nav-link" data-scroll-target="#quatre-manières-de-générer-un-pdf">Quatre manières de générer un PDF</a>
+  <li><a href="#pourquoi-écrire-des-tests" id="toc-pourquoi-écrire-des-tests" class="nav-link active" data-scroll-target="#pourquoi-écrire-des-tests"><span class="header-section-number">1</span> Pourquoi écrire des tests ?</a></li>
+  <li><a href="#les-bons-réflexes" id="toc-les-bons-réflexes" class="nav-link" data-scroll-target="#les-bons-réflexes"><span class="header-section-number">2</span> Les bons réflexes</a></li>
+  <li><a href="#que-tester" id="toc-que-tester" class="nav-link" data-scroll-target="#que-tester"><span class="header-section-number">3</span> Que tester ?</a></li>
+  <li><a href="#écrire-un-test-avec-testthat" id="toc-écrire-un-test-avec-testthat" class="nav-link" data-scroll-target="#écrire-un-test-avec-testthat"><span class="header-section-number">4</span> Écrire un test avec <code>testthat</code></a>
   <ul class="collapse">
-  <li><a href="#latex" id="toc-latex" class="nav-link" data-scroll-target="#latex">1. LaTeX</a></li>
-  <li><a href="#typst" id="toc-typst" class="nav-link" data-scroll-target="#typst">2. Typst</a></li>
-  <li><a href="#css-paged-media-paged.js-weasyprint-pdf-raptor" id="toc-css-paged-media-paged.js-weasyprint-pdf-raptor" class="nav-link" data-scroll-target="#css-paged-media-paged.js-weasyprint-pdf-raptor">3. CSS Paged Media (paged.js, weasyprint, pdf-raptor)</a></li>
-  <li><a href="#génération-manuelle-via-figma-ou-html-pur" id="toc-génération-manuelle-via-figma-ou-html-pur" class="nav-link" data-scroll-target="#génération-manuelle-via-figma-ou-html-pur">4. Génération manuelle via Figma ou HTML pur</a></li>
+  <li><a href="#initialiser-les-tests" id="toc-initialiser-les-tests" class="nav-link" data-scroll-target="#initialiser-les-tests"><span class="header-section-number">4.1</span> Initialiser les tests</a></li>
+  <li><a href="#ajouter-un-fichier-de-test" id="toc-ajouter-un-fichier-de-test" class="nav-link" data-scroll-target="#ajouter-un-fichier-de-test"><span class="header-section-number">4.2</span> Ajouter un fichier de test</a></li>
+  <li><a href="#tester-des-fonctions-complexes" id="toc-tester-des-fonctions-complexes" class="nav-link" data-scroll-target="#tester-des-fonctions-complexes"><span class="header-section-number">4.3</span> Tester des fonctions complexes</a></li>
+  <li><a href="#exécuter-les-tests" id="toc-exécuter-les-tests" class="nav-link" data-scroll-target="#exécuter-les-tests"><span class="header-section-number">4.4</span> Exécuter les tests</a></li>
+  <li><a href="#tests-automatiques-avec-github-actions" id="toc-tests-automatiques-avec-github-actions" class="nav-link" data-scroll-target="#tests-automatiques-avec-github-actions"><span class="header-section-number">4.5</span> Tests automatiques avec GitHub Actions</a></li>
   </ul></li>
-  <li><a href="#structuration-dun-rapport-paramétré" id="toc-structuration-dun-rapport-paramétré" class="nav-link" data-scroll-target="#structuration-dun-rapport-paramétré">Structuration d’un rapport paramétré</a>
-  <ul class="collapse">
-  <li><a href="#paramètres-définis-dans-len-tête-yaml" id="toc-paramètres-définis-dans-len-tête-yaml" class="nav-link" data-scroll-target="#paramètres-définis-dans-len-tête-yaml">Paramètres définis dans l’en-tête YAML</a></li>
-  <li><a href="#réutilisation-dans-le-texte" id="toc-réutilisation-dans-le-texte" class="nav-link" data-scroll-target="#réutilisation-dans-le-texte">Réutilisation dans le texte</a></li>
-  <li><a href="#bonnes-pratiques-pour-un-rapport-quarto-paramétré" id="toc-bonnes-pratiques-pour-un-rapport-quarto-paramétré" class="nav-link" data-scroll-target="#bonnes-pratiques-pour-un-rapport-quarto-paramétré">Bonnes pratiques pour un rapport Quarto paramétré</a>
-  <ul class="collapse">
-  <li><a href="#recommandé" id="toc-recommandé" class="nav-link" data-scroll-target="#recommandé">Recommandé</a></li>
-  <li><a href="#à-éviter" id="toc-à-éviter" class="nav-link" data-scroll-target="#à-éviter">À éviter</a></li>
-  </ul></li>
-  <li><a href="#styliser-avec-css-pour-html" id="toc-styliser-avec-css-pour-html" class="nav-link" data-scroll-target="#styliser-avec-css-pour-html">Styliser avec CSS (pour HTML)</a>
-  <ul class="collapse">
-  <li><a href="#fichier-styles.css" id="toc-fichier-styles.css" class="nav-link" data-scroll-target="#fichier-styles.css">Fichier : <code>styles.css</code></a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#aller-plus-loin" id="toc-aller-plus-loin" class="nav-link" data-scroll-target="#aller-plus-loin"><span class="header-section-number">5</span> Aller plus loin</a></li>
+  <li><a href="#bonnes-pratiques" id="toc-bonnes-pratiques" class="nav-link" data-scroll-target="#bonnes-pratiques"><span class="header-section-number">6</span> Bonnes pratiques</a></li>
+  <li><a href="#en-résumé" id="toc-en-résumé" class="nav-link" data-scroll-target="#en-résumé"><span class="header-section-number">7</span> En résumé</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quarto et Markdown</h1>
+<h1 class="title">Tester ses fonctions dans un package R</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
   
@@ -264,195 +250,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="vue-générale" class="level2">
-<h2 class="anchored" data-anchor-id="vue-générale">Vue générale</h2>
+<section id="pourquoi-écrire-des-tests" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Pourquoi écrire des tests ?</h1>
+<p>Lorsque vous développez un package, il est essentiel de <strong>tester vos fonctions</strong>. Cela permet :</p>
 <ul>
-<li>Quarto repose sur <strong>Pandoc</strong> : convertisseur universel Markdown vers plusieurs formats (HTML, PDF, Word, etc.).</li>
-<li>Écrit en Rust, moderne et rapide.</li>
-<li>Supporte plusieurs langages dans les chunks : R, Python, Observable JS, etc.</li>
+<li>de s’assurer qu’elles produisent bien les résultats attendus ;</li>
+<li>de prévenir les régressions (erreurs réintroduites lors de modifications futures) ;</li>
+<li>de fiabiliser les workflows, surtout dans les projets collaboratifs.</li>
 </ul>
-</section>
-<section id="workflow" class="level2">
-<h2 class="anchored" data-anchor-id="workflow">Workflow</h2>
+<p>Un <strong>test unitaire</strong> consiste à :</p>
 <ul>
-<li>Quarto exécute les chunks de code, produit un AST (Abstract Syntax Tree).</li>
-<li>Pandoc convertit cet AST en documents finaux (HTML, PDF, etc.).</li>
+<li>appeler une fonction avec des entrées connues ;</li>
+<li>vérifier que la sortie correspond exactement à ce qu’on attend.</li>
 </ul>
+<blockquote class="blockquote">
+<p><em>Exemple</em> : une fonction <code>plus1(x)</code> qui renvoie <code>x + 1</code>.<br>
+On vérifie que <code>plus1(2)</code> donne <code>3</code>.</p>
+</blockquote>
+<hr>
 </section>
-<section id="comparaison-avec-r-markdown" class="level2">
-<h2 class="anchored" data-anchor-id="comparaison-avec-r-markdown">Comparaison avec R Markdown</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 27%">
-<col style="width: 35%">
-<col style="width: 37%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Fonctionnalité</th>
-<th>R Markdown</th>
-<th>Quarto</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Langage</td>
-<td>R + Markdown</td>
-<td>Rust + Markdown</td>
-</tr>
-<tr class="even">
-<td>Support chunks</td>
-<td>R uniquement</td>
-<td>R, Python, JS, autres</td>
-</tr>
-<tr class="odd">
-<td>Paramétrage YAML</td>
-<td>Basique</td>
-<td>Avancé</td>
-</tr>
-<tr class="even">
-<td>Sorties</td>
-<td>HTML, PDF, Word</td>
-<td>HTML, PDF, Word, et plus</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="création-pdf" class="level2">
-<h2 class="anchored" data-anchor-id="création-pdf">Création PDF</h2>
+<section id="les-bons-réflexes" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Les bons réflexes</h1>
 <ul>
-<li>Plusieurs méthodes :
-<ul>
-<li>LaTeX classique (fiable, mais lourd parfois)</li>
-<li>Typst (nouveau langage, plus rapide)</li>
-<li>PageJS (génération PDF via Chrome)</li>
-<li>Impression design via HTML/Figma</li>
-</ul></li>
-</ul>
-</section>
-<section id="exemple-de-chunk-r" class="level2">
-<h2 class="anchored" data-anchor-id="exemple-de-chunk-r">Exemple de chunk R</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(readxl)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#tables &lt;- read_excel("tables_exported.xlsx")</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#head(tables)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="quatre-manières-de-générer-un-pdf" class="level1">
-<h1>Quatre manières de générer un PDF</h1>
-<section id="latex" class="level2">
-<h2 class="anchored" data-anchor-id="latex">1. LaTeX</h2>
-<ul>
-<li>Moteur historique, très utilisé en économie, physique, et sciences formelles.</li>
-<li>Complexe à utiliser, peu flexible graphiquement.</li>
-<li>Intégration dans Quarto via <code>engine: pdf</code> avec <code>pdf-engine: lualatex</code>.</li>
-<li>Permet une très grande personnalisation, mais au prix d’une courbe d’apprentissage raide.</li>
-</ul>
-</section>
-<section id="typst" class="level2">
-<h2 class="anchored" data-anchor-id="typst">2. Typst</h2>
-<ul>
-<li>Écrit en <strong>Rust</strong>, pensé comme une alternative rapide et moderne à LaTeX.</li>
-<li>Syntaxe simple, compilation ultra-rapide (quelques ms).</li>
-<li>Intégré directement dans Quarto via <code>engine: typst</code>.</li>
-<li>Encore jeune (2 ans), mais très prometteur.</li>
-<li>Parfait pour des cas d’usage type rapport régulier, document structuré, avec un design simple.</li>
-</ul>
-<p>Typst est particulièrement adapté aux workflows automatisés en R ou Python, pour produire rapidement des documents PDF paramétrés.</p>
-</section>
-<section id="css-paged-media-paged.js-weasyprint-pdf-raptor" class="level2">
-<h2 class="anchored" data-anchor-id="css-paged-media-paged.js-weasyprint-pdf-raptor">3. CSS Paged Media (paged.js, weasyprint, pdf-raptor)</h2>
-<ul>
-<li>Génère d’abord un <strong>HTML avec CSS</strong>.</li>
-<li>Utilise des standards CSS Media Queries + des <strong>polyfills</strong> pour structurer les pages comme des documents imprimables.</li>
-<li>Compatible avec Chrome/Edge, et utilisable via impression PDF.</li>
-<li>Exemples :
-<ul>
-<li><a href="https://pagedjs.org"><code>paged.js</code></a></li>
-<li><a href="https://weasyprint.org"><code>weasyprint</code></a> (en Python)</li>
-<li><code>pdf-raptor</code> (service web de conversion)</li>
-</ul></li>
-</ul>
-</section>
-<section id="génération-manuelle-via-figma-ou-html-pur" class="level2">
-<h2 class="anchored" data-anchor-id="génération-manuelle-via-figma-ou-html-pur">4. Génération manuelle via Figma ou HTML pur</h2>
-<ul>
-<li>Utilisé pour un <strong>design sur-mesure</strong> pixel-perfect.</li>
-<li>Génère le HTML ou maquette à la main, ou via outils comme <strong>Figma</strong>.</li>
-<li>Bypasse entièrement Pandoc ou Quarto.</li>
-<li>Nécessite plus de maintenance, mais offre un <strong>contrôle absolu</strong>.</li>
+<li>Une <strong>fonction = un bloc autonome</strong> → plus simple à tester.</li>
+<li>Écrire <strong>les tests avant</strong> les fonctions (approche TDD – <em>test-driven development</em>).</li>
+<li>Les tests permettent aussi de documenter les <strong>cas d’usage attendus</strong>.</li>
+<li>Quand on <strong>modifie une fonction</strong>, on doit aussi mettre à jour les tests associés.</li>
 </ul>
 <hr>
 </section>
-</section>
-<section id="structuration-dun-rapport-paramétré" class="level1">
-<h1>Structuration d’un rapport paramétré</h1>
-<section id="paramètres-définis-dans-len-tête-yaml" class="level2">
-<h2 class="anchored" data-anchor-id="paramètres-définis-dans-len-tête-yaml">Paramètres définis dans l’en-tête YAML</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">country</span><span class="kw">:</span><span class="at"> </span><span class="st">"Somalia"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sector</span><span class="kw">:</span><span class="at"> </span><span class="st">"Éducation"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">unit</span><span class="kw">:</span><span class="at"> </span><span class="st">"Région"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="réutilisation-dans-le-texte" class="level2">
-<h2 class="anchored" data-anchor-id="réutilisation-dans-le-texte">Réutilisation dans le texte</h2>
-<p>Les paramètres définis dans l’en-tête YAML peuvent être appelés dynamiquement avec params$… .</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># glue("Ce rapport analyse le secteur **{params$sector}** pour le pays **{params$country}**, à l’échelle **{params$unit}**.")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="bonnes-pratiques-pour-un-rapport-quarto-paramétré" class="level2">
-<h2 class="anchored" data-anchor-id="bonnes-pratiques-pour-un-rapport-quarto-paramétré">Bonnes pratiques pour un rapport Quarto paramétré</h2>
-<section id="recommandé" class="level3">
-<h3 class="anchored" data-anchor-id="recommandé">Recommandé</h3>
+<section id="que-tester" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Que tester ?</h1>
+<p>En pratique, on vérifie souvent :</p>
 <ul>
-<li>Utiliser des blocs logiques bien identifiés (<code>#</code>, <code>##</code>, <code>###</code>)</li>
-<li>Garder une structure constante (même ordre, mêmes titres)</li>
-<li>Utiliser des paramètres dynamiques pour l’automatisation</li>
-<li>Ajouter des graphiques avec <code>ggplot2</code> ou <code>plotly</code></li>
-<li>Soigner l’affichage des nombres (arrondis, formatés)</li>
-<li>Gérer les valeurs manquantes ou aberrantes</li>
-</ul>
-</section>
-<section id="à-éviter" class="level3">
-<h3 class="anchored" data-anchor-id="à-éviter">À éviter</h3>
-<ul>
-<li>Trop de colonnes dans les mises en page (complexe avec Pandoc)</li>
-<li>Des titres qui changent selon les paramètres (illisible à la lecture)</li>
-<li>Ne pas tester les cas extrêmes (ex. : 0 valeur, NA, territoire inexistant)</li>
-<li>Trop de verbosité automatique (“Le pays {x} a… le pays {y} a…”)</li>
+<li>la <strong>structure</strong> de la sortie (noms de colonnes, dimensions, types) ;</li>
+<li>les <strong>valeurs</strong> calculées ;</li>
+<li>les <strong>comportements attendus</strong> (ex. : message d’erreur si mauvaise entrée) ;</li>
+<li>les cas <strong>limites</strong>, les erreurs, les types d’entrée invalides.</li>
 </ul>
 <hr>
 </section>
+<section id="écrire-un-test-avec-testthat" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Écrire un test avec <code>testthat</code></h1>
+<section id="initialiser-les-tests" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="initialiser-les-tests"><span class="header-section-number">4.1</span> Initialiser les tests</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_testthat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="styliser-avec-css-pour-html" class="level2">
-<h2 class="anchored" data-anchor-id="styliser-avec-css-pour-html">Styliser avec CSS (pour HTML)</h2>
-<section id="fichier-styles.css" class="level3">
-<h3 class="anchored" data-anchor-id="fichier-styles.css">Fichier : <code>styles.css</code></h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">:root</span> {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">--main-color</span><span class="ch">:</span> <span class="cn">#0077b6</span><span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">--accent-color</span><span class="ch">:</span> <span class="cn">#48cae4</span><span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">--font-body</span><span class="ch">:</span> <span class="st">'Inter'</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>body {</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--font-body</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#222</span><span class="op">;</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span><span class="ch">:</span> <span class="dv">1.6</span><span class="op">;</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>h1<span class="op">,</span> h2<span class="op">,</span> h3 {</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--main-color</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-top</span><span class="ch">:</span> <span class="dv">1.5</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>strong {</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--accent-color</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="ajouter-un-fichier-de-test" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="ajouter-un-fichier-de-test"><span class="header-section-number">4.2</span> Ajouter un fichier de test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_test</span>(<span class="st">"mafonction"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Cela crée un fichier comme tests/testthat/test-mafonction.R :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"plus1 fonctionne correctement"</span>, {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_equal</span>(<span class="fu">plus1</span>(<span class="dv">2</span>), <span class="dv">3</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_error</span>(<span class="fu">plus1</span>(<span class="st">"abc"</span>))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Tous les tests utilisent une famille de fonctions expect_*() (ex. expect_equal(), expect_error(), expect_true(), etc.)</p>
+</section>
+<section id="tester-des-fonctions-complexes" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="tester-des-fonctions-complexes"><span class="header-section-number">4.3</span> Tester des fonctions complexes</h2>
+<p>Quand une fonction prend un data.frame ou produit un objet complexe :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"output a les bonnes colonnes"</span>, {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  out <span class="ot">&lt;-</span> <span class="fu">ma_fonction</span>(df)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_named</span>(out, <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"date"</span>, <span class="st">"valeur"</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expect_s3_class</span>(out<span class="sc">$</span>date, <span class="st">"Date"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exécuter-les-tests" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="exécuter-les-tests"><span class="header-section-number">4.4</span> Exécuter les tests</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">test</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="tests-automatiques-avec-github-actions" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="tests-automatiques-avec-github-actions"><span class="header-section-number">4.5</span> Tests automatiques avec GitHub Actions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github_action</span>(<span class="st">"check-release"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Lance automatiquement les tests à chaque push ou pull request ;</li>
+<li>Notifications en cas d’échec ;</li>
+<li>Très utile pour des packages partagés ou en production.</li>
+<li>On peut planifier les tests automatiquement (ex. tous les lundis à midi).</li>
+</ul>
+</section>
+</section>
+<section id="aller-plus-loin" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Aller plus loin</h1>
+<ul>
+<li><p>Couverture de test (test coverage) Pourcentage du code couvert par des tests unitaires. Objectif idéal : &gt; 90 %.</p></li>
+<li><p>Snapshot testing Permet de sauvegarder une sortie attendue, puis de comparer automatiquement lors de futures exécutions.</p></li>
+<li><p>Ensure Le package ensure ajoute des assertions directement dans les fonctions.</p></li>
+</ul>
+</section>
+<section id="bonnes-pratiques" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Bonnes pratiques</h1>
+<ul>
+<li>Trop de complexité rend les tests difficiles → découper en petites fonctions.</li>
+<li>Sauvegarder des cas d’usage dans tests/testthat/testdata/ peut aider.</li>
+<li>Préférer tester des unités simples plutôt qu’un pipeline complet.</li>
+</ul>
+</section>
+<section id="en-résumé" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> En résumé</h1>
+<ul>
+<li>Étape Outil</li>
+<li>Initialiser les tests usethis::use_testthat()</li>
+<li>Créer un fichier de test usethis::use_test(“mafonction”)</li>
+<li>Écrire un test test_that() + expect_*()</li>
+<li>Exécuter les tests devtools::test()</li>
+<li>Tests automatiques usethis::use_github_action(“check-release”)</li>
+</ul>
+<p>Tester ses fonctions, c’est documenter ses intentions et fiabiliser son code – sans effort inutile au fil du temps.</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

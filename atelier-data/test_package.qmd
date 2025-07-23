@@ -1,0 +1,142 @@
+---
+title: "Tester ses fonctions dans un package R"
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme: cosmo
+    code-copy: true
+    code-fold: false
+---
+
+# Pourquoi écrire des tests ?
+
+Lorsque vous développez un package, il est essentiel de **tester vos fonctions**. Cela permet :
+
+- de s’assurer qu’elles produisent bien les résultats attendus ;
+- de prévenir les régressions (erreurs réintroduites lors de modifications futures) ;
+- de fiabiliser les workflows, surtout dans les projets collaboratifs.
+
+Un **test unitaire** consiste à :
+
+- appeler une fonction avec des entrées connues ;
+- vérifier que la sortie correspond exactement à ce qu’on attend.
+
+> *Exemple* : une fonction `plus1(x)` qui renvoie `x + 1`.  
+> On vérifie que `plus1(2)` donne `3`.
+
+---
+
+# Les bons réflexes
+
+- Une **fonction = un bloc autonome** → plus simple à tester.
+- Écrire **les tests avant** les fonctions (approche TDD – *test-driven development*).
+- Les tests permettent aussi de documenter les **cas d’usage attendus**.
+- Quand on **modifie une fonction**, on doit aussi mettre à jour les tests associés.
+
+---
+
+# Que tester ?
+
+En pratique, on vérifie souvent :
+
+- la **structure** de la sortie (noms de colonnes, dimensions, types) ;
+- les **valeurs** calculées ;
+- les **comportements attendus** (ex. : message d’erreur si mauvaise entrée) ;
+- les cas **limites**, les erreurs, les types d’entrée invalides.
+
+---
+
+# Écrire un test avec `testthat`
+
+## Initialiser les tests
+
+
+```{r}
+#| eval: false
+usethis::use_testthat()
+```
+
+## Ajouter un fichier de test
+
+```{r}
+#| eval: false
+usethis::use_test("mafonction")
+```
+Cela crée un fichier comme tests/testthat/test-mafonction.R :
+
+
+```{r}
+#| eval: false
+test_that("plus1 fonctionne correctement", {
+  expect_equal(plus1(2), 3)
+  expect_error(plus1("abc"))
+})
+```
+
+Tous les tests utilisent une famille de fonctions expect_*()
+(ex. expect_equal(), expect_error(), expect_true(), etc.)
+
+## Tester des fonctions complexes
+Quand une fonction prend un data.frame ou produit un objet complexe :
+
+```{r}
+#| eval: false
+test_that("output a les bonnes colonnes", {
+  out <- ma_fonction(df)
+  expect_named(out, c("id", "date", "valeur"))
+  expect_s3_class(out$date, "Date")
+})
+```
+
+## Exécuter les tests
+
+```{r}
+#| eval: false
+devtools::test()
+```
+
+## Tests automatiques avec GitHub Actions
+
+```{r}
+#| eval: false
+usethis::use_github_action("check-release")
+```
+- Lance automatiquement les tests à chaque push ou pull request ;
+- Notifications en cas d’échec ;
+- Très utile pour des packages partagés ou en production.
+- On peut planifier les tests automatiquement (ex. tous les lundis à midi).
+
+# Aller plus loin
+- Couverture de test (test coverage)
+Pourcentage du code couvert par des tests unitaires. Objectif idéal : > 90 %.
+
+-  Snapshot testing
+Permet de sauvegarder une sortie attendue, puis de comparer automatiquement lors de futures exécutions.
+
+- Ensure
+Le package ensure ajoute des assertions directement dans les fonctions.
+
+# Bonnes pratiques
+- Trop de complexité rend les tests difficiles → découper en petites fonctions.
+- Sauvegarder des cas d’usage dans tests/testthat/testdata/ peut aider.
+- Préférer tester des unités simples plutôt qu’un pipeline complet.
+
+# En résumé
+- Étape	Outil
+- Initialiser les tests	usethis::use_testthat()
+- Créer un fichier de test	usethis::use_test("mafonction")
+- Écrire un test	test_that() + expect_*()
+- Exécuter les tests	devtools::test()
+- Tests automatiques	usethis::use_github_action("check-release")
+
+
+Tester ses fonctions, c’est documenter ses intentions et fiabiliser son code – sans effort inutile au fil du temps.
+
+
+
+
+
+
+
+

@@ -1,0 +1,254 @@
+---
+title: "Cartographie & Données spatiales — Formation du 11 mars"
+format:
+  html:
+    toc: true
+    toc-location: right
+    theme: cosmo
+    css: styles.css
+    code-copy: true
+page-layout: full
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+
+
+
+# Cartographie & données spatiales avec R
+
+Cette session vise à découvrir les étapes nécessaires pour :
+
+- charger des données géographiques ;
+- géocoder des adresses ou codes postaux ;
+- créer des visualisations spatiales propres et efficaces avec `{sf}`.
+
+---
+
+
+```{r setup-data, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+# Chargement des packages
+packages <- c("dplyr", "ggplot2", "sf", "readr", "purrr", "lubridate", "stringr")
+lapply(packages, require, character.only = TRUE)
+
+# Création des dossiers
+dir.create("data", showWarnings = FALSE)
+dir.create("data/rna", recursive = TRUE, showWarnings = FALSE)
+dir.create("data/fond_de_carte", recursive = TRUE, showWarnings = FALSE)
+
+# Création d'un CSV simulé dans data/rna/
+rna_data <- tibble::tibble(
+  id = 1:3,
+  code_postal = c("75001", "60000", "75011"),
+  region = c("Île-de-France", "Hauts-de-France", "Île-de-France"),
+  date_creation = c("2018-03-01", "2020-06-15", "2019-01-20"),
+  lon = c(2.3522, 2.2833, 2.3770),
+  lat = c(48.8566, 49.4300, 48.8550),
+  categorie = c("santé", "éducation", "sport")
+)
+
+readr::write_csv(rna_data, "data/rna/exemple1.csv")
+
+# Création d'un fond de carte GeoJSON simplifié
+fond_regions <- sf::st_sf(
+  region = c("Île-de-France", "Hauts-de-France"),
+  geometry = sf::st_sfc(
+    sf::st_polygon(list(rbind(c(2.1, 48.7), c(2.6, 48.7), c(2.6, 49), c(2.1, 49), c(2.1, 48.7)))),
+    sf::st_polygon(list(rbind(c(2.1, 49.1), c(2.6, 49.1), c(2.6, 49.4), c(2.1, 49.4), c(2.1, 49.1))))
+  ),
+  crs = 4326
+)
+
+
+sf::st_write(fond_regions, "regions.geojson", delete_dsn = TRUE, quiet = TRUE)
+
+# Lecture pour mise à disposition dans les autres chunks
+df <- readr::read_csv("data/rna/exemple1.csv", col_types = "c") |>
+  dplyr::mutate(
+    lon = as.numeric(lon),
+    lat = as.numeric(lat),
+    date_creation = lubridate::ymd(date_creation)
+  )
+
+df_points <- df
+
+fond <- sf::st_read("regions.geojson", quiet = TRUE)
+
+df_sf <- sf::st_as_sf(df, coords = c("lon", "lat"), crs = 4326)
+```
+
+## Représenter des points sur une carte
+
+Pour cartographier un objet, il faut généralement :
+- une **coordonnée géographique** : longitude + latitude
+- ou une **géométrie définie** (ex : un polygone d'une commune ou une ligne de transport).
+
+Exemple avec des coordonnées :
+
+```{r}
+library(ggplot2)
+
+ggplot(df_points, aes(x = lon, y = lat)) +
+  geom_point() +
+  theme_minimal()
+
+```
+
+
+## Préparation des données : manipulations de base
+Filtrage conditionnel
+
+
+Filtrer les lignes contenant "Île" ou "Hauts" dans la colonne `region`
+
+```{r}
+
+df |> filter(stringr::str_detect(region, "Île|Hauts"))
+```
+
+Extraire un vecteur avec pull() (ex : les codes postaux des Hauts-de-France)
+```{r}
+
+vecteur_cp <- df |> 
+  filter(region == "Hauts-de-France") |> 
+  pull(code_postal)
+vecteur_cp
+
+```
+
+Extraire l’année de création avec lubridate::year()
+
+```{r}
+library(lubridate)
+
+df <- df |> mutate(annee = year(date_creation))
+head(df$annee)
+```
+Charger tous les fichiers d’un dossier
+
+
+```{r}
+library(readr)
+library(purrr)
+
+files <- list.files("data/rna", full.names = TRUE)
+
+df_rna <- map_dfr(
+  .x = files,
+  .f = \(f) read_csv(f, col_types = "c")
+)
+```
+
+
+Utiliser col_types = "c" pour forcer le tout en caractères si les formats divergent.
+
+map_dfr() assemble les résultats avec bind_rows().
+
+## Nettoyage des colonnes
+Créer des variables à partir du code INSEE ou postal :
+
+```{r}
+df <- df |>
+  mutate(
+    code_dept = case_when(
+      str_starts(code_postal, "75") ~ "75",
+      str_starts(code_postal, "60") ~ "60",
+      TRUE ~ "autre"
+    )
+  )
+
+table(df$code_dept)
+
+```
+
+
+## Géocodage avec banR
+
+```{r}
+library(banR)
+
+adresses <- c("1 rue de Paris, Lyon", "10 avenue de l’Europe, Marseille")
+
+# Géocoder adresse par adresse, puis combiner les résultats dans un data frame
+geo <- map_dfr(adresses, ~ geocode(.x))
+
+print(geo)
+
+```
+
+
+- La fonction envoie les adresses à la Base Adresse Nationale.
+- Toujours travailler par lots limités (ex. 50 adresses).
+- Nettoyer les adresses en amont.
+- Filtrer les résultats avec les scores (score > 0.8 par exemple).
+
+## Objets spatiaux avec {sf}
+
+```{r}
+library(sf)
+
+# Conversion en objet spatial
+df_sf <- st_as_sf(df, coords = c("lon", "lat"), crs = 4326)
+
+
+```
+
+- La colonne geometry contient un point, un polygone ou une ligne.
+- Le CRS (système de coordonnées) est essentiel pour la projection.
+
+## Importer un fond de carte
+
+```{r}
+fond <- st_read("regions.geojson")
+```
+
+Utiliser un fond de carte simplifié (ex. régions plutôt que communes) pour alléger le poids.
+
+## Visualiser avec ggplot2 + sf
+
+```{r}
+ggplot() +
+  geom_sf(data = fond, fill = "gray90", color = "white") +
+  geom_sf(data = df_sf, aes(color = categorie), size = 2) +
+  theme_minimal()
+```
+
+Utiliser facet_wrap(vars(region)) pour explorer des sous-groupes.
+
+Possibilité de mettre une échelle libre avec scales = "free".
+
+## Aller-retour sur les données
+- Typage (création de colonnes, types, factorisation) regroupé dans un script.
+- Détection des structures utiles via filter(), str_detect() ou exploration manuelle.
+- Export des données nettoyées à la fin avec write_rds().
+
+## Structure de projet recommandée
+```{r}
+dir.create("data-raw")
+dir.create("data-raw/df_finess_etab")
+dir.create("data-raw/df_finess_equip")
+```
+
+- Regrouper le code d'import, le nettoyage, les exports dans des scripts clairs.
+- Stocker les données dans data-raw/ et les résultats nettoyés dans data/.
+- Interface graphique pour tester des graphiques sans écrire de code.
+- Idéal pour l’exploration rapide.
+
+## Rappels clés
+- Étape	Paquet / Fonction
+- Import CSV massif	read_csv() + map_dfr()
+- Nettoyage	mutate(), case_when(), str_detect()
+- Géocodage	banR::geocode()
+- Objet spatial	sf::st_as_sf()
+- Projection	CRS = 4326, st_transform()
+- Visualisation	ggplot2 + geom_sf()
+- Exploration	facet_wrap(), esquisse
+
+## Pour aller plus loin
+- Package {osmdata} pour récupérer des fonds de carte OpenStreetMap.
+- {leaflet} pour des cartes interactives.
+
+
+

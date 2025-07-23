@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quarto et Markdown – Kantiles - Supports de Formation</title>
+<title>Créer un package R – Kantiles - Supports de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-accueil">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Accueil — Support de Formations Kantiles</span></a>
+ <span class="dropdown-text">Accueil</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./cr_stage.html">
@@ -166,7 +166,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="./parquet.html">
  <span class="dropdown-text">Parquet</span></a>
   </li>  
-        <li class="dropdown-header">Lire des Excels moches</li>
         <li>
     <a class="dropdown-item" href="./fichier_moches.html">
  <span class="dropdown-text">Lire des Excels moches</span></a>
@@ -182,19 +181,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Cartographie</span></a>
   </li>  
   <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packets" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Packets</span>
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Packages R</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-packets">    
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-packages-r">    
         <li>
-    <a class="dropdown-item" href="./packages.qmd">
- <span class="dropdown-text"></span></a>
+    <a class="dropdown-item" href="./package.html">
+ <span class="dropdown-text">Créer un package R</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./test_package.html">
- <span class="dropdown-text">Créer un package R</span></a>
+ <span class="dropdown-text">Tester ses fonctions dans un package R</span></a>
   </li>  
-        <li class="dropdown-header">Tester ses fonctions dans un package R</li>
     </ul>
   </li>
 </ul>
@@ -205,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -213,46 +211,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#vue-générale" id="toc-vue-générale" class="nav-link active" data-scroll-target="#vue-générale">Vue générale</a></li>
-  <li><a href="#workflow" id="toc-workflow" class="nav-link" data-scroll-target="#workflow">Workflow</a></li>
-  <li><a href="#comparaison-avec-r-markdown" id="toc-comparaison-avec-r-markdown" class="nav-link" data-scroll-target="#comparaison-avec-r-markdown">Comparaison avec R Markdown</a></li>
-  <li><a href="#création-pdf" id="toc-création-pdf" class="nav-link" data-scroll-target="#création-pdf">Création PDF</a></li>
-  <li><a href="#exemple-de-chunk-r" id="toc-exemple-de-chunk-r" class="nav-link" data-scroll-target="#exemple-de-chunk-r">Exemple de chunk R</a></li>
-  <li><a href="#quatre-manières-de-générer-un-pdf" id="toc-quatre-manières-de-générer-un-pdf" class="nav-link" data-scroll-target="#quatre-manières-de-générer-un-pdf">Quatre manières de générer un PDF</a>
+  <li><a href="#pourquoi-créer-un-package" id="toc-pourquoi-créer-un-package" class="nav-link active" data-scroll-target="#pourquoi-créer-un-package"><span class="header-section-number">1</span> Pourquoi créer un package ?</a>
   <ul class="collapse">
-  <li><a href="#latex" id="toc-latex" class="nav-link" data-scroll-target="#latex">1. LaTeX</a></li>
-  <li><a href="#typst" id="toc-typst" class="nav-link" data-scroll-target="#typst">2. Typst</a></li>
-  <li><a href="#css-paged-media-paged.js-weasyprint-pdf-raptor" id="toc-css-paged-media-paged.js-weasyprint-pdf-raptor" class="nav-link" data-scroll-target="#css-paged-media-paged.js-weasyprint-pdf-raptor">3. CSS Paged Media (paged.js, weasyprint, pdf-raptor)</a></li>
-  <li><a href="#génération-manuelle-via-figma-ou-html-pur" id="toc-génération-manuelle-via-figma-ou-html-pur" class="nav-link" data-scroll-target="#génération-manuelle-via-figma-ou-html-pur">4. Génération manuelle via Figma ou HTML pur</a></li>
+  <li><a href="#exemples-dusages" id="toc-exemples-dusages" class="nav-link" data-scroll-target="#exemples-dusages"><span class="header-section-number">1.1</span> Exemples d’usages</a></li>
   </ul></li>
-  <li><a href="#structuration-dun-rapport-paramétré" id="toc-structuration-dun-rapport-paramétré" class="nav-link" data-scroll-target="#structuration-dun-rapport-paramétré">Structuration d’un rapport paramétré</a>
+  <li><a href="#structure-dun-package" id="toc-structure-dun-package" class="nav-link" data-scroll-target="#structure-dun-package"><span class="header-section-number">2</span> Structure d’un package</a>
   <ul class="collapse">
-  <li><a href="#paramètres-définis-dans-len-tête-yaml" id="toc-paramètres-définis-dans-len-tête-yaml" class="nav-link" data-scroll-target="#paramètres-définis-dans-len-tête-yaml">Paramètres définis dans l’en-tête YAML</a></li>
-  <li><a href="#réutilisation-dans-le-texte" id="toc-réutilisation-dans-le-texte" class="nav-link" data-scroll-target="#réutilisation-dans-le-texte">Réutilisation dans le texte</a></li>
-  <li><a href="#bonnes-pratiques-pour-un-rapport-quarto-paramétré" id="toc-bonnes-pratiques-pour-un-rapport-quarto-paramétré" class="nav-link" data-scroll-target="#bonnes-pratiques-pour-un-rapport-quarto-paramétré">Bonnes pratiques pour un rapport Quarto paramétré</a>
-  <ul class="collapse">
-  <li><a href="#recommandé" id="toc-recommandé" class="nav-link" data-scroll-target="#recommandé">Recommandé</a></li>
-  <li><a href="#à-éviter" id="toc-à-éviter" class="nav-link" data-scroll-target="#à-éviter">À éviter</a></li>
+  <li><a href="#prérequis-packages-utiles" id="toc-prérequis-packages-utiles" class="nav-link" data-scroll-target="#prérequis-packages-utiles"><span class="header-section-number">2.1</span> Prérequis : packages utiles</a></li>
   </ul></li>
-  <li><a href="#styliser-avec-css-pour-html" id="toc-styliser-avec-css-pour-html" class="nav-link" data-scroll-target="#styliser-avec-css-pour-html">Styliser avec CSS (pour HTML)</a>
+  <li><a href="#étapes-de-création" id="toc-étapes-de-création" class="nav-link" data-scroll-target="#étapes-de-création"><span class="header-section-number">3</span> Étapes de création</a>
   <ul class="collapse">
-  <li><a href="#fichier-styles.css" id="toc-fichier-styles.css" class="nav-link" data-scroll-target="#fichier-styles.css">Fichier : <code>styles.css</code></a></li>
+  <li><a href="#initialiser-un-package" id="toc-initialiser-un-package" class="nav-link" data-scroll-target="#initialiser-un-package"><span class="header-section-number">3.1</span> Initialiser un package</a></li>
+  <li><a href="#ajouter-une-fonction" id="toc-ajouter-une-fonction" class="nav-link" data-scroll-target="#ajouter-une-fonction"><span class="header-section-number">3.2</span> Ajouter une fonction</a></li>
+  <li><a href="#générer-la-documentation" id="toc-générer-la-documentation" class="nav-link" data-scroll-target="#générer-la-documentation"><span class="header-section-number">3.3</span> Générer la documentation</a></li>
+  <li><a href="#ajouter-un-test" id="toc-ajouter-un-test" class="nav-link" data-scroll-target="#ajouter-un-test"><span class="header-section-number">3.4</span> Ajouter un test</a></li>
+  <li><a href="#vérifier-le-package" id="toc-vérifier-le-package" class="nav-link" data-scroll-target="#vérifier-le-package"><span class="header-section-number">3.5</span> Vérifier le package</a>
+  <ul class="collapse">
+  <li><a href="#éviter-les-dépendances-inutiles" id="toc-éviter-les-dépendances-inutiles" class="nav-link" data-scroll-target="#éviter-les-dépendances-inutiles"><span class="header-section-number">3.5.1</span> Éviter les dépendances inutiles</a></li>
+  <li><a href="#documentation-avancée" id="toc-documentation-avancée" class="nav-link" data-scroll-target="#documentation-avancée"><span class="header-section-number">3.5.2</span> Documentation avancée</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#générer-des-tests" id="toc-générer-des-tests" class="nav-link" data-scroll-target="#générer-des-tests"><span class="header-section-number">4</span> Générer des tests</a></li>
+  <li><a href="#créer-un-site-avec-pkgdown" id="toc-créer-un-site-avec-pkgdown" class="nav-link" data-scroll-target="#créer-un-site-avec-pkgdown"><span class="header-section-number">5</span> Créer un site avec {pkgdown}</a>
+  <ul class="collapse">
+  <li><a href="#ressources-utiles" id="toc-ressources-utiles" class="nav-link" data-scroll-target="#ressources-utiles"><span class="header-section-number">5.1</span> Ressources utiles</a></li>
+  <li><a href="#en-résumé" id="toc-en-résumé" class="nav-link" data-scroll-target="#en-résumé"><span class="header-section-number">5.2</span> En résumé</a></li>
+  <li><a href="#à-venir" id="toc-à-venir" class="nav-link" data-scroll-target="#à-venir"><span class="header-section-number">5.3</span> À venir</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Quarto et Markdown</h1>
+<h1 class="title">Créer un package R</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
     
   
@@ -264,194 +263,188 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="vue-générale" class="level2">
-<h2 class="anchored" data-anchor-id="vue-générale">Vue générale</h2>
+<section id="pourquoi-créer-un-package" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Pourquoi créer un package ?</h1>
+<p>Un package permet de <strong>rassembler dans un même paquet un ensemble de fonctions</strong>, éventuellement accompagnées de données, pour :</p>
 <ul>
-<li>Quarto repose sur <strong>Pandoc</strong> : convertisseur universel Markdown vers plusieurs formats (HTML, PDF, Word, etc.).</li>
-<li>Écrit en Rust, moderne et rapide.</li>
-<li>Supporte plusieurs langages dans les chunks : R, Python, Observable JS, etc.</li>
+<li>Réutiliser du code de manière modulaire ;</li>
+<li>Améliorer la qualité et la maintenabilité du code ;</li>
+<li>Diffuser du code à d’autres utilisateurs ou collègues.</li>
 </ul>
-</section>
-<section id="workflow" class="level2">
-<h2 class="anchored" data-anchor-id="workflow">Workflow</h2>
+<section id="exemples-dusages" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="exemples-dusages"><span class="header-section-number">1.1</span> Exemples d’usages</h2>
 <ul>
-<li>Quarto exécute les chunks de code, produit un AST (Abstract Syntax Tree).</li>
-<li>Pandoc convertit cet AST en documents finaux (HTML, PDF, etc.).</li>
-</ul>
-</section>
-<section id="comparaison-avec-r-markdown" class="level2">
-<h2 class="anchored" data-anchor-id="comparaison-avec-r-markdown">Comparaison avec R Markdown</h2>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 27%">
-<col style="width: 35%">
-<col style="width: 37%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Fonctionnalité</th>
-<th>R Markdown</th>
-<th>Quarto</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Langage</td>
-<td>R + Markdown</td>
-<td>Rust + Markdown</td>
-</tr>
-<tr class="even">
-<td>Support chunks</td>
-<td>R uniquement</td>
-<td>R, Python, JS, autres</td>
-</tr>
-<tr class="odd">
-<td>Paramétrage YAML</td>
-<td>Basique</td>
-<td>Avancé</td>
-</tr>
-<tr class="even">
-<td>Sorties</td>
-<td>HTML, PDF, Word</td>
-<td>HTML, PDF, Word, et plus</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="création-pdf" class="level2">
-<h2 class="anchored" data-anchor-id="création-pdf">Création PDF</h2>
-<ul>
-<li>Plusieurs méthodes :
-<ul>
-<li>LaTeX classique (fiable, mais lourd parfois)</li>
-<li>Typst (nouveau langage, plus rapide)</li>
-<li>PageJS (génération PDF via Chrome)</li>
-<li>Impression design via HTML/Figma</li>
-</ul></li>
-</ul>
-</section>
-<section id="exemple-de-chunk-r" class="level2">
-<h2 class="anchored" data-anchor-id="exemple-de-chunk-r">Exemple de chunk R</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(readxl)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#tables &lt;- read_excel("tables_exported.xlsx")</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#head(tables)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="quatre-manières-de-générer-un-pdf" class="level1">
-<h1>Quatre manières de générer un PDF</h1>
-<section id="latex" class="level2">
-<h2 class="anchored" data-anchor-id="latex">1. LaTeX</h2>
-<ul>
-<li>Moteur historique, très utilisé en économie, physique, et sciences formelles.</li>
-<li>Complexe à utiliser, peu flexible graphiquement.</li>
-<li>Intégration dans Quarto via <code>engine: pdf</code> avec <code>pdf-engine: lualatex</code>.</li>
-<li>Permet une très grande personnalisation, mais au prix d’une courbe d’apprentissage raide.</li>
-</ul>
-</section>
-<section id="typst" class="level2">
-<h2 class="anchored" data-anchor-id="typst">2. Typst</h2>
-<ul>
-<li>Écrit en <strong>Rust</strong>, pensé comme une alternative rapide et moderne à LaTeX.</li>
-<li>Syntaxe simple, compilation ultra-rapide (quelques ms).</li>
-<li>Intégré directement dans Quarto via <code>engine: typst</code>.</li>
-<li>Encore jeune (2 ans), mais très prometteur.</li>
-<li>Parfait pour des cas d’usage type rapport régulier, document structuré, avec un design simple.</li>
-</ul>
-<p>Typst est particulièrement adapté aux workflows automatisés en R ou Python, pour produire rapidement des documents PDF paramétrés.</p>
-</section>
-<section id="css-paged-media-paged.js-weasyprint-pdf-raptor" class="level2">
-<h2 class="anchored" data-anchor-id="css-paged-media-paged.js-weasyprint-pdf-raptor">3. CSS Paged Media (paged.js, weasyprint, pdf-raptor)</h2>
-<ul>
-<li>Génère d’abord un <strong>HTML avec CSS</strong>.</li>
-<li>Utilise des standards CSS Media Queries + des <strong>polyfills</strong> pour structurer les pages comme des documents imprimables.</li>
-<li>Compatible avec Chrome/Edge, et utilisable via impression PDF.</li>
-<li>Exemples :
-<ul>
-<li><a href="https://pagedjs.org"><code>paged.js</code></a></li>
-<li><a href="https://weasyprint.org"><code>weasyprint</code></a> (en Python)</li>
-<li><code>pdf-raptor</code> (service web de conversion)</li>
-</ul></li>
-</ul>
-</section>
-<section id="génération-manuelle-via-figma-ou-html-pur" class="level2">
-<h2 class="anchored" data-anchor-id="génération-manuelle-via-figma-ou-html-pur">4. Génération manuelle via Figma ou HTML pur</h2>
-<ul>
-<li>Utilisé pour un <strong>design sur-mesure</strong> pixel-perfect.</li>
-<li>Génère le HTML ou maquette à la main, ou via outils comme <strong>Figma</strong>.</li>
-<li>Bypasse entièrement Pandoc ou Quarto.</li>
-<li>Nécessite plus de maintenance, mais offre un <strong>contrôle absolu</strong>.</li>
+<li>Fonctions de nettoyage récurrentes ;</li>
+<li>Fonctions de typage ou d’encodage ;</li>
+<li>Templates de rapports (ex: <code>reports</code>, <code>dreesUtils</code>) ;</li>
+<li>Thèmes graphiques, palettes de couleurs.</li>
 </ul>
 <hr>
 </section>
 </section>
-<section id="structuration-dun-rapport-paramétré" class="level1">
-<h1>Structuration d’un rapport paramétré</h1>
-<section id="paramètres-définis-dans-len-tête-yaml" class="level2">
-<h2 class="anchored" data-anchor-id="paramètres-définis-dans-len-tête-yaml">Paramètres définis dans l’en-tête YAML</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">country</span><span class="kw">:</span><span class="at"> </span><span class="st">"Somalia"</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">sector</span><span class="kw">:</span><span class="at"> </span><span class="st">"Éducation"</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">unit</span><span class="kw">:</span><span class="at"> </span><span class="st">"Région"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="réutilisation-dans-le-texte" class="level2">
-<h2 class="anchored" data-anchor-id="réutilisation-dans-le-texte">Réutilisation dans le texte</h2>
-<p>Les paramètres définis dans l’en-tête YAML peuvent être appelés dynamiquement avec params$… .</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># glue("Ce rapport analyse le secteur **{params$sector}** pour le pays **{params$country}**, à l’échelle **{params$unit}**.")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="bonnes-pratiques-pour-un-rapport-quarto-paramétré" class="level2">
-<h2 class="anchored" data-anchor-id="bonnes-pratiques-pour-un-rapport-quarto-paramétré">Bonnes pratiques pour un rapport Quarto paramétré</h2>
-<section id="recommandé" class="level3">
-<h3 class="anchored" data-anchor-id="recommandé">Recommandé</h3>
+<section id="structure-dun-package" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Structure d’un package</h1>
+<p>Un package suit une organisation stricte :</p>
 <ul>
-<li>Utiliser des blocs logiques bien identifiés (<code>#</code>, <code>##</code>, <code>###</code>)</li>
-<li>Garder une structure constante (même ordre, mêmes titres)</li>
-<li>Utiliser des paramètres dynamiques pour l’automatisation</li>
-<li>Ajouter des graphiques avec <code>ggplot2</code> ou <code>plotly</code></li>
-<li>Soigner l’affichage des nombres (arrondis, formatés)</li>
-<li>Gérer les valeurs manquantes ou aberrantes</li>
-</ul>
-</section>
-<section id="à-éviter" class="level3">
-<h3 class="anchored" data-anchor-id="à-éviter">À éviter</h3>
-<ul>
-<li>Trop de colonnes dans les mises en page (complexe avec Pandoc)</li>
-<li>Des titres qui changent selon les paramètres (illisible à la lecture)</li>
-<li>Ne pas tester les cas extrêmes (ex. : 0 valeur, NA, territoire inexistant)</li>
-<li>Trop de verbosité automatique (“Le pays {x} a… le pays {y} a…”)</li>
+<li><code>R/</code> : contient les <strong>fonctions</strong> ;</li>
+<li><code>DESCRIPTION</code> : métadonnées (titre, version, auteur, dépendances…) ;</li>
+<li><code>NAMESPACE</code> : <strong>exporte</strong> les fonctions (généré automatiquement avec {roxygen2}) ;</li>
+<li><code>man/</code> : fichiers d’aide (documentation de chaque fonction) ;</li>
+<li><code>data/</code> : données embarquées ;</li>
+<li><code>data-raw/</code> : scripts pour générer les données ;</li>
+<li><code>tests/</code> : tests unitaires ;</li>
+<li><code>vignettes/</code> : documents d’usage détaillés (exemples, cas d’usage) ;</li>
+<li><code>inst/</code> : autres fichiers installés avec le package ;</li>
+<li><code>.Rbuildignore</code> : liste des fichiers/dossiers à exclure lors du build.</li>
 </ul>
 <hr>
+<section id="prérequis-packages-utiles" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="prérequis-packages-utiles"><span class="header-section-number">2.1</span> Prérequis : packages utiles</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"devtools"</span>, <span class="st">"roxygen2"</span>, <span class="st">"usethis"</span>, <span class="st">"testthat"</span>, <span class="st">"pkgdown"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
-<section id="styliser-avec-css-pour-html" class="level2">
-<h2 class="anchored" data-anchor-id="styliser-avec-css-pour-html">Styliser avec CSS (pour HTML)</h2>
-<section id="fichier-styles.css" class="level3">
-<h3 class="anchored" data-anchor-id="fichier-styles.css">Fichier : <code>styles.css</code></h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode css code-with-copy"><code class="sourceCode css"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">:root</span> {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="va">--main-color</span><span class="ch">:</span> <span class="cn">#0077b6</span><span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="va">--accent-color</span><span class="ch">:</span> <span class="cn">#48cae4</span><span class="op">;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="va">--font-body</span><span class="ch">:</span> <span class="st">'Inter'</span><span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>body {</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">font-family</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--font-body</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="cn">#222</span><span class="op">;</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">line-height</span><span class="ch">:</span> <span class="dv">1.6</span><span class="op">;</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>h1<span class="op">,</span> h2<span class="op">,</span> h3 {</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--main-color</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-top</span><span class="ch">:</span> <span class="dv">1.5</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>strong {</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">color</span><span class="ch">:</span> <span class="fu">var(</span><span class="va">--accent-color</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="étapes-de-création" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Étapes de création</h1>
+<section id="initialiser-un-package" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="initialiser-un-package"><span class="header-section-number">3.1</span> Initialiser un package</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">"monpackage"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ajouter-une-fonction" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="ajouter-une-fonction"><span class="header-section-number">3.2</span> Ajouter une fonction</h2>
+<p>Dans R/ma_fonction.R :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ' Ajouter deux nombres</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># '</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ' @param x Un nombre</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># ' @param y Un nombre</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># '</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># ' @return La somme de x et y</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ' @export</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># '</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ' @examples</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ' addition(1, 2)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a> addition <span class="ot">&lt;-</span> <span class="cf">function</span>(x, y) {</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>   x <span class="sc">+</span> y</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a> }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="générer-la-documentation" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="générer-la-documentation"><span class="header-section-number">3.3</span> Générer la documentation</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">document</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ajouter-un-test" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="ajouter-un-test"><span class="header-section-number">3.4</span> Ajouter un test</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_test</span>(<span class="st">"addition"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Puis dans tests/testthat/test-addition.R :</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_that</span>(<span class="st">"addition fonctionne"</span>, {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">expect_equal</span>(<span class="fu">addition</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="dv">3</span>) </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="vérifier-le-package" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="vérifier-le-package"><span class="header-section-number">3.5</span> Vérifier le package</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">check</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Bonnes pratiques</li>
+<li>Fonction = unité autonome</li>
+<li>Chaque fonction doit :
+<ul>
+<li>Être autonome (tous ses arguments doivent être déclarés) ;</li>
+<li>Déclarer ses dépendances avec <span class="citation" data-cites="importFrom">@importFrom</span>.</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="st">' @importFrom stringr str_sub</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Dans DESCRIPTION :</p>
+<p>Imports:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>stringr</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="éviter-les-dépendances-inutiles" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="éviter-les-dépendances-inutiles"><span class="header-section-number">3.5.1</span> Éviter les dépendances inutiles</h3>
+<p>_ Plus un package a de dépendances, plus il est fragile. - Ne pas importer tout tidyverse</p>
+</section>
+<section id="documentation-avancée" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="documentation-avancée"><span class="header-section-number">3.5.2</span> Documentation avancée</h3>
+<ul>
+<li>Vignettes</li>
+<li>Permettent d’expliquer un workflow complet, avec texte + code.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_vignette</span>(<span class="st">"introduction"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">build_vignettes</span>()</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_readme_rmd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="générer-des-tests" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Générer des tests</h1>
+</section>
+<section id="créer-un-site-avec-pkgdown" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Créer un site avec {pkgdown}</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_pkgdown</span>()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github_action</span>(<span class="st">"pkgdown"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Puis dans _pkgdown.yml, configurer le menu, la page d’accueil, les vignettes, etc.</p>
+<p>Générer le site</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pkgdown<span class="sc">::</span><span class="fu">build_site</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Automatiser les tests avec GitHub Actions</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_github_action</span>(<span class="st">"check-release"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Lance automatiquement les check() à chaque push</li>
+<li>Envoie un mail si un test échoue</li>
+</ul>
+<section id="ressources-utiles" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="ressources-utiles"><span class="header-section-number">5.1</span> Ressources utiles</h2>
+<ul>
+<li>r-pkgs.org : la bible des packages R</li>
+<li>Testing basics</li>
+<li>Admiral (génération de tableaux)</li>
+<li>Thèmes visuels R</li>
+<li>Page Quarto personnalisée</li>
+</ul>
+</section>
+<section id="en-résumé" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="en-résumé"><span class="header-section-number">5.2</span> En résumé</h2>
+<ul>
+<li>Étape Outils R</li>
+<li>Créer le package usethis::create_package()</li>
+<li>Ajouter une fonction fichier .R + <span class="citation" data-cites="export">@export</span></li>
+<li>Documenter roxygen2, devtools::document()</li>
+<li>Tester testthat::test_that()</li>
+<li>Générer un site pkgdown::build_site()</li>
+<li>Automatiser use_github_action(“check-release”)</li>
+</ul>
+</section>
+<section id="à-venir" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="à-venir"><span class="header-section-number">5.3</span> À venir</h2>
+<ul>
+<li>Rédiger des tests plus complexes (tests de chaînes, types, dimensions)</li>
+<li>Diffuser le package (GitHub, CRAN ?)</li>
+<li>Structurer des packages internes partagés entre collègues.</li>
+</ul>
 
 
-</section>
 </section>
 </section>
 

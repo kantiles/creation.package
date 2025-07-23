@@ -1,0 +1,119 @@
+---
+title: "Stage mars-juillet 2025"
+page-layout: full
+format:
+  html:
+    toc: true
+    toc-location: right
+    theme: cosmo
+    css: styles.css
+    code-copy: true
+execute:
+  echo: false       
+  warning: false     
+  message: false  
+  
+---
+
+
+Bienvenue sur la page du compte rendu. Utilisez la barre de navigation pour accéder aux différentes parties.
+
+Ce rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.  
+Les sujets abordés sont :
+
+- Recensements et gestion de grandes bases de données
+- Utilisation avancée de Quarto et Markdown
+- Techniques de scraping en R
+- Lecture et traitement de PDF en R
+- Organisation documentaire avec Zotero
+
+
+```{r}
+library(leaflet)
+library(tidyverse)
+
+lieux <- data.frame(
+  nom = c(
+    "Marly-le-Roi", 
+    "Gouvieux", 
+    "Paris", 
+    "Mons (Belgique)", 
+    "Carcassonne", 
+    "Salon-de-Provence", 
+    "Montrouge"
+  ),
+  lat = c(
+    48.8703,  # Marly-le-Roi
+    49.1949,  # Gouvieux
+    48.8566,  # Paris
+    50.4542,  # Mons
+    43.2130,  # Carcassonne
+    43.6400,   # Salon-de-Provence
+    48.8167   # Montrouge
+  ),
+  lng = c(
+    2.0966,   # Marly-le-Roi
+    2.4089,   # Gouvieux
+    2.3522,   # Paris
+    3.9523,   # Mons
+    2.3537,   # Carcassonne
+    5.0971,    # Salon-de-Provence
+    2.3139    # Montrouge
+  )
+)
+
+leaflet(data = lieux) |>
+  addTiles() |>
+  addMarkers(~lng, ~lat, label = ~nom, popup = ~nom) |>
+  addProviderTiles("CartoDB.Positron") |>
+  setView(lng = 2.5, lat = 47.5, zoom = 5.5)
+```
+
+
+
+# Le stage chez Kantiles, c’est aussi…
+
+::: {.columns}
+::: {.column width="50%"}
+
+## Café consommé
+
+- En moyenne 4 tasses / jour / personne  
+- Environ 3 personnes caféinées par jour  
+- Sur 5 mois (~22 jours/mois), ça fait environ **4 x 3 x 22 x 5 = 1 320 tasses** 
+
+## Projets réalisés
+
+- APEC  
+- DREES  
+- Kids  
+- OPCO  
+- Endomind  
+- ... 
+
+:::
+::: {.column width="50%"}
+
+## Outils / Méthodes
+
+- R, Quarto, Leaflet  
+- Git + GitHub, DuckDB  
+- Scraping, analyses territoriales
+- ...
+
+## Conférences / Événements
+
+- Déj POS – Impact & mesure  
+- Rencontres R - Université de Mons  
+- Printemps de l'économie  
+- INSEE Pays de la Loire  
+- Colloque PIC - DARES  
+- Journée data & histoire - Sorbonne  
+- Une journée à 21  
+- ...
+
+:::
+:::
+
+---
+

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Lire des fichiers Excel mal formatés – Kantiles - Supports de Formation</title>
+<title>Lire des Excels moches – Kantiles - Supports de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -129,9 +129,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-accueil">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Accueil — Support de Formations Kantiles</span></a>
+ <span class="dropdown-text">Accueil</span></a>
   </li>  
-        <li class="dropdown-header">Stage mars-juillet 2025</li>
         <li>
     <a class="dropdown-item" href="./cr_stage.html">
  <span class="dropdown-text">Stage mars-juillet 2025</span></a>
@@ -154,14 +153,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./api.html"> 
 <span class="menu-text">API</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./quarto.html"> 
-<span class="menu-text">Quarto</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-format" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Format</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-format">    
+        <li>
+    <a class="dropdown-item" href="./quarto.html">
+ <span class="dropdown-text">Quarto</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./parquet.html"> 
-<span class="menu-text">Parquet</span></a>
+        <li>
+    <a class="dropdown-item" href="./parquet.html">
+ <span class="dropdown-text">Parquet</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./fichier_moches.html">
+ <span class="dropdown-text">Lire des Excels moches</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./zotero.html"> 
 <span class="menu-text">Zotero</span></a>
@@ -170,10 +180,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./cartographie.html"> 
 <span class="menu-text">Cartographie</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./fichier_moches.html" aria-current="page"> 
-<span class="menu-text">Format</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Packages R</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-packages-r">    
+        <li>
+    <a class="dropdown-item" href="./package.html">
+ <span class="dropdown-text">Créer un package R</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./test_package.html">
+ <span class="dropdown-text">Tester ses fonctions dans un package R</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -190,7 +211,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#objectif-obtenir-des-données-tidy" id="toc-objectif-obtenir-des-données-tidy" class="nav-link active" data-scroll-target="#objectif-obtenir-des-données-tidy">Objectif : obtenir des données tidy</a></li>
+  <li><a href="#lire-des-fichiers-excel-mal-formatés" id="toc-lire-des-fichiers-excel-mal-formatés" class="nav-link active" data-scroll-target="#lire-des-fichiers-excel-mal-formatés">Lire des fichiers Excel mal formatés</a></li>
+  <li><a href="#objectif-obtenir-des-données-tidy" id="toc-objectif-obtenir-des-données-tidy" class="nav-link" data-scroll-target="#objectif-obtenir-des-données-tidy">Objectif : obtenir des données tidy</a></li>
   <li><a href="#lire-des-fichiers-excel-complexes" id="toc-lire-des-fichiers-excel-complexes" class="nav-link" data-scroll-target="#lire-des-fichiers-excel-complexes">1. Lire des fichiers Excel complexes</a>
   <ul class="collapse">
   <li><a href="#readxlread_excel" id="toc-readxlread_excel" class="nav-link" data-scroll-target="#readxlread_excel"><code>readxl::read_excel()</code></a></li>
@@ -210,7 +232,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lire des fichiers Excel mal formatés</h1>
+<h1 class="title">Lire des Excels moches</h1>
 </div>
 
 
@@ -227,6 +249,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="lire-des-fichiers-excel-mal-formatés" class="level2">
+<h2 class="anchored" data-anchor-id="lire-des-fichiers-excel-mal-formatés">Lire des fichiers Excel mal formatés</h2>
 <p>Certaines données, notamment institutionnelles ou issues de productions internes, sont publiées dans des formats complexes, peu adaptés à une analyse directe. Cette session vise à comprendre comment :</p>
 <ul>
 <li>identifier les problèmes structurels dans un fichier Excel ;</li>
@@ -235,6 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>On peut également aller voir la référence :un petit coup de polish.</p>
 <hr>
+</section>
 <section id="objectif-obtenir-des-données-tidy" class="level2">
 <h2 class="anchored" data-anchor-id="objectif-obtenir-des-données-tidy">Objectif : obtenir des données tidy</h2>
 <p>Les jeux de données doivent être remis sous une <strong>forme rectangulaire et normalisée</strong>, avec :</p>
@@ -322,14 +347,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td>Cellul</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>es fusionnées</td>
-<td>accès direct à chaque cellule</td>
-</tr>
 <tr class="odd">
 <td>Tableaux avec entêtes multiples</td>
 <td><code>behead()</code></td>

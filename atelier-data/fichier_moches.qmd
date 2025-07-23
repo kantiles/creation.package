@@ -1,5 +1,5 @@
 ---
-title: "Format"
+title: "Lire des Excels moches"
 format:
   html:
     toc: true
@@ -14,7 +14,7 @@ execute:
   message: false
 ---
 
-# Lire des fichiers Excel mal formatés
+## Lire des fichiers Excel mal formatés
 
 Certaines données, notamment institutionnelles ou issues de productions internes, sont publiées dans des formats complexes, peu adaptés à une analyse directe. Cette session vise à comprendre comment :
 
@@ -122,8 +122,6 @@ On peut aussi détecter des titres dynamiquement avec str_detect()
 
 | Situation                          | Solution avec tidyxl + unpivotr |
 | ---------------------------------- | ------------------------------- |
-| Cellul
-es fusionnées                | accès direct à chaque cellule   |
 | Tableaux avec entêtes multiples    | `behead()`                      |
 | Info encodée dans le style (gras…) | `behead_if()`                   |
 | Tableaux complexes par onglet      | `group_by(sheet)`               |

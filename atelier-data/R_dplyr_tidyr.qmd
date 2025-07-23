@@ -1,0 +1,219 @@
+---
+title: "Intorduction à dplyr et tidyr"
+format: html
+toc: true
+toc-depth: 3
+number-sections: true
+editor: visual
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Introduction
+
+Ce cours présente les principales fonctions des packages `dplyr` et `tidyr`, utilisés pour la manipulation de données dans l'écosystème **tidyverse**. Ces outils permettent de transformer, filtrer, combiner et restructurer efficacement des jeux de données en R.
+
+# `dplyr` : Manipulation de données
+
+## `mutate()`
+
+La fonction `mutate()` permet de créer ou de modifier des colonnes dans un data frame tout en conservant sa structure rectangulaire.
+
+- Compatible avec le pipe `%>%`
+- Peut ajouter ou remplacer des colonnes existantes
+- Utilisation multiple possible (imbriquée)
+
+```{r}
+#| eval: false
+data %>% 
+  mutate(new_var = old_var * 2)
+mutate(across())
+```
+Permet d’appliquer une fonction à plusieurs colonnes simultanément :
+
+```{r}
+#| eval: false
+data %>%
+  mutate(across(where(is.numeric), ~ .x * 2))
+```
+Evitez de remplacer des colonnes de manière implicite pour conserver la lisibilité du code.
+
+```{r}
+#| eval: false
+select()
+```
+Permet de sélectionner et réorganiser des colonnes :
+
+```{r}
+#| eval: false
+
+data %>%
+  select(nom = old_name, age, ville)
+```
+- Utile pour choisir les variables à exporter
+- Peut renommer les colonnes directement
+
+```{r}
+#| eval: false
+filter()
+```
+Permet de filtrer les lignes selon une condition :
+
+```{r}
+#| eval: false
+data %>%
+  filter(sexe == "Homme" & age > 30)
+```
+
+Inversion de condition
+
+```{r}
+#| eval: false
+data %>%
+  filter(!(age > 30))
+```
+Préférez des conditions explicites et utilisez des parenthèses pour clarifier la logique.
+
+```{r}
+#| eval: false
+arrange()
+```
+Permet de trier les données :
+
+```{r}
+#| eval: false
+data %>%
+  arrange(nom)
+
+data %>%
+  arrange(desc(prix))
+```
+
+- summarise() et group_by()
+- summarise() permet de résumer un jeu de données :
+
+```{r}
+#| eval: false
+data %>%
+  summarise(mean_disp = mean(disp), n = n())
+```
+Avec group_by() :
+
+```{r}
+#| eval: false
+data %>%
+  group_by(cyl) %>%
+  summarise(mean_disp = mean(disp)) %>%
+  ungroup()
+```
+
+- N'oubliez pas ungroup() si les groupes ne sont plus nécessaires.
+- Fonctions complémentaires
+rename() : renommer des colonnes
+- distinct() : éliminer les doublons
+- if_else() : binaire, ne gère pas les NA
+- case_when() : version généralisée de if_else()
+
+```{r}
+#| eval: false
+mutate(cyl_group = case_when(
+  cyl >= 6 ~ "6+8",
+  TRUE ~ "4"
+))
+```
+
+## Jointures
+- dplyr fournit plusieurs types de jointures :
+- inner_join() : intersection
+- left_join() : toutes les lignes de gauche
+- full_join() : toutes les lignes des deux
+
+```{r}
+#| eval: false
+left_join(df1, df2, by = "id", suffix = c("_x", "_y"))
+```
+
+- Toujours vérifier le nombre de lignes avant/après une jointure.
+- Utiliser count() pour détecter des NA inattendus.
+
+## Combinaisons de données
+- bind_rows() : empile les lignes
+- bind_cols() : ajoute des colonnes (attention au positionnement !)
+- Autres fonctions utiles
+- count() : équivalent à group_by() + summarise(n = n())
+- between(x, a, b) : test x >= a & x <= b
+- tidyr : Restructuration des données
+- lag() et fenêtres temporelles
+- lag() récupère la valeur précédente d’une variable.
+
+```{r}
+#| eval: false
+data %>%
+  arrange(annee) %>%
+  mutate(var_lag = lag(var))
+```
+Avec condition :
+
+```{r}
+#| eval: false
+mutate(var_lag = if_else(lag(annee) == annee - 1, lag(var), NA))
+```
+
+## Pivots
+```{r}
+#| eval: false
+pivot_longer()
+```
+Transforme des colonnes en paires clé/valeur :
+
+```{r}
+#| eval: false
+data %>%
+  pivot_longer(cols = c(janvier, fevrier, mars),
+               names_to = "mois",
+               values_to = "valeur")
+```
+
+- cols : colonnes à pivoter
+- names_to : future colonne pour les noms
+- values_to : future colonne pour les valeurs
+
+```{r}
+#| eval: false
+pivot_wider()
+```
+Fait l’opération inverse :
+
+```{r}
+#| eval: false
+data %>%
+  pivot_wider(names_from = mois,
+              values_from = valeur)
+```
+Assurez-vous qu’il y a une clé (ex. id, année) pour l’opération.
+
+##  Complétion de données
+Utiliser complete(), crossing() ou expand() pour générer toutes les combinaisons manquantes :
+
+```{r}
+#| eval: false
+data %>%
+  complete(annee, region)
+```
+# Autres packages utiles du tidyverse
+- lubridate : manipulation efficace des dates
+- forcats : gestion des variables catégorielles (facteurs)
+- stringr : manipulation des chaînes de caractères
+- purrr : programmation fonctionnelle (map(), walk(), etc.)
+- readr : import rapide de CSV/TSV
+
+
+
+# Rappel des petits plus de Thomas :) 
+- Nommer toujours en minuscule (ou fonction {janitor})
+- Mettre un espace entre # et le commentaire
+- Utiliser des noms explicites pour les fonctions et variables
+- Utiliser des commentaires pour expliquer les étapes importantes
+- Structure le code avec # et ## pour les sections (avec ------ à la fin du titre pour l'afficher dans l'Outline)

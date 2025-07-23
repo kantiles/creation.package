@@ -1,0 +1,203 @@
+---
+title: "Créer un package R"
+format: html
+toc: true
+number-sections: true
+theme: cosmo
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Pourquoi créer un package ?
+
+Un package permet de **rassembler dans un même paquet un ensemble de fonctions**, éventuellement accompagnées de données, pour :
+
+- Réutiliser du code de manière modulaire ;
+- Améliorer la qualité et la maintenabilité du code ;
+- Diffuser du code à d'autres utilisateurs ou collègues.
+
+## Exemples d'usages
+
+- Fonctions de nettoyage récurrentes ;
+- Fonctions de typage ou d'encodage ;
+- Templates de rapports (ex: `reports`, `dreesUtils`) ;
+- Thèmes graphiques, palettes de couleurs.
+
+---
+
+# Structure d’un package
+
+Un package suit une organisation stricte :
+
+- `R/` : contient les **fonctions** ;
+- `DESCRIPTION` : métadonnées (titre, version, auteur, dépendances...) ;
+- `NAMESPACE` : **exporte** les fonctions (généré automatiquement avec {roxygen2}) ;
+- `man/` : fichiers d’aide (documentation de chaque fonction) ;
+- `data/` : données embarquées ;
+- `data-raw/` : scripts pour générer les données ;
+- `tests/` : tests unitaires ;
+- `vignettes/` : documents d’usage détaillés (exemples, cas d’usage) ;
+- `inst/` : autres fichiers installés avec le package ;
+- `.Rbuildignore` : liste des fichiers/dossiers à exclure lors du build.
+
+---
+
+## Prérequis : packages utiles
+
+```{r}
+#| eval: false
+install.packages(c("devtools", "roxygen2", "usethis", "testthat", "pkgdown"))
+```
+
+# Étapes de création
+
+## Initialiser un package
+
+```{r}
+#| eval: false
+usethis::create_package("monpackage")
+```
+
+## Ajouter une fonction
+Dans R/ma_fonction.R :
+
+```{r}
+#| eval: false
+
+# ' Ajouter deux nombres
+# '
+# ' @param x Un nombre
+# ' @param y Un nombre
+# '
+# ' @return La somme de x et y
+# ' @export
+# '
+# ' @examples
+# ' addition(1, 2)
+ addition <- function(x, y) {
+   x + y
+ }
+```
+
+## Générer la documentation
+```{r}
+#| eval: false
+devtools::document()
+```
+
+## Ajouter un test
+```{r}
+#| eval: false
+usethis::use_test("addition")
+```
+
+Puis dans tests/testthat/test-addition.R :
+
+```{r}
+#| eval: false
+test_that("addition fonctionne", {
+expect_equal(addition(1, 2), 3) 
+})
+```
+
+## Vérifier le package
+
+```{r}
+#| eval: false
+devtools::check()
+```
+- Bonnes pratiques
+- Fonction = unité autonome
+- Chaque fonction doit :
+  - Être autonome (tous ses arguments doivent être déclarés) ;
+  - Déclarer ses dépendances avec @importFrom.
+
+```{r}
+#| eval: false
+' @importFrom stringr str_sub
+```
+
+Dans DESCRIPTION :
+
+Imports:
+
+```{r}
+#| eval: false
+stringr
+```
+
+### Éviter les dépendances inutiles
+_ Plus un package a de dépendances, plus il est fragile.
+- Ne pas importer tout tidyverse
+
+
+### Documentation avancée
+- Vignettes
+- Permettent d'expliquer un workflow complet, avec texte + code.
+
+```{r}
+#| eval: false
+usethis::use_vignette("introduction")
+
+devtools::build_vignettes()
+ 
+usethis::use_readme_rmd()
+```
+
+# Générer des tests 
+
+
+
+
+
+
+
+# Créer un site avec {pkgdown}
+
+```{r}
+#| eval: false
+usethis::use_pkgdown()
+usethis::use_github_action("pkgdown")
+```
+
+Puis dans _pkgdown.yml, configurer le menu, la page d’accueil, les vignettes, etc.
+
+Générer le site 
+```{r}
+#| eval: false
+pkgdown::build_site()
+```
+
+Automatiser les tests avec GitHub Actions
+
+```{r}
+#| eval: false
+usethis::use_github_action("check-release")
+```
+
+
+- Lance automatiquement les check() à chaque push
+- Envoie un mail si un test échoue
+
+## Ressources utiles
+- r-pkgs.org : la bible des packages R
+- Testing basics
+- Admiral (génération de tableaux)
+- Thèmes visuels R
+- Page Quarto personnalisée
+
+## En résumé
+- Étape	Outils R
+- Créer le package	usethis::create_package()
+- Ajouter une fonction	fichier .R + @export
+- Documenter	roxygen2, devtools::document()
+- Tester	testthat::test_that()
+- Générer un site	pkgdown::build_site()
+- Automatiser	use_github_action("check-release")
+
+## À venir
+- Rédiger des tests plus complexes (tests de chaînes, types, dimensions)
+- Diffuser le package (GitHub, CRAN ?)
+- Structurer des packages internes partagés entre collègues.

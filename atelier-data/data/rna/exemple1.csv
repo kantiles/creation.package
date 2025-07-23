@@ -1,0 +1,4 @@
+id,code_postal,region,date_creation,lon,lat,categorie
+1,75001,Île-de-France,2018-03-01,2.3522,48.8566,santé
+2,60000,Hauts-de-France,2020-06-15,2.2833,49.43,éducation
+3,75011,Île-de-France,2019-01-20,2.377,48.855,sport

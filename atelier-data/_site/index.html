@@ -95,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-accueil">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Accueil — Support de Formations Kantiles</span></a>
+ <span class="dropdown-text">Accueil</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./cr_stage.html">
@@ -119,14 +119,25 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./api.html"> 
 <span class="menu-text">API</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./quarto.html"> 
-<span class="menu-text">Quarto</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-format" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Format</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-format">    
+        <li>
+    <a class="dropdown-item" href="./quarto.html">
+ <span class="dropdown-text">Quarto</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./parquet.html"> 
-<span class="menu-text">Parquet</span></a>
+        <li>
+    <a class="dropdown-item" href="./parquet.html">
+ <span class="dropdown-text">Parquet</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./fichier_moches.html">
+ <span class="dropdown-text">Lire des Excels moches</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./zotero.html"> 
 <span class="menu-text">Zotero</span></a>
@@ -135,10 +146,21 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./cartographie.html"> 
 <span class="menu-text">Cartographie</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./fichier_moches.html"> 
-<span class="menu-text">Format</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Packages R</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-packages-r">    
+        <li>
+    <a class="dropdown-item" href="./package.html">
+ <span class="dropdown-text">Créer un package R</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./test_package.html">
+ <span class="dropdown-text">Tester ses fonctions dans un package R</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -187,6 +209,9 @@ Il facilite l’accès aux informations essentielles concernant nos activités, 
 <p>Nous souhaitons faire de ce portail un outil vivant et collaboratif qui favorise la diffusion rapide de l’information, la montée en compétences et la cohésion entre tous les membres du projet.<br>
 N’hésitez pas à revenir régulièrement pour découvrir les nouveautés et participer aux ateliers proposés.</p>
 <hr>
+<div style="text-align:center; margin-top: 3em;">
+<p><img src="logo_kantiles.png" alt="Blason Kantiles" style="max-width:200px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"></p>
+</div>
 <section id="actualités-récentes" class="level2">
 <h2 class="anchored" data-anchor-id="actualités-récentes">Actualités récentes</h2>
 <p>Retrouvez ici les dernières nouveautés concernant les stagiaires, les articles publiés, et les événements marquants :</p>
@@ -214,12 +239,18 @@ Apprenez à gérer des bases de données volumineuses sans serveur avec des form
 <li><p><strong>Zotero</strong><br>
 Gérer efficacement vos bibliographies, articles scientifiques et documents de travail.</p></li>
 </ul>
-<hr>
-<div style="text-align:center; margin-top: 3em;">
-<p><img src="kantiles_blason.png" alt="Blason Kantiles" style="max-width:200px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"></p>
-</div>
-<div style="text-align:center; margin-top: 3em;">
-<p><img src="logo_kantiles.png" alt="Blason Kantiles" style="max-width:200px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"></p>
+<div style="
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+">
+<p><img src="kantiles_blason.png" alt="Blason Kantiles" style="max-width: 400px;
+              border-radius: 12px;
+              box-shadow: 0 4px 16px rgba(0,0,0,0.25);"></p>
 </div>
 
 

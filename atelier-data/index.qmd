@@ -60,11 +60,19 @@ Pour plus de détails, consultez les pages dédiées dans la section **Accueil**
   Gérer efficacement vos bibliographies, articles scientifiques et documents de travail.
 
 
----
 
-<div style="text-align:center; margin-top: 3em;">
-  <img src="kantiles_blason.png" alt="Blason Kantiles" style="max-width:200px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
+<div style="
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+">
+
+  <img src="kantiles_blason.png" alt="Blason Kantiles"
+       style="max-width: 400px;
+              border-radius: 12px;
+              box-shadow: 0 4px 16px rgba(0,0,0,0.25);" />
 </div>
-
-
-
