@@ -17,11 +17,10 @@ execute:
 
 
 
-Ce site est votre espace centralisé dédié à l’ensemble des ressources et actualités internes du projet Kantiles.  
-Il facilite l’accès aux informations essentielles concernant nos activités, nos équipes, ainsi que les supports pédagogiques conçus pour accompagner votre montée en compétences.
+Ce site est votre espace centralisé dédié à l’ensemble des ressources de formation réalisées au sein de Kantiles.  
+Il facilite l’accès supports supports pédagogiques conçus pour accompagner votre montée en compétences.
 
-Nous souhaitons faire de ce portail un outil vivant et collaboratif qui favorise la diffusion rapide de l’information, la montée en compétences et la cohésion entre tous les membres du projet.  
-N’hésitez pas à revenir régulièrement pour découvrir les nouveautés et participer aux ateliers proposés.
+Nous souhaitons faire de ce portail un outil vivant et collaboratif qui favorise la diffusion rapide de l’information, la montée en compétences et la cohésion entre tous les membres de l'entreprises.  
 
 ---
 
@@ -44,11 +43,6 @@ Pour plus de détails, consultez les pages dédiées dans la section **Accueil**
 
 ## Formations et Ateliers internes
 
-Nous proposons une série de formations et d'ateliers pour vous aider à développer vos compétences techniques et méthodologiques.
-
-::: {.callout title="[Accueil](index.qmd)"}
-Présentation générale, suivi des stages, publications internes, identité visuelle.
-:::
 
 ::: {.callout title="Code"}
 Initiation à [Git](`R_git.qmd`), [manipulation de données](R_dplyr_tidyr.qmd) avec `dplyr`, `tidyr` et autres outils R.

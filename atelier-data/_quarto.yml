@@ -52,6 +52,8 @@ website:
             file: zotero.qmd
           - text: "Cartographie"
             file: cartographie.qmd
+          - text: "Tips"
+            file: Tips.qmd
     right:
       - icon: linkedin
         href: https://www.linkedin.com/company/kantiles

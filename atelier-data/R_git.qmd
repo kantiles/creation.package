@@ -45,6 +45,8 @@ git commit -m "Ajout fonction calcul taux PMI #32"
 
 ## Pull Request (PR)
 Toujours créer une PR depuis GitHub :
+
+
 - Comparer les branches
 - Faire une revue
 - Ne jamais valider sa propre PR
@@ -53,13 +55,6 @@ Toujours créer une PR depuis GitHub :
 ## Fichiers ignorés
 - Ne jamais versionner les données brutes.
 - Créer un fichier .gitignore et y ajouter :
-
-kotlin
-Copier
-Modifier
-data/
-.Rproj.user
-.Rhistory
 
 # Organisation du code R
 

@@ -119,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="dropdown-menu" aria-labelledby="nav-menu-accueil">    
         <li>
     <a class="dropdown-item" href="./index.html">
- <span class="dropdown-text">Accueil — Support de Formations Kantiles</span></a>
+ <span class="dropdown-text">Accueil</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./cr_stage.html">
@@ -135,33 +135,95 @@ ul.task-list li input[type="checkbox"] {
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./scrap.html"> 
-<span class="menu-text">Scraping</span></a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-code" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Code</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-code">    
+        <li>
+    <a class="dropdown-item" href="./R_git.html">
+ <span class="dropdown-text">Git</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./api.html"> 
-<span class="menu-text">API</span></a>
+        <li>
+    <a class="dropdown-item" href="./R_dplyr_tidyr.html">
+ <span class="dropdown-text">R</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./quarto.html"> 
-<span class="menu-text">Quarto</span></a>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-données" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Données</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-données">    
+        <li>
+    <a class="dropdown-item" href="./scrap.html">
+ <span class="dropdown-text">Scraping</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./parquet.html"> 
-<span class="menu-text">Parquet</span></a>
+        <li>
+    <a class="dropdown-item" href="./api.html">
+ <span class="dropdown-text">API</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./zotero.html"> 
-<span class="menu-text">Zotero</span></a>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-format" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Format</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-format">    
+        <li>
+    <a class="dropdown-item" href="./quarto.html">
+ <span class="dropdown-text">Quarto</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./cartographie.html"> 
-<span class="menu-text">Cartographie</span></a>
+        <li>
+    <a class="dropdown-item" href="./parquet.html">
+ <span class="dropdown-text">Parquet</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./fichier_moches.html"> 
-<span class="menu-text">Format</span></a>
+        <li>
+    <a class="dropdown-item" href="./fichier_moches.html">
+ <span class="dropdown-text">Lire des Excels moches</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-packages-r" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Packages R</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-packages-r">    
+        <li>
+    <a class="dropdown-item" href="./package.html">
+ <span class="dropdown-text">Créer un package R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./test_package.html">
+ <span class="dropdown-text">Tester ses fonctions dans un package R</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-autres" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Autres</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-autres">    
+        <li>
+    <a class="dropdown-item" href="./zotero.html">
+ <span class="dropdown-text">Zotero</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./cartographie.html">
+ <span class="dropdown-text">Cartographie</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Tips.html">
+ <span class="dropdown-text">Tips</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/company/kantiles"> <i class="bi bi-linkedin" role="img" aria-label="LinkedIn">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -179,7 +241,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#le-stage-chez-kantiles-cest-aussi" id="toc-le-stage-chez-kantiles-cest-aussi" class="nav-link active" data-scroll-target="#le-stage-chez-kantiles-cest-aussi">Le stage chez Kantiles, c’est aussi…</a></li>
+  <li><a href="#thématiques-abordées" id="toc-thématiques-abordées" class="nav-link active" data-scroll-target="#thématiques-abordées">Thématiques abordées</a>
+  <ul class="collapse">
+  <li><a href="#recensements-et-gestion-de-bases-de-données-volumineuses" id="toc-recensements-et-gestion-de-bases-de-données-volumineuses" class="nav-link" data-scroll-target="#recensements-et-gestion-de-bases-de-données-volumineuses">Recensements et gestion de bases de données volumineuses</a></li>
+  <li><a href="#utilisation-avancée-de-quarto-et-markdown" id="toc-utilisation-avancée-de-quarto-et-markdown" class="nav-link" data-scroll-target="#utilisation-avancée-de-quarto-et-markdown">Utilisation avancée de Quarto et Markdown</a></li>
+  <li><a href="#techniques-de-scraping-en-r" id="toc-techniques-de-scraping-en-r" class="nav-link" data-scroll-target="#techniques-de-scraping-en-r">Techniques de scraping en R</a></li>
+  <li><a href="#lecture-et-traitement-de-fichiers-pdf" id="toc-lecture-et-traitement-de-fichiers-pdf" class="nav-link" data-scroll-target="#lecture-et-traitement-de-fichiers-pdf">Lecture et traitement de fichiers PDF</a></li>
+  <li><a href="#organisation-documentaire-avec-zotero" id="toc-organisation-documentaire-avec-zotero" class="nav-link" data-scroll-target="#organisation-documentaire-avec-zotero">Organisation documentaire avec Zotero</a></li>
+  </ul></li>
+  <li><a href="#les-lieux-dexercice-du-stage" id="toc-les-lieux-dexercice-du-stage" class="nav-link" data-scroll-target="#les-lieux-dexercice-du-stage">Les lieux d’exercice du stage</a></li>
+  <li><a href="#le-stage-chez-kantiles-cest-aussi" id="toc-le-stage-chez-kantiles-cest-aussi" class="nav-link" data-scroll-target="#le-stage-chez-kantiles-cest-aussi">Le stage chez Kantiles, c’est aussi…</a></li>
+  <li><a href="#remerciements-et-retour-dexpérience" id="toc-remerciements-et-retour-dexpérience" class="nav-link" data-scroll-target="#remerciements-et-retour-dexpérience">Remerciements et retour d’expérience</a></li>
   </ul>
 </nav>
     </div>
@@ -205,22 +277,42 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Bienvenue sur la page du compte rendu. Utilisez la barre de navigation pour accéder aux différentes parties.</p>
-<p>Ce rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.<br>
-Les sujets abordés sont :</p>
-<ul>
-<li>Recensements et gestion de grandes bases de données</li>
-<li>Utilisation avancée de Quarto et Markdown</li>
-<li>Techniques de scraping en R</li>
-<li>Lecture et traitement de PDF en R</li>
-<li>Organisation documentaire avec Zotero</li>
-</ul>
+<p>Bienvenue sur la page de compte rendu de stage !</p>
+<p>Ce document regroupe l’ensemble des travaux réalisés entre mars et juillet 2025, autour de problématiques concrètes en traitement de données, production documentaire et automatisation. Il s’appuie sur des cas d’usage rencontrés pendant le stage, et présente des outils et méthodes mobilisés dans ce cadre.</p>
+<section id="thématiques-abordées" class="level2">
+<h2 class="anchored" data-anchor-id="thématiques-abordées">Thématiques abordées</h2>
+<section id="recensements-et-gestion-de-bases-de-données-volumineuses" class="level3">
+<h3 class="anchored" data-anchor-id="recensements-et-gestion-de-bases-de-données-volumineuses">Recensements et gestion de bases de données volumineuses</h3>
+<p>Exploration de données issues de recensements, avec un accent particulier sur : - la manipulation de fichiers volumineux (CSV, Parquet), - la structuration de données à large échelle, - l’utilisation de <code>dplyr</code>, <code>duckdb</code> et <code>arrow</code> pour optimiser les traitements.</p>
+</section>
+<section id="utilisation-avancée-de-quarto-et-markdown" class="level3">
+<h3 class="anchored" data-anchor-id="utilisation-avancée-de-quarto-et-markdown">Utilisation avancée de Quarto et Markdown</h3>
+<p>Création de rapports dynamiques et reproductibles : - mise en forme avec Markdown étendu, - génération de rapports HTML et PDF avec Quarto, - insertion de graphiques, tableaux et blocs interactifs, - gestion de la bibliographie intégrée.</p>
+</section>
+<section id="techniques-de-scraping-en-r" class="level3">
+<h3 class="anchored" data-anchor-id="techniques-de-scraping-en-r">Techniques de scraping en R</h3>
+<p>Automatisation de la collecte de données à partir de sites web : - utilisation du package <code>rvest</code> pour extraire des informations structurées (annuaires, presse, administrations), - bonnes pratiques pour éviter les blocages (user agents, délais, gestion des erreurs), - structuration des données extraites pour analyse.</p>
+</section>
+<section id="lecture-et-traitement-de-fichiers-pdf" class="level3">
+<h3 class="anchored" data-anchor-id="lecture-et-traitement-de-fichiers-pdf">Lecture et traitement de fichiers PDF</h3>
+<p>Méthodes pour extraire du contenu à partir de documents PDF : - extraction de texte avec <code>pdftools</code>, - lecture de tableaux intégrés avec <code>tabulizer</code> ou <code>pdfboxr</code>, - nettoyage et structuration des données extraites.</p>
+</section>
+<section id="organisation-documentaire-avec-zotero" class="level3">
+<h3 class="anchored" data-anchor-id="organisation-documentaire-avec-zotero">Organisation documentaire avec Zotero</h3>
+<p>Mise en place d’un système de gestion bibliographique : - collecte automatique de références, - structuration thématique et partage de bibliographies, - intégration dans Quarto et génération de bibliographies formatées.</p>
+<hr>
+<p>Chaque section est accompagnée de cas pratiques, de morceaux de code commentés, et de liens vers les ressources utilisées pendant le stage.</p>
+</section>
+</section>
+<section id="les-lieux-dexercice-du-stage" class="level2">
+<h2 class="anchored" data-anchor-id="les-lieux-dexercice-du-stage">Les lieux d’exercice du stage</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-5bc2493e957dd8a08d6f" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-5bc2493e957dd8a08d6f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[48.8703,49.1949,48.8566,50.4542,43.213,43.64,48.8167],[2.0966,2.4089,2.3522,3.9523,2.3537,5.0971,2.3139],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Marly-le-Roi","Gouvieux","Paris","Mons (Belgique)","Carcassonne","Salon-de-Provence","Montrouge"],null,null,null,["Marly-le-Roi","Gouvieux","Paris","Mons (Belgique)","Carcassonne","Salon-de-Provence","Montrouge"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}],"limits":{"lat":[43.213,50.4542],"lng":[2.0966,5.0971]},"setView":[[47.5,2.5],5.5,[]]},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-fcf29145a3dac54ae106" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-fcf29145a3dac54ae106">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[48.8703,49.1949,48.8566,50.4542,43.213,43.64,48.8167],[2.0966,2.4089,2.3522,3.9523,2.3537,5.0971,2.3139],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},["Marly-le-Roi","Gouvieux","Paris","Mons (Belgique)","Carcassonne","Salon-de-Provence","Montrouge"],null,null,null,["Marly-le-Roi","Gouvieux","Paris","Mons (Belgique)","Carcassonne","Salon-de-Provence","Montrouge"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addProviderTiles","args":["CartoDB.Positron",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}],"limits":{"lat":[43.213,50.4542],"lng":[2.0966,5.0971]},"setView":[[47.5,2.5],5.5,[]]},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
+</section>
 <section id="le-stage-chez-kantiles-cest-aussi" class="level1">
 <h1>Le stage chez Kantiles, c’est aussi…</h1>
 <div class="columns">
@@ -285,6 +377,15 @@ Les sujets abordés sont :</p>
 </section>
 </div>
 </div>
+</section>
+<section id="remerciements-et-retour-dexpérience" class="level1">
+<h1>Remerciements et retour d’expérience</h1>
+<p>Ce stage, réalisé entre mars et juillet 2025, a été une expérience particulièrement enrichissante, tant sur le plan technique, que méthodologique et humain.</p>
+<p>Nous tenons à remercier chaleureusement l’ensemble de l’équipe pour son accueil, sa disponibilité et sa bienveillance. L’environnement de travail a favorisé l’apprentissage, l’autonomie et l’expérimentation autour de sujets concrets et stimulants.</p>
+<p>Grâce à l’encadrement et aux échanges réguliers, nous avons pu : - consolider nos compétences en R, Markdown, Quarto, et en traitement de données complexes, - découvrir des outils professionnels comme Zotero ou DuckDB, - mieux comprendre les enjeux de structuration, documentation et reproductibilité dans un cadre professionnel.</p>
+<p>Nous repartons avec des acquis solides, utiles pour la suite de notre parcours, et avec une expérience marquante du travail en équipe autour de projets concrets.</p>
+<p>Encore merci !</p>
+<p>Victoire et Emmanuel (<em>ManoirGPT</em>)</p>
 <hr>
 
 

@@ -15,18 +15,49 @@ execute:
   
 ---
 
+Bienvenue sur la page de compte rendu de stage !
 
-Bienvenue sur la page du compte rendu. Utilisez la barre de navigation pour accéder aux différentes parties.
+Ce document regroupe l'ensemble des travaux réalisés entre mars et juillet 2025, autour de problématiques concrètes en traitement de données, production documentaire et automatisation. Il s'appuie sur des cas d’usage rencontrés pendant le stage, et présente des outils et méthodes mobilisés dans ce cadre.
 
-Ce rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.  
-Les sujets abordés sont :
+## Thématiques abordées
 
-- Recensements et gestion de grandes bases de données
-- Utilisation avancée de Quarto et Markdown
-- Techniques de scraping en R
-- Lecture et traitement de PDF en R
-- Organisation documentaire avec Zotero
+### Recensements et gestion de bases de données volumineuses  
+Exploration de données issues de recensements, avec un accent particulier sur :
+- la manipulation de fichiers volumineux (CSV, Parquet),
+- la structuration de données à large échelle,
+- l’utilisation de `dplyr`, `duckdb` et `arrow` pour optimiser les traitements.
 
+### Utilisation avancée de Quarto et Markdown  
+Création de rapports dynamiques et reproductibles :
+- mise en forme avec Markdown étendu,
+- génération de rapports HTML et PDF avec Quarto,
+- insertion de graphiques, tableaux et blocs interactifs,
+- gestion de la bibliographie intégrée.
+
+### Techniques de scraping en R  
+Automatisation de la collecte de données à partir de sites web :
+- utilisation du package `rvest` pour extraire des informations structurées (annuaires, presse, administrations),
+- bonnes pratiques pour éviter les blocages (user agents, délais, gestion des erreurs),
+- structuration des données extraites pour analyse.
+
+### Lecture et traitement de fichiers PDF  
+Méthodes pour extraire du contenu à partir de documents PDF :
+- extraction de texte avec `pdftools`,
+- lecture de tableaux intégrés avec `tabulizer` ou `pdfboxr`,
+- nettoyage et structuration des données extraites.
+
+### Organisation documentaire avec Zotero  
+Mise en place d’un système de gestion bibliographique :
+- collecte automatique de références,
+- structuration thématique et partage de bibliographies,
+- intégration dans Quarto et génération de bibliographies formatées.
+
+---
+
+Chaque section est accompagnée de cas pratiques, de morceaux de code commentés, et de liens vers les ressources utilisées pendant le stage.
+
+
+## Les lieux d'exercice du stage
 
 ```{r}
 library(leaflet)
@@ -115,5 +146,23 @@ leaflet(data = lieux) |>
 :::
 :::
 
+
+# Remerciements et retour d’expérience
+
+Ce stage, réalisé entre mars et juillet 2025, a été une expérience particulièrement enrichissante, tant sur le plan technique, que méthodologique et humain.
+
+Nous tenons à remercier chaleureusement l’ensemble de l’équipe pour son accueil, sa disponibilité et sa bienveillance. L’environnement de travail a favorisé l’apprentissage, l’autonomie et l’expérimentation autour de sujets concrets et stimulants.
+
+Grâce à l’encadrement et aux échanges réguliers, nous avons pu :
+- consolider nos compétences en R, Markdown, Quarto, et en traitement de données complexes,
+- découvrir des outils professionnels comme Zotero ou DuckDB,
+- mieux comprendre les enjeux de structuration, documentation et reproductibilité dans un cadre professionnel.
+
+Nous repartons avec des acquis solides, utiles pour la suite de notre parcours, et avec une expérience marquante du travail en équipe autour de projets concrets.
+
+Encore merci !
+
+Victoire et Emmanuel
+(*ManoirGPT*)
 ---
 
