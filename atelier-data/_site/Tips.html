@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction à Git avec R – Kantiles - Support de Formation</title>
+<title>Tips – Kantiles - Support de Formation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -243,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -251,46 +251,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#gestion-de-projet-avec-git-et-github" id="toc-gestion-de-projet-avec-git-et-github" class="nav-link" data-scroll-target="#gestion-de-projet-avec-git-et-github"><span class="header-section-number">2</span> Gestion de projet avec Git et GitHub</a>
-  <ul class="collapse">
-  <li><a href="#clé-ssh" id="toc-clé-ssh" class="nav-link" data-scroll-target="#clé-ssh"><span class="header-section-number">2.1</span> Clé SSH</a></li>
-  <li><a href="#structure-des-branches" id="toc-structure-des-branches" class="nav-link" data-scroll-target="#structure-des-branches"><span class="header-section-number">2.2</span> Structure des branches</a></li>
-  <li><a href="#bonnes-pratiques-de-commit" id="toc-bonnes-pratiques-de-commit" class="nav-link" data-scroll-target="#bonnes-pratiques-de-commit"><span class="header-section-number">2.3</span> Bonnes pratiques de commit</a></li>
-  <li><a href="#pull-request-pr" id="toc-pull-request-pr" class="nav-link" data-scroll-target="#pull-request-pr"><span class="header-section-number">2.4</span> Pull Request (PR)</a></li>
-  <li><a href="#fichiers-ignorés" id="toc-fichiers-ignorés" class="nav-link" data-scroll-target="#fichiers-ignorés"><span class="header-section-number">2.5</span> Fichiers ignorés</a></li>
-  </ul></li>
-  <li><a href="#organisation-du-code-r" id="toc-organisation-du-code-r" class="nav-link" data-scroll-target="#organisation-du-code-r"><span class="header-section-number">3</span> Organisation du code R</a>
-  <ul class="collapse">
-  <li><a href="#projet-rstudio" id="toc-projet-rstudio" class="nav-link" data-scroll-target="#projet-rstudio"><span class="header-section-number">3.1</span> Projet RStudio</a></li>
-  <li><a href="#nommage" id="toc-nommage" class="nav-link" data-scroll-target="#nommage"><span class="header-section-number">3.2</span> Nommage</a></li>
-  <li><a href="#bonnes-pratiques-de-code" id="toc-bonnes-pratiques-de-code" class="nav-link" data-scroll-target="#bonnes-pratiques-de-code"><span class="header-section-number">3.3</span> Bonnes pratiques de code</a></li>
-  <li><a href="#fonctions-utiles" id="toc-fonctions-utiles" class="nav-link" data-scroll-target="#fonctions-utiles"><span class="header-section-number">3.4</span> Fonctions utiles</a></li>
-  <li><a href="#pivot-join-tri" id="toc-pivot-join-tri" class="nav-link" data-scroll-target="#pivot-join-tri"><span class="header-section-number">3.5</span> Pivot, join, tri</a></li>
-  <li><a href="#reformatage" id="toc-reformatage" class="nav-link" data-scroll-target="#reformatage"><span class="header-section-number">3.6</span> Reformatage</a></li>
-  </ul></li>
-  <li><a href="#bonnes-pratiques-de-gestion-de-projet" id="toc-bonnes-pratiques-de-gestion-de-projet" class="nav-link" data-scroll-target="#bonnes-pratiques-de-gestion-de-projet"><span class="header-section-number">4</span> Bonnes pratiques de gestion de projet</a>
-  <ul class="collapse">
-  <li><a href="#données" id="toc-données" class="nav-link" data-scroll-target="#données"><span class="header-section-number">4.1</span> Données</a></li>
-  <li><a href="#écriture-et-exploration" id="toc-écriture-et-exploration" class="nav-link" data-scroll-target="#écriture-et-exploration"><span class="header-section-number">4.2</span> Écriture et exploration</a></li>
-  <li><a href="#export-sauvegarde" id="toc-export-sauvegarde" class="nav-link" data-scroll-target="#export-sauvegarde"><span class="header-section-number">4.3</span> Export &amp; sauvegarde</a></li>
-  <li><a href="#github-et-automatisation" id="toc-github-et-automatisation" class="nav-link" data-scroll-target="#github-et-automatisation"><span class="header-section-number">4.4</span> GitHub et automatisation</a></li>
-  </ul></li>
-  <li><a href="#derniers-conseils" id="toc-derniers-conseils" class="nav-link" data-scroll-target="#derniers-conseils"><span class="header-section-number">5</span> Derniers conseils</a></li>
+  <li><a href="#préférez-dplyr-à-data.table" id="toc-préférez-dplyr-à-data.table" class="nav-link active" data-scroll-target="#préférez-dplyr-à-data.table">Préférez <code>Dplyr</code> à <code>data.table</code></a></li>
+  <li><a href="#tibble-est-mieux-que-data.table-qui-est-mieux-que-data.frame" id="toc-tibble-est-mieux-que-data.table-qui-est-mieux-que-data.frame" class="nav-link" data-scroll-target="#tibble-est-mieux-que-data.table-qui-est-mieux-que-data.frame"><code>tibble</code> est mieux que <code>data.table</code> qui est mieux que <code>data.frame</code></a></li>
+  <li><a href="#structurer-votre-code" id="toc-structurer-votre-code" class="nav-link" data-scroll-target="#structurer-votre-code">Structurer votre code</a></li>
+  <li><a href="#commenter-commenter-commenter" id="toc-commenter-commenter-commenter" class="nav-link" data-scroll-target="#commenter-commenter-commenter">Commenter, commenter, commenter</a></li>
+  <li><a href="#quelques-fonctions-utiles" id="toc-quelques-fonctions-utiles" class="nav-link" data-scroll-target="#quelques-fonctions-utiles">Quelques fonctions utiles</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction à Git avec R</h1>
+<h1 class="title">Tips</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -302,153 +281,140 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introduction" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>Ce document présente les bonnes pratiques pour travailler efficacement avec Git, GitHub, en équipe, et selon une logique reproductible et rigoureuse. L’accent est mis sur le versionnage, la structuration du code, la nomenclature et la gestion de projet.</p>
+<section id="préférez-dplyr-à-data.table" class="level2">
+<h2 class="anchored" data-anchor-id="préférez-dplyr-à-data.table">Préférez <code>Dplyr</code> à <code>data.table</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Charger les bibliothèques</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(microbenchmark)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nycflights13)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Charger les données</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(flights)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(weather)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir les data.frames en data.tables</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>flightsdt <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(flights)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>weatherdt <span class="ot">&lt;-</span> <span class="fu">as.data.table</span>(weather)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Benchmark</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">microbenchmark</span>(</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">dplyr =</span> {</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    output_dplyr <span class="ot">&lt;-</span> flights <span class="sc">%&gt;%</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>      <span class="fu">group_by</span>(time_hour, origin) <span class="sc">%&gt;%</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>      <span class="fu">summarise</span>(<span class="at">arr_delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>                <span class="at">dep_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">inner_join</span>(weather, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"time_hour"</span>, <span class="st">"origin"</span>))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">data.table =</span> {</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    output_DT <span class="ot">&lt;-</span> <span class="fu">merge</span>(</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>      flightsdt[, .(<span class="at">arr_perc_delay =</span> <span class="fu">mean</span>(arr_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dep_perc_delay =</span> <span class="fu">mean</span>(dep_delay, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                <span class="at">by =</span> .(time_hour, origin)],</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      weatherdt,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>      <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"time_hour"</span>, <span class="st">"origin"</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  },</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">times =</span> <span class="dv">10</span>L</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Afficher les résultats du benchmark</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Bon, soyons clair, <code>data.table</code> est (beaucoup) plus <strong>rapide</strong> que <code>dplyr</code> Mais dplyr est plus lisible et permet plus de choses. Donc on le préferera pour une grande majorité de nos codes. Voir <a href="https://www.tidyverse.org/blog/2019/11/dtplyr-1-0-0/">dtplyr</a>, écris par l’équipe de Rstudio, il permet de traduire les requêtes <code>dplyr</code> en requêtes <code>data.table</code>. Ce n’est pas parfait mais ça peut sauver du temps sur les gros jeux de données.</p>
 </section>
-<section id="gestion-de-projet-avec-git-et-github" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Gestion de projet avec Git et GitHub</h1>
-<section id="clé-ssh" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="clé-ssh"><span class="header-section-number">2.1</span> Clé SSH</h2>
-<ul>
-<li>Configurer une <strong>clé SSH</strong> permet de lier son poste à GitHub sans mot de passe.</li>
-<li>Générer la clé avec <code>ssh-keygen</code>, puis copier la clé publique dans GitHub.</li>
-</ul>
+<section id="tibble-est-mieux-que-data.table-qui-est-mieux-que-data.frame" class="level2">
+<h2 class="anchored" data-anchor-id="tibble-est-mieux-que-data.table-qui-est-mieux-que-data.frame"><code>tibble</code> est mieux que <code>data.table</code> qui est mieux que <code>data.frame</code></h2>
+<p>Les tibbles sont des formes de data_frame plus stricts mais aussi plus verbeux. Par exemple, si on essaye de faire un <code>mutate</code> sur une colonne qui n’existe pas, on aura un message d’erreur plutôt que de créer une colonne avec des valeurs NA. Il n’a pas de rownames. Tout découpage rend un tibble (même s’il n’y a qu’une colonne ou une valeur). De plus, les tibbles sont plus lisibles dans la console, car ils n’affichent que les colonnes qui tiennent sur l’écran, affichent les types de colonnes et uniquement les 10 premières lignes. Ils sont donc plus adaptés pour l’exploration de données.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(weather) <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">50</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as_tibble</span>(weather)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="structure-des-branches" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="structure-des-branches"><span class="header-section-number">2.2</span> Structure des branches</h2>
-<ul>
-<li><strong>Branche principale</strong> : <code>main</code></li>
-<li>Pour chaque nouvelle fonctionnalité : créer une branche dédiée.</li>
-</ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> nom_de_fonction</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Nommer</span> les branches en minuscule, sans accents ni espaces.</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Une</span> fois la branche créée, pousser vers le dépôt distant :</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">--set-upstream</span> origin nom_de_fonction</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="structurer-votre-code" class="level2">
+<h2 class="anchored" data-anchor-id="structurer-votre-code">Structurer votre code</h2>
+<p>On a bien compris qu’il est important de mettre des espaces après les <em>#</em> pour que cela soit plus lisible. On peut ajpouter à cela que c’est également valable pour les <em>#</em> qui indiquent les titres et sous-titre (etc…) dans l’Outline.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">walk</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Récupère tous les scripts du projet</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  fs<span class="sc">::</span><span class="fu">dir_ls</span>(<span class="st">"R/"</span>, <span class="at">glob =</span> <span class="st">"*.R"</span>, <span class="at">recurse =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(file_path) {</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Lire le contenu du script</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    content <span class="ot">&lt;-</span> <span class="fu">read_file</span>(file_path)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ajouter un espace après les # de commentaire s'il n'y en a pas</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    modified_content <span class="ot">&lt;-</span> <span class="fu">str_replace_all</span>(content, <span class="st">"#\w"</span>, <span class="st">"# "</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Écrire le contenu modifié dans le fichier</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">write_file</span>(file_path, modified_content)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A cela on ajoute toujou_rs en début de code : - Le titre du script - Une description de ce que fait le script (optionnel) - Les packages nécessaires - Les données nécessaires - Nettoyage des données - Analyse (optionnel)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">###Estimation des coûts différenciés selon les femmes </span><span class="al">###</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Packages ---------</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Data -----------</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Statut professionnel  -----------</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>statut_pro <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Statut_Professionnel =</span> <span class="fu">c</span>(<span class="st">"En emploi"</span>, <span class="st">"Au chômage"</span>, <span class="st">"En formation/études"</span>, <span class="st">"Arrêt longue maladie"</span>, <span class="st">"Inactive"</span>),</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pourcentage =</span> <span class="fu">c</span>(<span class="dv">78</span>, <span class="dv">8</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">3</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Catégories socio-professionnelles  -----------</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>csp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Categorie_SocioPro =</span> <span class="fu">c</span>(<span class="st">"Cadres"</span>, <span class="st">"Intermédiaires"</span>, <span class="st">"Employées"</span>, <span class="st">"Indépendantes"</span>),</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pourcentage =</span> <span class="fu">c</span>(<span class="dv">23</span>, <span class="dv">10</span>, <span class="dv">57</span>, <span class="dv">8</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Type de contrat  -----------</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>contrat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">Type_Contrat =</span> <span class="fu">c</span>(<span class="st">"CDI ou assimilé"</span>, <span class="st">"CDD, intérim..."</span>, <span class="st">"Non précisé"</span>),</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pourcentage =</span> <span class="fu">c</span>(<span class="dv">72</span>, <span class="dv">21</span>, <span class="dv">7</span>)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Gravité de l’endométriose  -----------</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>gravite <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">Gravite_Endometriose =</span> <span class="fu">c</span>(<span class="st">"Légère"</span>, <span class="st">"Modérée"</span>, <span class="st">"Grave"</span>),</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pourcentage =</span> <span class="fu">c</span>(<span class="dv">9</span>, <span class="dv">61</span>, <span class="dv">30</span>)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation -------</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) </span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="do">## Taille de l'échantillon ---------</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">1986</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Statut socio-professionnel ----------</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>statut_pro <span class="ot">&lt;-</span> <span class="fu">sample</span>(</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"Cadre"</span>, <span class="st">"Intermédiaire"</span>, <span class="st">"Employée"</span>),</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  <span class="at">size =</span> n,</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>  <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.23</span>, <span class="fl">0.10</span>, <span class="fl">0.57</span>)</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a><span class="co"># (...)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Et on n’oublie pas <strong>Un fichier par idée</strong> <em>(sinon ça va vite ressembler à l’esprit de Thomas)(no offense Thomas, je ne suis plus stagiaire au moment où tu lis le site)(très bon stage bytheway)</em></p>
 </section>
-<section id="bonnes-pratiques-de-commit" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="bonnes-pratiques-de-commit"><span class="header-section-number">2.3</span> Bonnes pratiques de commit</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Ajout fonction calcul taux PMI #32"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li>Utiliser des messages clairs et explicites.</li>
-<li>Lier les commits à des issues avec #numéro.</li>
-<li>Éviter les commits sur main directement.</li>
-</ul>
+<section id="commenter-commenter-commenter" class="level2">
+<h2 class="anchored" data-anchor-id="commenter-commenter-commenter">Commenter, commenter, commenter</h2>
+<p>Pour vous dans deux semaines ou pour quelqu’un d’autre, commentez votre code. Utilisez des commentaires pour expliquer les étapes importantes, les choix de conception, et les raisons derrière certaines décisions. Cela rendra votre code plus facile à comprendre et à maintenir.</p>
 </section>
-<section id="pull-request-pr" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="pull-request-pr"><span class="header-section-number">2.4</span> Pull Request (PR)</h2>
-<p>Toujours créer une PR depuis GitHub :</p>
-<ul>
-<li>Comparer les branches</li>
-<li>Faire une revue</li>
-<li>Ne jamais valider sa propre PR</li>
-<li>Après validation, penser à faire un git pull.</li>
-</ul>
-</section>
-<section id="fichiers-ignorés" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="fichiers-ignorés"><span class="header-section-number">2.5</span> Fichiers ignorés</h2>
-<ul>
-<li>Ne jamais versionner les données brutes.</li>
-<li>Créer un fichier .gitignore et y ajouter :</li>
-</ul>
-</section>
-</section>
-<section id="organisation-du-code-r" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Organisation du code R</h1>
-<p>Sachant que la <a href="./R_dplyr_tidyr.html">page R</a> est plus complète à ce sujet.</p>
-<section id="projet-rstudio" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="projet-rstudio"><span class="header-section-number">3.1</span> Projet RStudio</h2>
-<ul>
-<li>Créer un projet RStudio (.Rproj)</li>
-<li>Éviter File &gt; New File, préférer New Project</li>
-</ul>
-</section>
-<section id="nommage" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="nommage"><span class="header-section-number">3.2</span> Nommage</h2>
-<ul>
-<li>Objets : df_communes, taux_pmi</li>
-<li>Tout en <em>MINUJSCULE</em></li>
-<li>Préfixes : df_, tbl_, res_, etc.</li>
-</ul>
-</section>
-<section id="bonnes-pratiques-de-code" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="bonnes-pratiques-de-code"><span class="header-section-number">3.3</span> Bonnes pratiques de code</h2>
-<ul>
-<li>Utiliser &lt;- pour l’affectation (ALT + -)</li>
-<li>Nettoyer les colonnes dès le début avec janitor::clean_names()</li>
-<li>Préférer les noms comme annee à year</li>
-</ul>
-</section>
-<section id="fonctions-utiles" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="fonctions-utiles"><span class="header-section-number">3.4</span> Fonctions utiles</h2>
-<ul>
-<li>if_else() au lieu de ifelse()</li>
-<li>coalesce() pour remplacer les NA</li>
-<li>complete(), expand(), crossing() (de tidyr) pour générer les combinaisons</li>
-</ul>
-</section>
-<section id="pivot-join-tri" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="pivot-join-tri"><span class="header-section-number">3.5</span> Pivot, join, tri</h2>
-<ul>
-<li>Bien définir les clés dans les join_by()</li>
-<li>Privilégier + join_by(…) dans les pipelines</li>
-<li>Utiliser group_by() + mutate() avec précaution</li>
-<li>lag() pour retrouver les valeurs précédentes (attention aux années)</li>
-</ul>
-</section>
-<section id="reformatage" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="reformatage"><span class="header-section-number">3.6</span> Reformatage</h2>
-<p>Ctrl + A, puis Ctrl + Shift + A dans RStudio pour indenter</p>
-</section>
-</section>
-<section id="bonnes-pratiques-de-gestion-de-projet" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Bonnes pratiques de gestion de projet</h1>
-<section id="données" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="données"><span class="header-section-number">4.1</span> Données</h2>
-<ul>
-<li>Toujours conserver un format rectangulaire (data.frame, tibble)</li>
-<li>Les listes sont utiles pour des résultats groupés, ou des outputs complexes</li>
-<li>Ne pas stocker les données sur Git</li>
-</ul>
-</section>
-<section id="écriture-et-exploration" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="écriture-et-exploration"><span class="header-section-number">4.2</span> Écriture et exploration</h2>
-<ul>
-<li>Supprimer les blocs d’exploration avant la version finale</li>
-<li>Ajouter des commentaires pour les tests, explorations, ou anomalies</li>
-<li>Éviter de conserver les objets ou résultats intermédiaires inutiles</li>
-</ul>
-</section>
-<section id="export-sauvegarde" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="export-sauvegarde"><span class="header-section-number">4.3</span> Export &amp; sauvegarde</h2>
-<ul>
-<li>Utiliser write_rds() pour sauvegarder un objet en R</li>
-<li>Nommer les fichiers clairement : res_taux_pmi_2025.rds</li>
-</ul>
-</section>
-<section id="github-et-automatisation" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="github-et-automatisation"><span class="header-section-number">4.4</span> GitHub et automatisation</h2>
-<ul>
-<li>Toujours faire git pull avant de modifier</li>
-<li>Vérifier la branche active : git status</li>
-<li>GitHub Desktop ou ligne de commande : à choisir selon ton aisance</li>
-<li>Utiliser les actions GitHub pour automatiser les tests</li>
-</ul>
-</section>
-</section>
-<section id="derniers-conseils" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Derniers conseils</h1>
-<ul>
-<li>Travailler en branche fonctionnelle</li>
-<li>Utiliser des commits réguliers</li>
-<li>Faire relire les PR par un pair</li>
-<li>Garder un wiki ou documentation du projet</li>
-<li>Nettoyer le code avant chaque passage en “production”</li>
-<li>Garder des fonctions simples, testables et bien nommées</li>
-</ul>
+<section id="quelques-fonctions-utiles" class="level2">
+<h2 class="anchored" data-anchor-id="quelques-fonctions-utiles">Quelques fonctions utiles</h2>
+<p><code>lag()</code> et <code>lead()</code> sont des fonctions très utiles pour faire des décalages dans les données. Par exemple, si on veut calculer la variation d’une colonne par rapport à la ligne précédente, on peut utiliser <code>lag()</code>. <code>lead()</code> est l’inverse, il permet de décaler les données vers le haut.</p>
 
 
 </section>
