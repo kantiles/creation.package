@@ -121,7 +121,7 @@ page |>
 
 ```
 	
-Mais on récupère également des liens qui ne nous intéressent pas (lien vers la page d’accueil, vers le compte Facebook du site, etc.). On observe alors sur le site que chaque lien que l’on souhaite est dans une balise <div> de class ‘product_item’. Pour voir le code html d’un site, il suffit de faire un clic droit et ‘inspecter la page’ ou ‘afficher le code source de la page’. On peut donc d’abord filtrer sur ces balises d’abord, puis récupérer les liens qu'elles contiennent.
+Mais on récupère également des liens qui ne nous intéressent pas (lien vers la page d’accueil, vers le compte Facebook du site, etc.). On observe alors sur le site que chaque lien que l’on souhaite est dans une balise \<div> de class ‘product_item’. Pour voir le code html d’un site, il suffit de faire un clic droit et ‘inspecter la page’ ou ‘afficher le code source de la page’. On peut donc d’abord filtrer sur ces balises d’abord, puis récupérer les liens qu'elles contiennent.
 
 ``` r
 page |>
@@ -185,7 +185,7 @@ list_cheese <- cheese |>
 ```
 
 
-### Etape 2 : Récupérer les informations qui nous intéressent
+### Étape 2 : Récupérer les informations qui nous intéressent
 
 Il nous faut maintenant récupérer les informations de chaque fromage en parcourant chaque url. On le fait de la même manière que la récupération des liens : on charge la page, on identifie les cases où se trouvent les informations, on les récupère avec rvest et on les met dans un tableau.
 
@@ -303,5 +303,3 @@ texte_ocr <- ocr("exemple_image_page.png")
 
 cat(texte_ocr)
 ```
----
-
