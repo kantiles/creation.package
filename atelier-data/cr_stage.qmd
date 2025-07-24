@@ -40,11 +40,6 @@ Automatisation de la collecte de données à partir de sites web :
 - bonnes pratiques pour éviter les blocages (user agents, délais, gestion des erreurs),
 - structuration des données extraites pour analyse.
 
-### Lecture et traitement de fichiers PDF  
-Méthodes pour extraire du contenu à partir de documents PDF :
-- extraction de texte avec `pdftools`,
-- lecture de tableaux intégrés avec `tabulizer` ou `pdfboxr`,
-- nettoyage et structuration des données extraites.
 
 ### Organisation documentaire avec Zotero  
 Mise en place d’un système de gestion bibliographique :
@@ -154,9 +149,10 @@ Ce stage, réalisé entre mars et juillet 2025, a été une expérience particul
 Nous tenons à remercier chaleureusement l’ensemble de l’équipe pour son accueil, sa disponibilité et sa bienveillance. L’environnement de travail a favorisé l’apprentissage, l’autonomie et l’expérimentation autour de sujets concrets et stimulants.
 
 Grâce à l’encadrement et aux échanges réguliers, nous avons pu :
-- consolider nos compétences en R, Markdown, Quarto, et en traitement de données complexes,
-- découvrir des outils professionnels comme Zotero ou DuckDB,
-- mieux comprendre les enjeux de structuration, documentation et reproductibilité dans un cadre professionnel.
+
+- consolider nos compétences en R, Markdown, Quarto, et en traitement de données complexes
+- découvrir des outils professionnels comme GitHub ou DuckDB
+- mieux comprendre les enjeux de structuration, documentation et reproductibilité dans un cadre professionnel
 
 Nous repartons avec des acquis solides, utiles pour la suite de notre parcours, et avec une expérience marquante du travail en équipe autour de projets concrets.
 
