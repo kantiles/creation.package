@@ -1,0 +1,121 @@
+---
+title: "Introduction à Git avec R"
+format: html
+toc: true
+number-sections: true
+---
+
+# Introduction
+
+Ce document présente les bonnes pratiques pour travailler efficacement avec Git, GitHub, en équipe, et selon une logique reproductible et rigoureuse. L'accent est mis sur le versionnage, la structuration du code, la nomenclature et la gestion de projet.
+
+# Gestion de projet avec Git et GitHub
+
+## Clé SSH
+
+- Configurer une **clé SSH** permet de lier son poste à GitHub sans mot de passe.
+- Générer la clé avec `ssh-keygen`, puis copier la clé publique dans GitHub.
+
+## Structure des branches
+
+- **Branche principale** : `main`
+- Pour chaque nouvelle fonctionnalité : créer une branche dédiée.
+
+```bash
+git checkout -b nom_de_fonction
+Nommer les branches en minuscule, sans accents ni espaces.
+
+Une fois la branche créée, pousser vers le dépôt distant :
+bash
+```
+
+```bash
+git push --set-upstream origin nom_de_fonction
+```
+
+## Bonnes pratiques de commit
+```bash
+git add .
+git commit -m "Ajout fonction calcul taux PMI #32"
+```
+
+- Utiliser des messages clairs et explicites.
+- Lier les commits à des issues avec #numéro.
+- Éviter les commits sur main directement.
+
+## Pull Request (PR)
+Toujours créer une PR depuis GitHub :
+
+
+- Comparer les branches
+- Faire une revue
+- Ne jamais valider sa propre PR
+- Après validation, penser à faire un git pull.
+
+## Fichiers ignorés
+- Ne jamais versionner les données brutes.
+- Créer un fichier .gitignore et y ajouter :
+
+# Organisation du code R
+
+Sachant que la [page R](R_dplyr_tidyr.qmd) est plus complète à ce sujet.
+
+## Projet RStudio
+- Créer un projet RStudio (.Rproj)
+- Éviter File > New File, préférer New Project
+
+## Nommage
+- Objets : df_communes, taux_pmi
+- Tout en *MINUJSCULE*
+- Préfixes : df_, tbl_, res_, etc.
+
+## Bonnes pratiques de code
+- Utiliser <- pour l'affectation (ALT + -)
+- Nettoyer les colonnes dès le début avec janitor::clean_names()
+- Préférer les noms comme annee à year
+
+## Fonctions utiles
+- if_else() au lieu de ifelse()
+- coalesce() pour remplacer les NA
+- complete(), expand(), crossing() (de tidyr) pour générer les combinaisons
+
+## Pivot, join, tri
+- Bien définir les clés dans les join_by()
+- Privilégier + join_by(...) dans les pipelines
+- Utiliser group_by() + mutate() avec précaution
+- lag() pour retrouver les valeurs précédentes (attention aux années)
+
+## Reformatage
+Ctrl + A, puis Ctrl + Shift + A dans RStudio pour indenter
+
+# Bonnes pratiques de gestion de projet
+## Données
+- Toujours conserver un format rectangulaire (data.frame, tibble)
+- Les listes sont utiles pour des résultats groupés, ou des outputs complexes
+- Ne pas stocker les données sur Git
+
+## Écriture et exploration
+- Supprimer les blocs d'exploration avant la version finale
+- Ajouter des commentaires pour les tests, explorations, ou anomalies
+- Éviter de conserver les objets ou résultats intermédiaires inutiles
+
+## Export & sauvegarde
+- Utiliser write_rds() pour sauvegarder un objet en R
+- Nommer les fichiers clairement : res_taux_pmi_2025.rds
+
+## GitHub et automatisation
+- Toujours faire git pull avant de modifier
+- Vérifier la branche active : git status
+- GitHub Desktop ou ligne de commande : à choisir selon ton aisance
+- Utiliser les actions GitHub pour automatiser les tests
+
+# Derniers conseils
+- Travailler en branche fonctionnelle
+- Utiliser des commits réguliers
+- Faire relire les PR par un pair
+- Garder un wiki ou documentation du projet
+- Nettoyer le code avant chaque passage en "production"
+- Garder des fonctions simples, testables et bien nommées
+
+
+

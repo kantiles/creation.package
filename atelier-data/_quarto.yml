@@ -1,0 +1,67 @@
+project:
+  type: website
+
+website:
+  title: "Kantiles - Support de Formation"
+  navbar:
+    left:
+      - text: "Accueil"
+        menu:
+          - text: "Accueil"
+            file: index.qmd
+          - text: "Stage mars-juillet 2025"
+            file: cr_stage.qmd
+          - text: "Article : Kantiles fête ses 10 ans"
+            file: article.qmd
+          - text: "Blason Kantiles"
+            file: blason.qmd
+
+      - text: "Code"
+        menu:
+          - text: "Git"
+            file: R_git.qmd
+          - text: "R"
+            file: R_dplyr_tidyr.qmd
+
+      - text: "Données"
+        menu:
+          - text: "Scraping"
+            file: scrap.qmd
+          - text: "API"
+            file: api.qmd
+
+      - text: "Format"
+        menu:
+          - text: "Quarto"
+            file: quarto.qmd
+          - text: "Parquet"
+            file: parquet.qmd
+          - text: "Lire des Excels moches"
+            file: fichier_moches.qmd
+
+      - text: "Packages R"
+        menu:
+          - text: "Créer un package R"
+            file: package.qmd
+          - text: "Tester ses fonctions dans un package R"
+            file: test_package.qmd
+
+      - text: "Autres"
+        menu:
+          - text: "Zotero"
+            file: zotero.qmd
+          - text: "Cartographie"
+            file: cartographie.qmd
+          - text: "Tips"
+            file: Tips.qmd
+    right:
+      - icon: linkedin
+        href: https://www.linkedin.com/company/kantiles
+        aria-label: "LinkedIn"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    css: styles.css
+
+

@@ -1,0 +1,129 @@
+---
+title: "Kantiles fête ses 10 ans"
+format:
+  html:
+    theme: litera
+    toc: false
+    number-sections: false
+    # css: styles.css   ← supprime ou commente cette ligne
+    code-fold: false
+    fig-align: center
+    df-print: paged
+    smooth-scroll: true
+execute:
+  echo: false
+  warning: false
+  message: false
+
+---
+
+
+::: {.hero title="Kantiles fête ses 10 ans" subtitle="Du salon de Gouvieux aux données du monde"}
+*Par notre correspondant à Gouvieux, édition du 5 juin 2034*
+:::
+
+> *"Ce qui compte, ce n’est pas de produire plus de données, mais de les faire parler autrement — avec précision, transparence, et dans l’intérêt public. C’est là que se joue notre valeur ajoutée : dans la rigueur des analyses, la diversité des sources, et la lisibilité des résultats."*  
+> — Thomas Vroylandt, cofondateur de Kantiles
+
+---
+
+### **Une décennie au service des politiques sociales et de l’emploi**
+
+En 2024, dans leur salon de **Gouvieux (Oise)**, **Justine et Thomas Vroylandt** fondent *Kantiles*. Leur intuition est simple : les politiques publiques regorgent de données, mais manquent d'outils pour les transformer en savoirs utiles à l’action.
+
+Lui, **statisticien et développeur**, pilote les analyses, les modèles, les méthodes. Elle, **issue du secteur social**, connaît les rouages des institutions, les usages de terrain, les besoins du service public. Ensemble, ils créent une structure atypique : experte, engagée, et ancrée dans la réalité des politiques sociales.
+
+> Deux profils complémentaires, une ambition commune : **réconcilier expertise statistique, éthique publique et action sociale.**
+
+---
+
+### **De Gouvieux à l’international : une trajectoire ascendante**
+
+En 2025, les premiers stagiaires rejoignent Kantiles. En 2026, des **locaux sont ouverts à Paris et Toulouse**, pour se rapprocher des territoires et institutions partenaires.
+
+Dès 2027, l’équipe accompagne les premiers **dispositifs emploi-insertion** et mène des missions pour la **DREES**, la **DARES**, plusieurs **OPCO**, des **ministères**, mais aussi **des collectivités locales**, en France et à l’international.
+
+Les projets se multiplient : analyses d’accès aux droits, mesure d’impact social, évaluation de politiques publiques, développement de tableaux de bord. En 2029, la création du **KLab** (laboratoire d’innovation sociale par les données) marque un tournant vers une approche plus ouverte, reproductible et collaborative.
+
+> *"Une donnée n’a de sens que si elle parle à ceux qu’elle concerne. Notre travail, c’est de la reconnecter aux réalités humaines et aux décisions concrètes."*  
+> — Justine Vroylandt, cofondatrice de Kantiles
+
+---
+
+### **Les grandes étapes de Kantiles en un coup d’œil**
+
+```{r}
+library(ggplot2)
+library(tibble)
+
+frise <- tribble(
+  ~annee, ~evenement,
+  2024, "Création à Gouvieux",
+  2025, "Premiers stagiaires",
+  2027, "Locaux à Paris",
+  2029, "Lancement de KLab",
+  2030, "10 collaborateurs",
+  2032, "Client international",
+  2034, "Bureaux à l’étranger"
+)
+
+# Alternance haut/bas pour positionner les textes
+frise$pos <- rep(c(1, -1), length.out = nrow(frise)) * 0.6
+
+ggplot(frise, aes(x = annee)) +
+  # Ligne horizontale principale
+  geom_segment(aes(x = min(annee) - 1, xend = max(annee) + 1, y = 0, yend = 0),
+               color = "grey70", linewidth = 1) +
+  # Segments verticaux entre ligne de temps et texte
+  geom_segment(aes(y = 0, yend = pos), color = "grey60", linewidth = 0.6) +
+  # Points sur la ligne
+  geom_point(aes(y = 0), size = 4, color = "#1f77b4") +
+  # Étiquettes des événements
+  geom_text(aes(y = pos, label = evenement),
+            family = "Georgia", size = 4, color = "#2c3e50",
+            vjust = ifelse(frise$pos > 0, 0, 1), lineheight = 1.1) +
+  # Axe x avec marges
+  scale_x_continuous(breaks = frise$annee, limits = c(min(frise$annee) - 1.5, max(frise$annee) + 1.5)) +
+  # Thème propre
+  theme_minimal(base_family = "Georgia") +
+  theme(
+    axis.title = element_blank(),
+    axis.text.y = element_blank(),
+    axis.ticks = element_blank(),
+    panel.grid = element_blank(),
+    plot.title = element_text(face = "bold", size = 16, hjust = 0.5, color = "#2c3e50"),
+    axis.text.x = element_text(size = 12, color = "#34495e")
+  ) +
+  labs(title = "Kantiles : 10 ans d'innovation et de croissance")
+
+
+
+donnees <- tribble(
+  ~libelle, ~valeur,
+  "Collaborateurs", 27,
+  "Rapports publiés", 120,
+  "Projets actifs", 36,
+  "Collectivités partenaires", 47
+)
+
+ggplot(donnees, aes(x = reorder(libelle, valeur), y = valeur, label = valeur)) +
+  geom_col(fill = "#2980B9", width = 0.65, alpha = 0.85) +
+  geom_text(color = "white", fontface = "bold", size = 5, hjust = 1.2) +
+  coord_flip() +
+  theme_minimal(base_family = "Georgia") +
+  labs(title = "Les chiffres clés de Kantiles en 2034", x = NULL, y = NULL) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16, margin = margin(b = 15)),
+    axis.text.x = element_blank(),
+    axis.text.y = element_text(size = 12, color = "#34495E"),
+    panel.grid = element_blank()
+  )
+
+
+
+
+
+
+
+
+```

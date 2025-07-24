@@ -1,0 +1,90 @@
+---
+title: "Rapport complet : Recensements, Quarto, Scraping, PDF et Zotero"
+author: "Utilisateur"
+date: "`r Sys.Date()`"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-summary: "Afficher le code R"
+    theme: cosmo
+  pdf:
+    toc: true
+    number-sections: true
+    latex-engine: xelatex
+    keep-tex: true
+---
+
+# Introduction
+
+Ce rapport rassemble les notes détaillées sur plusieurs thématiques clés dans le traitement des données, la gestion documentaire, et la production de rapports.  
+Les sujets abordés sont :
+
+- Recensements et gestion de grandes bases de données
+- Utilisation avancée de Quarto et Markdown
+- Techniques de scraping en R
+- Lecture et traitement de PDF en R
+- Organisation documentaire avec Zotero
+
+---
+
+# Recensements
+
+## Description des fichiers
+
+- Deux fichiers principaux : `ointerrogationsprincipales` et un fichier complémentaire.
+- Non diffusés directement au public, servent à produire plusieurs fichiers diffusés.
+- Données au niveau des cantons, villes, avec parfois localisation précise (unité Iris).
+- Utilisation pour mobilités professionnelles et scolaires.
+
+## Formats de diffusion
+
+- Fichiers diffusés en CSV et Parquet (format optimisé, indexé, rapide).
+- Parquet de plus en plus utilisé en statistique.
+- Données lourdes : environ 26 millions de lignes par fichier.
+- Une ligne coûte en ressources ~3 francs (évaluation de coût traitement).
+
+## Outils pour manipuler
+
+- Dugdibby : base de données sur serveur permettant lecture et tri.
+- Installation locale + serveur distant.
+- Base orientée colonnes, optimisée pour analyse.
+
+## Import et manipulation en R
+
+- Utilisation de fonctions `glue()` pour assembler chaînes de caractères, notamment pour importer.
+- Utilisation de `here::here()` pour gérer chemins absolus et relatifs, éviter erreurs liées aux chemins.
+- Exemple d'import rapide :
+
+```r
+library(here)
+data_path <- here("data", "recensement.parquet")
+```
+
+
+--- 
+
+# Annexes : exemples de code R
+
+## Lecture et extraction de sitemap XML
+
+```{r}
+library(rvest)
+library(xml2)
+
+url_sitemap <- "https://www.cheese.com/sitemap.xml"
+sitemap <- read_xml(url_sitemap)
+urls <- xml_find_all(sitemap, "//url/loc") %>% xml_text()
+head(urls)
+```
+
+
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:

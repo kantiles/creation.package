@@ -1,0 +1,11 @@
+---
+title: "Blason Kantiles"
+format:
+  html:
+    theme: cosmo
+---
+
+:::{.text-center style="margin-top: 3em;"}
+![Blason Kantiles](kantiles_blason.png){style="max-width:200px; border-radius:10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);"}
+:::
+

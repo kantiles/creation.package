@@ -1,0 +1,113 @@
+---
+title: "Zotero : gestion documentaire"
+format:
+  html:
+    toc: true
+    toc-location: right
+    theme: cosmo
+    css: styles.css
+    code-copy: true
+page-layout: full
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Module : Zotero & Veille documentaire
+
+-   Juin 2025
+-   Emmanuel Herbepin et Victoire Chatain
+
+------------------------------------------------------------------------
+
+## Présentation générale de Zotero
+
+-   Zotero est un outil de gestion bibliographique gratuit, open source, et très adapté pour :
+    -   La veille documentaire structurée.\
+    -   La gestion collaborative de références (études, articles, rapports, etc.).\
+    -   La constitution d’une base de connaissance dynamique.
+
+------------------------------------------------------------------------
+
+## Fonctionnement de base
+
+-   Organisation par dossiers et sous-dossiers.\
+-   Ajout de documents :
+    -   Depuis un plugin navigateur (fonctionne très bien avec Cairn, par exemple).\
+    -   Manuellement (ajout de PDF, capture de page, etc.).\
+-   Chaque document peut contenir :
+    -   Des métadonnées (titre, auteur, date…).\
+    -   Des pièces jointes (PDF, notes, etc.).\
+    -   Des commentaires et surlignages collaboratifs.
+
+------------------------------------------------------------------------
+
+## Travail collaboratif
+
+-   Bibliothèque de groupe (via Zotero Web) :
+    -   Paramétrage des droits par membre.\
+    -   Synchronisation automatique.\
+    -   Partage des annotations visibles par tous (identification de l’auteur, surlignages, commentaires).\
+-   Utilisable comme un Drive académique orienté contenu structuré.
+
+------------------------------------------------------------------------
+
+## Fonctionnalités utiles
+
+-   Tags / marqueurs pour organiser les contenus.\
+-   Génération automatique de bibliographies (choix du format).\
+-   Format de citation personnalisable (utile pour livrables, publications, rapports).\
+-   Format BibTeX disponible → interopérable avec R, Python, LaTeX.
+
+------------------------------------------------------------------------
+
+## Cas d’usage professionnel : veille sur l'emploi & la formation
+
+-   Objectif :\
+    Construire une base documentaire cohérente, exhaustive, structurée, réutilisable et dynamique sur les thématiques métier.\
+-   Exemples :
+    -   Études sur les compétences dans les métiers de la santé.\
+    -   Publications régionales et nationales : DREES, DARES, INSEE, France Travail, etc.\
+    -   Mémoires, études locales, travaux des observatoires OPCO, InterCarifOref, France Compétences…\
+-   Organisation :
+    -   Hiérarchisation des sources.\
+    -   Sélection raisonnée des institutions clés.\
+    -   Veille structurée sur 15 000 à 20 000 études (sur 20 ans) de 4 à 8 pages chacune.
+
+------------------------------------------------------------------------
+
+## Méthodologie recommandée
+
+-   Étape 1 : Constitution du corpus
+    -   Liste prioritaire : DREES, DARES, INSEE, France Travail, Trésor, OPCO.\
+    -   Acteurs régionaux : InterCarifOref, collectivités territoriales.\
+    -   Indexation manuelle + flux RSS + scraping raisonné.\
+-   Étape 2 : Intégration dans Zotero
+    -   Par scraping ou via export BibTeX → import dans Zotero.\
+    -   Utilisation des API Zotero et/ou packages dédiés pour automatiser.\
+-   Étape 3 : Structuration documentaire
+    -   Tags thématiques.\
+    -   Catégorisation par année, région, institution.\
+    -   Export possible vers livrable interne ou outil de visualisation (type Quarto ou R Markdown).
+
+------------------------------------------------------------------------
+
+## Vers une base documentaire dynamique
+
+-   Objectif : passer du statique au dynamique.\
+-   Intégrer les études dans une base réinterrogeable (dashboard, moteur de recherche, analyse de tendance…).\
+-   Base centrale pour fonction observatoire interne.\
+-   Exemples d’usages :
+    -   Liste des études par année.\
+    -   Focus régional ou sectoriel.\
+    -   Suivi des politiques publiques ou signaux faibles.
+
+------------------------------------------------------------------------
+
+## À creuser / Aller plus loin
+
+-   API Zotero pour automatiser des chargements et extractions.\
+-   Connecteurs avec Zotero depuis R (`rbbt`, `zoteroR`) ou Python.\
+-   Scraping bibliographique ciblé sur les bons sites.\
+-   Intégration avec un outil de visualisation dynamique (Quarto, Observable, Shiny…).

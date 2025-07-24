@@ -1,0 +1,216 @@
+---
+title: "API"
+format:
+  html:
+    toc: true
+    toc-location: right
+    theme: cosmo
+    css: styles.css
+    code-copy: true
+page-layout: full
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Introduction
+
+Lorsqu'on veut récuopérer des données sur internet, la première question à se poser est :\
+**Existe-t-il un service pour ?**
+
+Dans le cas le plus simple une base est disponible en accès libre (data.gouv, insee.fr, etc.). Si les informations ne sont pas disponibles, peut être existe-t-il un service de requête des données : une API (Application Programming Interface). 
+
+### Qu'est-ce qu'une API ?
+
+Une **API** est une interface « clairement délimitée par laquelle un logiciel offre des services à d'autres logiciels ».
+
+-   Chaque API est accompagnée d'une **documentation**. Il est souvent nécessaire de s’y référer pour former des requêtes valables.
+-   Une API attend des **paramètres précis** qui peuvent varier selon les données que l’on demande.
+-   Notre exemple : France Travail propose un certain nombre d’API pour des services différents et des clients différents (particuliers, employeurs, etc.). Nous nous intéresserons à l’[API qui donne accès à des informations territoriales recensées par France Travail](https://francetravail.io/produits-partages/catalogue/informations-territoire/documentation#/)
+
+Si R n’est pas le meilleur langage pour requêter des API, il existe quelques packages qui facilitent le travail. Nous utiliserons httr2.
+
+## Se connecter à l’API France Travail
+
+La procédure y est décrite, il faut donc se connecter et cliquer sur `utiliser l’api`. On peut alors créer une clé d’identification (= un token).
+
+Pour éviter d’écrire notre clé d’identification dans notre script qui sera potentiellement partagé ou déposé sur Github, nous pouvons (devons !) la mettre dans le fichier local d’environnement. On appelle ce fichier avec `usethis::edit_r_environ()`et on entre notre clé ainsi que l’identifiant : 
+
+>client_ftio_key="PAR_applitest_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+>mdp_ftio_key="fafxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+On enregistre le fichier et on relance le projet pour que la modification soit prise en compte. On pourra alors accéder à ces clés avec la commande `Sys.getenv("client_ftio_key")`
+
+## Construction de la requête avec `httr2`
+
+Il nous faut maintenant construire notre requête. La première page de documentation nous donne deux informations importantes pour identifier l’API que l’on va requêter :
+**Scopes** : api_stats-informations-territoirev1,infosterritoire
+**Royaume** : /partenaire
+Gardons les dans un coin pour l'instant. Sur la gauche, plusieurs types d’informations sont disponibles, choisissons Population/ Stats sur la population totale (POP_1). La page nous donne alors la  marche à suivre avec toutes les informations nécessaires pour former notre requête et les spécifications facultatives. Il nous faut commencer par indiquer l’url à laquelle on va faire notre demande.
+
+``` r
+library(httr2)
+
+lien <- "https://api.francetravail.io/partenaire/stats-informations-territoire/v1/indicateur/stat-population"
+request(lien)
+```
+Une requête a deux parties : un header et un body. Le header contient les informations de connexion et les métadonnées (type de contenu par exemple).
+
+``` r
+request(lien) |>
+  req_headers(
+    Accept = "application/json",
+    Authorization = "Bearer -xXXxxXXxxXXxxXXx"
+  )
+```
+Ici on prend la clé temporaire qui nous est fournie (elle n’est valide que quelques minutes). Ensuite on ajoute les spécifications nécessaires dans la partie « body ».
+
+``` r
+request(lien) |>
+  req_headers(
+    Accept = "application/json",
+    Authorization = "Bearer -xXXxxXXxxXXxxXXx"
+  ) |>
+  req_body_json(
+    list(
+  	  "codeTypeTerritoire" = "REG",
+  	  "codeTerritoire" = "75",
+  	  "codeTypeActivite" = "CUMUL",
+  	 	"codeActivite" = "CUMUL",
+  	 	"codeTypePeriode" = "ANNEE"
+	   )
+  )
+```
+ 
+  
+A ce niveau, notre requête est terminée ! Mais elle n’a pas encore été envoyée, nous n’avons fait que la construire. Il nous suffit de rentrer la requête dans la fonction `req_perform()` qui donne ce que renvoie l’API, donc on met tout ça dans un objet pour le conserver.
+ 
+``` r
+df_pop_na <- request(
+  lien
+) |>
+  req_headers(
+    Accept = "application/json",
+    Authorization = "Bearer -xXXxxXXxxXXxxXXx"
+  ) |>
+  req_body_json(
+    list(
+      "codeTypeTerritoire" = "REG",
+      "codeTerritoire" = "75",
+      "codeTypeActivite" = "CUMUL",
+      "codeActivite" = "CUMUL",
+      "codeTypePeriode" = "ANNEE"
+    )
+  ) |>
+  req_perform()
+```
+ 
+Nous voilà avec un json que l’on peut transformer en data.frame. Cette étape dépend du format renvoyé par chaque api.
+
+``` r
+Table_pop_na <- map(
+  resp_body_json(page),
+  as_tibble
+) |>
+  bind_rows()
+```
+ 
+## Automatisation de la requête
+
+L’intérêt d’une API est de pouvoir requêter des données automatiquement. Utiliser la clé temporaire n’est donc pas le mieux. Nous allons devoir demander régulièrement une clé pour pouvoir requêter.
+
+Pour cela, il faut nous intéresser à la **cinématique** de France travail. Il s’agit d’une discussion entre plusieurs parties dont l’utilisateur et le service requêté, afin d’avoir l’autorisation de requêter. ([Un schéma ici]( https://francetravail.io/produits-partages/documentation/utilisation-api-france-travail/authorization-code-flow))
+
+Il va donc falloir faire une première requête qui a pour unique objectif de recevoir une clé pour faire notre requête de données. Cette première requête va nous permettre de nous identifier auprès de l’API. La page que nous avons ouvert nous donne précisément ce qu’il faut indiquer.
+
+L’url de requête doit contenir le royaume (realm) que l’on a récupéré au début.
+
+``` r
+lien_key <- "https://francetravail.io/connexion/oauth2/access_token?realm=%2Fpartenaire"
+requete <- request(lien_key)
+```
+
+Ensuite on intègre toutes les informations demandées :
+
+- Nos identifiants que l’on a mis dans l’environnement local
+- Le grant_type
+- Le scope que l’on a également récupéré au début
+
+``` r 
+requete <- request(
+  lien_key
+) |>
+  req_body_form(
+	client_id = Sys.getenv("client_ftio_key"),
+	client_secret = Sys.getenv("mdp_ftio_key"),
+	grant_type = "client_credentials",
+    scope = "api_stats-informations-territoirev1 infosterritoire"
+  ) |>
+  req_perform()
+ ```
+ 
+On obtient un objet qui contient un token (la fameuse clé). Pour la voir il suffit d'entrer `resp_body_json(requete)$access_token`.
+ 
+``` r
+page <- request(
+  lien
+) |>
+  req_auth_bearer_token(token = resp_body_json(requete)$access_token) |>
+# equivalent à “Authorization = "Bearer xXXxxXXxxXXxxXXx"” que l’on avait mis dans le header, mais on y a mis la clé que l’on vient de demander.
+  req_headers(
+    Accept = "application/json"
+  ) |>
+  req_body_json(
+    list(
+  	"codeTypeTerritoire" = "REG",
+  	"codeTerritoire" = "75",
+  	"codeTypeActivite" = "CUMUL",
+  	"codeActivite" = "CUMUL",
+  	"codeTypePeriode" = "ANNEE"
+    )
+  )  |>
+  req_perform(verbosity = 2)
+# verbosity = 2 permet d’avoir plus d’information sur ce qu’il se passe
+ ```
+ 
+On a donc une demande de clé automatisée (plus besoin de rafraîchir notre navigateur et de copier/coller le bearer xxxx). Maintenant, la clé reste temporaire, il faut relancer la première requête de demande de clé dès qu’elle n’est plus valide. Httr2 permet de le faire aussi automatiquement.
+ 
+``` r
+page <- request(lien) |>
+ 
+# Ce module permet de gérer automatiquement la demande de clé :
+# Remarquez que la fonction ne fonctionne que pour le grant_type « credential », il existe d’autres fonction pour d’autres types.
+
+  req_oauth_client_credentials(
+	client = oauth_client(
+  	id = Sys.getenv("client_ftio_key"),
+  	secret = Sys.getenv("mdp_ftio_key"),
+  	token_url = lien_key
+	),
+    scope = "api_stats-informations-territoirev1 infosterritoire"
+  ) |>
+# On y intègre toutes les informations nécessaires et il se débrouille
+ 
+# Pour ne faire que 10 requêtes par seconde (maximum autorisé par France Travail), on peut utiliser le throttling :
+  req_throttle(
+	capacity = 10,
+	fill_time_s = 1
+  ) |>
+ 
+  req_headers(
+    Accept = "application/json"
+  ) |>
+  req_body_json(
+    list(
+  	"codeTypeTerritoire" = "REG",
+  	"codeTerritoire" = "11",
+  	"codeTypeActivite" = "MOYENNE",
+  	"codeActivite" = "MOYENNE",
+  	"codeTypePeriode" = "TRIMESTRE"
+    )
+  ) |>
+  req_perform(verbosity = 2)
+```
+ 
+ 

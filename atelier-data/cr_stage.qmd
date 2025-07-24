@@ -1,0 +1,164 @@
+---
+title: "Stage mars-juillet 2025"
+page-layout: full
+format:
+  html:
+    toc: true
+    toc-location: right
+    theme: cosmo
+    css: styles.css
+    code-copy: true
+execute:
+  echo: false       
+  warning: false     
+  message: false  
+  
+---
+
+Bienvenue sur la page de compte rendu de stage !
+
+Ce document regroupe l'ensemble des travaux réalisés entre mars et juillet 2025, autour de problématiques concrètes en traitement de données, production documentaire et automatisation. Il s'appuie sur des cas d’usage rencontrés pendant le stage, et présente des outils et méthodes mobilisés dans ce cadre.
+
+## Thématiques abordées
+
+### Recensements et gestion de bases de données volumineuses  
+Exploration de données issues de recensements, avec un accent particulier sur :
+- la manipulation de fichiers volumineux (CSV, Parquet),
+- la structuration de données à large échelle,
+- l’utilisation de `dplyr`, `duckdb` et `arrow` pour optimiser les traitements.
+
+### Utilisation avancée de Quarto et Markdown  
+Création de rapports dynamiques et reproductibles :
+- mise en forme avec Markdown étendu,
+- génération de rapports HTML et PDF avec Quarto,
+- insertion de graphiques, tableaux et blocs interactifs,
+- gestion de la bibliographie intégrée.
+
+### Techniques de scraping en R  
+Automatisation de la collecte de données à partir de sites web :
+- utilisation du package `rvest` pour extraire des informations structurées (annuaires, presse, administrations),
+- bonnes pratiques pour éviter les blocages (user agents, délais, gestion des erreurs),
+- structuration des données extraites pour analyse.
+
+
+### Organisation documentaire avec Zotero  
+Mise en place d’un système de gestion bibliographique :
+- collecte automatique de références,
+- structuration thématique et partage de bibliographies,
+- intégration dans Quarto et génération de bibliographies formatées.
+
+---
+
+Chaque section est accompagnée de cas pratiques, de morceaux de code commentés, et de liens vers les ressources utilisées pendant le stage.
+
+
+## Les lieux d'exercice du stage
+
+```{r}
+library(leaflet)
+library(tidyverse)
+
+lieux <- data.frame(
+  nom = c(
+    "Marly-le-Roi", 
+    "Gouvieux", 
+    "Paris", 
+    "Mons (Belgique)", 
+    "Carcassonne", 
+    "Salon-de-Provence", 
+    "Montrouge"
+  ),
+  lat = c(
+    48.8703,  # Marly-le-Roi
+    49.1949,  # Gouvieux
+    48.8566,  # Paris
+    50.4542,  # Mons
+    43.2130,  # Carcassonne
+    43.6400,   # Salon-de-Provence
+    48.8167   # Montrouge
+  ),
+  lng = c(
+    2.0966,   # Marly-le-Roi
+    2.4089,   # Gouvieux
+    2.3522,   # Paris
+    3.9523,   # Mons
+    2.3537,   # Carcassonne
+    5.0971,    # Salon-de-Provence
+    2.3139    # Montrouge
+  )
+)
+
+leaflet(data = lieux) |>
+  addTiles() |>
+  addMarkers(~lng, ~lat, label = ~nom, popup = ~nom) |>
+  addProviderTiles("CartoDB.Positron") |>
+  setView(lng = 2.5, lat = 47.5, zoom = 5.5)
+```
+
+
+
+# Le stage chez Kantiles, c’est aussi…
+
+::: {.columns}
+::: {.column width="50%"}
+
+## Café consommé
+
+- En moyenne 4 tasses / jour / personne  
+- Environ 3 personnes caféinées par jour  
+- Sur 5 mois (~22 jours/mois), ça fait environ **4 x 3 x 22 x 5 = 1 320 tasses** 
+
+## Projets réalisés
+
+- APEC  
+- DREES  
+- Kids  
+- OPCO  
+- Endomind  
+- ... 
+
+:::
+::: {.column width="50%"}
+
+## Outils / Méthodes
+
+- R, Quarto, Leaflet  
+- Git + GitHub, DuckDB  
+- Scraping, analyses territoriales
+- ...
+
+## Conférences / Événements
+
+- Déj POS – Impact & mesure  
+- Rencontres R - Université de Mons  
+- Printemps de l'économie  
+- INSEE Pays de la Loire  
+- Colloque PIC - DARES  
+- Journée data & histoire - Sorbonne  
+- Une journée à 21  
+- ...
+
+:::
+:::
+
+
+# Remerciements et retour d’expérience
+
+Ce stage, réalisé entre mars et juillet 2025, a été une expérience particulièrement enrichissante, tant sur le plan technique, que méthodologique et humain.
+
+Nous tenons à remercier chaleureusement l’ensemble de l’équipe pour son accueil, sa disponibilité et sa bienveillance. L’environnement de travail a favorisé l’apprentissage, l’autonomie et l’expérimentation autour de sujets concrets et stimulants.
+
+Grâce à l’encadrement et aux échanges réguliers, nous avons pu :
+
+- consolider nos compétences en R, Markdown, Quarto, et en traitement de données complexes
+- découvrir des outils professionnels comme GitHub ou DuckDB
+- mieux comprendre les enjeux de structuration, documentation et reproductibilité dans un cadre professionnel
+
+Nous repartons avec des acquis solides, utiles pour la suite de notre parcours, et avec une expérience marquante du travail en équipe autour de projets concrets.
+
+Encore merci !
+
+Victoire et Emmanuel
+(*ManoirGPT*)
+---
+

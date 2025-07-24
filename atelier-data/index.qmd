@@ -1,0 +1,90 @@
+---
+title: "Accueil — Support de Formation Kantiles"
+page-layout: full
+format:
+  html:
+    toc: true
+    toc-location: right
+    theme: cosmo
+    css: styles.css
+    code-copy: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+
+
+
+Ce site est votre espace centralisé dédié à l’ensemble des ressources de formation réalisées au sein de Kantiles.  
+Il facilite l’accès supports supports pédagogiques conçus pour accompagner votre montée en compétences.
+
+Nous souhaitons faire de ce portail un outil vivant et collaboratif qui favorise la diffusion rapide de l’information, la montée en compétences et la cohésion entre tous les membres de l'entreprises.  
+
+---
+
+
+<div style="text-align:center; margin-top: 3em;">
+  <img src="logo_kantiles.png" alt="Blason Kantiles" style="max-width:200px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
+</div>
+
+## Actualités récentes
+
+Retrouvez ici les dernières nouveautés concernant les stagiaires, les articles publiés, et les événements marquants :
+
+- **Derniers stagiaires intégrés :** Emmanuel Herbepin et Victoire Chatain, qui apportent déjà de nouvelles perspectives.  
+- **Article phare :** *Kantiles fête ses 10 ans* — un regard rétrospectif sur notre parcours, nos succès et ambitions futures.  
+- **Stage mars-juillet 2025 :** Suivi des projets et réalisations des stagiaires actuels.
+
+Pour plus de détails, consultez les pages dédiées dans la section **Accueil** du menu.
+
+---
+
+## Formations et Ateliers internes
+
+
+::: {.callout title="Code"}
+Initiation à [Git](`R_git.qmd`), [manipulation de données](R_dplyr_tidyr.qmd) avec `dplyr`, `tidyr` et autres outils R.
+:::
+
+::: {.callout title="Données"}
+- [Scraping](scrap.qmd) : automatisation de la collecte de données web avec `rvest`.  
+- [API](api.qmd) : interrogation de bases distantes via `httr2`, gestion de tokens, pagination, traitement de JSON.
+:::
+
+::: {.callout title="Format"}
+- [Quarto](quarto.qmd) : création de rapports interactifs.  
+- [Parquet & DuckDB](parquet.qmd) : traitement de gros volumes de données.  
+- [Excels moches](fichier_moches.qmd) : nettoyage de fichiers Excel non structurés.
+:::
+
+::: {.callout title="Packages R"}
+- [Créer un package](package.qmd)  
+- [Tester des fonctions](test_package.qmd) avec `testthat`.
+:::
+
+::: {.callout title="Autres"}
+- [Zotero](zotero.qmd) : gestion bibliographique.  
+- [Cartographie](cartographie.qmd) : introduction à `sf`, `ggplot2` et visualisation spatiale.
+:::
+
+
+
+
+
+<div style="
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+">
+
+  <img src="kantiles_blason.png" alt="Blason Kantiles"
+       style="max-width: 400px;
+              border-radius: 12px;
+              box-shadow: 0 4px 16px rgba(0,0,0,0.25);" />
+</div>

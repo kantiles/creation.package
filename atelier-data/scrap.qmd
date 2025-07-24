@@ -1,0 +1,305 @@
+---
+title: "Scraping"
+format:
+  html:
+    toc: true
+    toc-location: right
+    theme: cosmo
+    css: styles.css
+    code-copy: true
+page-layout: full
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Introduction
+
+Le **scraping** consiste à extraire automatiquement des données publiées sur des sites internet. Cette méthode est particulièrement utile **lorsque les données ne sont pas disponibles** via une API officielle ou sous un format exploitable directement (CSV, JSON, XML, etc.). Elle permet de collecter un large éventail d’informations : fiches produits, listes, tableaux, statistiques, organigrammes, documents, etc.
+
+Cependant, le scraping nécessite une bonne maîtrise des technologies web (HTML, CSS, JavaScript) ainsi qu’une attention aux aspects légaux et éthiques (respect du fichier robots.txt, limitations du site, charge serveur).
+
+---
+
+### Pourquoi faire du scraping ?
+
+- **Collecter des données non accessibles autrement**, notamment sur des sites qui ne proposent pas d’API ou de fichiers exportables.  
+- **Automatiser la veille documentaire** en récupérant régulièrement les nouvelles publications d’un site.  
+- **Enrichir des jeux de données locaux** avec des données publiques sectorielles, comme des organigrammes ou listes d’acteurs.
+- **Récupérer des informations structurées dans des pages HTML complexes**, par exemple des tableaux ou des fiches détaillées.
+
+Les pages web sont généralement écrites en HTML (HyperText Markup Language / langage de balisage d’hypertexte). Elles sont écrites comme un ensemble d’éléments imbriqués et délimités par des balises (début : <XXX> ; fin : </XXX>).
+
+Les principales balises sont :
+```
+<title>…</title> : titre
+<p>…</p> : paragraphe
+<img src="votre_image.jpg"> : image
+<a href="…">…</a> : hyperlien
+<span>…</span> : ajout d’un style
+<ol></ol> ; <ul></ul> ; <li></li> : éléments de listes
+<h1>…</h1> : Titre de niveau 1 (titre le plus gros)
+<div>...</div> : n’a pas de signification, structure le site
+```
+Chaque élément a ses propres attributs qui sont intégrés à la première balise comme c’est le cas ici de « href = "…" » dans `<a>`. Certains attributs sont universels : ils peuvent être intégrés à toutes les balises. Nous aurons notamment besoin de :
+
+- Class : une liste de catégories
+- Id : identifiant unique dans le document
+
+Ainsi, si l’on souhaite récupérer des informations qui sont sur plusieurs dizaines, centaines ou milliers de pages, il faut que ces informations soient structurées (qu’elles se situent toutes au même endroit, qu’elles aient toutes la même "class", qu’elles se situent toutes après un motif précis, etc.).
+
+---
+
+### Outils et bibliothèques en R
+
+- **`rvest`** : bibliothèque principale pour lire, parser et extraire du contenu HTML. Utilise les sélecteurs CSS ou XPath pour cibler précisément les éléments à extraire.  
+- **`xml2`** : permet de lire et manipuler des documents XML (utile pour lire des sitemaps par exemple).  
+- **`httr` ou `curl`** : pour gérer les requêtes HTTP, parfois nécessaires pour simuler des sessions, gérer des cookies, ou contourner des protections.  
+- **`purrr`** : fonctionnel pour itérer sur des listes d’URLs et appliquer des fonctions de scraping.  
+- **Extensions Chrome (Selector Gadget, DevTools)** : outils indispensables pour identifier rapidement les sélecteurs CSS et tester les expressions XPath.
+
+---
+
+### Bonnes pratiques avant de commencer
+
+- **Vérifier le fichier `robots.txt`** du site (ex. https://www.site.com/robots.txt) qui liste les parties autorisées ou interdites au scraping. Respecter ces consignes est crucial pour éviter tout litige légal.  
+- **Analyser la structure du site** : repérer les pages d’index, les pages détaillées, les liens à suivre, et identifier les sélecteurs CSS/XPath précis.  
+- **Consulter le sitemap XML** si disponible, car il facilite la récupération automatique des URLs à scraper.  
+- **Limiter la fréquence des requêtes** pour ne pas surcharger le serveur (exemple : pause entre requêtes avec `Sys.sleep()`).  
+- **Tester et valider chaque étape manuellement** avant d’automatiser à grande échelle.  
+- **Documenter le script** pour faciliter la maintenance et la mise à jour si la structure du site change.
+
+---
+
+## Exemple complet : récupération et scraping de fiches sur cheese.com
+
+### Étape 1 : récupération des URLs de chaque fromage
+
+Chaque fromage a une page dédiée sur laquelle il y a des informations plus ou moins structurées. Nous voulons d’abord avoir une liste des urls de chaque fromage.
+
+#### Méthode 1 : Passer par le sitemap
+
+Le sitemap contient tous les urls du site, une fois récupérer, il faut le nettoyer pour n'avoir que les urls des fiches des fromages.
+``` r
+library(xml2)
+library(magrittr)
+library(tidyverse)
+library(rvest)
+
+url_sitemap <- "https://www.cheese.com/sitemap.xml"
+sitemap <- read_xml(url_sitemap)
+
+
+# Récupération du namespace
+ns <- xml_ns(sitemap)
+
+# Extraction avec le namespace (utilise le préfixe "d1" pour l'espace de noms)
+urls <- xml_find_all(sitemap, ".//d1:loc", ns) %>% xml_text()
+
+head(urls)
+```
+
+#### Méthode 2 : utiliser la liste du site
+
+Le site propose [une liste alphabétique des fromages](https://www.cheese.com/alphabetical/). Il nous suffit de récupérer cette page avec `read_html("url de l’html à récupérer")`. Cette fonction renvoie le code HTML de la page dans lequel il y a une balise d’hyperlien pour chaque élément de la liste. On peut alors récupérer tous les hyperliens qui nous intéressent.
+
+Le package rvest permet de sélectionner les éléments dans les pages html. Nous pourrions récupérer tous les liens de la page ainsi :
+
+``` r
+
+page <- read_html("https://www.cheese.com/alphabetical/")
+page |>
+# On prend tous les éléments balisés ‘a’ = liens hypertexte
+	html_elements("a") |>
+	
+# On récupère leurs attribut ‘href’ = l'url
+	html_attr("href") |>
+	
+# On en fait un tibble
+	as_tibble()
+
+```
+	
+Mais on récupère également des liens qui ne nous intéressent pas (lien vers la page d’accueil, vers le compte Facebook du site, etc.). On observe alors sur le site que chaque lien que l’on souhaite est dans une balise \<div> de class ‘product_item’. Pour voir le code html d’un site, il suffit de faire un clic droit et ‘inspecter la page’ ou ‘afficher le code source de la page’. On peut donc d’abord filtrer sur ces balises d’abord, puis récupérer les liens qu'elles contiennent.
+
+``` r
+page |>
+
+# html_elements avec un s pour tous les récupérer, sans s pour ne prendre que le premier
+	html_elements(".product-item") |>
+	
+	# Le lien est attaché au titre, on filtre sur la balise h3 = titre de niveau 3
+    html_element("h3") |>
+    
+    html_elements("a") |>
+    html_attr("href") |>
+    as_tibble()
+```
+ 
+ 
+Nous pouvons donc récupérer les liens vers tous les fromages sans difficulté. Cependant, il y a 103 pages de cette liste alphabétique. On va alors appliquer cette fonction de récupération de lien sur chacune de manière automatique en jouant sur l’url.
+En effet, les urls sont souvent structurées. Ici, on peut voir que le numéro de la page se situe dans l’url (et il commence par 0 !). On peut aussi voir qu’il y a un paramètre pour afficher plus de fromage par page. Il est donc facile de parcourir toutes les pages :
+
+``` r
+# On créé une fonction qui récupère les liens
+get_indexe_cheese <- function(page) {
+  page |>
+	html_elements(".product-item") |>
+	html_element("h3") |>
+	html_elements("a") |>
+	html_attr("href") |>
+	as_tibble()
+}
+
+# On ne peut mettre que 100 fromage par page au maximum, ce qui fait 21 pages.
+cheese <- map(
+# Pour chacune des 21 pages…
+  seq(1, 21),
+  
+# On lit la page
+  ~ read_html(paste0(
+    "https://www.cheese.com/alphabetical/?per_page=100&page=",
+	.x
+  )) |>
+  
+# On récupère les liens grâce à notre fonction
+	get_indexe_cheese(),
+  .id = "page",
+  .progress = TRUE
+)
+```
+
+On a donc une liste de liste de liens que l’on peut retravailler.
+
+``` r
+list_cheese <- cheese |>
+
+# On lie les lignes de chaque page
+  bind_rows(.id = "page") |>
+  
+# On recréé l’url avec chaque lien
+  mutate(
+	url = paste0("https://www.cheese.com", value)
+  )
+```
+
+
+### Étape 2 : Récupérer les informations qui nous intéressent
+
+Il nous faut maintenant récupérer les informations de chaque fromage en parcourant chaque url. On le fait de la même manière que la récupération des liens : on charge la page, on identifie les cases où se trouvent les informations, on les récupère avec rvest et on les met dans un tableau.
+
+``` r
+# Cette fonction récupère les informations qui nous intéressent sur une page de fromage
+get_fromage <- function(page) {
+  sous_page <- page %>%
+
+    # On se place dans le cadre où se situent les informations (sa class est "unit")
+
+    html_elements(".unit")
+  # On créé une liste avec les informations que l'on veut récupérer
+
+  list(
+    # Le titre du fromage se situe dans la balise h1 = titre de niveau 1
+    title = sous_page |>
+      html_element("h1") |>
+      html_text2(),
+
+    # On récupère les attributs de la liste "résumé" qui sont en nombre différents en fonction des pages
+    # Ils sont dans une balise de class "summary-points"
+    attr = sous_page |>
+      html_elements(".summary-points") |>
+      # On récupère les éléments de la liste
+      html_elements("li") |>
+      # On récupère la class de chaque élément de la liste
+      html_attr("class"),
+
+    # On récupère le texte de chaque élément de la liste
+    txt = sous_page |>
+      html_elements(".summary-points") |>
+      html_elements("li") |>
+      html_element("p") |>
+      html_text2()
+  )
+}
+# Celle ci transforme la liste de liste produite par get_fromage en une ligne de tableau
+tibbleiser <- function(info) {
+  tibble(
+    title = info$title,
+    bind_cols(
+      type = info$attr,
+      value = info$txt
+    ) |>
+      pivot_wider(
+        names_from = type,
+        values_from = value
+      )
+  )
+}
+
+# On applique les deux fonctions à chaque url de fromage récupéré et on lie toutes les lignes
+tb_cheese <- map(
+  list_cheese$url,
+  ~ read_html(.x) |>
+    get_fromage() |>
+    tibbleiser(),
+  .id = "url",
+  .progress = TRUE
+) |>
+  bind_rows()
+```
+
+---
+
+## Lecture de PDF en R
+
+### Outils
+
+- **tesseract** : outil OCR pour extraire du texte à partir d’images contenues dans des PDF.
+- **tabulizer** (package R) : extraction de tableaux depuis des PDF, particulièrement efficace pour les tableaux “screenshot” (captures d’écran intégrées dans PDF).
+- **pdftools** : manipulation basique et extraction de texte dans les PDF.
+
+### Usages
+
+- Extraction de tableaux complexes, notamment lorsque les données sont intégrées en image (screenshot).
+- Le package `tabulizer` est utile pour extraire ces tableaux, contrairement à l’OCR qui fonctionne moins bien sur ce type de données.
+- Vérifier la cohérence des tailles de listes extraites (ex. colonnes de tableaux) pour éviter les erreurs de décalage ou pertes de données.
+- Gérer les valeurs manquantes, car en HTML/texte brut, il n’y a pas de NA natif.
+- Utile pour enrichir des données sectorielles ou locales à partir de rapports PDF.
+
+### Cas pratique
+
+- Tester sur des sites institutionnels comme l’INSEE en live.
+- Nettoyer et structurer les données extraites pour créer des jeux de données propres.
+- Être vigilant aux problèmes liés à la mise en forme des PDF (listes, colonnes, espacements).
+
+
+``` r
+library(pdftools)
+
+# Exemple d'extraction texte d'un PDF local
+texte_pdf <- pdf_text("exemple_rapport.pdf")
+
+# Affichage des 500 premiers caractères de la première page
+cat(substr(texte_pdf[1], 1, 500))
+```
+
+
+``` r
+library(tabulizer)
+
+# Extraction des tableaux d'un PDF
+tables <- extract_tables("exemple_rapport.pdf")
+
+# Affichage du premier tableau extrait
+print(tables[[1]])
+```
+
+``` r
+library(tesseract)
+
+# Extraction de texte depuis une image (capture ou PDF image)
+texte_ocr <- ocr("exemple_image_page.png")
+
+cat(texte_ocr)
+```

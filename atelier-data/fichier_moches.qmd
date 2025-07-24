@@ -1,0 +1,130 @@
+---
+title: "Lire des Excels moches"
+format:
+  html:
+    toc: true
+    toc-location: right
+    theme: cosmo
+    css: styles.css
+    code-copy: true
+page-layout: full
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Lire des fichiers Excel mal formatés
+
+Certaines données, notamment institutionnelles ou issues de productions internes, sont publiées dans des formats complexes, peu adaptés à une analyse directe. Cette session vise à comprendre comment :
+
+- identifier les problèmes structurels dans un fichier Excel ;
+- appliquer une démarche de mise à plat (tidy) ;
+- automatiser le nettoyage sans altérer les données sources.
+
+On peut également aller voir la référence :un petit coup de polish.
+---
+
+## Objectif : obtenir des données tidy
+
+Les jeux de données doivent être remis sous une **forme rectangulaire et normalisée**, avec :
+
+- une variable par colonne ;
+- une observation par ligne ;
+- un type de valeur par cellule.
+
+Cela facilite l’analyse, les visualisations, et les opérations de jointure ou de regroupement.
+
+---
+
+## 1. Lire des fichiers Excel complexes
+
+Plusieurs approches existent :
+
+### `readxl::read_excel()`
+
+- Permet de spécifier une **feuille** avec l’argument `sheet = "nom_onglet"`.
+- L’argument `range = "A5:H12"` est souvent **préférable** à `skip = 4` pour cibler une plage exacte.
+- Idéal pour **de petits fichiers** avec une structure régulière.
+
+```r
+library(readxl)
+
+df <- read_excel("data/fichier_drees.xlsx", sheet = "Panorama", range = "A5:H12")
+```
+
+
+## 2. Une autre approche : `tidyxl` + `unpivotr`
+
+Lorsque les fichiers Excel sont particulièrement désorganisés — titres multiples, colonnes fusionnées, zones de commentaires, formats visuels utilisés comme informations — il devient difficile d’utiliser `readxl()` de manière fiable.  
+**C’est ici que `tidyxl` et `unpivotr` prennent tout leur sens.**
+
+Ces packages permettent d’accéder à chaque **cellule individuellement**, avec sa position (`row`, `col`), son contenu, son style (`gras`, `italique`, `remplissage`, etc.), et de reconstruire manuellement un tableau structuré.
+
+---
+
+### Étape 1 : lecture des cellules
+
+
+```{r}
+# cells <- xlsx_cells("data/fichier_drees.xlsx", sheets = "Panorama")
+```
+
+Chaque ligne du tibble cells représente une cellule. Cela inclut :
+
+- le texte (character)
+- la valeur (numeric, date, etc.)
+- la position (ligne/colonne)
+- des infos de style : font_bold, fill_color, etc.
+
+
+
+### Étape 2 : filtrer les zones utiles
+
+On peut ensuite cibler les lignes et colonnes contenant des données ou entêtes :
+
+```{r}
+# zone <- cells |>
+#   filter(!is_blank) |>
+#   filter(row >= 5 & row <= 12)
+```
+
+
+
+### Étape 3 : repositionner les entêtes
+On utilise unpivotr::behead() pour "décapiter" les titres situés au-dessus ou à gauche des valeurs, et les insérer comme nouvelles colonnes.
+
+```{r}
+# library(unpivotr)
+# 
+# tidy_data <- zone |>
+#   behead("up", "année") |>
+#   behead("left", "région")
+```
+
+
+Directions possibles :
+
+- "up" : décapite les cellules situées au-dessus
+- "left" : décapite celles situées à gauche
+- "right" et "down" : également disponibles
+- behead_if() : applique conditionnellement (ex. seulement si bold == TRUE)
+
+
+
+
+### Étape 4 : traitement complémentaire
+
+- fill() de tidyr permet de remplir les NA dans les colonnes entêtes
+- group_by(sheet) utile pour lire tous les onglets
+
+On peut aussi détecter des titres dynamiquement avec str_detect()
+
+| Situation                          | Solution avec tidyxl + unpivotr |
+| ---------------------------------- | ------------------------------- |
+| Tableaux avec entêtes multiples    | `behead()`                      |
+| Info encodée dans le style (gras…) | `behead_if()`                   |
+| Tableaux complexes par onglet      | `group_by(sheet)`               |
+| NA dans les entêtes                | `fill()`                        |
+
+
